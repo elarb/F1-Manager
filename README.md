@@ -1,12 +1,9 @@
 # F1-Manager
 F1-Manager
 
-Tim Pelser /n
-4571967 /n
-timpelser@hotmail.fr /n
-0642905284 /n
+Tim Pelser
+4571967
+timpelser@hotmail.fr
+0642905284
 
-Wouter van Lil
-4551389
-Wouter_van_Lil@Live.nl
-0642637633
+![alt tag](https://drive.google.com/open?id=0B4i_Oj_OrL0jQmNhOXpIaGxYVW8)
