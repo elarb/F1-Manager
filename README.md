@@ -1,9 +1,4 @@
 # F1-Manager
-<<<<<<< Updated upstream
-# Test edit
-=======
+F1-Manager
 
-hi ik ben david
->>>>>>> Stashed changes
 
-«Insert random comment here»
