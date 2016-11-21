@@ -1,4 +1,7 @@
 # F1 Manager
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/F1_logo.svg/1280px-F1_logo.svg.png"  width="400"/>
+</p>
 
 ## Installation
 TODO: Describe the installation process
