@@ -41,7 +41,7 @@ TODO: Write history
 ## License
 MIT License
 
-Copyright (c) 2016 Ellias Ait Larb, David van Happel, Wouter van Lil, Tim Pelser
+Copyright (c) 2016 Ellias Ait Larbi, David van Happel, Wouter van Lil, Tim Pelser
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
