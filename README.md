@@ -6,4 +6,4 @@ Tim Pelser
 timpelser@hotmail.fr
 0642905284
 
-![alt tag](https://drive.google.com/open?id=0B4i_Oj_OrL0jQmNhOXpIaGxYVW8)
+![alt tag](https://github.com/elarb/F1-Manager/blob/master/Tim.jpg)
