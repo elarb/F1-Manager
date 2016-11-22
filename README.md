@@ -25,19 +25,19 @@ TODO: Write history
     <td><a href="https://www.github.com/elarb">Ellias Ait Larbi</a></td>
     <td><a href="https://www.github.com/">Tim Pelser</a></td>
     <td><a href="https://www.github.com/">Wouter van Lil</a></td>
-    <td><a href="https://www.github.com/">David van Happel</a></td>
+    <td><a href="https://www.github.com/">David Happel</a></td>
   </tr>
   <tr>
     <td>eaitlarbi</td>
     <td>tpelser</td>
     <td>wvlil</td>
-    <td>tvhappel</td>
+    <td>dvhappel</td>
   </tr>
   <tr>
     <td>e.aitlarbi@gmail.com</td>
     <td>timpelser@hotmail.fr</td>
     <td></td>
-    <td></td>
+    <td>davidvhappel1@gmail.com</td>
   </tr>
 </table>
 
