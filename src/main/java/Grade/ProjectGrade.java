@@ -2,6 +2,8 @@ package Grade;
 
 public class ProjectGrade {
 
+
+    //testing for changes
     public static double CalculateGrade(boolean usedGit, boolean compiles, double grade)
     {
         if(!usedGit || !compiles)
