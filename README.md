@@ -23,9 +23,9 @@ TODO: Write history
   </tr>
   <tr>
     <td><a href="https://www.github.com/elarb">Ellias Ait Larbi</a></td>
-    <td><a href="https://www.github.com/">Tim Pelser</a></td>
-    <td><a href="https://www.github.com/">Wouter van Lil</a></td>
-    <td><a href="https://www.github.com/">David Happel</a></td>
+    <td><a href="https://github.com/timpelser">Tim Pelser</a></td>
+    <td><a href="https://github.com/WoutervanLil">Wouter van Lil</a></td>
+    <td><a href="https://github.com/David-Happel">David Happel</a></td>
   </tr>
   <tr>
     <td>eaitlarbi</td>
