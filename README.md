@@ -18,7 +18,7 @@ TODO: Write history
   <tr>
     <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Elias.jpg" alt="Elias" width="200" height="250"/></th>
     <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Tim.jpg" alt="Tim" width="200" height="250"/></th>
-    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Wouter.jpg" alt="Wouter" width="200" height="250"/></th>
+    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/thumbnail_IMG_20161123_144044.jpg" alt="Wouter" width="200" height="250"/></th>
     <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/David.jpg" alt="David" width="200" height="250"/></th>
   </tr>
   <tr>
@@ -30,13 +30,13 @@ TODO: Write history
   <tr>
     <td>eaitlarbi</td>
     <td>tpelser</td>
-    <td>wvlil</td>
+    <td>wvanlil</td>
     <td>dvhappel</td>
   </tr>
   <tr>
     <td>e.aitlarbi@gmail.com</td>
     <td>timpelser@hotmail.fr</td>
-    <td></td>
+    <td>wouter_van_lil@live.nl</td>
     <td>davidvhappel1@gmail.com</td>
   </tr>
 </table>
