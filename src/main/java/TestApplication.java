@@ -15,7 +15,6 @@ public class TestApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        //test
         //een window is een "stage" in javafx
         primaryStage.setTitle("F1 Manager - User");
 
@@ -34,9 +33,11 @@ public class TestApplication extends Application {
         layout.getChildren().add(button);
 
         //scene is alles in de window zelf
-        Scene scene = new Scene(layout, 600, 350);
+        Scene scene = new Scene(layout, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
 
 
     }
