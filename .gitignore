@@ -9,4 +9,9 @@ buildNumber.properties
 .mvn/timing.properties
 
 # Exclude maven wrapper
-!/.mvn/wrapper/maven-wrapper.jar
+ - !/.mvn/wrapper/maven-wrapper.jar
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/
+.idea/misc.xml
+.idea/workspace.xml
