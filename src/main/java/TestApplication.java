@@ -15,6 +15,7 @@ public class TestApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        //test
         //een window is een "stage" in javafx
         primaryStage.setTitle("F1 Manager - User");
 
