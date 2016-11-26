@@ -21,7 +21,7 @@ TODO: Write history
     <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Elias.jpg" alt="Elias" width="200" height="250"/></th>
     <th><img src="" alt="Tim" width="200" height="250"/></th>
     <th><img src="" alt="Wouter" width="200" height="250"/></th>
-    <th><img src="" alt="David" width="200" height="250"/></th>
+    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/David.jpg" alt="David" width="200" height="250"/></th>
   </tr>
   <tr>
     <td><a href="https://www.github.com/elarb">Ellias Ait Larbi</a></td>
