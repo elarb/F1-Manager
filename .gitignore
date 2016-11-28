@@ -12,9 +12,6 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 
 .idea/.name
-.idea/compiler.xml
 .idea/copyright/
-.idea/misc.xml
-.idea/workspace.xml
 .idea/
 
