@@ -6,7 +6,7 @@ public class Engine {
   private double power;
   private double drivability;
   private double fuelefficiency;
-  private int priceengine;
+  private double priceengine;
 
 
 
@@ -25,7 +25,7 @@ public class Engine {
     brand = newbrand;
   }
 
-  public int getPrice(){
+  public double getPrice(){
     return priceengine;
   }
 
@@ -48,6 +48,13 @@ public class Engine {
   public double getFuelefficiency(){
     return fuelefficiency;
   }
+
+  public void setPrice() {
+    double calculus = Constants.VALUEENGINE*((Constants.POWERCOEF*power)*(Constants.DRIVABILITYCOEF*drivability)*(Constants.FUELEFFICIENCYCOEF*fuelefficiency));
+    priceengine = calculus;
+  }
+
+
 
 }
 
