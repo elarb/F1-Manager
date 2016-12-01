@@ -469,7 +469,7 @@ updates</panel_attributes>
 - price: int
 - power: double
 - driveAbility: double
-- fuelefficiency: double</panel_attributes>
+- fuelEfficiency: double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
