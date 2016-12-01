@@ -1,0 +1,6 @@
+{"drivers":[
+    {"name":"Sebastian Vettel", "team":"Ferrari", "speed":"6", "racecraft":"5", "strategyinsight":"5"},
+    {"name":"Lewis Hamilton", "team":"Mercedes", "speed":"8", "racecraft":"6", "strategyinsight":"6"},
+    {"name":"Max Verstappen", "team":"RedBull", "speed":"7", "racecraft":"8", "strategyinsight":"4"},
+    {"name":"Hans Tonino", "team":"Renault", "speed":"5", "racecraft":"7", "strategyinsight":"7"}
+]}
