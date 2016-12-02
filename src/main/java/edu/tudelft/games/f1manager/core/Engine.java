@@ -5,55 +5,53 @@ public class Engine {
   private String brand;
   private double power;
   private double drivability;
-  private double fuelefficiency;
-  private double priceengine;
+  private double fuelEfficiency;
+  private double price;
 
 
-
-  public Engine(String brand, double power, double drivability, double fuelefficiency){
+  public Engine(String brand, double power, double drivability, double fuelEfficiency) {
     this.brand = brand;
     this.power = power;
     this.drivability = drivability;
-    this.fuelefficiency = fuelefficiency;
+    this.fuelEfficiency = fuelEfficiency;
   }
 
-  public String getBrand(){
+  public String getBrand() {
     return brand;
   }
 
-  public void setBrand(String newbrand){
+  public void setBrand(String newbrand) {
     brand = newbrand;
   }
 
-  public double getPrice(){
-    return priceengine;
+  public double getPrice() {
+    return price;
   }
 
-  public double getPower(){
+  public double getPower() {
     return power;
   }
 
-  public void setPower(double newpower){
+  public void setPower(double newpower) {
     power = newpower;
   }
 
-  public double getDrivability(){
+  public double getDrivability() {
     return drivability;
   }
 
-  public void setDrivability(double newdrivability){
+  public void setDrivability(double newdrivability) {
     drivability = newdrivability;
   }
 
-  public double getFuelefficiency(){
-    return fuelefficiency;
+  public double getFuelEfficiency() {
+    return fuelEfficiency;
   }
 
   public void setPrice() {
-    double calculus = Constants.VALUEENGINE*((Constants.POWERCOEF*power)*(Constants.DRIVABILITYCOEF*drivability)*(Constants.FUELEFFICIENCYCOEF*fuelefficiency));
-    priceengine = calculus;
+    double calculus = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) * (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
+    price = calculus;
   }
-
 
 
 }
