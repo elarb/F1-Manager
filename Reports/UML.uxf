@@ -29,8 +29,8 @@
 - brand: String
 - price: int
 - power: double
-- driveAbility: double
-- fuelefficiency: double</panel_attributes>
+- drivability: double
+- fuelEfficiency: double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

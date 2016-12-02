@@ -1,11 +1,12 @@
 package edu.tudelft.games.f1manager.core;
 
 
-/**
- * class that represents a Computer team.
- */
-public class ComputerTeam extends Team {
+public class PlayerTeam extends Team {
 
+  /**
+   * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
+   */
+  private int budget;
 
   /**
    * Creates an Object that represents a F1 Team.
@@ -17,8 +18,12 @@ public class ComputerTeam extends Team {
    * @param strategist     Strategist of the team
    * @param aerodynamicist Aerodynamicist of the team
    * @param mechanic       Mechanic of the team
+   * @param budget
    */
-  public ComputerTeam(Driver driver1, Driver driver2, Car car1, Car car2, Strategist strategist, Aerodynamicist aerodynamicist, Mechanic mechanic) {
+  public PlayerTeam(Driver driver1, Driver driver2, Car car1, Car car2, Strategist strategist, Aerodynamicist aerodynamicist, Mechanic mechanic, int budget) {
     super(driver1, driver2, car1, car2, strategist, aerodynamicist, mechanic);
+    this.budget = budget;
   }
+
+
 }
