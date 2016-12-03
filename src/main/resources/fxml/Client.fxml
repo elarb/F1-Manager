@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="Formula 1 Manager Beta 0.1" textFill="WHITE">
+                            <font>
+                                <Font name="Futura LT Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Button layoutX="42.0" layoutY="25.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false"
+                                text="Home" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="25.0">
+                            <font>
+                                <Font name="Futura LT Bold" size="18.0"/>
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Click to return to home"/>
+                            </tooltip>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="565.0" layoutY="25.0"
+                                minHeight="50.0" minWidth="150.0" mnemonicParsing="false" text="Race!">
+                            <font>
+                                <Font name="Futura LT Bold" size="24.0"/>
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Click to start the next race"/>
+                            </tooltip>
+                        </Button>
+                        <ButtonBar buttonMinWidth="90.0" layoutX="866.0" layoutY="38.0" prefHeight="53.0"
+                                   prefWidth="385.0">
+                            <buttons>
+                                <Button mnemonicParsing="false" text="Profile">
+                                    <font>
+                                        <Font name="Futura LT Bold" size="12.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip text="Click to view your profile"/>
+                                    </tooltip>
+                                </Button>
+                                <Button layoutX="135.0" layoutY="18.0" mnemonicParsing="false" text="Configuration">
+                                    <font>
+                                        <Font name="Futura LT Bold" size="12.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip text="Click to view/edit your team configuration"/>
+                                    </tooltip>
+                                </Button>
+                                <Button layoutX="135.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0"
+                                        prefWidth="882.0" text="Settings">
+                                    <font>
+                                        <Font name="Futura LT Bold" size="12.0"/>
+                                    </font>
+                                    <tooltip>
+                                        <Tooltip text="Click to edit your preferences"/>
+                                    </tooltip>
+                                </Button>
+                            </buttons>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </ButtonBar>
+                        <Label contentDisplay="CENTER" layoutX="275.0" layoutY="37.0" text="Quicksilver Racing"
+                               textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="Futura LT Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="909.0" layoutY="20.0" text="Cash: $200,000,000" textFill="WHITE"
+                               AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="20.0">
+                            <font>
+                                <Font name="Futura LT Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="1058.0" layoutY="20.0" text="Points: 24" textFill="WHITE"
+                               AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="20.0">
+                            <font>
+                                <Font name="Futura LT Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="1149.0" layoutY="20.0" text="Wins: 12/15" textFill="WHITE"
+                               AnchorPane.rightAnchor="51.0">
+                            <font>
+                                <Font name="Futura LT Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <AnchorPane fx:id="midAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
