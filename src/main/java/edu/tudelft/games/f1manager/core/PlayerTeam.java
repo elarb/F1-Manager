@@ -1,6 +1,8 @@
 package edu.tudelft.games.f1manager.core;
 
 
+import java.util.List;
+
 public class PlayerTeam extends Team {
 
   /**
@@ -9,21 +11,27 @@ public class PlayerTeam extends Team {
   private int budget;
 
   /**
-   * Creates an Object that represents a F1 Team.
-   *
-   * @param driver1        Driver #1 of the team
-   * @param driver2        Driver #2 of the team
-   * @param car1           Car #1 of the team
-   * @param car2           Car #2 of the team
-   * @param strategist     Strategist of the team
-   * @param aerodynamicist Aerodynamicist of the team
-   * @param mechanic       Mechanic of the team
-   * @param budget
+   * Is true if the team owns a software tester. If a team doesn't own a software-tester,
+   * the chance for a crash increases significantly.
    */
-  public PlayerTeam(Driver driver1, Driver driver2, Car car1, Car car2, Strategist strategist, Aerodynamicist aerodynamicist, Mechanic mechanic, int budget) {
-    super(driver1, driver2, car1, car2, strategist, aerodynamicist, mechanic);
+  private boolean hasSoftwareTester;
+
+
+  /**
+   * Creates an object that represents the F1 Team of a player.
+   *
+   * @param driverList        list of drivers in the team
+   * @param carList           list of cars owned by the team
+   * @param strategist        strategist of the team
+   * @param aerodynamicist    aerodynamicist of the team
+   * @param mechanic          mechanic of the team
+   * @param hasSoftwareTester is true if the team owns a software tester
+   */
+  public PlayerTeam(List<Driver> driverList, List<Car> carList,
+                    Strategist strategist, Aerodynamicist aerodynamicist,
+                    Mechanic mechanic, int budget, boolean hasSoftwareTester) {
+    super(driverList, carList, strategist, aerodynamicist, mechanic);
     this.budget = budget;
+    this.hasSoftwareTester = hasSoftwareTester;
   }
-
-
 }
