@@ -10,7 +10,7 @@ public class Strategist {
   /**
    * Creates an object that represents a Strategist of a F1 team.
    *
-   * @param strategy
+   * @param strategy The strategy of the strategist
    */
   public Strategist(String strategy) {
     this.strategy = strategy;
