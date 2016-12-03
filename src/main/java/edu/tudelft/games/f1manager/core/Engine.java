@@ -49,7 +49,8 @@ public class Engine {
   }
 
   public void setPrice() {
-    double calculus = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) * (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
+    double calculus = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) *
+      (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
     price = calculus;
   }
 

@@ -1,0 +1,9 @@
+.root {
+    -fx-background-image: url("../img/patterns/footer_lodyas.png");
+    -fx-background-repeat: repeat;
+}
+
+#midAnchorPane {
+    -fx-background-image: url("../img/patterns/micro_carbon.png");
+    -fx-background-repeat: repeat;
+}
