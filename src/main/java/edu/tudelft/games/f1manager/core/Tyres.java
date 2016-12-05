@@ -13,17 +13,33 @@ public class Tyres {
   /**
    * Type of the tyres.
    */
-  private String type;
+  private int hardness;
 
   /**
    * Creates an Object that represents the tyres of a F1 Car.
    *
    * @param name Name of the tyres
-   * @param type Type of the tyres
+   * @param hardness Type of the tyres
    */
-  public Tyres(String name, String type) {
+  public Tyres(String name, int hardness) {
     this.name = name;
-    this.type = type;
+    this.hardness = hardness;
+  }
+
+  /**
+   * calculates the durability with the hardness
+   * @return int - Durability
+   */
+  public int getDurability(){
+    return 20 * this.getHardness();
+  }
+
+  /**
+   * calculates the grip with the hardness
+   * @return int - grip
+   */
+  public int getGrip(){
+    return 20 * (5 - this.getHardness());
   }
 
   public String getName() {
@@ -34,11 +50,11 @@ public class Tyres {
     this.name = name;
   }
 
-  public String getType() {
-    return type;
+  public int getHardness() {
+    return hardness;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setHardness(int hardness) {
+    this.hardness = hardness;
   }
 }
