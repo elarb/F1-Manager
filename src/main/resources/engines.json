@@ -1,0 +1,6 @@
+[
+    {"brand":"Mercedes", "power":"960", "fuelefficiency":"8", "drivability":"7"},
+    {"brand":"Renault", "power":"870", "fuelefficiency":"8", "drivability":"8"},
+    {"brand":"Ferrari", "power":"800", "fuelefficiency":"6", "drivability":"9"},
+    {"brand":"RedBull", "power":"770", "fuelefficiency":"7", "drivability":"6"}
+]
