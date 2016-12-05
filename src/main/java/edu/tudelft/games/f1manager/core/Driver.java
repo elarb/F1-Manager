@@ -14,6 +14,10 @@ public class Driver {
 		this.name = iname;
 		this.team = iteam;
 	}
+	
+	public void calcValue() {
+		this.value = 123; // formula
+	}
 
 	public String getName() {
 		return name;
@@ -53,6 +57,10 @@ public class Driver {
 
 	public void setStrategyinsight(double strategyinsight) {
 		this.strategyinsight = strategyinsight;
+	}
+	
+	public int getValue() {
+		return value;
 	}
 	
 }
