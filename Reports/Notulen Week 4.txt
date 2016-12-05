@@ -1,0 +1,74 @@
+Chairman: Tim Pelser
+Secretaris: Wouter van Lil
+
+Bijeenkomst de dato 5 december 2016.
+Eerste vergadering der RACESOFT
+Race Algorithmic Competitive Engineering Simulator Omega Formula Team
+Aanwezigen: Martijn, Elias, David, Tim, Wouter.
+
+Voortaan agenda uitprinten en punten erin zetten die we willen bespreken van te voren.
+
+Dingen die gedaan zijn:
+Driver class
+engine class
+Car class
+Computer team (veranderd naar AI team)
+GSon, JSon databases gemaakt (voor huidige classes)
+Playerteam parameters verminderd
+
+!! Meer drivers dan 2 kopen? Oplossing verzinnen
+	Selecteer 2 drivers uit je eigen roster
+	In een list plaatsen (positie 0 en 1 rijdende posities)
+	Of anders setters maken zodat er genoeg parameters zijn
+	
+Class upgradeable
+	- Formule, hoe hoger je waarde al is hoe minder hij improvet
+	- Waardes van dingen tussen 0 en 1, en uiteindelijk dan makkelijk in de formule
+
+JavaFX, GUI basics
+	Windowed mode makkelijker door een resolution, anders er vroeg al bij zijn. Wel minder mooi in windowed.
+
+JavaDoc alleen toevoegen als checkstyle 't wil, anders hoeft t niet.
+
+-
+
+ZenHub vraag gesteld, ook beantwoord, ging goed!
+
+-
+
+Issues,
+Taken niet goed verdeeld, beetje laat begonnen en onduidelijk wie wat ging doen
+Voortaan issues maken, zonder iemand te assignen, dan kan iemand zichzelf intekenen. Daarna de rest er af blijven.
+! Grote punten wel assignen, incl duration assignen. !
+IceBox weghalen (gedaan)
+
+
+-
+Volgende Sprint:
+-Alles voordat de race start klaar zetten.
+	-Playerteam
+		-BuyDriver(Driver, Amount) -> if success (+random chance) -> Driver.setTeam() ook Team.setDriver()
+		-TeamDrivers[] position [0,1] active drivers
+	-AITeam
+		-MakeOffer() -> Driver, Amount -> if accept -> Driver.setTeam() ook Team.setDriver()
+	-Strategist
+		-changeRisk()
+		-improve() -> Playerteam.cash - 10.000, new strategies available?
+	-Mechanic
+		-improve() Pitstops
+		-changeTyres()
+	-Aerodynamicist
+		-improve()
+	
+
+Vooral core, dingen zoals naam enzo later.
+
+-
+Sprint review:
+JSon databases te groot, en afhankelijk van andere factoren dus later pas?
+In ieder geval opsplitsen in kleinere issues.
+
+Sprint moet overzichtelijker zijn
+Als je iets belangrijks commit, even in de slack/whatsapp een melding geven.
+
+Beginnen met tests schrijven. Elke nieuwe methode testen.
