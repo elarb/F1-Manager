@@ -1,16 +1,16 @@
 package edu.tudelft.games.f1manager.core;
 
-/**
- * This class represents an Aerodynamicist.
- */
-public class Aerodynamicist implements Upgradeable {
+  /**
+  * This class represents an Aerodynamicist.
+  */
+  public class Aerodynamicist implements Upgradeable {
 
   /**
    * Expertise the Aerodynamicist has, expressed as an integer from 60-99.
    */
   private int expertise;
 
-  /**
+    /**
    * Creates an object that represents an Aerodynamicist of a F1 team.
    *
    * @param expertise The expertise the Aerodynamicist has
