@@ -6,11 +6,6 @@ package edu.tudelft.games.f1manager.core;
 public class Tyres {
 
   /**
-   * Name of the tyres.
-   */
-  private String name;
-
-  /**
    * Type of the tyres.
    */
   private int hardness;
@@ -18,37 +13,30 @@ public class Tyres {
   /**
    * Creates an Object that represents the tyres of a F1 Car.
    *
-   * @param name Name of the tyres
    * @param hardness Type of the tyres
    */
-  public Tyres(String name, int hardness) {
-    this.name = name;
+  public Tyres(int hardness) {
     this.hardness = hardness;
   }
 
   /**
    * calculates the durability with the hardness
+   *
    * @return int - Durability
    */
-  public int getDurability(){
+  public int getDurability() {
     return 20 * this.getHardness();
   }
 
   /**
    * calculates the grip with the hardness
+   *
    * @return int - grip
    */
-  public int getGrip(){
+  public int getGrip() {
     return 20 * (5 - this.getHardness());
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 
   public int getHardness() {
     return hardness;
