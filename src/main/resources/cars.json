@@ -1,6 +1,17 @@
-[
-    {"engine":"Mercedes", "body":"//", "tyres":"//"},
-    {"engine":"Renault", "body":"//", "tyres":"//"},
-    {"engine":"Ferrari", "body":"//", "tyres":"//"},
-    {"engine":"Mercedes", "body":"//", "tyres":"//"},
-]
+{
+    "carList": [
+        {
+            "engine": {
+                "brand": "Mercedes",
+                "power": null,
+                "drivability": null,
+                "fuelEfficiency": null,
+                "price": null
+            },
+            "body": null,
+            "tyres": {
+                "hardness": null
+            }
+        }
+    ]
+}
