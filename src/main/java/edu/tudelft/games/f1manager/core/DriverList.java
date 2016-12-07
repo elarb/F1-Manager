@@ -16,7 +16,7 @@ public class DriverList {
   /**
    * Creates an Object that represents a list of Drivers.
    *
-   * @param driverList
+   * @param driverList A list of drivers
    */
   public DriverList(ArrayList<Driver> driverList) {
     this.driverList = driverList;
