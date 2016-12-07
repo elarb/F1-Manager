@@ -56,4 +56,13 @@ public class Car {
   public void setTyres(Tyres tyres) {
     this.tyres = tyres;
   }
+
+  @Override
+  public String toString() {
+    return "Car{" +
+      "engine=" + engine +
+      ", body=" + body +
+      ", tyres=" + tyres +
+      '}';
+  }
 }
