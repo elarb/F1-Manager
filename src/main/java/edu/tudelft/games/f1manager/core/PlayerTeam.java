@@ -34,4 +34,39 @@ public class PlayerTeam extends Team {
     this.budget = budget;
     this.hasSoftwareTester = hasSoftwareTester;
   }
+
+
+  /**
+   * method to buy/transfer a driver from another team
+   * @param driver
+   */
+  public void buyDriver(Driver driver, int offer){
+    for(int i = 0; i<this.getDriverList().size(); i++){
+      if(driver == this.getDriverList().get(i)){
+        return;
+      }
+    }
+    int acceptValue = driver.getValue() /*+ add random*/;
+    if(acceptValue <= offer){
+      this.getDriverList().add(driver);
+      driver.transfer(this);
+    }
+  }
+
+  public int getBudget() {
+    return budget;
+  }
+
+  public void setBudget(int budget) {
+    this.budget = budget;
+  }
+
+  public boolean isHasSoftwareTester() {
+    return hasSoftwareTester;
+  }
+
+  public void setHasSoftwareTester(boolean hasSoftwareTester) {
+    this.hasSoftwareTester = hasSoftwareTester;
+  }
 }
+
