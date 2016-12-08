@@ -18,6 +18,7 @@ public class Driver {
 	public void transfer(Team team){
     this.getTeam().getDriverList().remove(this);
     this.setTeam(team);
+    team.getDriverList().add(this);
   }
 	
 	public void calcValue() {
