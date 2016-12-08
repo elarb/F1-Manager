@@ -14,6 +14,11 @@ public class Driver {
 		this.name = iname;
 		this.team = iteam;
 	}
+
+	public void transfer(Team team){
+    this.getTeam().getDriverList().remove(this);
+    this.setTeam(team);
+  }
 	
 	public void calcValue() {
 		this.value = 123; // formula
