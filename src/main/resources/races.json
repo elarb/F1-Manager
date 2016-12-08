@@ -1,0 +1,256 @@
+{
+    "races": [
+        {
+            "name": "Australian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6495.0,
+                "turns": 16,
+                "length": 5.303,
+                "country": "Australia"
+            },
+            "results": [],
+            "distance": 302.271,
+            "laps": 57
+        },
+        {
+            "name": "Bahrain Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5614.0,
+                "turns": 15,
+                "length": 5.412,
+                "country": "Bahrein"
+            },
+            "results": [],
+            "distance": 308.484,
+            "laps": 57
+        },
+        {
+            "name": "Chinese Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5933.0,
+                "turns": 16,
+                "length": 5.451,
+                "country": "China"
+            },
+            "results": [],
+            "distance": 305.256,
+            "laps": 56
+        },
+        {
+            "name": "Russian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5562.0,
+                "turns": 19,
+                "length": 5.848,
+                "country": "Russia"
+            },
+            "results": [],
+            "distance": 309.944,
+            "laps": 53
+        },
+        {
+            "name": "Spanish Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6100.0,
+                "turns": 16,
+                "length": 4.655,
+                "country": "Spain"
+            },
+            "results": [],
+            "distance": 307.23,
+            "laps": 66
+        },
+        {
+            "name": "Monaco Grand Prix",
+            "circuit": {
+                "raceTimeBase": 7169.0,
+                "turns": 19,
+                "length": 3.337,
+                "country": "Monaco"
+            },
+            "results": [],
+            "distance": 260.286,
+            "laps": 78
+        },
+        {
+            "name": "Canadian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5465.0,
+                "turns": 14,
+                "length": 4.361,
+                "country": "Canada"
+            },
+            "results": [],
+            "distance": 305.27,
+            "laps": 70
+        },
+        {
+            "name": "European Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5572.0,
+                "turns": 20,
+                "length": 6.003,
+                "country": "Azerbaijan"
+            },
+            "results": [],
+            "distance": 306.153,
+            "laps": 51
+        },
+        {
+            "name": "Austrian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5258.0,
+                "turns": 8,
+                "length": 4.326,
+                "country": "Austria"
+            },
+            "results": [],
+            "distance": 307.14599999999996,
+            "laps": 71
+        },
+        {
+            "name": "British Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5696.0,
+                "turns": 20,
+                "length": 5.891,
+                "country": "Great Britain"
+            },
+            "results": [],
+            "distance": 306.332,
+            "laps": 52
+        },
+        {
+            "name": "Hungarian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6030.0,
+                "turns": 14,
+                "length": 4.381,
+                "country": "Hungary"
+            },
+            "results": [],
+            "distance": 306.67,
+            "laps": 70
+        },
+        {
+            "name": "German Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5444.0,
+                "turns": 16,
+                "length": 4.574,
+                "country": "Germany"
+            },
+            "results": [],
+            "distance": 306.45799999999997,
+            "laps": 67
+        },
+        {
+            "name": "Belgian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6291.0,
+                "turns": 20,
+                "length": 7.004,
+                "country": "Belgium"
+            },
+            "results": [],
+            "distance": 308.176,
+            "laps": 44
+        },
+        {
+            "name": "Italian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 4648.0,
+                "turns": 11,
+                "length": 5.793,
+                "country": "Italy"
+            },
+            "results": [],
+            "distance": 307.029,
+            "laps": 53
+        },
+        {
+            "name": "Singapore Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6949.0,
+                "turns": 23,
+                "length": 5.065,
+                "country": "Singapore"
+            },
+            "results": [],
+            "distance": 308.96500000000003,
+            "laps": 61
+        },
+        {
+            "name": "Malaysian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5833.0,
+                "turns": 15,
+                "length": 5.543,
+                "country": "Malaysia"
+            },
+            "results": [],
+            "distance": 310.408,
+            "laps": 56
+        },
+        {
+            "name": "Japanese Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5203.0,
+                "turns": 18,
+                "length": 5.807,
+                "country": "Japan"
+            },
+            "results": [],
+            "distance": 307.771,
+            "laps": 53
+        },
+        {
+            "name": "United States Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5892.0,
+                "turns": 20,
+                "length": 5.516,
+                "country": "United States"
+            },
+            "results": [],
+            "distance": 308.896,
+            "laps": 56
+        },
+        {
+            "name": "Mexican Grand Prix",
+            "circuit": {
+                "raceTimeBase": 6031.0,
+                "turns": 17,
+                "length": 4.304,
+                "country": "Mexico"
+            },
+            "results": [],
+            "distance": 305.584,
+            "laps": 71
+        },
+        {
+            "name": "Brazilian Grand Prix",
+            "circuit": {
+                "raceTimeBase": 10861.0,
+                "turns": 15,
+                "length": 4.309,
+                "country": "Brazil"
+            },
+            "results": [],
+            "distance": 305.939,
+            "laps": 71
+        },
+        {
+            "name": "Abu Dhabi Grand Prix",
+            "circuit": {
+                "raceTimeBase": 5884.0,
+                "turns": 21,
+                "length": 5.554,
+                "country": "United Arab Emirates"
+            },
+            "results": [],
+            "distance": 305.47,
+            "laps": 55
+        }
+    ]
+}
