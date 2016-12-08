@@ -48,7 +48,6 @@ public class PlayerTeam extends Team {
     }
     int acceptValue = driver.getValue() /*+ add random*/;
     if(acceptValue <= offer){
-      this.getDriverList().add(driver);
       driver.transfer(this);
     }
   }
