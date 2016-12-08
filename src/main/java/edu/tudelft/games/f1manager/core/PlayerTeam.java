@@ -34,4 +34,12 @@ public class PlayerTeam extends Team {
     this.budget = budget;
     this.hasSoftwareTester = hasSoftwareTester;
   }
+  
+  public int getBudget() {
+	  return this.budget;
+  }
+  
+  public void setBudget(int iBudget) {
+	  this.budget = iBudget;
+  }
 }
