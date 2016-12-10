@@ -35,7 +35,6 @@ public class PlayerTeam extends Team {
     this.hasSoftwareTester = hasSoftwareTester;
   }
 
-
   /**
    * method to buy/transfer a driver from another team
    * @param driver
@@ -67,6 +66,7 @@ public class PlayerTeam extends Team {
 
   public void setHasSoftwareTester(boolean hasSoftwareTester) {
     this.hasSoftwareTester = hasSoftwareTester;
+
   }
 }
 

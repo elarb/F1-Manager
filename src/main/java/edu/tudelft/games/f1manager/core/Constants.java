@@ -11,5 +11,6 @@ public class Constants {
   public static int RACECRAFTCOEF;
   public static int STRATEGYINSIGHTCOEF;
   public static int DRIVERBASEPRICE;
+  public static int BASE_PITSTOP_UP_PRICE = 2000000;
 
 }
