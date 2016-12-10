@@ -5,22 +5,22 @@ public class Strategist {
   /**
    * The strategy of the strategist. Can be low-, medium-, high-risk.
    */
-  private String strategy;
+  private int risk;
 
   /**
    * Creates an object that represents a Strategist of a F1 team.
    *
    * @param strategy The strategy of the strategist
    */
-  public Strategist(String strategy) {
-    this.strategy = strategy;
+  public Strategist(int iRisk) {
+    this.risk = iRisk;
   }
 
-  public String getStrategy() {
-    return strategy;
+  public int getRisk() {
+    return risk;
   }
 
-  public void setStrategy(String strategy) {
-    this.strategy = strategy;
+  public void setStrategy(int iRisk) {
+    this.risk = iRisk;
   }
 }
