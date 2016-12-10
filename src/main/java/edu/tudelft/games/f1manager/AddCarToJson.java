@@ -108,7 +108,7 @@ public class AddCarToJson {
     System.out.println("Hardness of tyres?: ");
     int hardness = Integer.parseInt(sc.next());
 
-    Engine engine = new Engine(brand, power, drivability, fuelEfficiency, price);
+    Engine engine = new Engine(brand, power, drivability, fuelEfficiency);
     Tyres tyres = new Tyres(hardness);
     return new Car(engine, body, tyres);
   }
