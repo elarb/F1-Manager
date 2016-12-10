@@ -30,7 +30,7 @@ public class AiTeam extends Team {
       }
     } else{
       int offer = driver.getValue();/*+ random*/
-      if(method(driver, offer)){
+      if(/*method(driver, offer)*/true){
         driver.transfer(this);
       }
 
