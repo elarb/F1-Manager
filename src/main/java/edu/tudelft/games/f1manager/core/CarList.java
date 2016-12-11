@@ -6,15 +6,22 @@ public class CarList {
 
   private ArrayList<Car> carList;
 
+
+  public CarList(ArrayList<Car> carList) {
+    this.carList = carList;
+  }
+
+  /**
+   * Adds a car to the Carlist.
+   *
+   * @param car the car that gets added to the carlist
+   */
   public void addCar(Car car) {
 
     this.carList.add(car);
 
   }
 
-  public CarList(ArrayList<Car> carList) {
-    this.carList = carList;
-  }
 
   public ArrayList<Car> getcarList() {
     return carList;
