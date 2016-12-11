@@ -1,4 +1,4 @@
-package edu.tudelft.games.f1manager;
+package edu.tudelft.games.f1manager.tools;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,14 +9,15 @@ import edu.tudelft.games.f1manager.core.Engine;
 import edu.tudelft.games.f1manager.core.Tyres;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+
+
 import java.util.Scanner;
 
-/**
- * Created by Elias on 7-12-2016.
- */
+
 public class AddCarToJson {
 
   /**
@@ -24,7 +25,7 @@ public class AddCarToJson {
    *
    * @param args args
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
 
     String fileName = "cars.json";
 
@@ -53,13 +54,11 @@ public class AddCarToJson {
         System.out.println();
 
         String json = gson.toJson(carlist);
-        try {
-          FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
-          outputStream.write(json.getBytes());
-          outputStream.close();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+
+        FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
+        outputStream.write(json.getBytes());
+        outputStream.close();
+
 
       } else if (decision == 2) {
 
@@ -70,7 +69,6 @@ public class AddCarToJson {
 
         System.out.println();
         System.out.println("Application closed...");
-
         break;
       }
     }
@@ -101,9 +99,6 @@ public class AddCarToJson {
 
     System.out.println("Body of car?: ");
     double body = Double.parseDouble(sc.next());
-
-    System.out.println("Names of tyres? : ");
-    String tyresName = sc.next();
 
     System.out.println("Hardness of tyres?: ");
     int hardness = Integer.parseInt(sc.next());
