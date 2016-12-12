@@ -22,4 +22,18 @@ public class AiTeam extends Team {
                 Aerodynamicist aerodynamicist, Mechanic mechanic) {
     super(driverList, carList, strategist, aerodynamicist, mechanic);
   }
+
+  public void buyDriver(Driver driver){
+    if(driver.getTeam() instanceof AiTeam){
+      if(Math.random() < 0.5) {
+        driver.transfer(this);
+      }
+    } else{
+      int offer = driver.getValue();/*+ random*/
+      if(/*method(driver, offer)*/true){
+        driver.transfer(this);
+      }
+
+    }
+  }
 }
