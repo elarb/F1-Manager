@@ -52,4 +52,44 @@ public abstract class Team {
     this.aerodynamicist = aerodynamicist;
     this.mechanic = mechanic;
   }
+
+  public List<Driver> getDriverList() {
+    return driverList;
+  }
+
+  public void setDriverList(List<Driver> driverList) {
+    this.driverList = driverList;
+  }
+
+  public List<Car> getCarList() {
+    return carList;
+  }
+
+  public void setCarList(List<Car> carList) {
+    this.carList = carList;
+  }
+
+  public Strategist getStrategist() {
+    return strategist;
+  }
+
+  public void setStrategist(Strategist strategist) {
+    this.strategist = strategist;
+  }
+
+  public Aerodynamicist getAerodynamicist() {
+    return aerodynamicist;
+  }
+
+  public void setAerodynamicist(Aerodynamicist aerodynamicist) {
+    this.aerodynamicist = aerodynamicist;
+  }
+
+  public Mechanic getMechanic() {
+    return mechanic;
+  }
+
+  public void setMechanic(Mechanic mechanic) {
+    this.mechanic = mechanic;
+  }
 }

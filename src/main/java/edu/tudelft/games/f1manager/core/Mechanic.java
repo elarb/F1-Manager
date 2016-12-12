@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
 public class Mechanic {
+
 	private int pitstopTime;
 	private Tyres tyres;
 	private int upgradePrice;
@@ -25,4 +26,5 @@ public class Mechanic {
 	public void changeTyres(Car iCar, int iHardness) {
 		iCar.getTyres().setHardness(iHardness);
 	}
+
 }
