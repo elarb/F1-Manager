@@ -37,16 +37,17 @@ public class PlayerTeam extends Team {
 
   /**
    * method to buy/transfer a driver from another team
+   *
    * @param driver
    */
-  public void buyDriver(Driver driver, int offer){
-    for(int i = 0; i<this.getDriverList().size(); i++){
-      if(driver == this.getDriverList().get(i)){
+  public void buyDriver(Driver driver, int offer) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
         return;
       }
     }
     int acceptValue = driver.getValue() /*+ add random*/;
-    if((acceptValue <= offer) && (this.getBudget() >= offer)){
+    if ((acceptValue <= offer) && (this.getBudget() >= offer)) {
       driver.transfer(this);
       this.setBudget(this.getBudget() - offer);
     }
