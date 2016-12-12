@@ -95,7 +95,7 @@ public class AddCarToJson {
     double fuelEfficiency = Double.parseDouble(sc.next());
 
     System.out.println("Price of engine?: ");
-    int price = Integer.parseInt(sc.next());
+    double price = Double.parseDouble(sc.next());
 
     System.out.println("Body of car?: ");
     double body = Double.parseDouble(sc.next());
@@ -103,7 +103,7 @@ public class AddCarToJson {
     System.out.println("Hardness of tyres?: ");
     int hardness = Integer.parseInt(sc.next());
 
-    Engine engine = new Engine(brand, power, drivability, fuelEfficiency);
+    Engine engine = new Engine(brand, power, drivability, fuelEfficiency, price);
     Tyres tyres = new Tyres(hardness);
     return new Car(engine, body, tyres);
   }
