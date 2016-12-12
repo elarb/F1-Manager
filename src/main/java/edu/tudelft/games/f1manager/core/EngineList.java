@@ -6,11 +6,11 @@ public class EngineList {
 
   ArrayList<Engine> enginelist;
 
-  public EngineList (ArrayList<Engine> enginelist) {
+  public EngineList(ArrayList<Engine> enginelist) {
     enginelist = this.enginelist;
   }
 
-  public void addEngine (Engine engine) {
+  public void addEngine(Engine engine) {
     enginelist.add(engine);
   }
 
