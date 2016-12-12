@@ -13,9 +13,8 @@ public class Card {
   }
 
   public void evaluate() {
-    this.value = (int) ((this.speed*Constants.SPEEDCOEF)*(this.racecraft*Constants.RACECRAFTCOEF)*(this.strategyinsight*Constants.STRATEGYINSIGHTCOEF)*Constants.DRIVERBASEPRICE);
+    this.value = (int) ((this.speed * Constants.SPEEDCOEF) * (this.racecraft * Constants.RACECRAFTCOEF) * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF) * Constants.DRIVERBASEPRICE);
   }
-
 
 
   public double getSpeed() {
