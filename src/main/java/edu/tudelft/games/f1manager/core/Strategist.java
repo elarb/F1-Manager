@@ -36,13 +36,13 @@ public class Strategist implements Upgradeable {
    */
   public void upgrade() {
 
-    if (this.rating >= 70 && this.rating <= 79) {
+    if (this.rating <= 79) {
       upgradeBy(3);
-    } else if (this.rating >= 80 && this.rating <= 89) {
+    } else if (this.rating <= 89) {
       upgradeBy(2);
-    } else if (this.rating >= 90 && this.rating <= 95) {
+    } else if (this.rating <= 95) {
       upgradeBy(1);
-    } else if (this.rating > 95 && this.rating < 99) {
+    } else if (this.rating < 99) {
       this.rating++;
     }
 
