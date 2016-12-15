@@ -36,20 +36,16 @@ public class PlayerTeam extends Team {
   }
 
   /**
-   * method to buy/transfer a driver from another team
+   * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
+   * if succesful the value of the driver is removed from the PLayerTeam budget.
    *
-   * @param driver
+   * @param driver - Driver
    */
-  public void buyDriver(Driver driver, int offer) {
-    for (int i = 0; i < this.getDriverList().size(); i++) {
-      if (driver == this.getDriverList().get(i)) {
-        return;
-      }
-    }
-    int acceptValue = driver.getValue() /*+ add random*/;
-    if ((acceptValue <= offer) && (this.getBudget() >= offer)) {
+  public void buyDriver(Driver driver) {
+
+    if (this.getBudget() >= driver.getValue() && !this.hasDriver(driver)) {
       driver.transfer(this);
-      this.setBudget(this.getBudget() - offer);
+      this.setBudget(this.getBudget() - driver.getValue());
     }
   }
 
@@ -68,6 +64,15 @@ public class PlayerTeam extends Team {
   public void setHasSoftwareTester(boolean hasSoftwareTester) {
     this.hasSoftwareTester = hasSoftwareTester;
 
+  }
+
+  public boolean hasDriver(Driver driver) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
