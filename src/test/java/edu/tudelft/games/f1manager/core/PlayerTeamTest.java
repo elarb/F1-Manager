@@ -32,31 +32,28 @@ public class PlayerTeamTest {
 
   @Test
   public void testBuyDriver_Works() throws Exception {
-    playerTeam2.buyDriver(driver, 101);
+    playerTeam2.buyDriver(driver);
 
-    assertEquals(playerTeam2.getBudget(), 99);
+    assertEquals(playerTeam2.getBudget(), 100);
   }
 
   @Test
   public void testBuyDriver_HasDriver() throws Exception {
-    playerTeam.buyDriver(driver, 101);
+    playerTeam.buyDriver(driver);
 
     assertEquals(playerTeam.getBudget(), 200);
   }
 
   @Test
   public void testBuyDriver_NoBudget() throws Exception {
-    playerTeam2.buyDriver(driver, 201);
+    driver.setValue(201);
+    playerTeam2.buyDriver(driver);
 
     assertEquals(playerTeam2.getBudget(), 200);
   }
 
   @Test
-  public void testBuyDriver_NotAccepted() throws Exception {
-    playerTeam2.buyDriver(driver, 50);
+  public void test_has_driver() {
 
-    assertEquals(playerTeam2.getBudget(), 200);
   }
-
-
 }
