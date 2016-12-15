@@ -23,17 +23,18 @@ public class AiTeam extends Team {
     super(driverList, carList, strategist, aerodynamicist, mechanic);
   }
 
+  /**
+   * transfers the driver to this AiTeam
+   * if the old team was a PlayerTeam the PlayerTeam gets the value of the driver added to their budget.
+   * @param driver - Driver
+   */
   public void buyDriver(Driver driver){
     if(driver.getTeam() instanceof AiTeam){
-      if(Math.random() < 0.5) {
         driver.transfer(this);
-      }
     } else{
-      int offer = driver.getValue();/*+ random*/
-      if(/*method(driver, offer)*/true){
+      PlayerTeam oldTeam = (PlayerTeam)driver.getTeam();
+      oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
         driver.transfer(this);
-      }
-
     }
   }
 }

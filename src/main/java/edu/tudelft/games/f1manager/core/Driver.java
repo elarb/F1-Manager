@@ -15,6 +15,11 @@ public class Driver {
 		this.team = iteam;
 	}
 
+  /**
+   * removes the player from the current Team and ads it to team.
+   * changes its over Team to team
+   * @param team - Team
+   */
 	public void transfer(Team team){
     this.getTeam().getDriverList().remove(this);
     this.setTeam(team);
