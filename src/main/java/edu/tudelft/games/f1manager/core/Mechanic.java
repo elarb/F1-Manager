@@ -27,4 +27,16 @@ public class Mechanic {
     iCar.getTyres().setHardness(iHardness);
   }
 
+public int getPitstopTime() {
+	return pitstopTime;
+}
+
+public Tyres getTyres() {
+	return tyres;
+}
+
+public int getUpgradePrice() {
+	return upgradePrice;
+}
+
 }
