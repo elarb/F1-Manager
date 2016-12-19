@@ -14,13 +14,23 @@ public class MechanicTest {
 
   @Before
   public void setUp() throws Exception {
-    mechanic = new Mechanic(8, mock(Tyres.class));
+    mechanic = new Mechanic(8);
     mechanic.updateUpgradePrice();
   }
 
   @Test
   public void testPrice() throws Exception {
 	  assertEquals("UpgradePrice is set correctly", mechanic.getUpgradePrice(), Constants.BASE_PITSTOP_UP_PRICE);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testUpperBound() throws Exception {
+	  Mechanic mechanic = new Mechanic(9);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void testLowerBound() throws Exception {
+	  Mechanic mechanic = new Mechanic(1);
   }
   
   @Test
