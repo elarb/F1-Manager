@@ -12,7 +12,7 @@ public class Mechanic {
   }
 
   public void improve(PlayerTeam iTeam) {
-    if (iTeam.getBudget() <= this.upgradePrice) {
+    if (iTeam.getBudget() >= this.upgradePrice) {
       iTeam.setBudget(iTeam.getBudget() - this.upgradePrice);
       this.pitstopTime -= 1;
       updateUpgradePrice();
