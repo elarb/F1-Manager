@@ -1,17 +1,1 @@
-{
-    "carList": [
-        {
-            "engine": {
-                "brand": "Mercedes",
-                "power": null,
-                "drivability": null,
-                "fuelEfficiency": null,
-                "price": null
-            },
-            "body": null,
-            "tyres": {
-                "hardness": null
-            }
-        }
-    ]
-}
+
