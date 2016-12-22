@@ -79,7 +79,7 @@ public class Season {
 
     String json = gson.toJson(season);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 

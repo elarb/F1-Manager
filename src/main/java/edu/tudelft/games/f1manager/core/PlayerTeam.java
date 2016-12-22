@@ -109,7 +109,7 @@ public class PlayerTeam extends Team {
 
     String json = gson.toJson(team);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 
