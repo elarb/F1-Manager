@@ -76,7 +76,7 @@ public class PlayerTeam extends Team {
 
   public PlayerTeam read() {
 
-    String fileName = "teams.json";
+    String fileName = "playerteams.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream(fileName);
@@ -86,27 +86,33 @@ public class PlayerTeam extends Team {
     return team;
 
   }
-/*
+
   public void getJSON() {
 
     PlayerTeam newteam = read();
     this.budget = newteam.getBudget();
     this.hasSoftwareTester = newteam.getHasSoftwareTester();
-
+    super.setAerodynamicist(newteam.getAerodynamicist());
+    super.setCarList(newteam.getCarList());
+    super.setDriverList(newteam.getDriverList());
+    super.setMechanic(newteam.getMechanic());
+    super.setStrategist(newteam.getStrategist());
 
   }
 
 
   public void updateJSON() throws IOException {
 
-    String fileName = ".json";
+    String fileName = "playerteams.json";
 
-    String json = gson.toJson(this.AiTeamList);
+    PlayerTeam team = new PlayerTeam(super.getDriverList(), super.getCarList(), super.getStrategist(), super.getAerodynamicist(), super.getMechanic(), this.budget, this.hasSoftwareTester);
+
+    String json = gson.toJson(team);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 
-  } */
+  }
 }
 
