@@ -23,6 +23,12 @@ public class AiTeam extends Team {
     super(driverList, carList, strategist, aerodynamicist, mechanic);
   }
 
+  /**
+   * TODO: complete this method
+   * Un-complete method.
+   *
+   * @param driver driver that gets bought
+   */
   public void buyDriver(Driver driver) {
     if (driver.getTeam() instanceof AiTeam) {
       if (Math.random() < 0.5) {

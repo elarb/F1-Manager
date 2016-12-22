@@ -122,7 +122,7 @@ public class Strategist implements Upgradeable {
     if (other instanceof Strategist) {
       Strategist oth = (Strategist) other;
 
-      return this.strategy == oth.strategy && this.rating == oth.rating;
+      return this.strategy.equals(oth.strategy) && this.rating == oth.rating;
     }
     return false;
   }
