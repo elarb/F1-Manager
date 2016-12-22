@@ -1,5 +1,15 @@
 package edu.tudelft.games.f1manager.core;
 
+/**
+ * Class engine
+ * @brand string representing the brand of the engine
+ * @power double representing the power the engine has (more is better)
+ * @drivability double representing the drivability of the engine (more is better)
+ * @fuelefficiency double representing the fuel efficiency of the engine (more is better)
+ * @price double representing the price of the engine, this double is calculated based on the previous values
+ * and constants which decide the weight of each component, the better the engine, the higher the price
+ */
+
 public class Engine {
 
   private String brand;
@@ -14,6 +24,8 @@ public class Engine {
     this.power = power;
     this.drivability = drivability;
     this.fuelEfficiency = fuelEfficiency;
+    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) *
+      (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
 
   public String getBrand() {
@@ -48,11 +60,14 @@ public class Engine {
     return fuelEfficiency;
   }
 
-  public void setPrice() {
-    double calculus = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) *
-      (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
-    price = calculus;
+  public void setFuelEfficiency(double newfe) {
+
+    this.fuelEfficiency = newfe;
+
   }
+
+
+
 
 
 }
