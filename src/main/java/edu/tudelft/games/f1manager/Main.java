@@ -14,7 +14,9 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
 
-    Font.loadFont(getClass().getClassLoader().getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
+    Font.loadFont(getClass().getClassLoader()
+        .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
+
     Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Client.fxml"));
     primaryStage.getIcons().addAll(new Image("img/F1_logo.png"));
     primaryStage.setTitle("F1 Manager");
