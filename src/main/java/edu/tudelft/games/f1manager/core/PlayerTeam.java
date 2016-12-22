@@ -1,6 +1,9 @@
 package edu.tudelft.games.f1manager.core;
 
 
+import com.google.gson.Gson;
+
+import java.io.*;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -15,6 +18,8 @@ public class PlayerTeam extends Team {
    * the chance for a crash increases significantly.
    */
   private boolean hasSoftwareTester;
+
+  private Gson gson = new Gson();
 
 
   /**
@@ -60,7 +65,7 @@ public class PlayerTeam extends Team {
     this.budget = budget;
   }
 
-  public boolean isHasSoftwareTester() {
+  public boolean getHasSoftwareTester() {
     return hasSoftwareTester;
   }
 
@@ -68,5 +73,40 @@ public class PlayerTeam extends Team {
     this.hasSoftwareTester = hasSoftwareTester;
 
   }
+
+  public PlayerTeam read() {
+
+    String fileName = "teams.json";
+
+    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    InputStream is = classloader.getResourceAsStream(fileName);
+    Reader reader = new InputStreamReader(is);
+    PlayerTeam team = gson.fromJson(reader, PlayerTeam.class);
+
+    return team;
+
+  }
+/*
+  public void getJSON() {
+
+    PlayerTeam newteam = read();
+    this.budget = newteam.getBudget();
+    this.hasSoftwareTester = newteam.getHasSoftwareTester();
+
+
+  }
+
+
+  public void updateJSON() throws IOException {
+
+    String fileName = ".json";
+
+    String json = gson.toJson(this.AiTeamList);
+
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/" + fileName);
+    outputStream.write(json.getBytes());
+    outputStream.close();
+
+  } */
 }
 
