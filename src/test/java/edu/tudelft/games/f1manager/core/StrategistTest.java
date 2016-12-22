@@ -85,7 +85,8 @@ public class StrategistTest {
   public void test_does_not_upgrade_beyond_99() {
     dummyStrategist.setRating(99);
     dummyStrategist.upgrade();
-    assertTrue(dummyStrategist.getRating() <= 99);
+    int rating = dummyStrategist.getRating();
+    assertTrue(rating <= 99);
   }
 
   @Test
@@ -141,6 +142,27 @@ public class StrategistTest {
     dummyStrategist.getIncreasedCrashChance();
   }
 
+  @Test
+  public void test_equals_itself() {
+    assertEquals(dummyStrategist, dummyStrategist);
+  }
+
+  @Test
+  public void test_equals_same() {
+    Strategist dummyStrategist2 = new Strategist(Strategist.Risk.MEDIUM, 75);
+    assertEquals(dummyStrategist, dummyStrategist2);
+  }
+
+  @Test
+  public void test_does_not_equal() {
+    Strategist dummyStrategist2 = new Strategist(Strategist.Risk.LOW, 95);
+    assertNotEquals(dummyStrategist, dummyStrategist2);
+  }
+
+  @Test
+  public void test_does_not_equal_other_object() {
+    assertNotEquals(dummyStrategist, "String");
+  }
 
   @After
   public void tearDown() throws Exception {
