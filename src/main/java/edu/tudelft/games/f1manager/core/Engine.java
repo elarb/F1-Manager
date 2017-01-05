@@ -1,5 +1,15 @@
 package edu.tudelft.games.f1manager.core;
 
+/**
+ * Class engine
+ * @brand string representing the brand of the engine
+ * @power double representing the power the engine has (more is better)
+ * @drivability double representing the drivability of the engine (more is better)
+ * @fuelefficiency double representing the fuel efficiency of the engine (more is better)
+ * @price double representing the price of the engine, this double is calculated based on the previous values
+ * and constants which decide the weight of each component, the better the engine, the higher the price
+ */
+
 public class Engine {
 
   private String brand;
@@ -9,56 +19,55 @@ public class Engine {
   private double price;
 
 
-  public Engine(String brand, double power, double drivability, double fuelEfficiency, double price) {
+  public Engine(String brand, double power, double drivability, double fuelEfficiency) {
     this.brand = brand;
     this.power = power;
     this.drivability = drivability;
     this.fuelEfficiency = fuelEfficiency;
-    this.price = price;
+    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) *
+      (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
 
   public String getBrand() {
     return brand;
   }
 
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
-
-  public double getPower() {
-    return power;
-  }
-
-  public void setPower(double power) {
-    this.power = power;
-  }
-
-  public double getDrivability() {
-    return drivability;
-  }
-
-  public void setDrivability(double drivability) {
-    this.drivability = drivability;
-  }
-
-  public double getFuelEfficiency() {
-    return fuelEfficiency;
-  }
-
-  public void setFuelEfficiency(double fuelEfficiency) {
-    this.fuelEfficiency = fuelEfficiency;
+  public void setBrand(String newbrand) {
+    brand = newbrand;
   }
 
   public double getPrice() {
     return price;
   }
 
-
-  public void setPrice() {
-    double calculus = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) *
-      (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
-    price = calculus;
+  public double getPower() {
+    return power;
   }
+
+  public void setPower(double newpower) {
+    power = newpower;
+  }
+
+  public double getDrivability() {
+    return drivability;
+  }
+
+  public void setDrivability(double newdrivability) {
+    drivability = newdrivability;
+  }
+
+  public double getFuelEfficiency() {
+    return fuelEfficiency;
+  }
+
+  public void setFuelEfficiency(double newfe) {
+
+    this.fuelEfficiency = newfe;
+
+  }
+
+
+
 
 
 }
