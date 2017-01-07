@@ -59,4 +59,11 @@ public class Aerodynamicist implements Upgradeable {
     }
   }
 
+  public int getExpertise() {
+    return expertise;
+  }
+
+  public void setExpertise(int expertise) {
+    this.expertise = expertise;
+  }
 }
