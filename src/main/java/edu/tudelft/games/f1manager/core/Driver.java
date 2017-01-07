@@ -1,7 +1,6 @@
 package edu.tudelft.games.f1manager.core;
 
 public class Driver {
-
   private String name;
   private Team team;
   private double speed;

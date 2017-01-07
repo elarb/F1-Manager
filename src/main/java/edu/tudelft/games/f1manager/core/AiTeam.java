@@ -24,22 +24,18 @@ public class AiTeam extends Team {
   }
 
   /**
-   * TODO: complete this method
-   * Un-complete method.
-   *
-   * @param driver driver that gets bought
-   */
-  public void buyDriver(Driver driver) {
-    if (driver.getTeam() instanceof AiTeam) {
-      if (Math.random() < 0.5) {
-        driver.transfer(this);
-      }
-    } else {
-      int offer = driver.getValue();/*+ random*/
-      if (/*method(driver, offer)*/true) {
-        driver.transfer(this);
-      }
 
+   * transfers the driver to this AiTeam
+   * if the old team was a PlayerTeam the PlayerTeam gets the value of the driver added to their budget.
+   * @param driver - Driver
+   */
+  public void buyDriver(Driver driver){
+    if(driver.getTeam() instanceof AiTeam){
+        driver.transfer(this);
+    } else{
+      PlayerTeam oldTeam = (PlayerTeam)driver.getTeam();
+      oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
+        driver.transfer(this);
     }
   }
 }

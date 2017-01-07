@@ -41,7 +41,6 @@ public class PlayerTeam extends Team {
    * @param driver - Driver
    */
   public void buyDriver(Driver driver) {
-
     if (this.getBudget() >= driver.getValue() && !this.hasDriver(driver)) {
       driver.transfer(this);
       this.setBudget(this.getBudget() - driver.getValue());
