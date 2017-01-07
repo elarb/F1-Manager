@@ -2,8 +2,11 @@ package edu.tudelft.games.f1manager.core;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +14,11 @@ import java.util.ArrayList;
  */
 public class DriverList {
 
-  Gson gson = new Gson();
+  private Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
+
 
   /**
    * A list of Drivers.
@@ -42,7 +49,8 @@ public class DriverList {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream(fileName);
     Reader reader = new InputStreamReader(is);
-    DriverList driverlist = gson.fromJson(reader, DriverList.class);
+    ArrayList<Driver> driverArrayList = gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType());
+    DriverList driverlist = new DriverList(driverArrayList);
 
     return driverlist;
 
@@ -58,11 +66,11 @@ public class DriverList {
 
   public void updateJSON() throws IOException {
 
-    String fileName = "JSON/drivers.json";
+    String fileName = "drivers.json";
 
     String json = gson.toJson(this.driverList);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 

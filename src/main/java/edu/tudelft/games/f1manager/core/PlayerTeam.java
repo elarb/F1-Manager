@@ -2,8 +2,11 @@ package edu.tudelft.games.f1manager.core;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -19,7 +22,10 @@ public class PlayerTeam extends Team {
    */
   private boolean hasSoftwareTester;
 
-  private Gson gson = new Gson();
+  private Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
 
 
   /**
@@ -79,7 +85,7 @@ public class PlayerTeam extends Team {
     String fileName = "playerteams.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
     PlayerTeam team = gson.fromJson(reader, PlayerTeam.class);
 
@@ -109,7 +115,7 @@ public class PlayerTeam extends Team {
 
     String json = gson.toJson(team);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 

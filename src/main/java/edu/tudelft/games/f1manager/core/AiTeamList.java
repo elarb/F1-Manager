@@ -1,8 +1,11 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +17,10 @@ public class AiTeamList {
    * A list of ComputerTeams.
    */
   private ArrayList<AiTeam> AiTeamList;
-  private Gson gson = new Gson();
+  private Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
 
   /**
    * constructor for AiTeamList
@@ -35,9 +41,11 @@ public class AiTeamList {
     String fileName = "AiTeamList.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(fileName);
+    InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
-    AiTeamList aiteamlist = gson.fromJson(reader, AiTeamList.class);
+    ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>(){}.getType());
+    AiTeamList aiteamlist = new AiTeamList();
+    aiteamlist.setAiTeamList(aiTeamArrayList);
 
     return aiteamlist;
 
@@ -57,7 +65,7 @@ public class AiTeamList {
 
     String json = gson.toJson(this.AiTeamList);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());
     outputStream.close();
 

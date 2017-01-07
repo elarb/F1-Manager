@@ -3,6 +3,7 @@ package edu.tudelft.games.f1manager.core;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -50,5 +51,19 @@ public class PlayerTeamTest {
     playerTeam2.buyDriver(driver);
 
     assertEquals(playerTeam2.getBudget(), 200);
+  }
+
+  @Test
+  public void updatejsontest() throws IOException {
+
+    playerTeam.updateJSON();
+
+  }
+
+  @Test
+  public void getjsontest() throws IOException {
+
+    playerTeam.getJSON();
+
   }
 }
