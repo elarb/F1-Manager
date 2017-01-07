@@ -28,14 +28,14 @@ public class Aerodynamicist implements Upgradeable {
    * If 90< x <99, then expertise can increase with 1, 2 or 3
    */
   public void upgrade() {
-    if (this.expertise <= 69) {
-      upgradeBy(4);
-    } else if (this.expertise <= 79) {
+    if (this.expertise <= 79) {
       upgradeBy(3);
     } else if (this.expertise <= 89) {
       upgradeBy(2);
-    } else if (this.expertise <= 99) {
+    } else if (this.expertise <= 95) {
       upgradeBy(1);
+    } else if (this.expertise <= 99) {
+      this.expertise++;
     }
   }
 
