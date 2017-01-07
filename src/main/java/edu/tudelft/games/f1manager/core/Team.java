@@ -36,6 +36,11 @@ public abstract class Team {
   private Mechanic mechanic;
 
   /**
+   * Id of the team
+   */
+  private int id;
+
+  /**
    * Creates an object that represents a F1 Team.
    *
    * @param driverList     list of drivers in the team
@@ -43,14 +48,16 @@ public abstract class Team {
    * @param strategist     strategist of the team
    * @param aerodynamicist aerodynamicist of the team
    * @param mechanic       mechanic of the team
+   * @param id             id of the team
    */
   public Team(List<Driver> driverList, List<Car> carList, Strategist strategist,
-              Aerodynamicist aerodynamicist, Mechanic mechanic) {
+              Aerodynamicist aerodynamicist, Mechanic mechanic, int id) {
     this.driverList = driverList;
     this.carList = carList;
     this.strategist = strategist;
     this.aerodynamicist = aerodynamicist;
     this.mechanic = mechanic;
+    this.id = id;
   }
 
   public List<Driver> getDriverList() {
@@ -91,5 +98,13 @@ public abstract class Team {
 
   public void setMechanic(Mechanic mechanic) {
     this.mechanic = mechanic;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }
