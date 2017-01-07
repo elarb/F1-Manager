@@ -3,27 +3,27 @@ package edu.tudelft.games.f1manager.core;
 import java.util.ArrayList;
 
 /**
- * Class that represents a list of ComputerTeams
+ * Class that represents a list of ComputerTeams.
  */
 public class AiTeamList {
 
   /**
    * A list of ComputerTeams.
    */
-  private ArrayList<AiTeam> AiTeamList;
+  private ArrayList<AiTeam> aiTeamList;
 
   /**
-   * constructor for AiTeamList
+   * Constructor for aiTeamList.
    */
   public AiTeamList() {
   }
 
   public ArrayList<AiTeam> getAiTeamList() {
-    return AiTeamList;
+    return aiTeamList;
   }
 
   public void setAiTeamList(ArrayList<AiTeam> aiTeamList) {
-    this.AiTeamList = aiTeamList;
+    this.aiTeamList = aiTeamList;
   }
 
 

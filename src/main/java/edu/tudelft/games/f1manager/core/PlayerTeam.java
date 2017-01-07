@@ -16,7 +16,6 @@ public class PlayerTeam extends Team {
    */
   private boolean hasSoftwareTester;
 
-
   /**
    * Creates an object that represents the F1 Team of a player.
    *
@@ -38,15 +37,11 @@ public class PlayerTeam extends Team {
   /**
    * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
    * if succesful the value of the driver is removed from the PLayerTeam budget.
+   *
    * @param driver - Driver
    */
-  public void buyDriver(Driver driver){
-    for(int i = 0; i<this.getDriverList().size(); i++){
-      if(driver == this.getDriverList().get(i)){
-        return;
-      }
-    }
-    if(this.getBudget() >= driver.getValue()){
+  public void buyDriver(Driver driver) {
+    if (this.getBudget() >= driver.getValue() && !this.hasDriver(driver)) {
       driver.transfer(this);
       this.setBudget(this.getBudget() - driver.getValue());
     }
@@ -60,13 +55,28 @@ public class PlayerTeam extends Team {
     this.budget = budget;
   }
 
-  public boolean isHasSoftwareTester() {
+  public boolean hasSoftwareTester() {
     return hasSoftwareTester;
   }
 
   public void setHasSoftwareTester(boolean hasSoftwareTester) {
     this.hasSoftwareTester = hasSoftwareTester;
+  }
 
+  /**
+   * Returns true if the current team has the driver in their driverlist,
+   * else returns false.
+   *
+   * @param driver driver that gets checked
+   * @return true if the current team has the driver in their driverlist
+   */
+  public boolean hasDriver(Driver driver) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

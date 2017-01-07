@@ -36,13 +36,13 @@ public class Strategist implements Upgradeable {
    */
   public void upgrade() {
 
-    if (this.rating >= 70 && this.rating <= 79) {
+    if (this.rating <= 79) {
       upgradeBy(3);
-    } else if (this.rating >= 80 && this.rating <= 89) {
+    } else if (this.rating <= 89) {
       upgradeBy(2);
-    } else if (this.rating >= 90 && this.rating <= 95) {
+    } else if (this.rating <= 95) {
       upgradeBy(1);
-    } else if (this.rating > 95 && this.rating < 99) {
+    } else if (this.rating < 99) {
       this.rating++;
     }
 
@@ -115,14 +115,13 @@ public class Strategist implements Upgradeable {
    * @param other the other object
    * @return true if the other object is equal to the current object
    */
-  //TODO: Write tests for this method
   public boolean equals(Object other) {
 
 
     if (other instanceof Strategist) {
       Strategist oth = (Strategist) other;
 
-      return this.strategy == oth.strategy && this.rating == oth.rating;
+      return this.strategy.equals(oth.strategy) && this.rating == oth.rating;
     }
     return false;
   }

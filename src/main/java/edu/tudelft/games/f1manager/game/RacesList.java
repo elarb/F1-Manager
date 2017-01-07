@@ -31,6 +31,10 @@ public class RacesList {
    */
   public void addRace(Race race) {
 
+
+//    Season.getRaceList.get(currentRace).MethodToAddDriverResults();
+//    currentRace++;
+
     this.races.add(race);
 
   }
