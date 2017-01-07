@@ -115,7 +115,6 @@ public class Strategist implements Upgradeable {
    * @param other the other object
    * @return true if the other object is equal to the current object
    */
-  //TODO: Write tests for this method
   public boolean equals(Object other) {
 
 
