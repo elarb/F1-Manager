@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.core;
 
-
 import java.util.List;
 
 /**
@@ -25,18 +24,16 @@ public class AiTeam extends Team {
   }
 
   /**
-   * transfers the driver to this AiTeam
-   * if the old team was a PlayerTeam the PlayerTeam gets the value of the driver added to their budget.
-   *
-   * @param driver - Driver
+   * @param driver driver that gets bought
+   * @param team   team the driver gets bought from
    */
-  public void buyDriver(Driver driver) {
-    if (driver.getTeam() instanceof AiTeam) {
-      driver.transfer(this);
-    } else {
-      PlayerTeam oldTeam = (PlayerTeam) driver.getTeam();
-      oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
-      driver.transfer(this);
+  void buyDriver(Driver driver, Team team) {
+    if (team instanceof PlayerTeam) {
+      PlayerTeam playerteam = (PlayerTeam) team;
+      playerteam.setBudget(playerteam.getBudget() + driver.getValue());
     }
+    driver.setTeamId(this.getId());
+    this.getDriverList().add(driver);
   }
+
 }

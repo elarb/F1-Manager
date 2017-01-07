@@ -46,19 +46,15 @@ public class PlayerTeam extends Team {
   }
 
   /**
-   * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
-   * if successful the value of the driver is removed from the PLayerTeam budget.
+   * Buys the driver if the team has enough budget.
    *
-   * @param driver - Driver
+   * @param driver the driver that gets bought
    */
   public void buyDriver(Driver driver) {
-    for (int i = 0; i < this.getDriverList().size(); i++) {
-      if (driver == this.getDriverList().get(i)) {
-        return;
-      }
-    }
+
     if (this.getBudget() >= driver.getValue()) {
-      driver.transfer(this);
+      driver.setTeamId(this.getId());
+      this.getDriverList().add(driver);
       this.setBudget(this.getBudget() - driver.getValue());
     }
   }
