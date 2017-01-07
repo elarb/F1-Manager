@@ -36,6 +36,7 @@ public class Engine {
     this.power = power;
     this.drivability = drivability;
     this.fuelEfficiency = fuelEfficiency;
+    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power) * (Constants.DRIVABILITY_COEF * drivability) * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
 
   public String getBrand() {
@@ -73,6 +74,7 @@ public class Engine {
   public void setFuelEfficiency(double fuelEfficiency) {
     this.fuelEfficiency = fuelEfficiency;
   }
+
 }
 
 
