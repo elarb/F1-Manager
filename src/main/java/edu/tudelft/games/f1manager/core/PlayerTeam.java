@@ -16,7 +16,6 @@ public class PlayerTeam extends Team {
    */
   private boolean hasSoftwareTester;
 
-
   /**
    * Creates an object that represents the F1 Team of a player.
    *
@@ -57,13 +56,12 @@ public class PlayerTeam extends Team {
     this.budget = budget;
   }
 
-  public boolean isHasSoftwareTester() {
+  public boolean hasSoftwareTester() {
     return hasSoftwareTester;
   }
 
   public void setHasSoftwareTester(boolean hasSoftwareTester) {
     this.hasSoftwareTester = hasSoftwareTester;
-
   }
 
   /**
