@@ -1,12 +1,10 @@
 package edu.tudelft.games.f1manager.core;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -36,28 +34,30 @@ public class PlayerTeam extends Team {
    * @param strategist        strategist of the team
    * @param aerodynamicist    aerodynamicist of the team
    * @param mechanic          mechanic of the team
+   * @param id                id of the team
    * @param hasSoftwareTester is true if the team owns a software tester
    */
   public PlayerTeam(List<Driver> drivers, List<Car> cars,
                     Strategist strategist, Aerodynamicist aerodynamicist,
-                    Mechanic mechanic, int budget, boolean hasSoftwareTester) {
-    super(drivers, cars, strategist, aerodynamicist, mechanic);
+                    Mechanic mechanic, int id, int budget, boolean hasSoftwareTester) {
+    super(drivers, cars, strategist, aerodynamicist, mechanic, id);
     this.budget = budget;
     this.hasSoftwareTester = hasSoftwareTester;
   }
 
   /**
    * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
-   * if succesful the value of the driver is removed from the PLayerTeam budget.
+   * if successful the value of the driver is removed from the PLayerTeam budget.
+   *
    * @param driver - Driver
    */
-  public void buyDriver(Driver driver){
-    for(int i = 0; i<this.getDriverList().size(); i++){
-      if(driver == this.getDriverList().get(i)){
+  public void buyDriver(Driver driver) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
         return;
       }
     }
-    if(this.getBudget() >= driver.getValue()){
+    if (this.getBudget() >= driver.getValue()) {
       driver.transfer(this);
       this.setBudget(this.getBudget() - driver.getValue());
     }
@@ -87,9 +87,8 @@ public class PlayerTeam extends Team {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
-    PlayerTeam team = gson.fromJson(reader, PlayerTeam.class);
 
-    return team;
+    return gson.fromJson(reader, PlayerTeam.class);
 
   }
 
@@ -111,7 +110,8 @@ public class PlayerTeam extends Team {
 
     String fileName = "playerteams.json";
 
-    PlayerTeam team = new PlayerTeam(super.getDriverList(), super.getCarList(), super.getStrategist(), super.getAerodynamicist(), super.getMechanic(), this.budget, this.hasSoftwareTester);
+    PlayerTeam team = new PlayerTeam(super.getDriverList(), super.getCarList(), super.getStrategist(), super.getAerodynamicist(), super.getMechanic(),
+      super.getId(), this.budget, this.hasSoftwareTester);
 
     String json = gson.toJson(team);
 
