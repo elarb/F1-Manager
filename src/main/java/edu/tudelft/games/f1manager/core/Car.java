@@ -57,14 +57,5 @@ public class Car {
     this.tyres = tyres;
   }
 
-  @Override
-  public String toString() {
-    return "Car{" +
-      "engine=" + engine +
-      ", body=" + body +
-      ", tyres=" + tyres +
-      '}';
-  }
-
 
 }
