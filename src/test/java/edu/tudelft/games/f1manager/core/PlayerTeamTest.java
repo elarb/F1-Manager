@@ -51,9 +51,3 @@ public class PlayerTeamTest {
 
     assertEquals(playerTeam2.getBudget(), 200);
   }
-
-  @Test
-  public void test_has_driver() {
-
-  }
-}
