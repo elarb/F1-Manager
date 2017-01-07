@@ -17,10 +17,11 @@ public class AiTeamList {
    * A list of ComputerTeams.
    */
   private ArrayList<AiTeam> aiTeamList;
+
+
   private Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
+    .serializeNulls().create();
 
   /**
    * constructor for aiTeamList.
@@ -70,6 +71,21 @@ public class AiTeamList {
     outputStream.write(json.getBytes());
     outputStream.close();
 
+  }
+
+  /**
+   * Returns an aiTeam from the list of teams by id.
+   *
+   * @param id the id that gets compared
+   * @return an aiTeam with the id
+   */
+  public AiTeam getById(int id) {
+    for (AiTeam aiTeam : this.aiTeamList) {
+      if (aiTeam.getId() == id) {
+        return aiTeam;
+      }
+    }
+    return null;
   }
 
 }
