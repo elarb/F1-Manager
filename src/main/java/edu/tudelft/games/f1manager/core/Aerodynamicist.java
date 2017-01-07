@@ -32,10 +32,10 @@ public class Aerodynamicist implements Upgradeable {
       upgradeBy(4);
     } else if (this.expertise <= 79) {
       upgradeBy(3);
-    } else if (this.expertise <= 89) {
+    } else if (this.expertise <= 95) {
       upgradeBy(2);
     } else if (this.expertise <= 99) {
-      upgradeBy(1);
+      this.expertise++;
     }
   }
 
