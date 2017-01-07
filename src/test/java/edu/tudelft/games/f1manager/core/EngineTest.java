@@ -2,18 +2,26 @@ package edu.tudelft.games.f1manager.core;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
-/**
- * Created by Elias on 30-Nov-16.
- */
+
 public class EngineTest {
+
+  private Engine engine;
+
   @Before
   public void setUp() throws Exception {
-
+    engine = new Engine("Ferrari", 12.1, 12, 12);
   }
 
   @After
   public void tearDown() throws Exception {
+
+  }
+
+  @Test
+  public void test_engine_price() {
+    System.out.println(engine.getPrice());
 
   }
 
