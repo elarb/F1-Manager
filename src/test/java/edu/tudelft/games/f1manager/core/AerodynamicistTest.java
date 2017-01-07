@@ -47,7 +47,7 @@ public class AerodynamicistTest {
 
   @Test
   public void test_upgrade_90s() {
-    for (int i = 90; i < 95; i++) {
+    for (int i = 90; i < 94; i++) {
       dummyAerodynamicist.setExpertise(i);
       int expertise = dummyAerodynamicist.getExpertise();
       dummyAerodynamicist.upgrade();
