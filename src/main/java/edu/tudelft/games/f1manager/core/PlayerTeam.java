@@ -66,6 +66,13 @@ public class PlayerTeam extends Team {
 
   }
 
+  /**
+   * Returns true if the current team has the driver in their driverlist,
+   * else returns false.
+   *
+   * @param driver driver that gets checked
+   * @return true if the current team has the driver in their driverlist
+   */
   public boolean hasDriver(Driver driver) {
     for (int i = 0; i < this.getDriverList().size(); i++) {
       if (driver == this.getDriverList().get(i)) {

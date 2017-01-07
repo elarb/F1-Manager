@@ -54,17 +54,19 @@ public abstract class Team {
   }
 
   /**
-   * equals method
+   * Checks whether the current object is equal to some other object.
    */
-  public boolean equals(Object other){
-    if(other instanceof Team){
+  public boolean equals(Object other) {
+    if (other instanceof Team) {
       Team that = (Team) other;
-      return(this.driverList.equals(that.getDriverList()) && this.carList.equals(that.getCarList())
+      return this.driverList.equals(that.getDriverList()) && this.carList.equals(that.getCarList())
         && this.strategist.equals(that.getStrategist()) && this.mechanic.equals(that.getMechanic())
-        && this.aerodynamicist.equals(that.getAerodynamicist()));
+        && this.aerodynamicist.equals(that.getAerodynamicist());
     }
     return false;
-  };
+  }
+
+  ;
 
   public List<Driver> getDriverList() {
     return driverList;

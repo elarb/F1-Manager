@@ -9,20 +9,32 @@ public class Driver {
   private double strategyinsight;
   private int value;
 
+  /**
+   * Creates an object that represents a Driver in a F1 Team.
+   *
+   * @param iname name of the driver
+   * @param iteam team the driver is in, null if driver has no team
+   */
   public Driver(String iname, Team iteam) {
     this.name = iname;
     this.team = iteam;
+    this.value = (int) ((this.speed * Constants.SPEEDCOEF)
+      * (this.racecraft * Constants.RACECRAFTCOEF)
+      * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+      * Constants.DRIVERBASEPRICE);
   }
 
+  /**
+   * Transfers the driver to another team.
+   *
+   * @param team the team that the driver gets transferred to
+   */
   public void transfer(Team team) {
     this.getTeam().getDriverList().remove(this);
     this.setTeam(team);
     team.getDriverList().add(this);
   }
 
-  public void calcValue() {
-    this.value = 123; // formula
-  }
 
   public String getName() {
     return name;
