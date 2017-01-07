@@ -1,5 +1,6 @@
 package edu.tudelft.games.f1manager.core;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +17,11 @@ public class PlayerTeamTest {
 
   @Before
   public void setUp() throws Exception {
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class),
       200, true);
 
-    playerTeam2 = new PlayerTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
+    playerTeam2 = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class),
       200, true);
 
@@ -50,5 +51,10 @@ public class PlayerTeamTest {
     playerTeam2.buyDriver(driver);
 
     assertEquals(playerTeam2.getBudget(), 200);
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    playerTeam = null;
   }
 }
