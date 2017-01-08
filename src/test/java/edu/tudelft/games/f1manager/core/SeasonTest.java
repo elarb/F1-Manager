@@ -32,14 +32,14 @@ public class SeasonTest {
   @Test
   public void updatejsontest() throws IOException {
 
-    season.updateJSON();
+    season.updateJson();
 
   }
 
   @Test
   public void getjsontest() throws IOException {
 
-    season.getJSON();
+    season.getJson();
     assertEquals(12, season.getCurrentRace());
 
   }

@@ -1,13 +1,11 @@
 package edu.tudelft.games.f1manager.core;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -58,15 +56,16 @@ public class PlayerTeam extends Team {
   /**
    * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
    * if succesful the value of the driver is removed from the PLayerTeam budget.
+   *
    * @param driver - Driver
    */
-  public void buyDriver(Driver driver){
-    for(int i = 0; i<this.getDriverList().size(); i++){
-      if(driver == this.getDriverList().get(i)){
+  public void buyDriver(Driver driver) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
         return;
       }
     }
-    if(this.getBudget() >= driver.getValue()){
+    if (this.getBudget() >= driver.getValue()) {
       driver.transfer(this);
       this.setBudget(this.getBudget() - driver.getValue());
     }
@@ -89,9 +88,14 @@ public class PlayerTeam extends Team {
 
   }
 
+  /**
+   * Reads a playerteam from "playerteam.json".
+   *
+   * @return a playerteam
+   */
   public PlayerTeam read() {
 
-    String fileName = "playerteams.json";
+    String fileName = "playerteam.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
@@ -101,7 +105,10 @@ public class PlayerTeam extends Team {
 
   }
 
-  public void getJSON() {
+  /**
+   * Uses read() to initialize a playerteam object.
+   */
+  public void getJson() {
 
     PlayerTeam newteam = read();
     this.budget = newteam.getBudget();
@@ -114,10 +121,14 @@ public class PlayerTeam extends Team {
 
   }
 
+  /**
+   * Updates the "playerteam.json" file with the changed fields
+   *
+   * @throws IOException throws an IO Exception
+   */
+  public void updateJson() throws IOException {
 
-  public void updateJSON() throws IOException {
-
-    String fileName = "playerteams.json";
+    String fileName = "playerteam.json";
 
     String json = gson.toJson(this);
 

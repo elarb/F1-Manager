@@ -41,14 +41,14 @@ public class AiTeamListTest {
 
     System.out.println(aiTeamList.getAiTeamList());
 
-    aiTeamList.updateJSON();
+    aiTeamList.updateJson();
 
   }
 
   @Test
   public void getjsontest() throws IOException {
 
-    aiTeamList.getJSON();
+    aiTeamList.getJson();
     assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
 
 

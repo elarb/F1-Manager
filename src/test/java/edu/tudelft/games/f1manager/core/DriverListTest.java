@@ -41,7 +41,7 @@ public class DriverListTest {
   @Test
   public void updatejsontest() throws IOException {
 
-    driverList.updateJSON();
+    driverList.updateJson();
 
 
   }
@@ -49,7 +49,7 @@ public class DriverListTest {
   @Test
   public void getjsontest() throws IOException {
 
-    driverList.getJSON();
+    driverList.getJson();
     assertTrue(driverList.getDriverList().size() > 0);
 
   }
