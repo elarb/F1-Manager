@@ -73,19 +73,4 @@ public class AiTeamList {
 
   }
 
-  /**
-   * Returns an aiTeam from the list of teams by id.
-   *
-   * @param id the id that gets compared
-   * @return an aiTeam with the id
-   */
-  public AiTeam getById(int id) {
-    for (AiTeam aiTeam : this.aiTeamList) {
-      if (aiTeam.getId() == id) {
-        return aiTeam;
-      }
-    }
-    return null;
-  }
-
 }
