@@ -18,6 +18,7 @@ public class DriverList {
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
     .registerTypeAdapter(Team.class, new TeamInstanceCreator())
+    .excludeFieldsWithoutExposeAnnotation()
     .create();
 
 
