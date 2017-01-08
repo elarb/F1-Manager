@@ -53,7 +53,6 @@ public class AiTeamListTest {
     assertTrue(aiTeamList.getAiTeamList().size() > 0);
 
 
-
   }
 
 }

@@ -9,41 +9,43 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
- * Class that represents a list of ComputerTeams
+ * Class that represents a list of ComputerTeams.
  */
 public class AiTeamList {
 
   /**
    * A list of ComputerTeams.
    */
-  private ArrayList<AiTeam> AiTeamList;
+  private ArrayList<AiTeam> aiTeamList;
+
+
   private Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
+    .serializeNulls().create();
 
   /**
-   * constructor for AiTeamList
+   * constructor for aiTeamList.
    */
   public AiTeamList() {
   }
 
   public ArrayList<AiTeam> getAiTeamList() {
-    return AiTeamList;
+    return aiTeamList;
   }
 
   public void setAiTeamList(ArrayList<AiTeam> aiTeamList) {
-    this.AiTeamList = aiTeamList;
+    this.aiTeamList = aiTeamList;
   }
 
   public AiTeamList read() {
 
-    String fileName = "AiTeamList.json";
+    String fileName = "aiTeamList.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
-    ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>(){}.getType());
+    ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>() {
+    }.getType());
     AiTeamList aiteamlist = new AiTeamList();
     aiteamlist.setAiTeamList(aiTeamArrayList);
 
@@ -54,16 +56,16 @@ public class AiTeamList {
   public void getJSON() {
 
     AiTeamList newaiteamlist = read();
-    this.AiTeamList = newaiteamlist.getAiTeamList();
+    this.aiTeamList = newaiteamlist.getAiTeamList();
 
   }
 
 
   public void updateJSON() throws IOException {
 
-    String fileName = "AiTeamList.json";
+    String fileName = "aiTeamList.json";
 
-    String json = gson.toJson(this.AiTeamList);
+    String json = gson.toJson(this.aiTeamList);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());
