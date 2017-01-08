@@ -52,7 +52,6 @@ public class AiTeamListTest {
     assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
 
 
-
   }
 
 }
