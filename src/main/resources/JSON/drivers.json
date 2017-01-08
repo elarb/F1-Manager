@@ -1,58 +1,14 @@
 [
     {
         "name": "test testson",
-        "team": {
-            "budget": 100,
-            "hasSoftwareTester": true,
-            "gson": {},
-            "driverList": [],
-            "carList": [],
-            "strategist": {
-                "mockitoInterceptor": {},
-                "strategy": null,
-                "rating": 0
-            },
-            "aerodynamicist": {
-                "mockitoInterceptor": {},
-                "expertise": 0
-            },
-            "mechanic": {
-                "mockitoInterceptor": {},
-                "pitstopTime": 0,
-                "upgradePrice": 0
-            }
-        },
         "speed": 0.0,
         "racecraft": 0.0,
-        "strategyinsight": 0.0,
-        "value": 0
+        "strategyinsight": 0.0
     },
     {
         "name": "Tester",
-        "team": {
-            "budget": 100,
-            "hasSoftwareTester": true,
-            "gson": {},
-            "driverList": [],
-            "carList": [],
-            "strategist": {
-                "mockitoInterceptor": {},
-                "strategy": null,
-                "rating": 0
-            },
-            "aerodynamicist": {
-                "mockitoInterceptor": {},
-                "expertise": 0
-            },
-            "mechanic": {
-                "mockitoInterceptor": {},
-                "pitstopTime": 0,
-                "upgradePrice": 0
-            }
-        },
         "speed": 0.0,
         "racecraft": 0.0,
-        "strategyinsight": 0.0,
-        "value": 0
+        "strategyinsight": 0.0
     }
 ]

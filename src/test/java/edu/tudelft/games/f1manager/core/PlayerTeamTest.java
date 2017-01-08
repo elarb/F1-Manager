@@ -56,14 +56,14 @@ public class PlayerTeamTest {
   @Test
   public void updatejsontest() throws IOException {
 
-    playerTeam.updateJSON();
+    playerTeam.updateJson();
 
   }
 
   @Test
   public void getjsontest() throws IOException {
 
-    playerTeam.getJSON();
+    playerTeam.getJson();
     System.out.println(playerTeam.getStrategist().getStrategy());
     assertEquals(0, playerTeam.getStrategist().getRating());
 

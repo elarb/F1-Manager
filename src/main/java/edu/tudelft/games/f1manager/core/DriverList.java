@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.core;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -44,6 +43,11 @@ public class DriverList {
     this.driverList = driverList;
   }
 
+  /**
+   * Reads a playerteam from "playerteam.json".
+   *
+   * @return a playerteam
+   */
   public DriverList read() {
 
     String fileName = "JSON/drivers.json";
@@ -56,15 +60,22 @@ public class DriverList {
 
   }
 
-  public void getJSON() {
+  /**
+   * Uses read() to initialize a playerteam object.
+   */
+  public void getJson() {
 
     DriverList newdriverlist = read();
     this.driverList = newdriverlist.getDriverList();
 
   }
 
-
-  public void updateJSON() throws IOException {
+  /**
+   * Updates the "drivers.json" file with the changes
+   *
+   * @throws IOException throws an IO Exception
+   */
+  public void updateJson() throws IOException {
 
     String fileName = "drivers.json";
 

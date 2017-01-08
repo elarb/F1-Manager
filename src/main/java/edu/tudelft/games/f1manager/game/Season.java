@@ -2,7 +2,7 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.tudelft.games.f1manager.core.PlayerTeam;
+
 import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.*;
@@ -53,6 +53,12 @@ public class Season {
     this.constructorStandings = constructorStandings;
   }
 
+
+  /**
+   * Reads a season from "season.json".
+   *
+   * @return a season
+   */
   public Season read() {
 
     String fileName = "season.json";
@@ -65,7 +71,10 @@ public class Season {
 
   }
 
-  public void getJSON() {
+  /**
+   * Uses read() to initialize a season object.
+   */
+  public void getJson() {
 
     Season newseason = read();
     this.constructorStandings = newseason.getConstructorStandings();
@@ -74,8 +83,12 @@ public class Season {
 
   }
 
-
-  public void updateJSON() throws IOException {
+  /**
+   * Updates the "season.json" file with the changed fields
+   *
+   * @throws IOException throws an IO Exception
+   */
+  public void updateJson() throws IOException {
 
     String fileName = "season.json";
 

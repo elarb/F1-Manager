@@ -37,6 +37,12 @@ public class AiTeamList {
     this.aiTeamList = aiTeamList;
   }
 
+
+  /**
+   * Reads an aiTeamList from "aiTeamList.json".
+   *
+   * @return an aiTeamList
+   */
   public AiTeamList read() {
 
     String fileName = "aiTeamList.json";
@@ -53,15 +59,22 @@ public class AiTeamList {
 
   }
 
-  public void getJSON() {
+  /**
+   * Uses read() to initialize an aiTeamList object.
+   */
+  public void getJson() {
 
     AiTeamList newaiteamlist = read();
     this.aiTeamList = newaiteamlist.getAiTeamList();
 
   }
 
-
-  public void updateJSON() throws IOException {
+  /**
+   * Updates the "aiTeamList.json" file with the changed fields
+   *
+   * @throws IOException throws an IO Exception
+   */
+  public void updateJson() throws IOException {
 
     String fileName = "aiTeamList.json";
 
