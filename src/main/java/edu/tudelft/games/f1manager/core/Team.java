@@ -46,6 +46,7 @@ public abstract class Team {
   @Expose
   private Mechanic mechanic;
 
+
   /**
    * Creates an object that represents a F1 Team.
    *
@@ -119,4 +120,5 @@ public abstract class Team {
   public void setMechanic(Mechanic mechanic) {
     this.mechanic = mechanic;
   }
+
 }
