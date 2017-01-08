@@ -1,10 +1,13 @@
 package edu.tudelft.games.f1manager.core;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -12,17 +15,23 @@ public class PlayerTeam extends Team {
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
    */
+
+  @Expose
   private int budget;
 
   /**
    * Is true if the team owns a software tester. If a team doesn't own a software-tester,
    * the chance for a crash increases significantly.
    */
+
+  @Expose
   private boolean hasSoftwareTester;
+
 
   private Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
+    .excludeFieldsWithoutExposeAnnotation()
     .create();
 
 
@@ -34,27 +43,31 @@ public class PlayerTeam extends Team {
    * @param strategist        strategist of the team
    * @param aerodynamicist    aerodynamicist of the team
    * @param mechanic          mechanic of the team
-   * @param id                id of the team
    * @param hasSoftwareTester is true if the team owns a software tester
    */
+
+
   public PlayerTeam(List<Driver> drivers, List<Car> cars,
                     Strategist strategist, Aerodynamicist aerodynamicist,
-                    Mechanic mechanic, int id, int budget, boolean hasSoftwareTester) {
-    super(drivers, cars, strategist, aerodynamicist, mechanic, id);
+                    Mechanic mechanic, int budget, boolean hasSoftwareTester) {
+    super(drivers, cars, strategist, aerodynamicist, mechanic);
     this.budget = budget;
     this.hasSoftwareTester = hasSoftwareTester;
   }
 
   /**
-   * Buys the driver if the team has enough budget.
-   *
-   * @param driver the driver that gets bought
+   * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
+   * if succesful the value of the driver is removed from the PLayerTeam budget.
+   * @param driver - Driver
    */
-  public void buyDriver(Driver driver) {
-
-    if (this.getBudget() >= driver.getValue()) {
-      driver.setTeamId(this.getId());
-      this.getDriverList().add(driver);
+  public void buyDriver(Driver driver){
+    for(int i = 0; i<this.getDriverList().size(); i++){
+      if(driver == this.getDriverList().get(i)){
+        return;
+      }
+    }
+    if(this.getBudget() >= driver.getValue()){
+      driver.transfer(this);
       this.setBudget(this.getBudget() - driver.getValue());
     }
   }
@@ -106,10 +119,7 @@ public class PlayerTeam extends Team {
 
     String fileName = "playerteams.json";
 
-    PlayerTeam team = new PlayerTeam(super.getDriverList(), super.getCarList(), super.getStrategist(), super.getAerodynamicist(), super.getMechanic(),
-      super.getId(), this.budget, this.hasSoftwareTester);
-
-    String json = gson.toJson(team);
+    String json = gson.toJson(this);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());

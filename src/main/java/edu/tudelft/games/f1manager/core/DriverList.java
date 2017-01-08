@@ -17,6 +17,7 @@ public class DriverList {
   private Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
+    .registerTypeAdapter(Team.class, new TeamInstanceCreator())
     .create();
 
 
@@ -49,10 +50,8 @@ public class DriverList {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream(fileName);
     Reader reader = new InputStreamReader(is);
-    ArrayList<Driver> driverArrayList = gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType());
-    DriverList driverlist = new DriverList(driverArrayList);
 
-    return driverlist;
+    return new DriverList(gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType()));
 
   }
 
