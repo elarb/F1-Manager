@@ -39,6 +39,8 @@ public class AiTeamListTest {
   @Test
   public void updatejsontest() throws IOException {
 
+    System.out.println(aiTeamList.getAiTeamList());
+
     aiTeamList.updateJSON();
 
   }
@@ -47,8 +49,7 @@ public class AiTeamListTest {
   public void getjsontest() throws IOException {
 
     aiTeamList.getJSON();
-
-    System.out.println(aiTeamList.getAiTeamList().get(0).getDriverList());
+    assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
 
 
 

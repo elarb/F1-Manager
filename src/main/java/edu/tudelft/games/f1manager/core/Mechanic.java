@@ -1,13 +1,18 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
+import com.google.gson.annotations.Expose;
 
 public class Mechanic {
 
   /**
    * Time it takes for the mechanic to handle a pitstop.
    */
+
+  @Expose
   private int pitstopTime;
+
+  @Expose
   private int upgradePrice;
 
   /**
