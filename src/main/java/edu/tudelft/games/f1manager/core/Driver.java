@@ -1,11 +1,24 @@
 package edu.tudelft.games.f1manager.core;
 
+import com.google.gson.annotations.Expose;
+
 public class Driver {
+
+  @Expose
   private String name;
+
+
   private Team team;
+
+  @Expose
   private double speed;
+
+  @Expose
   private double racecraft;
+
+  @Expose
   private double strategyinsight;
+
   private int value;
 
   /**
@@ -21,6 +34,7 @@ public class Driver {
       * (this.racecraft * Constants.RACECRAFTCOEF)
       * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
       * Constants.DRIVERBASEPRICE);
+
   }
 
   /**
