@@ -60,9 +60,8 @@ public class Season {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
-    Season season = gson.fromJson(reader, Season.class);
 
-    return season;
+    return gson.fromJson(reader, Season.class);
 
   }
 

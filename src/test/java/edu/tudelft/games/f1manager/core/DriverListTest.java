@@ -42,12 +42,14 @@ public class DriverListTest {
 
     driverList.updateJSON();
 
+
   }
 
   @Test
   public void getjsontest() throws IOException {
 
     driverList.getJSON();
+    assertEquals("test testson", driverList.getDriverList().get(0).getName());
 
   }
 

@@ -3,6 +3,7 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
@@ -14,17 +15,23 @@ public class PlayerTeam extends Team {
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
    */
+
+  @Expose
   private int budget;
 
   /**
    * Is true if the team owns a software tester. If a team doesn't own a software-tester,
    * the chance for a crash increases significantly.
    */
+
+  @Expose
   private boolean hasSoftwareTester;
+
 
   private Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
+    .excludeFieldsWithoutExposeAnnotation()
     .create();
 
 
@@ -38,6 +45,8 @@ public class PlayerTeam extends Team {
    * @param mechanic          mechanic of the team
    * @param hasSoftwareTester is true if the team owns a software tester
    */
+
+
   public PlayerTeam(List<Driver> drivers, List<Car> cars,
                     Strategist strategist, Aerodynamicist aerodynamicist,
                     Mechanic mechanic, int budget, boolean hasSoftwareTester) {
@@ -87,9 +96,8 @@ public class PlayerTeam extends Team {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
     Reader reader = new InputStreamReader(is);
-    PlayerTeam team = gson.fromJson(reader, PlayerTeam.class);
 
-    return team;
+    return gson.fromJson(reader, PlayerTeam.class);
 
   }
 
@@ -111,9 +119,7 @@ public class PlayerTeam extends Team {
 
     String fileName = "playerteams.json";
 
-    PlayerTeam team = new PlayerTeam(super.getDriverList(), super.getCarList(), super.getStrategist(), super.getAerodynamicist(), super.getMechanic(), this.budget, this.hasSoftwareTester);
-
-    String json = gson.toJson(team);
+    String json = gson.toJson(this);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
     outputStream.write(json.getBytes());
