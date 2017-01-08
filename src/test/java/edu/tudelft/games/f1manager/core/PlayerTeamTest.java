@@ -64,6 +64,8 @@ public class PlayerTeamTest {
   public void getjsontest() throws IOException {
 
     playerTeam.getJSON();
+    System.out.println(playerTeam.getStrategist().getStrategy());
+    assertEquals(0, playerTeam.getStrategist().getRating());
 
   }
 }

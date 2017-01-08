@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.List;
 
 /**
@@ -11,28 +13,37 @@ public abstract class Team {
   /**
    * List of drivers of the team.
    */
+
+  @Expose
   private List<Driver> driverList;
 
 
   /**
    * List of cars owned by the team.
    */
+  @Expose
   private List<Car> carList;
 
 
   /**
    * The Strategist of the team.
    */
+
+  @Expose
   private Strategist strategist;
 
   /**
    * The Aerodynamicist of the team.
    */
+
+  @Expose
   private Aerodynamicist aerodynamicist;
 
   /**
    * The mechanic of the team.
    */
+
+  @Expose
   private Mechanic mechanic;
 
   /**
@@ -59,6 +70,22 @@ public abstract class Team {
     this.mechanic = mechanic;
     this.id = id;
   }
+
+
+  /**
+   * Checks whether the current object is equal to some other object.
+   */
+  public boolean equals(Object other) {
+    if (other instanceof Team) {
+      Team that = (Team) other;
+      return this.driverList.equals(that.getDriverList()) && this.carList.equals(that.getCarList())
+        && this.strategist.equals(that.getStrategist()) && this.mechanic.equals(that.getMechanic())
+        && this.aerodynamicist.equals(that.getAerodynamicist());
+    }
+    return false;
+  }
+
+  ;
 
   public List<Driver> getDriverList() {
     return driverList;

@@ -1,25 +1,32 @@
 package edu.tudelft.games.f1manager.core;
 
 public class Driver {
-
   private String name;
   private Team team;
-
   private double speed;
   private double racecraft;
   private double strategyinsight;
   private int value;
 
+  /**
+   * Creates an object that represents a Driver in a F1 Team.
+   *
+   * @param iname name of the driver
+   * @param iteam team the driver is in, null if driver has no team
+   */
   public Driver(String iname, Team iteam) {
     this.name = iname;
     this.team = iteam;
+    this.value = (int) ((this.speed * Constants.SPEEDCOEF)
+      * (this.racecraft * Constants.RACECRAFTCOEF)
+      * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+      * Constants.DRIVERBASEPRICE);
   }
 
   /**
-   * removes the player from the current Team and ads it to team.
-   * changes its over Team to team
+   * Transfers the driver to another team.
    *
-   * @param team - Team
+   * @param team the team that the driver gets transferred to
    */
   public void transfer(Team team) {
     this.getTeam().getDriverList().remove(this);
@@ -27,9 +34,6 @@ public class Driver {
     team.getDriverList().add(this);
   }
 
-  public void calcValue() {
-    this.value = 123; // formula
-  }
 
   public String getName() {
     return name;

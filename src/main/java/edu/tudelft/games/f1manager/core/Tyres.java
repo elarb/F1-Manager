@@ -20,7 +20,7 @@ public class Tyres {
   }
 
   /**
-   * calculates the durability with the hardness
+   * calculates the durability with the hardness.
    *
    * @return int - Durability
    */
@@ -29,7 +29,7 @@ public class Tyres {
   }
 
   /**
-   * calculates the grip with the hardness
+   * calculates the grip with the hardness.
    *
    * @return int - grip
    */
