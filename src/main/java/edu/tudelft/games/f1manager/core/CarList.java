@@ -7,8 +7,8 @@ public class CarList {
   private ArrayList<Car> carList;
 
 
-  public CarList(ArrayList<Car> carList) {
-    this.carList = carList;
+  public CarList() {
+    this.carList = new ArrayList<>();
   }
 
   /**
