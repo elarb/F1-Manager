@@ -3,11 +3,11 @@ package edu.tudelft.games.f1manager.core;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.apache.commons.collections.list.FixedSizeList;
+
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-
-import org.apache.commons.collections.list.FixedSizeList;
 
 /**
  * Class that represents a list of Computer Teams.
