@@ -31,22 +31,22 @@ public class AiTeamList {
   public AiTeamList() {
   }
 
-  public void balanceDrivers() {
+  public void balanceDrivers(DriverList iDriverList) {
 	  for (int i = 0; i < this.aiTeamList.size(); i++) {
 		  if (aiTeamList.get(i).getDriverList().size() < 2) {
 			  if (aiTeamList.get(i).getDriverList().size() < 1) {
-				  this.buyLeftoverDriver(aiTeamList.get(i));
+				  this.buyLeftoverDriver(aiTeamList.get(i), iDriverList);
 			  }
-			  this.buyLeftoverDriver(aiTeamList.get(i));
+			  this.buyLeftoverDriver(aiTeamList.get(i), iDriverList);
 		  }
 	  }
   }
   
-  public void buyLeftoverDriver(AiTeam aiTeam){
+  public void buyLeftoverDriver(AiTeam aiTeam, DriverList iDriverList){
 	  Random rand = new Random();
 	  boolean bought = true;
 	  while (bought == false) {
-		  Driver rDriver = DriverList.getDriverList().get(rand.nextInt(DriverList.getDriverList().size()));
+		  Driver rDriver = iDriverList.getDriverList().get(rand.nextInt(iDriverList.getDriverList().size()));
 		  if (rDriver.getTeam() == null) {
 			  aiTeam.buyDriver(rDriver);
 			  bought = true;
@@ -54,12 +54,12 @@ public class AiTeamList {
 	  }
   }
   
-  public void buyRandomDriver() {
+  public void buyRandomDriver(DriverList iDriverList) {
 	  Random rand = new Random();
 	  int r = rand.nextInt(Constants.MAX_BUYS);
 	  for (int i = 0; i < r; i++) {
 		  AiTeam buyingTeam = this.getAiTeamList().get(rand.nextInt(this.getAiTeamList().size()));
-		  Driver buyingDriver = DriverList.getDriverList().get(rand.nextInt(DriverList.getDriverList().size()));
+		  Driver buyingDriver = iDriverList.getDriverList().get(rand.nextInt(iDriverList.getDriverList().size()));
 		  if (buyingDriver.getTeam() != buyingTeam) {
 			  buyingTeam.buyDriver(buyingDriver);
 		  }
