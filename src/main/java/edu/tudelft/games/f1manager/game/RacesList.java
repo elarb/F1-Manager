@@ -30,7 +30,8 @@ public class RacesList {
    * @param race the race that gets added
    */
   public void addRace(Race race) {
-
+    //Season.getRaceList.get(currentRace).MethodToAddDriverResults();
+    //currentRace++;
     this.races.add(race);
 
   }

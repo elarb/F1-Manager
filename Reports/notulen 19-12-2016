@@ -1,0 +1,38 @@
+Chairman: David Happel
+Secretaris: Elias Ait Larbi
+
+Bijeenkomst de dato 19 december 2016.
+Eerste vergadering der RACESOFT
+Race Algorithmic Competitive Engineering Simulator Omega Formula Team
+Aanwezigen: Martijn, Elias, David, Wouter.
+Absent: Tim.
+
+tim neemt volgende keer taart mee
+
+done:
+tests
+databases
+circuits
+transfer/buy drivers
+css on interface
+
+ideas:
+change github so you cant merge when checkstyle failes
+
+todo:
+- Race runnen
+  - Formules implementeren
+  - Results
+  - Global scoreboard
+- Team selecteren
+  - Drivers kopen
+  - Alles veranderen/upgraden
+- AI
+  - Team members overkopen
+  - Team samenstellen
+- Start scherm
+  - Save game
+   - To json methods in klasses (research json)
+  - Load game
+   - JSON inlezen
+
