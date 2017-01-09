@@ -6,8 +6,11 @@ public class EngineList {
 
   ArrayList<Engine> enginelist;
 
-  public EngineList(ArrayList<Engine> enginelist) {
-    enginelist = this.enginelist;
+  /**
+   * Creates an object that represents a list of engines.
+   */
+  public EngineList() {
+    this.enginelist = new ArrayList<>();
   }
 
   public void addEngine(Engine engine) {
