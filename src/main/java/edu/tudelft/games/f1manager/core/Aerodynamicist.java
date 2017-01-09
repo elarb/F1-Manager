@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * This class represents an Aerodynamicist.
  */
@@ -8,6 +10,8 @@ public class Aerodynamicist implements Upgradeable {
   /**
    * Expertise the Aerodynamicist has, expressed as an integer from 60-99.
    */
+
+  @Expose
   private int expertise;
 
   /**
