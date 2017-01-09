@@ -37,5 +37,8 @@ public class AiTeam extends Team {
       oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
         driver.transfer(this);
     }
+    if (this.getDriverList().size() > 3) {
+    	this.getDriverList().get(0).setTeam(null);
+    }
   }
 }
