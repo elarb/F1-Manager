@@ -2,88 +2,74 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.collections.list.FixedSizeList;
 
 /**
- * Class that represents a list of ComputerTeams.
+ * Class that represents a list of Computer Teams.
  */
 public class AiTeamList {
 
   /**
-   * A list of ComputerTeams.
+   * A list of Computer Teams.
    */
-  private ArrayList<AiTeam> aiTeamList;
+  private List<AiTeam> aiTeamList;
 
-
-  private Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls().create();
 
   /**
-   * constructor for aiTeamList.
+   * Creates an object that represents a list of ai teams.
+   * Has a fixed size of 10
    */
   public AiTeamList() {
-  }
-
-  public ArrayList<AiTeam> getAiTeamList() {
-    return aiTeamList;
-  }
-
-  public void setAiTeamList(ArrayList<AiTeam> aiTeamList) {
-    this.aiTeamList = aiTeamList;
+    this.aiTeamList = FixedSizeList.decorate(Arrays.asList(new AiTeam[10]));
   }
 
 
   /**
-   * Reads an aiTeamList from "aiTeamList.json".
+   * Reads in aiteamlist.json returns a aiteamlist
+   * object if the file is in the appropriate format.
    *
-   * @return an aiTeamList
+   * @return a aiteamlist
    */
-  public AiTeamList read() {
-
-    String fileName = "aiTeamList.json";
-
+  public static AiTeamList read() {
+    String filename = "aiteamlist.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + fileName);
+    InputStream is = classloader.getResourceAsStream(filename);
     Reader reader = new InputStreamReader(is);
-    ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>() {
-    }.getType());
-    AiTeamList aiteamlist = new AiTeamList();
-    aiteamlist.setAiTeamList(aiTeamArrayList);
+    Gson gson = new GsonBuilder().create();
+    AiTeamList aiteamlist = gson.fromJson(reader, AiTeamList.class);
 
     return aiteamlist;
 
   }
 
-  /**
-   * Uses read() to initialize an aiTeamList object.
-   */
-  public void getJson() {
-
-    AiTeamList newaiteamlist = read();
-    this.aiTeamList = newaiteamlist.getAiTeamList();
-
-  }
 
   /**
-   * Updates the "aiTeamList.json" file with the changed fields
+   * Write the aiteamlist to aiteamlist.json.
    *
-   * @throws IOException throws an IO Exception
+   * @param aiteamlist the aiteamlist that gets written
+   * @throws IOException when the file doesn't exist
    */
-  public void updateJson() throws IOException {
+  public static void write(AiTeamList aiteamlist) throws IOException {
+    String filename = "aiteamlist.json";
+    Gson gson = new GsonBuilder().create();
+    String json = gson.toJson(aiteamlist);
 
-    String fileName = "aiTeamList.json";
-
-    String json = gson.toJson(this.aiTeamList);
-
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
-
+    System.out.println("This has been written to aiteamlist.json : " + json);
   }
 
+  public List<AiTeam> getAiTeamList() {
+    return aiTeamList;
+  }
+
+  public void setAiTeamList(List<AiTeam> aiTeamList) {
+    this.aiTeamList = aiTeamList;
+  }
 }
