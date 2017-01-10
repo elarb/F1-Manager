@@ -26,10 +26,18 @@ public class ClientController {
   private ListView<String> buyableDrivers;
 
   @FXML
+  private AnchorPane mainscreen;
+
+  @FXML
   public void handleButtonClick_Configuration() throws IOException {
     System.out.println("Click! configuration");
     content.getChildren().clear();
     content.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/Configuration.fxml")));
+  }
+
+  public void handleButtonClick_StartGame() throws IOException {
+    mainscreen.getChildren().clear();
+    mainscreen.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/main menu.fxml")));
   }
 
   public void fillBuyableDrivers(){
@@ -41,5 +49,17 @@ public class ClientController {
   public void buyDriver(){
     String driverName = buyableDrivers.getSelectionModel().getSelectedItem();
     System.out.println(driverName);
+  }
+
+  public void handleButtonClick_newGame() throws IOException{
+
+  }
+
+  public void handleButtonClick_LoadGame() throws IOException{
+
+  }
+
+  public void handleButtonClick_ExitGame() throws IOException{
+    System.exit(0);
   }
 }
