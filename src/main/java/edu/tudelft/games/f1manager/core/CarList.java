@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class CarList {
 
-  private ArrayList<Car> carList;
+  private ArrayList<Car> cars;
 
 
   public CarList() {
-    this.carList = new ArrayList<>();
+    this.cars = new ArrayList<>();
   }
 
   /**
@@ -17,17 +17,15 @@ public class CarList {
    * @param car the car that gets added to the carlist
    */
   public void addCar(Car car) {
-
-    this.carList.add(car);
-
+    this.cars.add(car);
   }
 
 
   public ArrayList<Car> getcarList() {
-    return carList;
+    return cars;
   }
 
   public void setcarList(ArrayList<Car> carList) {
-    this.carList = carList;
+    this.cars = carList;
   }
 }
