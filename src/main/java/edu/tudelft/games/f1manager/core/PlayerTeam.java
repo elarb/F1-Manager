@@ -26,7 +26,7 @@ public class PlayerTeam extends Team {
   private boolean hasSoftwareTester;
 
 
-  private Gson gson = new GsonBuilder()
+  private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
     .excludeFieldsWithoutExposeAnnotation()
@@ -93,31 +93,14 @@ public class PlayerTeam extends Team {
    *
    * @return a playerteam
    */
-  public PlayerTeam read() {
+  public static PlayerTeam read(String filename) {
 
-    String fileName = "playerteam.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, PlayerTeam.class);
-
-  }
-
-  /**
-   * Uses read() to initialize a playerteam object.
-   */
-  public void getJson() {
-
-    PlayerTeam newteam = read();
-    this.budget = newteam.getBudget();
-    this.hasSoftwareTester = newteam.getHasSoftwareTester();
-    super.setAerodynamicist(newteam.getAerodynamicist());
-    super.setCarList(newteam.getCarList());
-    super.setDriverList(newteam.getDriverList());
-    super.setMechanic(newteam.getMechanic());
-    super.setStrategist(newteam.getStrategist());
 
   }
 
@@ -126,15 +109,16 @@ public class PlayerTeam extends Team {
    *
    * @throws IOException throws an IO Exception
    */
-  public void updateJson() throws IOException {
+  public void write(String filename) throws IOException {
 
-    String fileName = "playerteam.json";
+        String json = gson.toJson(this);
 
-    String json = gson.toJson(this);
-
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
 
   }
 }

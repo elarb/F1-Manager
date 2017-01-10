@@ -19,7 +19,7 @@ public class AiTeamList {
   private ArrayList<AiTeam> aiTeamList;
 
 
-  private Gson gson = new GsonBuilder()
+  private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls().create();
 
@@ -43,12 +43,10 @@ public class AiTeamList {
    *
    * @return an aiTeamList
    */
-  public AiTeamList read() {
-
-    String fileName = "aiTeamList.json";
+  public static AiTeamList read(String filename) {
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + fileName);
+    InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>() {
     }.getType());
@@ -60,30 +58,20 @@ public class AiTeamList {
   }
 
   /**
-   * Uses read() to initialize an aiTeamList object.
-   */
-  public void getJson() {
-
-    AiTeamList newaiteamlist = read();
-    this.aiTeamList = newaiteamlist.getAiTeamList();
-
-  }
-
-  /**
    * Updates the "aiTeamList.json" file with the changed fields
    *
    * @throws IOException throws an IO Exception
    */
-  public void updateJson() throws IOException {
-
-    String fileName = "aiTeamList.json";
+  public void write(String filename) throws IOException {
 
     String json = gson.toJson(this.aiTeamList);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
 
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
   }
 
 }

@@ -15,42 +15,39 @@ public class DriverListTest {
 
   Driver driver1;
   Driver driver2;
-  PlayerTeam team;
   ArrayList<Driver> driverArrayList;
   DriverList driverList;
 
 
+
+
   @Before
   public void setUp() throws Exception {
-    team = new PlayerTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class),
-      100, true);
 
-    driver1 = new Driver("test testson", team);
-    driver2 = new Driver("Tester", team);
+    driver1 = new Driver("Mighty Join", mock(Team.class));
+    driver2 = new Driver("Pieter", mock(Team.class));
     driverArrayList = new ArrayList<Driver>();
     driverArrayList.add(driver1);
     driverArrayList.add(driver2);
-
 
     driverList = new DriverList(driverArrayList);
 
   }
 
-
   @Test
-  public void updatejsontest() throws IOException {
+  public void readtest() throws IOException {
 
-    driverList.updateJson();
-
+    DriverList driverList = DriverList.read("TESTS/testdrivers.json");
+    assertEquals("Mighty Join", driverList.getDriverList().get(0).getName());
 
   }
 
   @Test
-  public void getjsontest() throws IOException {
+  public void writetest() throws IOException {
 
-    driverList.getJson();
-    assertTrue(driverList.getDriverList().size() > 0);
+    driverList.write("TESTS/testdrivers.json");
+
+
 
   }
 

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import edu.tudelft.games.f1manager.core.Team;
 
+import javax.print.DocFlavor;
 import java.io.*;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Season {
    * The current race in the season.
    */
   private int currentRace;
-  private Gson gson = new GsonBuilder()
+  private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
     .create();
@@ -59,46 +60,34 @@ public class Season {
    *
    * @return a season
    */
-  public Season read() {
-
-    String fileName = "season.json";
+  public static Season read(String filename) {
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream("JSON/" + fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, Season.class);
 
   }
 
-  /**
-   * Uses read() to initialize a season object.
-   */
-  public void getJson() {
-
-    Season newseason = read();
-    this.constructorStandings = newseason.getConstructorStandings();
-    this.currentRace = newseason.getCurrentRace();
-
-
-  }
 
   /**
    * Updates the "season.json" file with the changed fields
    *
    * @throws IOException throws an IO Exception
    */
-  public void updateJson() throws IOException {
-
-    String fileName = "season.json";
+  public void write(String filename) throws IOException {
 
     Season season = new Season(this.getCurrentRace(), this.getConstructorStandings());
 
     String json = gson.toJson(season);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
 
   }
 
