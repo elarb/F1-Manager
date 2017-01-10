@@ -2,8 +2,10 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +13,12 @@ import java.util.ArrayList;
  */
 public class DriverList {
 
+  private static Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .registerTypeAdapter(Team.class, new TeamInstanceCreator())
+    .excludeFieldsWithoutExposeAnnotation()
+    .create();
 
   private ArrayList<Driver> drivers;
 
@@ -35,14 +43,12 @@ public class DriverList {
    * @return a driverlist
    */
   public static DriverList read(String filename) {
-//    String filename = "drivers.json";
+
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
-    Gson gson = new GsonBuilder().create();
-    DriverList driverList = gson.fromJson(reader, DriverList.class);
 
-    return driverList;
+    return new DriverList(gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType()));
 
   }
 
@@ -53,22 +59,17 @@ public class DriverList {
    * @param driverlist the driverlist that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(DriverList driverlist, String filename) throws IOException {
-//    String filename = "drivers.json";
-    Gson gson = new GsonBuilder().create();
-    String json = gson.toJson(driverlist);
+  public void write(String filename) throws IOException {
+
+    String json = gson.toJson(this.driverList);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
-    System.out.println("This has been written to the file: " + json);
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
+
   }
 
-  public ArrayList<Driver> getDrivers() {
-    return drivers;
-  }
-
-  public void setDrivers(ArrayList<Driver> drivers) {
-    this.drivers = drivers;
-  }
 }

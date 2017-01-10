@@ -2,8 +2,10 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class PlayerTeam extends Team {
@@ -11,13 +13,23 @@ public class PlayerTeam extends Team {
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
    */
+
+  @Expose
   private int budget;
 
   /**
    * Is true if the team owns a software tester. If a team doesn't own a software-tester,
    * the chance for a crash increases significantly.
    */
+
+  @Expose
   private boolean softwareTester;
+
+  private static Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .excludeFieldsWithoutExposeAnnotation()
+    .create();
 
   /**
    * Creates an object that represents the F1 Team of a player.
@@ -40,49 +52,22 @@ public class PlayerTeam extends Team {
     this.softwareTester = softwareTester;
   }
 
-
   /**
-   * Reads in playerteam.json returns a playerteam
-   * object if the file is in the appropriate format.
+   * transfers the driver to this PlayerTeam if the PlayerTeam had enough budget
+   * if succesful the value of the driver is removed from the PLayerTeam budget.
    *
-   * @return a playerteam
+   * @param driver - Driver
    */
-  public static PlayerTeam read(String filename) {
-//    String filename = "playerteam.json";
-    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
-    Reader reader = new InputStreamReader(is);
-    Gson gson = new GsonBuilder().create();
-    PlayerTeam playerteam = gson.fromJson(reader, PlayerTeam.class);
-
-    return playerteam;
-
-  }
-
-
-  /**
-   * Write the playerteam to playerteam.json.
-   *
-   * @param playerteam the playerteam that gets written
-   * @throws IOException when the file doesn't exist
-   */
-  public static void write(PlayerTeam playerteam, String filename) throws IOException {
-//    String filename = "playerteam.json";
-    Gson gson = new GsonBuilder().create();
-    String json = gson.toJson(playerteam);
-
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
-    outputStream.close();
-    System.out.println("This has been written to playerteam.json : " + json);
-  }
-
-  @Override
-  public String toString() {
-    return "PlayerTeam{"
-      + "budget=" + budget
-      + ", softwareTester="
-      + softwareTester + "} " + super.toString();
+  public void buyDriver(Driver driver) {
+    for (int i = 0; i < this.getDriverList().size(); i++) {
+      if (driver == this.getDriverList().get(i)) {
+        return;
+      }
+    }
+    if (this.getBudget() >= driver.getValue()) {
+      driver.transfer(this);
+      this.setBudget(this.getBudget() - driver.getValue());
+    }
   }
 
   public int getBudget() {
@@ -93,12 +78,49 @@ public class PlayerTeam extends Team {
     this.budget = budget;
   }
 
-  public boolean getSoftwareTester() {
-    return softwareTester;
+  public boolean getHasSoftwareTester() {
+    return hasSoftwareTester;
   }
 
-  public void setSoftwareTester(boolean softwareTester) {
-    this.softwareTester = softwareTester;
+  public void setHasSoftwareTester(boolean hasSoftwareTester) {
+    this.hasSoftwareTester = hasSoftwareTester;
+
+  }
+
+  /**
+   * Reads in playerteam.json returns a playerteam
+   * object if the file is in the appropriate format.
+   *
+   * @return a playerteam
+   */
+  public static PlayerTeam read(String filename) {
+
+
+    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
+    Reader reader = new InputStreamReader(is);
+
+    return gson.fromJson(reader, PlayerTeam.class);
+
+  }
+
+
+  /**
+   * Write the playerteam to playerteam.json.
+   *
+   * @param playerteam the playerteam that gets written
+   * @throws IOException when the file doesn't exist
+   */
+  public void write(String filename) throws IOException {
+
+        String json = gson.toJson(this);
+
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
+    outputStream.write(json.getBytes());
+    outputStream.close();
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
 
   }
 }

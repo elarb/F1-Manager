@@ -54,18 +54,17 @@ public class PlayerTeamTest {
   }
 
   @Test
-  public void updatejsontest() throws IOException {
+  public void readtest() throws IOException {
 
-    playerTeam.updateJson();
+    PlayerTeam playerTeam = PlayerTeam.read("TESTS/playerteamtest.json");
+    assertEquals(0, playerTeam.getStrategist().getRating());
 
   }
 
   @Test
-  public void getjsontest() throws IOException {
+  public void writetest() throws IOException {
 
-    playerTeam.getJson();
-    System.out.println(playerTeam.getStrategist().getStrategy());
-    assertEquals(0, playerTeam.getStrategist().getRating());
+    playerTeam.write("TESTS/playerteamtest.json");
 
   }
 }
