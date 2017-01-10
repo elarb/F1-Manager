@@ -1,23 +1,17 @@
 package edu.tudelft.games.f1manager;
 
 
-import edu.tudelft.games.f1manager.core.DriverList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class ClientController {
-
-  @FXML
-  private AnchorPane midAnchorPane;
 
   @FXML
   private Pane content;
