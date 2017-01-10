@@ -40,7 +40,7 @@ public class AiTeamListTest {
   public void readtest() throws IOException {
 
     AiTeamList aiTeamList = AiTeamList.read("TESTS/aiTeamListtest.json");
-    assertEquals(69, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
+    assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
 
 
   }
