@@ -34,10 +34,10 @@ public class DriverList {
    *
    * @return a driverlist
    */
-  public static DriverList read() {
-    String filename = "drivers.json";
+  public static DriverList read(String filename) {
+//    String filename = "drivers.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(filename);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     DriverList driverList = gson.fromJson(reader, DriverList.class);
@@ -53,8 +53,8 @@ public class DriverList {
    * @param driverlist the driverlist that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(DriverList driverlist) throws IOException {
-    String filename = "drivers.json";
+  public static void write(DriverList driverlist, String filename) throws IOException {
+//    String filename = "drivers.json";
     Gson gson = new GsonBuilder().create();
     String json = gson.toJson(driverlist);
 

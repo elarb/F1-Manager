@@ -23,10 +23,10 @@ public class EngineList {
    *
    * @return a enginelist
    */
-  public static EngineList read() {
-    String filename = "engines.json";
+  public static EngineList read(String filename) {
+//    String filename = "engines.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(filename);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     EngineList enginelist = gson.fromJson(reader, EngineList.class);
@@ -42,8 +42,8 @@ public class EngineList {
    * @param enginelist the enginelist that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(EngineList enginelist) throws IOException {
-    String filename = "engines.json";
+  public static void write(EngineList enginelist, String filename) throws IOException {
+//    String filename = "engines.json";
     Gson gson = new GsonBuilder().create();
     String json = gson.toJson(enginelist);
 

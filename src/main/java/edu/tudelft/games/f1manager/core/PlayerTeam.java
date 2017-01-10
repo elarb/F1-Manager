@@ -47,10 +47,10 @@ public class PlayerTeam extends Team {
    *
    * @return a playerteam
    */
-  public static PlayerTeam read() {
-    String filename = "playerteam.json";
+  public static PlayerTeam read(String filename) {
+//    String filename = "playerteam.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(filename);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     PlayerTeam playerteam = gson.fromJson(reader, PlayerTeam.class);
@@ -66,8 +66,8 @@ public class PlayerTeam extends Team {
    * @param playerteam the playerteam that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(PlayerTeam playerteam) throws IOException {
-    String filename = "playerteam.json";
+  public static void write(PlayerTeam playerteam, String filename) throws IOException {
+//    String filename = "playerteam.json";
     Gson gson = new GsonBuilder().create();
     String json = gson.toJson(playerteam);
 
