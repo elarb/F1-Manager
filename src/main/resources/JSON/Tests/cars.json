@@ -1,0 +1,17 @@
+{
+    "carList": [
+        {
+            "engine": {
+                "brand": "bob",
+                "power": 12.0,
+                "drivability": 12.0,
+                "fuelEfficiency": 12.0,
+                "price": 0.0
+            },
+            "body": 12.0,
+            "tyres": {
+                "hardness": 12
+            }
+        }
+    ]
+}
