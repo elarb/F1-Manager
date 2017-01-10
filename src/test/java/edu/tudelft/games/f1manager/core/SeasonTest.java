@@ -30,17 +30,16 @@ public class SeasonTest {
   }
 
   @Test
-  public void updatejsontest() throws IOException {
+  public void readtest() throws IOException {
 
-    season.updateJson();
-
+    Season season = Season.read("TESTS/seasontest.json");
+    assertEquals(12, season.getCurrentRace());
   }
 
   @Test
-  public void getjsontest() throws IOException {
+  public void writetest() throws IOException {
 
-    season.getJson();
-    assertEquals(12, season.getCurrentRace());
+    season.write("TESTS/seasontest.json");
 
   }
 

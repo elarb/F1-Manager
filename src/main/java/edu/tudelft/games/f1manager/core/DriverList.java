@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DriverList {
 
-  private Gson gson = new GsonBuilder()
+  private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
     .registerTypeAdapter(Team.class, new TeamInstanceCreator())
@@ -48,42 +48,32 @@ public class DriverList {
    *
    * @return a playerteam
    */
-  public DriverList read() {
-
-    String fileName = "JSON/drivers.json";
+  public static DriverList read(String filename) {
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return new DriverList(gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType()));
 
   }
 
-  /**
-   * Uses read() to initialize a playerteam object.
-   */
-  public void getJson() {
-
-    DriverList newdriverlist = read();
-    this.driverList = newdriverlist.getDriverList();
-
-  }
 
   /**
    * Updates the "drivers.json" file with the changes
    *
    * @throws IOException throws an IO Exception
    */
-  public void updateJson() throws IOException {
-
-    String fileName = "drivers.json";
+  public void write(String filename) throws IOException {
 
     String json = gson.toJson(this.driverList);
 
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
 
   }
 
