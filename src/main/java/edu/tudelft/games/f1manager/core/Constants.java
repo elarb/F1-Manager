@@ -13,5 +13,5 @@ public class Constants {
   public static final int DRIVERBASEPRICE = 0;
   public static final int BASE_PITSTOP_UP_PRICE = 2000000;
   public static final int CRASH_CHANCE = 8;
-
+  public static final int MAX_BUYS = 4;
 }
