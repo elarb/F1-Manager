@@ -63,10 +63,10 @@ public class Season {
    *
    * @return a season
    */
-  public static Season read() {
-    String filename = "season.json";
+  public static Season read(String filename) {
+//    String filename = "season.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(filename);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     Season season = gson.fromJson(reader, Season.class);
@@ -82,8 +82,8 @@ public class Season {
    * @param season the season that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(Season season) throws IOException {
-    String filename = "season.json";
+  public static void write(Season season, String filename) throws IOException {
+//    String filename = "season.json";
     Gson gson = new GsonBuilder().create();
     String json = gson.toJson(season);
 

@@ -17,7 +17,7 @@ public class AiTeamList {
   /**
    * A list of Computer Teams.
    */
-  private List<AiTeam> aiTeamList;
+  private List<AiTeam> teams;
 
 
   /**
@@ -25,7 +25,7 @@ public class AiTeamList {
    * Has a fixed size of 10
    */
   public AiTeamList() {
-    this.aiTeamList = FixedSizeList.decorate(Arrays.asList(new AiTeam[10]));
+    this.teams = FixedSizeList.decorate(Arrays.asList(new AiTeam[10]));
   }
 
 
@@ -35,10 +35,10 @@ public class AiTeamList {
    *
    * @return a aiteamlist
    */
-  public static AiTeamList read() {
-    String filename = "aiteams.json";
+  public static AiTeamList read(String filename) {
+//    String filename = "aiteams.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(filename);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     AiTeamList aiteamlist = gson.fromJson(reader, AiTeamList.class);
@@ -54,8 +54,8 @@ public class AiTeamList {
    * @param aiteamlist the aiteamlist that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(AiTeamList aiteamlist) throws IOException {
-    String filename = "aiteams.json";
+  public static void write(AiTeamList aiteamlist, String filename) throws IOException {
+//    String filename = "aiteams.json";
     Gson gson = new GsonBuilder().create();
     String json = gson.toJson(aiteamlist);
 
@@ -65,11 +65,11 @@ public class AiTeamList {
     System.out.println("This has been written to aiteamlist.json : " + json);
   }
 
-  public List<AiTeam> getAiTeamList() {
-    return aiTeamList;
+  public List<AiTeam> getTeams() {
+    return teams;
   }
 
-  public void setAiTeamList(List<AiTeam> aiTeamList) {
-    this.aiTeamList = aiTeamList;
+  public void setTeams(List<AiTeam> teams) {
+    this.teams = teams;
   }
 }

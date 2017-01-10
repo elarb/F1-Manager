@@ -27,10 +27,9 @@ public class AddCarToJson {
    */
   public static void main(String[] args) throws IOException {
 
-    String fileName = "JSON/newcars.json";
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/Tests/cars.json");
     Reader reader = new InputStreamReader(is);
     Gson gson = new GsonBuilder().create();
     CarList carlist = gson.fromJson(reader, CarList.class);
@@ -55,7 +54,7 @@ public class AddCarToJson {
 
         String json = gson.toJson(carlist);
 
-        FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON" + fileName);
+        FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/Tests/cars.json");
         outputStream.write(json.getBytes());
         outputStream.close();
 
