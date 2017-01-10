@@ -5,7 +5,9 @@ import com.google.gson.GsonBuilder;
 
 import edu.tudelft.games.f1manager.core.Team;
 
+import javax.print.DocFlavor;
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 
@@ -15,6 +17,10 @@ public class Season {
    * The current race in the season.
    */
   private int currentRace;
+  private static Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
 
   /**
    * A list of races.
@@ -101,20 +107,49 @@ public class Season {
     this.currentRace = currentRace;
   }
 
-  public ArrayList<Race> getRaces() {
-    return races;
-  }
-
-  public void setRaces(ArrayList<Race> races) {
-    this.races = races;
-  }
-
   public ArrayList<Team> getConstructorStandings() {
     return constructorStandings;
   }
 
   public void setConstructorStandings(ArrayList<Team> constructorStandings) {
     this.constructorStandings = constructorStandings;
+  }
+
+
+  /**
+   * Reads a season from "season.json".
+   *
+   * @return a season
+   */
+  public static Season read(String filename) {
+
+    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
+    Reader reader = new InputStreamReader(is);
+
+    return gson.fromJson(reader, Season.class);
+
+  }
+
+
+  /**
+   * Updates the "season.json" file with the changed fields
+   *
+   * @throws IOException throws an IO Exception
+   */
+  public void write(String filename) throws IOException {
+
+    Season season = new Season(this.getCurrentRace(), this.getConstructorStandings());
+
+    String json = gson.toJson(season);
+
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
+    outputStream.write(json.getBytes());
+    outputStream.close();
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
+
   }
 
 }

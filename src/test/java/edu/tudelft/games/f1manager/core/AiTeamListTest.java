@@ -37,20 +37,18 @@ public class AiTeamListTest {
   }
 
   @Test
-  public void updatejsontest() throws IOException {
+  public void readtest() throws IOException {
 
-    System.out.println(aiTeamList.getAiTeamList());
+    AiTeamList aiTeamList = AiTeamList.read("TESTS/aiTeamListtest.json");
+    assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
 
-    aiTeamList.updateJson();
 
   }
 
   @Test
-  public void getjsontest() throws IOException {
+  public void write() throws IOException {
 
-    aiTeamList.getJson();
-    assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
-
+    aiTeamList.write("TESTS/aiTeamListtest.json");
 
   }
 

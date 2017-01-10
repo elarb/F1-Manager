@@ -6,8 +6,8 @@ import com.google.gson.GsonBuilder;
 import org.apache.commons.collections.list.FixedSizeList;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
 /**
  * Class that represents a list of Computer Teams.
@@ -20,12 +20,23 @@ public class AiTeamList {
   private List<AiTeam> teams;
 
 
+  private static Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls().create();
+
   /**
    * Creates an object that represents a list of ai teams.
    * Has a fixed size of 10
    */
   public AiTeamList() {
-    this.teams = FixedSizeList.decorate(Arrays.asList(new AiTeam[10]));
+  }
+
+  public ArrayList<AiTeam> getAiTeamList() {
+    return aiTeamList;
+  }
+
+  public void setAiTeamList(ArrayList<AiTeam> aiTeamList) {
+    this.aiTeamList = aiTeamList;
   }
 
 
@@ -36,12 +47,14 @@ public class AiTeamList {
    * @return a aiteamlist
    */
   public static AiTeamList read(String filename) {
-//    String filename = "aiteams.json";
+
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
+    InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
-    Gson gson = new GsonBuilder().create();
-    AiTeamList aiteamlist = gson.fromJson(reader, AiTeamList.class);
+    ArrayList<AiTeam> aiTeamArrayList = gson.fromJson(reader, new TypeToken<ArrayList<AiTeam>>() {
+    }.getType());
+    AiTeamList aiteamlist = new AiTeamList();
+    aiteamlist.setAiTeamList(aiTeamArrayList);
 
     return aiteamlist;
 
@@ -54,22 +67,16 @@ public class AiTeamList {
    * @param aiteamlist the aiteamlist that gets written
    * @throws IOException when the file doesn't exist
    */
-  public static void write(AiTeamList aiteamlist, String filename) throws IOException {
-//    String filename = "aiteams.json";
-    Gson gson = new GsonBuilder().create();
-    String json = gson.toJson(aiteamlist);
+  public void write(String filename) throws IOException {
+
+    String json = gson.toJson(this.aiTeamList);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
-    System.out.println("This has been written to aiteamlist.json : " + json);
+
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
   }
 
-  public List<AiTeam> getTeams() {
-    return teams;
-  }
-
-  public void setTeams(List<AiTeam> teams) {
-    this.teams = teams;
-  }
 }
