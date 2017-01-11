@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
 
+import edu.tudelft.games.f1manager.game.Race;
 import edu.tudelft.games.f1manager.game.Season;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,29 +26,30 @@ public class GameTest {
   @Before
   public void setUp(){
 
-    Driver driver1 = new Driver("Mighty Join", mock(Team.class));
-    Driver driver2 = new Driver("Pieter", mock(Team.class));
+    Driver driver1 = new Driver("Mighty Join", 1);
+    Driver driver2 = new Driver("Pieter", 2);
     ArrayList<Driver> driverArrayList = new ArrayList<Driver>();
     driverArrayList.add(driver1);
     driverArrayList.add(driver2);
-    driverList = new DriverList(driverArrayList);
+    driverList = new DriverList();
+    driverList.setDrivers(driverArrayList);
 
     AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class));
+      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 1);
 
-    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class));
+    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 100, 2);
 
     ArrayList<AiTeam> array = new ArrayList<AiTeam>();
     array.add(aiTeam);
     array.add(aiTeam2);
     aiTeamList = new AiTeamList();
-    aiTeamList.setAiTeamList(array);
+    aiTeamList.setTeams(array);
 
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class),
-      0, true);
-    season = new Season(0, new ArrayList<Team>());
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
+      200, true);
+    season = new Season(0, new ArrayList<Race>());
 
   }
 
@@ -55,7 +57,7 @@ public class GameTest {
   public void newgametest(){
 
     Game.newgame();
-    assertEquals(2, driverList.getDriverList().size());
+    assertEquals(2, driverList.getDrivers().size());
 
   }
 
