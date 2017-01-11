@@ -55,7 +55,7 @@ public class GameTest {
   public void newgametest(){
 
     Game.newgame();
-    assertEquals(0, driverList.getDriverList().size());
+    assertEquals(2, driverList.getDriverList().size());
 
   }
 
