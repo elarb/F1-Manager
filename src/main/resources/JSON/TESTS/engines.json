@@ -1,0 +1,133 @@
+[{
+
+    "brand": "Ferrari",
+    "power": "821",
+    "fuelefficiency": "8.3",
+    "drivability": "9.8"
+},
+
+{
+    "brand": "Ford",
+    "power": "871",
+    "fuelefficiency": "8.5",
+    "drivability": "9.5"
+},
+
+{
+    "brand": "Renault",
+    "power": "797",
+    "fuelefficiency": "8.3",
+    "drivability": "8.2"
+},
+
+{
+    "brand": "Mercedes",
+    "power": "858",
+    "fuelefficiency": "8.3",
+    "drivability": "8.7"
+},
+
+{
+    "brand": "Honda",
+    "power": "777",
+    "fuelefficiency": "7.4",
+    "drivability": "8.1"
+},
+
+{
+    "brand": "Coventry Climax",
+    "power": "670",
+    "fuelefficiency": "7.9",
+    "drivability": "6.1"
+},
+
+{
+    "brand": "TAG",
+    "power": "762",
+    "fuelefficiency": "8.9",
+    "drivability": "7.9"
+},
+
+{
+    "brand": "BMW",
+    "power": "732",
+    "fuelefficiency": "7.5",
+    "drivability": "7.5"
+},
+
+{
+    "brand": "BRM",
+    "power": "634",
+    "fuelefficiency": "8.9",
+    "drivability": "6.3"
+},
+
+{
+    "brand": "Alfa Romeo",
+    "power": "802",
+    "fuelefficiency": "6.5",
+    "drivability": "5"
+},
+
+{
+    "brand": "Maserati",
+    "power": "787",
+    "fuelefficiency": "6.2",
+    "drivability": "5.7"
+},
+
+{
+    "brand": "Offenhauser",
+    "power": "500",
+    "fuelefficiency": "7.4",
+    "drivability": "4.7"
+},
+
+{
+    "brand": "VanWall",
+    "power": "560",
+    "fuelefficiency": "5.7",
+    "drivability": "6"
+},
+
+{
+    "brand": "Repco",
+    "power": "627",
+    "fuelefficiency": "5.4",
+    "drivability": "5.2"
+},
+
+{
+    "brand": "Mugen-Honda",
+    "power": "762",
+    "fuelefficiency": "7.5",
+    "drivability": "5.9"
+},
+
+{
+    "brand": "Matra",
+    "power": "524",
+    "fuelefficiency": "6.5",
+    "drivability": "4.5"
+},
+
+{
+    "brand": "TAG Heuer",
+    "power": "726",
+    "fuelefficiency": "5.1",
+    "drivability": "5.8"
+},
+
+{
+    "brand": "Porsche",
+    "power": "562",
+    "fuelefficiency": "4.6",
+    "drivability": "6.3"
+},
+
+{
+    "brand": "Weslake",
+    "power": "714",
+    "fuelefficiency": "4.9",
+    "drivability": "3.9"
+}]

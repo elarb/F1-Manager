@@ -2,7 +2,6 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
@@ -13,78 +12,67 @@ import java.util.ArrayList;
  */
 public class DriverList {
 
-  private Gson gson = new GsonBuilder()
+  private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
-    .registerTypeAdapter(Team.class, new TeamInstanceCreator())
-    .excludeFieldsWithoutExposeAnnotation()
     .create();
 
+  private ArrayList<Driver> drivers;
+
+
+  public DriverList() {
+    this.drivers = new ArrayList<>();
+  }
 
   /**
-   * A list of Drivers.
-   */
-  private ArrayList<Driver> driverList;
-
-  /**
-   * Creates an Object that represents a list of Drivers.
+   * Adds the driver to the list of drivers.
    *
-   * @param driverList A list of drivers
+   * @param driver the driver that gets added
    */
-  public DriverList(ArrayList<Driver> driverList) {
-    this.driverList = driverList;
-  }
-
-  public ArrayList<Driver> getDriverList() {
-    return driverList;
-  }
-
-  public void setDriverList(ArrayList<Driver> driverList) {
-    this.driverList = driverList;
+  public void add(Driver driver) {
+    this.drivers.add(driver);
   }
 
   /**
-   * Reads a playerteam from "playerteam.json".
+   * Reads in drivers.json returns a driverlist
+   * object if the file is in the appropriate format.
    *
-   * @return a playerteam
+   * @return a driverlist
    */
-  public DriverList read() {
-
-    String fileName = "JSON/drivers.json";
+  public static DriverList read(String filename) {
 
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-    InputStream is = classloader.getResourceAsStream(fileName);
+    InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
-    return new DriverList(gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType()));
+    return gson.fromJson(reader, DriverList.class);
 
   }
 
-  /**
-   * Uses read() to initialize a playerteam object.
-   */
-  public void getJson() {
-
-    DriverList newdriverlist = read();
-    this.driverList = newdriverlist.getDriverList();
-
-  }
 
   /**
-   * Updates the "drivers.json" file with the changes
+   * Write the driverlist to drivers.json.
    *
-   * @throws IOException throws an IO Exception
+   * @throws IOException when the file doesn't exist
    */
-  public void updateJson() throws IOException {
+  public void write(String filename) throws IOException {
 
-    String fileName = "drivers.json";
+    String json = gson.toJson(this);
 
-    String json = gson.toJson(this.driverList);
-
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + fileName);
+    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
     outputStream.close();
 
+    System.out.println("Succesfully wrote to file");
+    System.out.println(json);
+
   }
 
+  public ArrayList<Driver> getDrivers() {
+    return drivers;
+  }
+
+  public void setDrivers(ArrayList<Driver> drivers) {
+    this.drivers = drivers;
+  }
 }
