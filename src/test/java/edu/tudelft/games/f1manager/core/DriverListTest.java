@@ -4,51 +4,32 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
 
 public class DriverListTest {
-
-  Driver driver1;
-  Driver driver2;
-  ArrayList<Driver> driverArrayList;
-  DriverList driverList;
-
-
 
 
   @Before
   public void setUp() throws Exception {
 
-    driver1 = new Driver("Mighty Join", mock(Team.class));
-    driver2 = new Driver("Pieter", mock(Team.class));
-    driverArrayList = new ArrayList<Driver>();
-    driverArrayList.add(driver1);
-    driverArrayList.add(driver2);
+    Driver driver1 = new Driver("Mighty John", 4);
+    Driver driver2 = new Driver("Pieter", 5);
 
-    driverList = new DriverList(driverArrayList);
+    DriverList driverList = new DriverList();
+    driverList.add(driver1);
+    driverList.add(driver2);
 
+    driverList.write("TESTS/drivers.json");
   }
 
   @Test
-  public void readtest() throws IOException {
-
-    DriverList driverList = DriverList.read("TESTS/testdrivers.json");
-    assertEquals("Mighty Join", driverList.getDriverList().get(0).getName());
-
-  }
-
-  @Test
-  public void writetest() throws IOException {
-
-    driverList.write("TESTS/testdrivers.json");
-
-
+  public void read_and_write() throws IOException, InterruptedException {
+    DriverList driverList = DriverList.read("TESTS/drivers.json");
+    assertEquals("Mighty John", driverList.getDrivers().get(0).getName());
 
   }
+
 
 }

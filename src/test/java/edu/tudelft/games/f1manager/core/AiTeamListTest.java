@@ -11,45 +11,34 @@ import static org.mockito.Mockito.mock;
 
 public class AiTeamListTest {
 
-  AiTeam aiTeam;
-  AiTeam aiTeam2;
-  ArrayList<AiTeam> array;
-  AiTeamList aiTeamList;
+
+  private AiTeamList aiTeamList;
 
   @Before
   public void setUp() throws Exception {
 
-    aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class));
+    AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 0, 1);
 
-    aiTeam2 = new AiTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class));
-
-    array = new ArrayList<AiTeam>();
-
-    array.add(aiTeam);
-    array.add(aiTeam2);
+    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 2);
 
     aiTeamList = new AiTeamList();
 
-    aiTeamList.setAiTeamList(array);
+    aiTeamList.add(aiTeam);
+    aiTeamList.add(aiTeam2);
 
+    aiTeamList.write("TESTS/aiteams.json");
   }
 
   @Test
-  public void readtest() throws IOException {
+  public void read_and_write() throws IOException {
 
-    AiTeamList aiTeamList = AiTeamList.read("TESTS/aiTeamListtest.json");
-    assertEquals(0, aiTeamList.getAiTeamList().get(0).getStrategist().getRating());
+    AiTeamList aiTeamList = AiTeamList.read("TESTS/aiteams.json");
+    assertEquals(0, aiTeamList.getTeams().get(0).getStrategist().getRating());
 
-
-  }
-
-  @Test
-  public void write() throws IOException {
-
-    aiTeamList.write("TESTS/aiTeamListtest.json");
 
   }
+
 
 }

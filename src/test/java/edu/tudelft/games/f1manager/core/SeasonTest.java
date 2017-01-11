@@ -1,7 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
+import edu.tudelft.games.f1manager.game.Race;
 import edu.tudelft.games.f1manager.game.Season;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,9 +10,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Timpelser on 07/01/2017.
- */
 public class SeasonTest {
 
   private Season season;
@@ -20,27 +17,17 @@ public class SeasonTest {
   @Before
   public void setUp() throws Exception {
 
-    season = new Season(12, new ArrayList<Team>());
-
+    season = new Season(12, new ArrayList<Race>());
+    season.write("TESTS/season.json");
   }
 
-  @After
-  public void tearDown() throws Exception {
-
-  }
 
   @Test
-  public void readtest() throws IOException {
+  public void read_and_write() throws IOException {
 
-    Season season = Season.read("TESTS/seasontest.json");
+    Season season = Season.read("TESTS/season.json");
     assertEquals(12, season.getCurrentRace());
   }
 
-  @Test
-  public void writetest() throws IOException {
-
-    season.write("TESTS/seasontest.json");
-
-  }
 
 }
