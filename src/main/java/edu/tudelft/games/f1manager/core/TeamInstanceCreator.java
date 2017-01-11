@@ -12,11 +12,11 @@ public class TeamInstanceCreator implements InstanceCreator<Team> {
 
     if (type instanceof AiTeam) {
 
-      return new AiTeam(null, null, null, null, null);
+      return new AiTeam(null, null, null, null, null, 0, 0);
 
     } else {
 
-      return new PlayerTeam(null, null, null, null, null, 0, true);
+      return new PlayerTeam(null, null, null, null, null, 0, 0, 0, false);
     }
 
   }

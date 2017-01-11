@@ -3,7 +3,13 @@
     "hasSoftwareTester": true,
     "driverList": [
         {
-            "name": "test testson",
+            "name": "Bob Simpson",
+            "speed": 0.0,
+            "racecraft": 0.0,
+            "strategyinsight": 0.0
+        },
+        {
+            "name": "Rick Simpson",
             "speed": 0.0,
             "racecraft": 0.0,
             "strategyinsight": 0.0
