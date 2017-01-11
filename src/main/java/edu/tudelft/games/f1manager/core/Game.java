@@ -14,7 +14,7 @@ public class Game {
   private Season season;
 
 
-  public void Game(){
+  public static void Game(){
 
   }
 
@@ -72,14 +72,23 @@ public class Game {
 
   }
 
-  public static void newgame(){
+  public static Game newgame(){
 
     DriverList driverList = DriverList.read("drivers.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
 
+    Game game = new Game();
+
+    game.setDriverList(driverList);
+    game.setAiTeamList(aiTeamList);
+    game.setPlayerTeam(playerTeam);
+    game.setSeason(season);
+
     System.out.println("Succesfully created a new game!");
+
+    return game;
 
   }
 
