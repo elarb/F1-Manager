@@ -4,54 +4,32 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
 
 public class DriverListTest {
 
-  Driver driver1;
-  Driver driver2;
-  PlayerTeam team;
-  ArrayList<Driver> driverArrayList;
-  DriverList driverList;
-
 
   @Before
   public void setUp() throws Exception {
-    team = new PlayerTeam(new ArrayList<Driver>(),new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class),
-      100, true);
 
-    driver1 = new Driver("test testson", team);
-    driver2 = new Driver("Tester", team);
-    driverArrayList = new ArrayList<Driver>();
-    driverArrayList.add(driver1);
-    driverArrayList.add(driver2);
+    Driver driver1 = new Driver("Mighty John", 4);
+    Driver driver2 = new Driver("Pieter", 5);
 
+    DriverList driverList = new DriverList();
+    driverList.add(driver1);
+    driverList.add(driver2);
 
-    driverList = new DriverList(driverArrayList);
-
-  }
-
-
-  @Test
-  public void updatejsontest() throws IOException {
-
-    driverList.updateJson();
-
-
+    driverList.write("TESTS/drivers.json");
   }
 
   @Test
-  public void getjsontest() throws IOException {
-
-    driverList.getJson();
-    assertTrue(driverList.getDriverList().size() > 0);
+  public void read_and_write() throws IOException, InterruptedException {
+    DriverList driverList = DriverList.read("TESTS/drivers.json");
+    assertEquals("Mighty John", driverList.getDrivers().get(0).getName());
 
   }
+
 
 }

@@ -1,53 +1,56 @@
 package edu.tudelft.games.f1manager.core;
 
-import com.google.gson.annotations.Expose;
 
 public class Driver {
 
-  @Expose
+
   private String name;
 
-
-  private Team team;
-
-  @Expose
   private double speed;
 
-  @Expose
   private double racecraft;
 
-  @Expose
   private double strategyinsight;
 
   private int value;
 
+  private int teamId;
+
   /**
    * Creates an object that represents a Driver in a F1 Team.
    *
-   * @param iname name of the driver
-   * @param iteam team the driver is in, null if driver has no team
+   * @param name   name of the driver
+   * @param teamId of the team the driver is in, null if the driver doesn't have a team
    */
-  public Driver(String iname, Team iteam) {
-    this.name = iname;
-    this.team = iteam;
+  public Driver(String name, int teamId) {
+    this.name = name;
+    this.teamId = teamId;
     this.value = (int) ((this.speed * Constants.SPEEDCOEF)
       * (this.racecraft * Constants.RACECRAFTCOEF)
       * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
       * Constants.DRIVERBASEPRICE);
-
   }
 
   /**
-   * Transfers the driver to another team.
-   *
-   * @param team the team that the driver gets transferred to
+   * Reads playerteam.json and aiteams.json and searches for a team with the same id as
+   * @return
    */
-  public void transfer(Team team) {
-    this.getTeam().getDriverList().remove(this);
-    this.setTeam(team);
-    team.getDriverList().add(this);
-  }
-
+//  TODO: MOVE THIS TO THE GAME CLAS
+//  public Team getTeam() {
+//    AiTeamList aiteamlist = AiTeamList.read("aiteams.json");
+//    PlayerTeam playerteam = PlayerTeam.read("playerteam.json");
+//    List<AiTeam> teams = aiteamlist.getTeams();
+//
+//    if (this.teamId == playerteam.getId()) {
+//      return playerteam;
+//    }
+//    for (AiTeam team : teams) {
+//      if (this.teamId == team.getId()) {
+//        return team;
+//      }
+//    }
+//    return null;
+//  }
 
   public String getName() {
     return name;
@@ -57,12 +60,12 @@ public class Driver {
     this.name = name;
   }
 
-  public Team getTeam() {
-    return team;
+  public int getTeamId() {
+    return teamId;
   }
 
-  public void setTeam(Team team) {
-    this.team = team;
+  public void setTeamId(int teamId) {
+    this.teamId = teamId;
   }
 
   public double getSpeed() {
@@ -96,4 +99,6 @@ public class Driver {
   public void setValue(int value) {
     this.value = value;
   }
+
+
 }
