@@ -1,7 +1,6 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
-import com.google.gson.annotations.Expose;
 
 public class Strategist implements Upgradeable {
 
@@ -9,14 +8,12 @@ public class Strategist implements Upgradeable {
    * The strategy of the strategist. Can be low-, medium-, high-risk.
    */
 
-  @Expose
   private Risk strategy;
 
   /**
    * Rating of the strategist expressed as an integer from 70 - 99.
    */
 
-  @Expose
   private int rating;
 
   /**
