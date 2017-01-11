@@ -2,7 +2,6 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
@@ -16,8 +15,6 @@ public class DriverList {
   private static Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
     .serializeNulls()
-    .registerTypeAdapter(Team.class, new TeamInstanceCreator())
-    .excludeFieldsWithoutExposeAnnotation()
     .create();
 
   private ArrayList<Driver> drivers;
@@ -48,7 +45,7 @@ public class DriverList {
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
-    return new DriverList(gson.fromJson(reader, new TypeToken<ArrayList<Driver>>(){}.getType()));
+    return gson.fromJson(reader, DriverList.class);
 
   }
 
@@ -56,12 +53,11 @@ public class DriverList {
   /**
    * Write the driverlist to drivers.json.
    *
-   * @param driverlist the driverlist that gets written
    * @throws IOException when the file doesn't exist
    */
   public void write(String filename) throws IOException {
 
-    String json = gson.toJson(this.driverList);
+    String json = gson.toJson(this);
 
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(json.getBytes());
@@ -72,4 +68,11 @@ public class DriverList {
 
   }
 
+  public ArrayList<Driver> getDrivers() {
+    return drivers;
+  }
+
+  public void setDrivers(ArrayList<Driver> drivers) {
+    this.drivers = drivers;
+  }
 }
