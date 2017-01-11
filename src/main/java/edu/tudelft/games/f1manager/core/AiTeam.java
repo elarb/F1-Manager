@@ -25,4 +25,19 @@ public class AiTeam extends Team {
     super(driverList, carList, strategist, aerodynamicist, mechanic, points, id);
   }
 
+
+//  /**
+//   * @param driver
+//   */
+//  public void buyDriver(Driver driver) {
+//    Team team = Game.getTeamById(driver.getTeamId());
+//
+//    if ( team instanceof AiTeam) {
+//      driver.transfer(this);
+//    } else {
+//      PlayerTeam oldTeam = (PlayerTeam) driver.getTeam();
+//      oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
+//      driver.transfer(this);
+//    }
+//  }
 }
