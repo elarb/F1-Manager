@@ -1,1 +1,38 @@
-[{"driverList":[],"carList":[],"strategist":{"mockitoInterceptor":{},"strategy":null,"rating":0},"aerodynamicist":{"mockitoInterceptor":{},"expertise":0},"mechanic":{"mockitoInterceptor":{},"pitstopTime":0,"upgradePrice":0}},{"driverList":[],"carList":[],"strategist":{"mockitoInterceptor":{},"strategy":null,"rating":0},"aerodynamicist":{"mockitoInterceptor":{},"expertise":0},"mechanic":{"mockitoInterceptor":{},"pitstopTime":0,"upgradePrice":0}}]
+[
+    {
+        "driverList": [],
+        "carList": [],
+        "strategist": {
+            "mockitoInterceptor": {},
+            "strategy": null,
+            "rating": 0
+        },
+        "aerodynamicist": {
+            "mockitoInterceptor": {},
+            "expertise": 0
+        },
+        "mechanic": {
+            "mockitoInterceptor": {},
+            "pitstopTime": 0,
+            "upgradePrice": 0
+        }
+    },
+    {
+        "driverList": [],
+        "carList": [],
+        "strategist": {
+            "mockitoInterceptor": {},
+            "strategy": null,
+            "rating": 0
+        },
+        "aerodynamicist": {
+            "mockitoInterceptor": {},
+            "expertise": 0
+        },
+        "mechanic": {
+            "mockitoInterceptor": {},
+            "pitstopTime": 0,
+            "upgradePrice": 0
+        }
+    }
+]
