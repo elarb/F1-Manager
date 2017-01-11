@@ -13,13 +13,18 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+  private ClientController controller = new ClientController();
+
   @Override
   public void start(Stage primaryStage) throws Exception {
 
     Font.loadFont(getClass().getClassLoader()
         .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
 
-    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/main.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/main.fxml"));
+    loader.setController(controller);
+
+    Parent root = loader.load();
     primaryStage.getIcons().addAll(new Image("img/F1_logo.png"));
     primaryStage.setTitle("F1 Manager");
     primaryStage.setScene(new Scene(root, 1280, 800));
@@ -32,4 +37,5 @@ public class Main extends Application {
 
   public static void main(String[] args) {launch(args);
   }
+
 }

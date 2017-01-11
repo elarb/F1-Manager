@@ -8,22 +8,25 @@ import java.io.IOException;
 
 public class ClientController {
 
-
   @FXML
   private AnchorPane mainScreen;
 
   public void handleButtonClick_StartGame() throws IOException {
     mainScreen.getChildren().clear();
-    mainScreen.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/main menu.fxml")));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main menu.fxml"));
+    loader.setController(this);
+    mainScreen.getChildren().add(loader.load());
   }
 
-
-  public void handleButtonClick_newGame() throws IOException{
+  public void handleButtonClick_newGame() throws IOException {
 
   }
 
-  public void handleButtonClick_LoadGame() throws IOException{
-
+  public void handleButtonClick_LoadGame() throws IOException {
+    mainScreen.getChildren().clear();
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client.fxml"));
+    loader.setController(this);
+    mainScreen.getChildren().add(loader.load());
   }
 
   public void handleButtonClick_ExitGame() throws IOException {
