@@ -4,9 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 public class EngineList {
+
+  private static Gson gson = new GsonBuilder()
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
 
   ArrayList<Engine> enginelist;
 
@@ -18,40 +24,20 @@ public class EngineList {
   }
 
   /**
-   * Reads in drivers.json returns a enginelist
+   * Reads in engines.json returns a engines
    * object if the file is in the appropriate format.
    *
-   * @return a enginelist
+   * @return an enginelist
    */
   public static EngineList read(String filename) {
-//    String filename = "engines.json";
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
-    Gson gson = new GsonBuilder().create();
-    EngineList enginelist = gson.fromJson(reader, EngineList.class);
 
-    return enginelist;
+    return gson.fromJson(reader, EngineList.class);
 
   }
-
-
-  /**
-   * Write the enginelist to engines.json.
-   *
-   * @param enginelist the enginelist that gets written
-   * @throws IOException when the file doesn't exist
-   */
-  public static void write(EngineList enginelist, String filename) throws IOException {
-//    String filename = "engines.json";
-    Gson gson = new GsonBuilder().create();
-    String json = gson.toJson(enginelist);
-
-    FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
-    outputStream.close();
-    System.out.println("This has been written to the file: " + json);
-  }
+  
 
   public void addEngine(Engine engine) {
     enginelist.add(engine);
