@@ -1,4 +1,4 @@
-[{
+{"drivers":[{
 
     "name": "Nico Rosberg",
     "team": "Mercedes",
@@ -157,4 +157,4 @@
         "speed": 5.5,
         "racecraft": 5.9,
         "strategyinsight": 4.5
-    }]
+    }]}
