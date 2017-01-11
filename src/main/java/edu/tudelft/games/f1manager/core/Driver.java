@@ -29,9 +29,28 @@ public class Driver {
       * (this.racecraft * Constants.RACECRAFTCOEF)
       * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
       * Constants.DRIVERBASEPRICE);
-
   }
 
+  /**
+   * Reads playerteam.json and aiteams.json and searches for a team with the same id as
+   * @return
+   */
+//  TODO: MOVE THIS TO THE GAME CLAS
+//  public Team getTeam() {
+//    AiTeamList aiteamlist = AiTeamList.read("aiteams.json");
+//    PlayerTeam playerteam = PlayerTeam.read("playerteam.json");
+//    List<AiTeam> teams = aiteamlist.getTeams();
+//
+//    if (this.teamId == playerteam.getId()) {
+//      return playerteam;
+//    }
+//    for (AiTeam team : teams) {
+//      if (this.teamId == team.getId()) {
+//        return team;
+//      }
+//    }
+//    return null;
+//  }
 
   public String getName() {
     return name;
@@ -80,4 +99,6 @@ public class Driver {
   public void setValue(int value) {
     this.value = value;
   }
+
+
 }
