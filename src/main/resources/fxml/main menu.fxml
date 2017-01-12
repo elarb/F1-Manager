@@ -3,11 +3,12 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<BorderPane prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <AnchorPane prefHeight="100.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
             <children>
@@ -29,7 +30,8 @@
          <children>
             <Button layoutX="516.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleButtonClick_newGame" prefHeight="54.0" prefWidth="212.0" text="new game" />
             <Button layoutX="516.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleButtonClick_ExitGame" prefHeight="54.0" prefWidth="212.0" text="exit game" />
-            <Button layoutX="516.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleButtonClick_LoadGame" prefHeight="54.0" prefWidth="212.0" text="load game" />
+            <Button layoutX="516.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonClick_LoadGame" prefHeight="54.0" prefWidth="212.0" text="load game" />
+            <TextField fx:id="loadgameText" layoutX="529.0" layoutY="307.0" />
          </children></AnchorPane>
     </bottom>
     <cursor>
