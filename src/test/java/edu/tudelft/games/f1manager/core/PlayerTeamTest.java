@@ -16,11 +16,11 @@ public class PlayerTeamTest {
 
   @Before
   public void setUp() throws Exception {
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
       200, true);
 
-    playerTeam2 = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    playerTeam2 = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 5, 3,
       200, true);
 

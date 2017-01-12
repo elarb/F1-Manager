@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
+import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 public class Strategist implements Upgradeable {
 
@@ -109,6 +110,26 @@ public class Strategist implements Upgradeable {
     return ((1.784892334 * Math.pow(10, -4)) * Math.pow(this.getRating(), 3)
       - (3.794692929 * Math.pow(10, -2)) * Math.pow(this.getRating(), 2))
       + (2.069456242 * this.rating) - 14.14001765;
+  }
+
+
+  /**
+   * Returns the crash chance of a car
+   *
+   * @return crash chance
+   */
+  public double getCrashChance() {
+    return Constants.CRASH_CHANCE + this.getIncreasedCrashChance();
+  }
+
+  /**
+   * Returns true if crashed.
+   *
+   * @return true if crashed, false otherwise
+   */
+  public boolean hasCrashed() {
+    double random = RandomDouble.Generate(0, 100);
+    return random < this.getCrashChance();
   }
 
   /**

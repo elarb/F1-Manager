@@ -13,5 +13,13 @@ public class Constants {
   public static final int DRIVERBASEPRICE = 0;
   public static final int BASE_PITSTOP_UP_PRICE = 2000000;
   public static final int CRASH_CHANCE = 8;
+  public static final double STRATEGIST_COEF = 0;
+  public static final double DRIVER_COEF = 0;
+  public static final double GRIP_COEF = 0;
+  public static final double ENGINE_COEF = 0;
+  public static final double BODY_COEF = 0;
+  public static final double AERODYNAMISIST_COEF = 0;
+
+
 
 }
