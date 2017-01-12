@@ -32,6 +32,7 @@
             <Button layoutX="516.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleButtonClick_ExitGame" prefHeight="54.0" prefWidth="212.0" text="exit game" />
             <Button layoutX="516.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonClick_LoadGame" prefHeight="54.0" prefWidth="212.0" text="load game" />
             <TextField fx:id="loadgameText" layoutX="529.0" layoutY="307.0" />
+            <TextField fx:id="newgameText" layoutX="529.0" layoutY="170.0" />
          </children></AnchorPane>
     </bottom>
     <cursor>
