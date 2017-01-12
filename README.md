@@ -7,11 +7,24 @@ In this game, the player is the manager of a F1 team.
 The player starts with a budget and has the ability to compose a team and pick a strategy to win as many races as possibly and become the best!
 
 ## Installation
-TODO: Describe the installation process
+
+Prerequisites:
+
+- Java v8 or above installed (We recommend to always have the latest version)
+
+Steps :
+
+- Download the latest JAR build from our Github repository
+- Run the JAR file
+- Enjoy
+
 ## Usage
-TODO: Write usage instructions
+
+The game is self explanatory... (For the moment)
+
 ## History
-TODO: Write history
+
+Started as a Project for a Bachelor course, now one of the most well known f1 simulators around
 
 ## Team
 
