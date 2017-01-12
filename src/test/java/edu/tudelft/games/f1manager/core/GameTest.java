@@ -17,10 +17,10 @@ import static org.mockito.Mockito.mock;
 
 public class GameTest {
 
-  public DriverList driverList;
-  public AiTeamList aiTeamList;
-  public PlayerTeam playerTeam;
-  public Season season;
+  private DriverList driverList;
+  private AiTeamList aiTeamList;
+  private PlayerTeam playerTeam;
+  private Season season;
 
 
   @Before
@@ -28,11 +28,9 @@ public class GameTest {
 
     Driver driver1 = new Driver("Mighty Join", 1);
     Driver driver2 = new Driver("Pieter", 2);
-    ArrayList<Driver> driverArrayList = new ArrayList<Driver>();
-    driverArrayList.add(driver1);
-    driverArrayList.add(driver2);
     driverList = new DriverList();
-    driverList.setDrivers(driverArrayList);
+    driverList.add(driver1);
+    driverList.add(driver2);
 
     AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 1);
@@ -40,11 +38,9 @@ public class GameTest {
     AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 100, 2);
 
-    ArrayList<AiTeam> array = new ArrayList<AiTeam>();
-    array.add(aiTeam);
-    array.add(aiTeam2);
     aiTeamList = new AiTeamList();
-    aiTeamList.setTeams(array);
+    aiTeamList.add(aiTeam);
+    aiTeamList.add(aiTeam2);
 
     playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
