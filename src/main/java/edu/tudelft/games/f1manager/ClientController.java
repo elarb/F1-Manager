@@ -13,6 +13,9 @@ public class ClientController {
   @FXML
   private AnchorPane mainScreen;
 
+  @FXML
+  private TextField loadgameText;
+
   /**method that is called by the start game button.
    * changes the content of the screen to the main menu
    * @throws IOException error
@@ -24,6 +27,10 @@ public class ClientController {
     mainScreen.getChildren().add(loader.load());
   }
 
+  /**method that is called by the start game button.
+   * calls gotoClientUi and game.newGame()
+   * @throws IOException error
+   */
   public void handleButtonClick_newGame() throws IOException {
     Game game = Game.newgame();
 
@@ -32,11 +39,9 @@ public class ClientController {
     }
   }
 
-  @FXML
-  private TextField loadgameText;
 
   /**method that is called by the load game button.
-   * changes the content of the screen to the main(client.fxml) screen
+   * calls gotoClientUi and game.loadGame()
    * @throws IOException error
    */
   public void handleButtonClick_LoadGame() throws IOException {
@@ -51,7 +56,10 @@ public class ClientController {
     System.exit(0);
   }
 
-  public void gotoClientUi() throws IOException {
+  /**changes the content of the screen to the main(client.fxml) screen
+   * @throws IOException error
+   */
+  private void gotoClientUi() throws IOException {
     mainScreen.getChildren().clear();
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client.fxml"));
     loader.setController(this);
