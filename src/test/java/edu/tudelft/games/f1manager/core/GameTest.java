@@ -33,17 +33,17 @@ public class GameTest {
     driverList.add(driver1);
     driverList.add(driver2);
 
-    AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 1);
 
-    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 100, 2);
 
     aiTeamList = new AiTeamList();
     aiTeamList.add(aiTeam);
     aiTeamList.add(aiTeam2);
 
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
       200, true);
     season = new Season(0, new ArrayList<Race>());
@@ -55,7 +55,7 @@ public class GameTest {
   @Test
   public void newgametest(){
 
-    assertEquals(2, game.getDriverList().getDrivers().size());
+    assertEquals(20, game.getDriverList().getDrivers().size());
 
   }
 

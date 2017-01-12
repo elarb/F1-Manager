@@ -1,8 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import edu.tudelft.games.f1manager.tools.RandomDouble;
+
 import java.util.List;
 
 /**
@@ -18,9 +17,9 @@ public abstract class Team {
 
 
   /**
-   * List of cars owned by the team.
+   * Car owned by the team.
    */
-  private List<Car> carList;
+  private Car car;
 
 
   /**
@@ -53,17 +52,17 @@ public abstract class Team {
    * Creates an object that represents a F1 Team.
    *
    * @param driverList     list of drivers in the team
-   * @param carList        list of cars owned by the team
+   * @param car            car owned by the team
    * @param strategist     strategist of the team
    * @param aerodynamicist aerodynamicist of the team
    * @param mechanic       mechanic of the team
    * @param points         the amount of points of the team
    * @param id             the id of the team
    */
-  public Team(List<Driver> driverList, List<Car> carList, Strategist strategist,
+  public Team(List<Driver> driverList, Car car, Strategist strategist,
               Aerodynamicist aerodynamicist, Mechanic mechanic, int points, int id) {
     this.driverList = driverList;
-    this.carList = carList;
+    this.car = car;
     this.strategist = strategist;
     this.aerodynamicist = aerodynamicist;
     this.mechanic = mechanic;
@@ -84,7 +83,6 @@ public abstract class Team {
   }
 
 
-
   public List<Driver> getDriverList() {
     return driverList;
   }
@@ -93,12 +91,12 @@ public abstract class Team {
     this.driverList = driverList;
   }
 
-  public List<Car> getCarList() {
-    return carList;
+  public Car getCar() {
+    return car;
   }
 
-  public void setCarList(List<Car> carList) {
-    this.carList = carList;
+  public void setCar(Car car) {
+    this.car = car;
   }
 
   public Strategist getStrategist() {
@@ -136,4 +134,43 @@ public abstract class Team {
   public int getId() {
     return id;
   }
+
+  public double teamFactor() {
+
+    if (this.strategist.hasCrashed()) {
+
+      return 0;
+
+    } else {
+
+      double strategist = 1 / (Constants.STRATEGIST_COEF * this.strategist.getRating());
+      double grip = 1 / (Constants.GRIP_COEF * this.car.getTyres().getGrip());
+      double aerodynamics = 1 / (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
+      double body = 1 / (Constants.BODY_COEF * this.car.getBody());
+      double engine = 1 / (Constants.ENGINE_COEF * this.car.getEngine().getPrice());
+
+      return strategist * grip * aerodynamics * body * engine;
+
+    }
+
+  }
+
+
+  public double GetResultsDriver1() {
+
+    double driver = 1 / (Constants.DRIVER_COEF * this.driverList.get(0).getValue());
+    return RandomDouble.Generate(0, 1) * driver * this.teamFactor();
+
+  }
+
+  public double GetResultsDriver2() {
+
+    double driver = 1 / (Constants.DRIVER_COEF * this.driverList.get(1).getValue());
+    return RandomDouble.Generate(0, 1) * driver * this.teamFactor();
+
+  }
 }
+
+
+
+

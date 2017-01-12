@@ -29,7 +29,7 @@ public class PlayerTeam extends Team {
    * Creates an object that represents the F1 Team of a player.
    *
    * @param drivers        list of drivers in the team
-   * @param cars           list of cars owned by the team
+   * @param car            car owned by the team
    * @param strategist     strategist of the team
    * @param aerodynamicist aerodynamicist of the team
    * @param mechanic       mechanic of the team
@@ -38,10 +38,10 @@ public class PlayerTeam extends Team {
    * @param budget         budget of the team
    * @param softwareTester true if the team has a software tester
    */
-  public PlayerTeam(List<Driver> drivers, List<Car> cars,
+  public PlayerTeam(List<Driver> drivers, Car car,
                     Strategist strategist, Aerodynamicist aerodynamicist,
                     Mechanic mechanic, int points, int id, int budget, boolean softwareTester) {
-    super(drivers, cars, strategist, aerodynamicist, mechanic, points, id);
+    super(drivers, car, strategist, aerodynamicist, mechanic, points, id);
     this.budget = budget;
     this.softwareTester = softwareTester;
   }

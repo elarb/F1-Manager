@@ -14,10 +14,10 @@ public class AiTeamTest {
 
   @Before
   public void setUp() throws Exception {
-    aiTeam = new AiTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    aiTeam = new AiTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 1);
 
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 100, 2,
       200, true);
   }

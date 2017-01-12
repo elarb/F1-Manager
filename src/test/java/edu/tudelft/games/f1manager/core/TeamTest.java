@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,8 @@ public class TeamTest {
   @Before
   //TODO: mock doesn't work for equals
   public void setUp() throws Exception {
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
+
+    playerTeam = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
       mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 4,
       200, true);
 
@@ -38,5 +40,6 @@ public class TeamTest {
 //  public void testEquals_EqualDifferent() {
 //    assertTrue(playerTeam.equals(playerTeam2));
 //  }
+
 
 }
