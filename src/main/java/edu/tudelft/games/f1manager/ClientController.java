@@ -10,6 +10,13 @@ import java.io.IOException;
 
 public class ClientController {
 
+  Game game = null;
+
+  private String saveName = null;
+
+  @FXML
+  private TextField newgameText;
+
   @FXML
   private AnchorPane mainScreen;
 
@@ -21,10 +28,7 @@ public class ClientController {
    * @throws IOException error
    */
   public void handleButtonClick_StartGame() throws IOException {
-    mainScreen.getChildren().clear();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main menu.fxml"));
-    loader.setController(this);
-    mainScreen.getChildren().add(loader.load());
+    gotoUi("/fxml/main menu.fxml");
   }
 
   /**method that is called by the start game button.
@@ -32,10 +36,13 @@ public class ClientController {
    * @throws IOException error
    */
   public void handleButtonClick_newGame() throws IOException {
-    Game game = Game.newgame();
+    if (!newgameText.getText().equals("")) {
+      game = Game.newgame();
+      saveName = newgameText.getText();
 
-    if (game != null) {
-      gotoClientUi();
+      if (game != null) {
+        gotoUi("/fxml/Client.fxml");
+      }
     }
   }
 
@@ -45,11 +52,18 @@ public class ClientController {
    * @throws IOException error
    */
   public void handleButtonClick_LoadGame() throws IOException {
-    Game game = Game.loadgame(loadgameText.getText());
+    String fileName = loadgameText.getText();
+    game = Game.loadgame(fileName);
 
     if (game != null) {
-      gotoClientUi();
+      gotoUi("/fxml/Client.fxml");
+      saveName = fileName;
     }
+  }
+
+  public void handleButtonClick_MainMenu() throws IOException {
+    Game.savegame(saveName, game.getDriverList(), game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+    gotoUi("/fxml/main menu.fxml");
   }
 
   public void handleButtonClick_ExitGame() {
@@ -59,10 +73,15 @@ public class ClientController {
   /**changes the content of the screen to the main(client.fxml) screen
    * @throws IOException error
    */
-  private void gotoClientUi() throws IOException {
+  private void gotoUi(String path) throws IOException {
     mainScreen.getChildren().clear();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
     loader.setController(this);
     mainScreen.getChildren().add(loader.load());
   }
+
+
+
+
+
 }
