@@ -39,6 +39,7 @@ public class ClientController {
     if (!newgameText.getText().equals("")) {
       game = Game.newgame();
       saveName = newgameText.getText();
+      Game.savegame(saveName, game.getDriverList(), game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
 
       if (game != null) {
         gotoUi("/fxml/Client.fxml");
