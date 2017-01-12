@@ -10,7 +10,7 @@ The player starts with a budget and has the ability to compose a team and pick a
 
 Prerequisites:
 
-- Java v7 or above installed (We recommend to always have the latest version)
+- Java v8 or above installed (We recommend to always have the latest version)
 
 Steps :
 

@@ -1,9 +1,9 @@
 package edu.tudelft.games.f1manager.core;
 
-
 import edu.tudelft.games.f1manager.game.Season;
 
 import java.io.File;
+
 import java.io.IOException;
 
 public class Game {
@@ -14,14 +14,8 @@ public class Game {
   private Season season;
 
 
-  public static void Game(){
-
-  }
-
-  public void setDriverList(DriverList driverList){
-
+  public void setDriverList(DriverList driverList) {
     this.driverList = driverList;
-
   }
 
   public DriverList getDriverList() {
@@ -52,7 +46,13 @@ public class Game {
     return season;
   }
 
-  public static Game loadgame(String savename){
+
+  /**
+   * Method that creates a new instance of a game and reads a json files from a previous save
+   * @param savename name of the save you want to load
+   * @return the new game instance.
+   */
+  public static Game loadgame(String savename) {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
@@ -72,7 +72,11 @@ public class Game {
 
   }
 
-  public static Game newgame(){
+  /**
+   * Method that creates a new instance of a game.
+   * @return the new game instance
+   */
+  public static Game newgame() {
 
     DriverList driverList = DriverList.read("drivers.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
@@ -92,7 +96,18 @@ public class Game {
 
   }
 
-  public  static void savegame(String savename, DriverList driverList, AiTeamList aiTeamList, PlayerTeam playerTeam, Season season) throws IOException {
+  /**
+   * Method that saves your current game instance to all json files.
+   * @param savename the name you want to give to the save
+   * @param driverList the driverlist to save
+   * @param aiTeamList the aiteamlist to save
+   * @param playerTeam the playerteam to save
+   * @param season the season to save
+   * @throws IOException if file does not exists
+   */
+  public static void savegame(String savename, DriverList driverList,
+                              AiTeamList aiTeamList, PlayerTeam playerTeam,
+                              Season season) throws IOException {
 
     File dir = new File("src/main/resources/JSON/" + savename);
     dir.mkdir();
