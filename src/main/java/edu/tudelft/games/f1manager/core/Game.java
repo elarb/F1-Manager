@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
+import edu.tudelft.games.f1manager.game.DriverResult;
+import edu.tudelft.games.f1manager.game.Race;
 import edu.tudelft.games.f1manager.game.Season;
 
 import java.io.File;
@@ -99,27 +101,23 @@ public class Game {
   /**
    * Method that saves your current game instance to all json files.
    * @param savename the name you want to give to the save
-   * @param driverList the driverlist to save
-   * @param aiTeamList the aiteamlist to save
-   * @param playerTeam the playerteam to save
-   * @param season the season to save
    * @throws IOException if file does not exists
    */
-  public static void savegame(String savename, DriverList driverList,
-                              AiTeamList aiTeamList, PlayerTeam playerTeam,
-                              Season season) throws IOException {
+  public void save(String savename) throws IOException {
+
 
     File dir = new File("src/main/resources/JSON/" + savename);
     dir.mkdir();
 
-    driverList.write(savename + "/drivers.json");
-    aiTeamList.write(savename + "/aiteams.json");
-    playerTeam.write(savename + "/playerteam.json");
-    season.write(savename + "/season.json");
+    this.driverList.write(savename + "/drivers.json");
+    this.aiTeamList.write(savename + "/aiteams.json");
+    this.playerTeam.write(savename + "/playerteam.json");
+    this.season.write(savename + "/season.json");
 
     System.out.println("Succesfully saved your game: " + savename);
 
   }
+
 
 
 }
