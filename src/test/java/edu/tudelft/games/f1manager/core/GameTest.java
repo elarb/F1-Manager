@@ -21,6 +21,7 @@ public class GameTest {
   private AiTeamList aiTeamList;
   private PlayerTeam playerTeam;
   private Season season;
+  private Game game;
 
 
   @Before
@@ -47,13 +48,14 @@ public class GameTest {
       200, true);
     season = new Season(0, new ArrayList<Race>());
 
+    game = Game.newgame();
+
   }
 
   @Test
   public void newgametest(){
 
-    Game.newgame();
-    assertEquals(2, driverList.getDrivers().size());
+    assertEquals(2, game.getDriverList().getDrivers().size());
 
   }
 
@@ -61,7 +63,7 @@ public class GameTest {
   @Test
   public void savegametest() throws IOException {
 
-    Game.savegame("testsave", driverList, aiTeamList, playerTeam, season);
+    game.save("testsave");
 
   }
 
