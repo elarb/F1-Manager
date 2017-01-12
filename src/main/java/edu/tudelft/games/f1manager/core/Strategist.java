@@ -128,7 +128,7 @@ public class Strategist implements Upgradeable {
    * @return true if crashed, false otherwise
    */
   public boolean hasCrashed() {
-    double random = RandomDouble.Generate(0, 100);
+    double random = RandomDouble.generatePercentage();
     return random < this.getCrashChance();
   }
 
