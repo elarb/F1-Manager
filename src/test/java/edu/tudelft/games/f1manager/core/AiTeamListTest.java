@@ -17,11 +17,11 @@ public class AiTeamListTest {
   @Before
   public void setUp() throws Exception {
 
-    AiTeam aiTeam = new AiTeam(new ArrayList<Driver>(), mock(Car.class),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 0, 1);
+    AiTeam aiTeam = new AiTeam("Ai Team", 2, mock(Strategist.class),
+      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
 
-    AiTeam aiTeam2 = new AiTeam(new ArrayList<Driver>(), mock(Car.class),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 10, 2);
+    AiTeam aiTeam2 = new AiTeam("Ai Team2", 3, mock(Strategist.class),
+      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
 
     aiTeamList = new AiTeamList();
 
