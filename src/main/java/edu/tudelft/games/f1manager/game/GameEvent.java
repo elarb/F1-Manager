@@ -20,12 +20,22 @@ public class GameEvent {
    */
   private Type type;
 
+  /**
+   * True if the game event was successfull.
+   */
+  private boolean success;
+
   public GameEvent(String message, Type type) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
     LocalDateTime dateTime = LocalDateTime.now();
     this.currentDateTime = dateTime.format(formatter);
     this.message = message;
     this.type = type;
+  }
+
+  public GameEvent(String message, Type type, boolean success) {
+    this(message, type);
+    this.success = success;
   }
 
   public enum Type {
