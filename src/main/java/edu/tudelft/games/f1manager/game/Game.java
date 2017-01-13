@@ -211,13 +211,19 @@ public class Game {
    * @param driver the driver that gets bought
    */
   public void aiBuy(AiTeam team, Driver driver) {
+	String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
+    
+	if (driver.getTeamId() == 1) {
+		playerteam.addBudget(driver.getValue());
+		msg = String.format("%s has been purchased by %s, your balance has increased by $%i", driver.getName(), team.getName(), driver.getValue());
+	}
     team.getDriverList().add(driver);
     driver.setTeamId(team.getId());
-
-    //adds this event to the list of events
-    String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
+    
     GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
     this.events.addEvent(event);
+    //adds this event to the list of events
+    
   }
 
   //////////////////////////////////////////////
