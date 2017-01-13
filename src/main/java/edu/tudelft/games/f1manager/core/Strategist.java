@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
+import edu.tudelft.games.f1manager.game.GameEvent;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 public class Strategist implements Upgradeable {
@@ -37,8 +38,7 @@ public class Strategist implements Upgradeable {
    * If 90< x <95, then expertise can increase with 1, 2 or 3
    * If x > 96, then expertise will increase with 1
    */
-  public void upgrade() {
-
+  public GameEvent upgrade() {
     if (this.rating <= 79) {
       upgradeBy(3);
     } else if (this.rating <= 89) {
@@ -48,7 +48,8 @@ public class Strategist implements Upgradeable {
     } else if (this.rating < 99) {
       this.rating++;
     }
-
+    String msg = "Your strategist has been upgraded! New rating: " + this.rating;
+    return new GameEvent(msg, GameEvent.Type.UPGRADE);
   }
 
   /**
