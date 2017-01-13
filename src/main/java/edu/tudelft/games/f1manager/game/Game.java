@@ -112,17 +112,19 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-      this.getCurrentRaceFactor() * team.getResultsDriver1());
+        this.getCurrentRaceFactor() * team.getResultsDriver1());
     DriverResult result2 = new DriverResult(driver2,
-      this.getCurrentRaceFactor() * team.getResultsDriver2());
+        this.getCurrentRaceFactor() * team.getResultsDriver2());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
+  /**
+   * traverses through the list of aiteams  and playerteam
+   * and adds the results of their drivers to the results of the current race.
+   */
   public void handleResults() {
-    //traverses through the list of aiteams and adds the results of
-    // their drivers to the results of the current race
     for (AiTeam team :
-      this.aiteams.getTeams()) {
+        this.aiteams.getTeams()) {
       addDriverResults(team);
     }
     addDriverResults(this.playerteam);
@@ -141,11 +143,16 @@ public class Game {
     return somethingFactor * elseFactor * fooFactor;
   }
 
+  /**
+   * A playerteam Driver Buy method.
+   * @param driver the driver the playerteam buys
+   * @return true if the buy is successful, false otherwise
+   */
   public boolean driverBuy(Driver driver) {
     int budget = this.getPlayerteam().getBudget();
     double random = RandomDouble.generatePercentage();
 
-    if (random < 20 && budget > driver.getValue()) {
+    if (random < 70 && budget > driver.getValue()) {
       this.playerteam.addDriver(driver);
       this.playerteam.setBudget(budget - driver.getValue());
       String msg = driver.getName() + " has been purchased by you!";
@@ -158,6 +165,9 @@ public class Game {
 
   //////////////////////////////////////////////
 
+  /**
+   * Makes sure all aiteams have 2 drivers before a race starts.
+   */
   public void balanceDrivers() {
     for (int i = 0; i < this.getAiteams().size(); i++) {
       if (this.getAiteams().get(i).getDriverList().size() < 2) {
@@ -166,25 +176,25 @@ public class Game {
     }
   }
 
+  /**
+   * Helper method for balanceDrivers.
+   * @param aiTeam that buys a random driver without a team
+   */
   public void buyLeftoverDriver(AiTeam aiTeam) {
     Random rand = new Random();
     ArrayList<Driver> list = this.getDrivers();
     while (true) {
       Driver driver = list.get(rand.nextInt(list.size()));
       if (driver.getTeamId() == 0) {
-        driver.setTeamId(aiTeam.getId());
-        aiTeam.addDriver(driver);
-
-        //adds this event to the list of events
-        String msg = driver.getName() + " has been purchased by " + aiTeam.getName();
-        GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
-        this.events.addEvent(event);
-
+        aiBuy(aiTeam, driver);
         break;
       }
     }
   }
 
+  /**
+   * Random Aiteams buy random drivers.
+   */
   public void buyRandomDriver() {
     Random rand = new Random();
     int random = rand.nextInt(Constants.MAX_BUYS);
@@ -195,6 +205,11 @@ public class Game {
     }
   }
 
+  /**
+   * Aiteam driver buy.
+   * @param team the aiteam that buys a driver
+   * @param driver the driver that gets bought
+   */
   public void aiBuy(AiTeam team, Driver driver) {
     team.getDriverList().add(driver);
     driver.setTeamId(team.getId());
