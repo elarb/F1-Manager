@@ -83,6 +83,10 @@ public class PlayerTeam extends Team {
 
   }
 
+  public void addBudget(int budget) {
+	    this.budget += budget;
+	  }
+  
   public int getBudget() {
     return budget;
   }
