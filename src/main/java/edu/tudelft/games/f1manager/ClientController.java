@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class ClientController {
 
-  Game game = null;
+  Game game;
 
-  private String saveName = null;
+  private String saveName;
 
   @FXML
   private TextField newgameText;
@@ -39,7 +39,8 @@ public class ClientController {
     if (!newgameText.getText().equals("")) {
       game = Game.newgame();
       saveName = newgameText.getText();
-      Game.savegame(saveName, game.getDriverList(), game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+      Game.savegame(saveName, game.getDriverList(),
+          game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
 
       if (game != null) {
         gotoUi("/fxml/Client.fxml");
@@ -62,8 +63,12 @@ public class ClientController {
     }
   }
 
+  /**saves game and changes ui to main menu.
+   * @throws IOException error
+   */
   public void handleButtonClick_MainMenu() throws IOException {
-    Game.savegame(saveName, game.getDriverList(), game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+    Game.savegame(saveName, game.getDriverList(),
+        game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
     gotoUi("/fxml/main menu.fxml");
   }
 
