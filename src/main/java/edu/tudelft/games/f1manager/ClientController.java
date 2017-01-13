@@ -10,7 +10,9 @@ import java.io.IOException;
 
 public class ClientController {
 
-  Game game;
+
+
+  private Game game;
 
   private String saveName;
 
@@ -84,6 +86,10 @@ public class ClientController {
     FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
     loader.setController(this);
     mainScreen.getChildren().add(loader.load());
+  }
+
+  public Game getGame() {
+    return game;
   }
 
 
