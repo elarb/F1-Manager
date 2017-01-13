@@ -19,7 +19,6 @@ public class Constants {
   public static final double ENGINE_COEF = 0;
   public static final double BODY_COEF = 0;
   public static final double AERODYNAMISIST_COEF = 0;
-
-
+  public static final int MAX_BUYS = 4;
 
 }
