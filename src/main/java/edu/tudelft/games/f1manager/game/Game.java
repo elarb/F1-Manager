@@ -93,17 +93,14 @@ public class Game {
    * Methods that gets runned when a race gets started.
    */
   public void race() {
-    //traverses through the list of aiteams and adds the results of
-    // their drivers to the results of the current race
-    for (AiTeam team :
-        this.aiteams.getTeams()) {
-      addDriverResults(team);
+    if (this.season.getCurrentRace() % 4 == 0) {
+      buyRandomDriver();
     }
-    addDriverResults(this.playerteam);
-
-    //changes current race to the next one
+    balanceDrivers();
+    handleResults();
     this.getSeason().nextRace();
   }
+
 
   /**
    * Helper method for race.
@@ -115,10 +112,20 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-        this.getCurrentRaceFactor() * team.getResultsDriver1());
+      this.getCurrentRaceFactor() * team.getResultsDriver1());
     DriverResult result2 = new DriverResult(driver2,
-        this.getCurrentRaceFactor() * team.getResultsDriver2());
+      this.getCurrentRaceFactor() * team.getResultsDriver2());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
+  }
+
+  public void handleResults() {
+    //traverses through the list of aiteams and adds the results of
+    // their drivers to the results of the current race
+    for (AiTeam team :
+      this.aiteams.getTeams()) {
+      addDriverResults(team);
+    }
+    addDriverResults(this.playerteam);
   }
 
   /**
@@ -178,14 +185,25 @@ public class Game {
     }
   }
 
-  //  public void buyRandomDriver() {
-  //    Random rand = new Random();
-  //    int r = rand.nextInt(Constants.MAX_BUYS);
-  //    for (int i = 0; i < r; i++) {
-  //      AiTeam randomTeam = this.getAiteams().get(new Random().nextInt(this.getAiteams().size()));
-  //      Driver
-  //    }
-  //  }
+  public void buyRandomDriver() {
+    Random rand = new Random();
+    int random = rand.nextInt(Constants.MAX_BUYS);
+    for (int i = 0; i < random; i++) {
+      AiTeam randomTeam = this.getAiteams().get(new Random().nextInt(this.getAiteams().size()));
+      Driver randomDriver = this.getDrivers().get(new Random().nextInt(this.getDrivers().size()));
+      aiBuy(randomTeam, randomDriver);
+    }
+  }
+
+  public void aiBuy(AiTeam team, Driver driver) {
+    team.getDriverList().add(driver);
+    driver.setTeamId(team.getId());
+
+    //adds this event to the list of events
+    String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
+    GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
+    this.events.addEvent(event);
+  }
 
   //////////////////////////////////////////////
 
