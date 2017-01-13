@@ -9,6 +9,11 @@ import java.util.List;
 
 public class PlayerTeam extends Team {
 
+  private static Gson gson = new GsonBuilder()
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
+
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
    */
@@ -20,12 +25,10 @@ public class PlayerTeam extends Team {
    */
   private boolean softwareTester;
 
-  private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
 
   /**
+   * Creates a playerteam.
+   *
    * @param name           name of the playerteam
    * @param id             id of the playerteam (usually 1)
    * @param strategist     strategist of the playerteam
