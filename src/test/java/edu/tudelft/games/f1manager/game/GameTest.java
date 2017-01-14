@@ -1,9 +1,9 @@
-package edu.tudelft.games.f1manager.core;
+package edu.tudelft.games.f1manager.game;
 
 
-import edu.tudelft.games.f1manager.game.Game;
-import edu.tudelft.games.f1manager.game.Race;
-import edu.tudelft.games.f1manager.game.Season;
+import edu.tudelft.games.f1manager.core.AiTeamList;
+import edu.tudelft.games.f1manager.core.DriverList;
+import edu.tudelft.games.f1manager.core.PlayerTeam;
 import org.junit.Before;
 import org.junit.Test;
 
