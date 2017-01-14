@@ -31,6 +31,18 @@ public class Driver {
       * Constants.DRIVERBASEPRICE);
   }
 
+  @Override
+  public String toString() {
+    return "Driver{" +
+      "name='" + name + '\'' +
+      ", speed=" + speed +
+      ", racecraft=" + racecraft +
+      ", strategyinsight=" + strategyinsight +
+      ", value=" + value +
+      ", teamId=" + teamId +
+      '}';
+  }
+
   public String getName() {
     return name;
   }
