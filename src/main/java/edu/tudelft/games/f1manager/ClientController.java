@@ -1,7 +1,7 @@
 package edu.tudelft.games.f1manager;
 
 import edu.tudelft.games.f1manager.core.Driver;
-import edu.tudelft.games.f1manager.core.Game;
+import edu.tudelft.games.f1manager.game.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,10 +51,9 @@ public class ClientController {
    */
   public void handleButtonClick_newGame() throws IOException {
     if (!newgameText.getText().equals("")) {
-      game = Game.newgame();
+      game = Game.newGame();
       saveName = newgameText.getText();
-      Game.savegame(saveName, game.getDriverList(),
-          game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+      game.savegame(saveName);
 
       if (game != null) {
         gotoUi("/fxml/Client.fxml");
@@ -69,6 +68,7 @@ public class ClientController {
    */
   public void handleButtonClick_LoadGame() throws IOException {
     String fileName = loadgameText.getText();
+    System.out.println(fileName);
     game = Game.loadgame(fileName);
 
     if (game != null) {
@@ -81,8 +81,7 @@ public class ClientController {
    * @throws IOException error
    */
   public void handleButtonClick_MainMenu() throws IOException {
-    Game.savegame(saveName, game.getDriverList(),
-        game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+    game.savegame(saveName);
     gotoUi("/fxml/main menu.fxml");
   }
 
@@ -96,8 +95,22 @@ public class ClientController {
     resetBuyDriverList();
   }
 
+  /**looks at the selected name and buys the driver that has that name.
+   *
+   * @throws IOException
+   */
   public void handleButtonClick_buyDriver() throws IOException {
+    String drivername = buyDriverList.getSelectionModel().getSelectedItem();
 
+    for ( Driver driver : game.getDrivers()) {
+      if (driver.getName().equals(drivername)){
+        if(game.driverBuy(driver)){
+          System.out.println("driver bought");
+          resetBuyDriverList();
+        }
+        break;
+      }
+    }
   }
 
   /**changes the content of the screen to the main(client.fxml) screen
@@ -110,18 +123,21 @@ public class ClientController {
     mainScreen.getChildren().add(loader.load());
   }
 
+  /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
+   *
+   */
   private void resetBuyDriverList(){
-    ArrayList<Driver> drivers = game.getDriverList().getDrivers();
+    ArrayList<Driver> drivers = game.getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
 
     for (Driver driver : drivers){
       boolean inList = true;
-      for (Driver owned : game.getPlayerTeam().getDriverList()){
+      for (Driver owned : game.getPlayerteam().getDriverList()){
         if(owned.equals(driver)){
           inList = false;
         }
       }
-      if(!inList){
+      if(inList){
         driverNames.add(driver.getName());
       }
     }
@@ -131,11 +147,4 @@ public class ClientController {
   public Game getGame() {
     return game;
   }
-
-
-
-
-
-
-
 }

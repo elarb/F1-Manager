@@ -12,7 +12,6 @@ public class MechanicTest {
   @Before
   public void setUp() throws Exception {
     mechanic = new Mechanic(8);
-    mechanic.updateUpgradePrice();
   }
 
   @Test
