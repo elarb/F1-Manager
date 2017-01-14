@@ -12,17 +12,11 @@ import static org.mockito.Mockito.mock;
 public class PlayerTeamTest {
 
   private PlayerTeam playerTeam;
-  private PlayerTeam playerTeam2;
 
   @Before
   public void setUp() throws Exception {
-    playerTeam = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
-      200, true);
-
-    playerTeam2 = new PlayerTeam(new ArrayList<Driver>(), new ArrayList<Car>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 5, 3,
-      200, true);
+    playerTeam = new PlayerTeam("PlayerTeam", 1, mock(Strategist.class),
+      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100, 300000, true);
 
     Driver driver = new Driver("test testson", 1);
     driver.setValue(100);

@@ -10,11 +10,11 @@ import java.util.ArrayList;
 public class EngineList {
 
   private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
+     .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
 
-  ArrayList<Engine> enginelist;
+  private ArrayList<Engine> enginelist;
 
   /**
    * Creates an object that represents a list of engines.
@@ -37,7 +37,7 @@ public class EngineList {
     return gson.fromJson(reader, EngineList.class);
 
   }
-  
+
 
   public void addEngine(Engine engine) {
     enginelist.add(engine);

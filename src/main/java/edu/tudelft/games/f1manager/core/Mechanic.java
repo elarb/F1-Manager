@@ -2,7 +2,9 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
 
-public class Mechanic {
+import edu.tudelft.games.f1manager.game.GameEvent;
+
+public class Mechanic implements Upgradeable {
 
   /**
    * Time it takes for the mechanic to handle a pitstop.
@@ -22,27 +24,23 @@ public class Mechanic {
     this.pitstopTime = pitstoptime;
   }
 
-  //TODO: there should be a better way to check if the team has enough budget,
-  // this method could be in the playerteam Class for example.
-
-  /**
-   * Improves the pit-stop time of the mechanic.
-   *
-   * @param team team the mechanic is in,
-   *             the budget is getting checked to make sure there is enough
-   */
-  public void improve(PlayerTeam team) {
+  @Override
+  public GameEvent upgrade() {
     if (this.pitstopTime > 2) {
-      if (team.getBudget() >= this.upgradePrice) {
-        team.setBudget(team.getBudget() - this.upgradePrice);
-        this.pitstopTime -= 1;
-        updateUpgradePrice();
-      }
+      this.pitstopTime -= 1;
+      this.upgradePrice = (this.pitstopTime * -1 + 9) * Constants.BASE_PITSTOP_UP_PRICE;
+
+      String msg = String.format("Your mechanic has been upgraded! New average Pitstop "
+          + "time is now: %d seconds.", this.pitstopTime);
+      return new GameEvent(msg, GameEvent.Type.UPGRADE, true);
     }
+    String failMsg = "Upgrade failed, your Mechanic is already maxed.";
+    return new GameEvent(failMsg, GameEvent.Type.UPGRADE, false);
   }
 
-  public void updateUpgradePrice() {
-    this.upgradePrice = (this.pitstopTime * -1 + 9) * Constants.BASE_PITSTOP_UP_PRICE;
+  @Override
+  public void upgradeBy(int num) {
+
   }
 
   public int getPitstopTime() {
