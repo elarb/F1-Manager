@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -24,6 +25,9 @@ public class ClientController {
 
   @FXML
   private TextField loadgameText;
+
+  @FXML
+  private Pane configurationPane;
 
   /**method that is called by the start game button.
    * changes the content of the screen to the main menu
@@ -76,6 +80,11 @@ public class ClientController {
 
   public void handleButtonClick_ExitGame() {
     System.exit(0);
+  }
+
+  public void handleButtonClick_Configuration() throws IOException {
+    configurationPane.setDisable(!configurationPane.isDisable());
+    configurationPane.setVisible(!configurationPane.isDisable());
   }
 
   /**changes the content of the screen to the main(client.fxml) screen

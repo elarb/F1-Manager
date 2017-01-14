@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
@@ -46,7 +47,7 @@
                                         <Tooltip text="Click to view your profile" />
                                     </tooltip>
                                 </Button>
-                                <Button layoutX="135.0" layoutY="18.0" mnemonicParsing="false" text="Configuration">
+                                <Button layoutX="135.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleButtonClick_Configuration" text="Configuration">
                                     <font>
                                         <Font name="Futura LT Bold" size="12.0" />
                                     </font>
@@ -91,9 +92,17 @@
                     </children>
                 </AnchorPane>
             </top>
-            <center>
-                <AnchorPane fx:id="midAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-            </center>
+         <center>
+                <AnchorPane fx:id="midAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="configurationPane" disable="true" layoutX="33.0" layoutY="38.0" prefHeight="626.0" prefWidth="1214.0" style="-fx-background-color: #131421;" visible="false">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" text="Button" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </center>
         </BorderPane>
     </children>
 </AnchorPane>
