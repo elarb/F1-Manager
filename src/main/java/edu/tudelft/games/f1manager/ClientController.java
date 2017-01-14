@@ -1,13 +1,18 @@
 package edu.tudelft.games.f1manager;
 
+import edu.tudelft.games.f1manager.core.Driver;
 import edu.tudelft.games.f1manager.core.Game;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ClientController {
 
@@ -28,6 +33,9 @@ public class ClientController {
 
   @FXML
   private Pane configurationPane;
+
+  @FXML
+  private ListView<String> buyDriverList;
 
   /**method that is called by the start game button.
    * changes the content of the screen to the main menu
@@ -85,6 +93,11 @@ public class ClientController {
   public void handleButtonClick_Configuration() throws IOException {
     configurationPane.setDisable(!configurationPane.isDisable());
     configurationPane.setVisible(!configurationPane.isDisable());
+    resetBuyDriverList();
+  }
+
+  public void handleButtonClick_buyDriver() throws IOException {
+
   }
 
   /**changes the content of the screen to the main(client.fxml) screen
@@ -97,9 +110,29 @@ public class ClientController {
     mainScreen.getChildren().add(loader.load());
   }
 
+  private void resetBuyDriverList(){
+    ArrayList<Driver> drivers = game.getDriverList().getDrivers();
+    ObservableList<String> driverNames = FXCollections.observableArrayList();
+
+    for (Driver driver : drivers){
+      boolean inList = true;
+      for (Driver owned : game.getPlayerTeam().getDriverList()){
+        if(owned.equals(driver)){
+          inList = false;
+        }
+      }
+      if(!inList){
+        driverNames.add(driver.getName());
+      }
+    }
+    buyDriverList.setItems(driverNames);
+  }
+
   public Game getGame() {
     return game;
   }
+
+
 
 
 
