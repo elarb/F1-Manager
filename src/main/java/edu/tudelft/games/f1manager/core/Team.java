@@ -89,7 +89,7 @@ public abstract class Team {
     return false;
   }
 
-  public double teamFactor() {
+  public double teamFactorNoDriver() {
 
     if (this.strategist.hasCrashed()) {
 
@@ -97,13 +97,13 @@ public abstract class Team {
 
     } else {
 
-      double strategist = 1 / (Constants.STRATEGIST_COEF * this.strategist.getRating());
-      double grip = 1 / (Constants.GRIP_COEF * this.car.getTyres().getGrip());
-      double aerodynamics = 1 / (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
-      double body = 1 / (Constants.BODY_COEF * this.car.getBody());
-      double engine = 1 / (Constants.ENGINE_COEF * this.car.getEngine().getPrice());
+      double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating())/(Constants.NORMALIZEVALUE_STRATEGIST);
+      double grip = (Constants.GRIP_COEF * this.car.getTyres().getGrip());
+      double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
+      double body = (Constants.BODY_COEF * this.car.getBody());
+      double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
 
-      return strategist * grip * aerodynamics * body * engine;
+      return strategist + grip + aerodynamics + body + engine;
 
     }
 
@@ -119,13 +119,13 @@ public abstract class Team {
   }
 
   public double getResultsDriver1() {
-    double driver = 1 / (Constants.DRIVER_COEF * this.driverList.get(0).getValue());
-    return RandomDouble.generate(0, 1) * driver * this.teamFactor();
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    return driver + this.teamFactorNoDriver();
   }
 
   public double getResultsDriver2() {
-    double driver = 1 / (Constants.DRIVER_COEF * this.driverList.get(1).getValue());
-    return RandomDouble.generate(0, 1) * driver * this.teamFactor();
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    return driver + this.teamFactorNoDriver();
   }
 
   public List<Driver> getDriverList() {

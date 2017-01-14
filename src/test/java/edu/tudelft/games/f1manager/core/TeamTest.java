@@ -1,23 +1,27 @@
 package edu.tudelft.games.f1manager.core;
 
+import edu.tudelft.games.f1manager.game.Game;
 import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+
+import static org.mockito.Mockito.mock;
 
 
 public class TeamTest {
 
   private Team playerTeam;
-  private Team playerTeam2;
 
   @Before
   //TODO: mock doesn't work for equals
   public void setUp() throws Exception {
 
-//    playerTeam = new PlayerTeam(new ArrayList<Driver>(), mock(Car.class),
-//      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 4,
-//      200, true);
+    //playerTeam = Game.newGame().getPlayerteam();
 
-    playerTeam2 = playerTeam;
   }
+
+
 
 //  @Test
 //  public void testEquals_notEqual(){
@@ -35,6 +39,15 @@ public class TeamTest {
 //  public void testEquals_EqualDifferent() {
 //    assertTrue(playerTeam.equals(playerTeam2));
 //  }
+
+
+  @Test
+  public void driver1resultstest() {
+
+    PlayerTeam playerTeam = PlayerTeam.read("Examplesave/playerteam.json");
+    System.out.println("Driverresult is:" + playerTeam.getResultsDriver1());
+
+  }
 
 
 }

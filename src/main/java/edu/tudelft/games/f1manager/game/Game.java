@@ -1,5 +1,6 @@
 package edu.tudelft.games.f1manager.game;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import edu.tudelft.games.f1manager.core.*;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
@@ -112,9 +113,9 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-        this.getCurrentRaceFactor() * team.getResultsDriver1());
+      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1()))/ Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2,
-        this.getCurrentRaceFactor() * team.getResultsDriver2());
+      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2()))/Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
@@ -130,11 +131,11 @@ public class Game {
     addDriverResults(this.playerteam);
   }
 
-  /**
+  /*
    * Returns the calculated factor of the current race.
    *
    * @return the calculated factor of the current race
-   */
+
   public double getCurrentRaceFactor() {
     //TODO by Tim: Add and tweak formula
     double somethingFactor = 10;
@@ -142,6 +143,8 @@ public class Game {
     double fooFactor = 40;
     return somethingFactor * elseFactor * fooFactor;
   }
+
+  */
 
   /**
    * A playerteam Driver Buy method.
