@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.game;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import edu.tudelft.games.f1manager.core.*;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
@@ -8,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Game {
@@ -94,12 +94,11 @@ public class Game {
    * Methods that gets runned when a race gets started.
    */
   public void race() {
-    if (this.season.getCurrentRace() % 4 == 0) {
-      buyRandomDriver();
-    }
     balanceDrivers();
     handleResults();
-    this.getSeason().nextRace();
+    buyRandomDriver();
+    sortResults();
+    //    this.getSeason().nextRace();
   }
 
 
@@ -113,9 +112,9 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1()))/ Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2()))/Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
@@ -125,17 +124,17 @@ public class Game {
    */
   public void handleResults() {
     for (AiTeam team :
-        this.aiteams.getTeams()) {
+      this.aiteams.getTeams()) {
       addDriverResults(team);
     }
     addDriverResults(this.playerteam);
   }
 
-  /*
+  /**
    * Returns the calculated factor of the current race.
    *
    * @return the calculated factor of the current race
-
+   */
   public double getCurrentRaceFactor() {
     //TODO by Tim: Add and tweak formula
     double somethingFactor = 10;
@@ -144,10 +143,9 @@ public class Game {
     return somethingFactor * elseFactor * fooFactor;
   }
 
-  */
-
   /**
    * A playerteam Driver Buy method.
+   *
    * @param driver the driver the playerteam buys
    * @return true if the buy is successful, false otherwise
    */
@@ -166,8 +164,6 @@ public class Game {
     return false;
   }
 
-  //////////////////////////////////////////////
-
   /**
    * Makes sure all aiteams have 2 drivers before a race starts.
    */
@@ -181,6 +177,7 @@ public class Game {
 
   /**
    * Helper method for balanceDrivers.
+   *
    * @param aiTeam that buys a random driver without a team
    */
   public void buyLeftoverDriver(AiTeam aiTeam) {
@@ -210,26 +207,35 @@ public class Game {
 
   /**
    * Aiteam driver buy.
-   * @param team the aiteam that buys a driver
+   *
+   * @param team   the aiteam that buys a driver
    * @param driver the driver that gets bought
    */
   public void aiBuy(AiTeam team, Driver driver) {
-	String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
-    
-	if (driver.getTeamId() == 1) {
-		playerteam.addBudget(driver.getValue());
-		msg = String.format("%s has been purchased by %s, your balance has increased by $%i", driver.getName(), team.getName(), driver.getValue());
-	}
+    String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
+
+    if (driver.getTeamId() == 1) {
+      playerteam.addBudget(driver.getValue());
+      msg = String.format("%s has been purchased by %s, your balance has increased by $ %s", driver.getName(), team.getName(), driver.getValue());
+    }
     team.getDriverList().add(driver);
     driver.setTeamId(team.getId());
-    
+
     GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
     this.events.addEvent(event);
     //adds this event to the list of events
-    
+
   }
 
-  //////////////////////////////////////////////
+  public void sortResults() {
+
+    Comparator<DriverResult> byTime = (e1, e2) -> Double.compare(e1.getTime(), e2.getTime());
+
+    getResults()
+      .stream()
+      .sorted(byTime)
+      .forEach(System.out::println);
+  }
 
 
   public ArrayList<Driver> getDrivers() {
@@ -271,4 +277,17 @@ public class Game {
   public void setEvents(GameEvents events) {
     this.events = events;
   }
+
+  public int getCurrentRace() {
+    return this.getSeason().getCurrentRace();
+  }
+
+  public ArrayList<DriverResult> getResults() {
+    return this.season.getCurrentRaceInstance().getResults();
+  }
+
+  public double getCurrentBaseTime() {
+    return this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase();
+  }
+
 }
