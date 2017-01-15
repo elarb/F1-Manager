@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
+import edu.tudelft.games.f1manager.game.GameEvent;
+
 /**
  * This class represents an Aerodynamicist.
  */
@@ -21,13 +23,14 @@ public class Aerodynamicist implements Upgradeable {
 
 
   /**
+   * Returns this event.
    * Suppose x = expertise.
    * If 60< x <69, then expertise can increase with 4, 5 or 6.
    * If 70< x <79, then expertise can increase with 3, 4 or 5
    * If 80< x <89, then expertise can increase with 2, 3 or 4
    * If 90< x <99, then expertise can increase with 1, 2 or 3
    */
-  public void upgrade() {
+  public GameEvent upgrade(int stat) {
     if (this.expertise <= 79) {
       upgradeBy(3);
     } else if (this.expertise <= 89) {
@@ -37,6 +40,8 @@ public class Aerodynamicist implements Upgradeable {
     } else if (this.expertise <= 99) {
       this.expertise++;
     }
+    String msg = "Your Aerodynamicist has been upgraded! New expertise: " + this.expertise;
+    return new GameEvent(msg, GameEvent.Type.UPGRADE);
   }
 
   /**

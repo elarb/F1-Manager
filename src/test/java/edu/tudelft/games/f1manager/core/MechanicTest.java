@@ -3,10 +3,7 @@ package edu.tudelft.games.f1manager.core;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class MechanicTest {
 
@@ -35,7 +32,7 @@ public class MechanicTest {
 
   @Test
   public void testImprove() throws Exception {
-    mechanic.upgrade();
+    mechanic.upgrade(0);
     mechanic.updateUpgradePrice();
     assertEquals("Improve works properly", mechanic.getPitstopTime(), 7);
     assertEquals("Improve adjusts cost", mechanic.getUpgradePrice(), Constants.BASE_PITSTOP_UP_PRICE * 2);
@@ -44,7 +41,7 @@ public class MechanicTest {
   @Test
   public void testImproveFail() throws Exception {
     for (int i = 0; i < 7; i++) {
-    	mechanic.upgrade();
+    	mechanic.upgrade(0);
     }
     mechanic.updateUpgradePrice();
     assertEquals("Improve didn't do anything the last time", mechanic.getPitstopTime(), 2);
