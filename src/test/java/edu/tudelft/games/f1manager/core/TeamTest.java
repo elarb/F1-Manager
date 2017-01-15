@@ -64,16 +64,15 @@ public class TeamTest {
   @Test
   public void driver1resultstest() {
 
-    double value = playerTeam.getResultsDriver1();
-    assertEquals(7.76, value, 0.1);
+    assertEquals(7.76, playerTeam.getResultsDriver1(), 0.1);
 
   }
 
   @Test
   public void driver2resultstest() {
 
-    double value = playerTeam.getResultsDriver2();
-    assertEquals(6.27, value, 0.1);
+
+    assertEquals(6.27, playerTeam.getResultsDriver2(), 0.1);
 
   }
 
