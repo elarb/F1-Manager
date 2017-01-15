@@ -87,6 +87,7 @@
                                 <Font name="Futura LT Bold" size="12.0" />
                             </font>
                         </Label>
+                  <Button layoutX="1246.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButtonClick_MainMenu" prefHeight="31.0" prefWidth="34.0" text="X" />
                     </children>
                 </AnchorPane>
             </top>
