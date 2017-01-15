@@ -20,7 +20,7 @@ public class Constants {
   public static final double BODY_COEF = 0.025;
   public static final double AERODYNAMISIST_COEF = 0.1;
   public static final int MAX_BUYS = 4;
-  public static final double NORMALIZEVALUE_DRIVER_ENGINE = 100000000;
+  public static final double NORMALIZEVALUE_DRIVER_ENGINE = 10000000;
   public static final double NORMALIZEVALUE_STRATEGIST = 10;
   public static final double VALUE_AVG_RESULT = 10;
   public static final double VALUE_AVG_DIVIDER = 3.5;

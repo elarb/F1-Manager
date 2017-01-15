@@ -97,11 +97,11 @@ public abstract class Team {
 
     } else {
 
-      double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating())/(Constants.NORMALIZEVALUE_STRATEGIST);
-      double grip = (Constants.GRIP_COEF * this.car.getTyres().getGrip());
+      double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
+      double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
       double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
       double body = (Constants.BODY_COEF * this.car.getBody());
-      double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+      double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
 
       return strategist + grip + aerodynamics + body + engine;
 
@@ -119,12 +119,12 @@ public abstract class Team {
   }
 
   public double getResultsDriver1() {
-    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
     return driver + this.teamFactorNoDriver();
   }
 
   public double getResultsDriver2() {
-    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue())/(Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
     return driver + this.teamFactorNoDriver();
   }
 
