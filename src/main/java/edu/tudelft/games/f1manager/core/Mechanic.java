@@ -2,7 +2,7 @@ package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
 
-public class Mechanic {
+public class Mechanic implements Upgradeable {
 
   /**
    * Time it takes for the mechanic to handle a pitstop.
@@ -31,13 +31,10 @@ public class Mechanic {
    * @param team team the mechanic is in,
    *             the budget is getting checked to make sure there is enough
    */
-  public void improve(PlayerTeam team) {
+  public void upgrade() {
     if (this.pitstopTime > 2) {
-      if (team.getBudget() >= this.upgradePrice) {
-        team.setBudget(team.getBudget() - this.upgradePrice);
-        this.pitstopTime -= 1;
-        updateUpgradePrice();
-      }
+	    this.pitstopTime -= 1;
+	    updateUpgradePrice();
     }
   }
 
