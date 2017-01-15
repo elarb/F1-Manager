@@ -31,12 +31,14 @@ public class TeamTest {
       aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
 
     Driver driver = new Driver("test testson", 1);
-    playerTeam.addDriver(driver);
     driver.setValue(74450000);
+    playerTeam.addDriver(driver);
+
 
     Driver driver2 = new Driver("test testy", 1);
+    driver2.setValue(14450000);
     playerTeam.addDriver(driver2);
-    driver.setValue(65450000);
+
 
 
   }
@@ -72,7 +74,7 @@ public class TeamTest {
   public void driver2resultstest() {
 
 
-    assertEquals(6.27, playerTeam.getResultsDriver2(), 0.1);
+    assertEquals(6.56, playerTeam.getResultsDriver2(), 0.1);
 
   }
 
