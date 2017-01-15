@@ -38,7 +38,7 @@ public class Strategist implements Upgradeable {
    * If 90< x <95, then expertise can increase with 1, 2 or 3
    * If x > 96, then expertise will increase with 1
    */
-  public GameEvent upgrade() {
+  public GameEvent upgrade(int stat) {
     if (this.rating <= 79) {
       upgradeBy(3);
     } else if (this.rating <= 89) {
