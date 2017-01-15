@@ -32,9 +32,6 @@ public class PlayerTeamTest {
     Driver driver = new Driver("test testson", 1);
     playerTeam.addDriver(driver);
 
-
-
-
     playerTeam.write("TESTS/playerteam.json");
   }
 

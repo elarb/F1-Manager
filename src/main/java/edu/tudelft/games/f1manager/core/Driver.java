@@ -28,10 +28,10 @@ public class Driver implements Upgradeable {
   public Driver(String name, int teamId) {
     this.name = name;
     this.teamId = teamId;
-    this.value = (int) ((this.speed * Constants.SPEEDCOEF)
-      * (this.racecraft * Constants.RACECRAFTCOEF)
-      * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-      * Constants.DRIVERBASEPRICE);
+    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
+      + (this.racecraft * Constants.RACECRAFTCOEF)
+      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+    )* Constants.DRIVERBASEPRICE);
   }
 
   @Override
@@ -145,10 +145,10 @@ public class Driver implements Upgradeable {
   }
 
   public void determineValue() {
-    this.value = (int) ((this.speed * Constants.SPEEDCOEF)
-      * (this.racecraft * Constants.RACECRAFTCOEF)
-      * (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-      * Constants.DRIVERBASEPRICE);
+    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
+      + (this.racecraft * Constants.RACECRAFTCOEF)
+      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+    )* Constants.DRIVERBASEPRICE);
   }
 
 
