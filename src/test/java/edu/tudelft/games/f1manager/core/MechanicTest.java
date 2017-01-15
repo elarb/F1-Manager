@@ -35,11 +35,7 @@ public class MechanicTest {
 
   @Test
   public void testImprove() throws Exception {
-
-    PlayerTeam playerTeam = new PlayerTeam(new ArrayList<>(), new ArrayList<>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
-      2000000, true);
-    mechanic.improve(playerTeam);
+    mechanic.upgrade();
     mechanic.updateUpgradePrice();
     assertEquals("Improve works properly", mechanic.getPitstopTime(), 7);
     assertEquals("Improve adjusts cost", mechanic.getUpgradePrice(), Constants.BASE_PITSTOP_UP_PRICE * 2);
@@ -47,14 +43,11 @@ public class MechanicTest {
 
   @Test
   public void testImproveFail() throws Exception {
-
-    PlayerTeam playerTeam = new PlayerTeam(new ArrayList<>(), new ArrayList<>(),
-      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 1,
-      1999999, true);
-    mechanic.improve(playerTeam);
+    for (int i = 0; i < 7; i++) {
+    	mechanic.upgrade();
+    }
     mechanic.updateUpgradePrice();
-    assertEquals("Improve didn't do anything", mechanic.getPitstopTime(), 8);
-    assertEquals("Costs the same", mechanic.getUpgradePrice(), Constants.BASE_PITSTOP_UP_PRICE);
+    assertEquals("Improve didn't do anything the last time", mechanic.getPitstopTime(), 2);
   }
 
 }
