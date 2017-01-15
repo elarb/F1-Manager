@@ -72,7 +72,7 @@ public class TeamTest {
 
 
     System.out.println(playerTeam.getResultsDriver2());
-    assertEquals(1.289, playerTeam.getResultsDriver2(), 0.1);
+    assertEquals(7.56, playerTeam.getResultsDriver2(), 0.1);
 
   }
 
