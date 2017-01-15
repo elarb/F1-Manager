@@ -38,9 +38,6 @@ public class TeamTest {
     Driver driver2 = new Driver("test testy", 1);
     driver2.setValue(64450000);
     playerTeam.addDriver(driver2);
-
-
-
   }
 
 
@@ -73,6 +70,8 @@ public class TeamTest {
   @Test
   public void driver2resultstest() {
 
+
+    System.out.println(playerTeam.getResultsDriver2());
     assertEquals(7.56, playerTeam.getResultsDriver2(), 0.1);
 
   }
