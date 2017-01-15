@@ -7,6 +7,4 @@ public interface Upgradeable {
 
   void upgrade();
 
-  void upgradeBy(int num);
-
 }
