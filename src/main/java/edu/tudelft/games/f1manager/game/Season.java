@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 
 
@@ -36,7 +35,6 @@ public class Season {
    *
    * @param currentRace current race in the season
    * @param races       the races in a season
-   * @param teams       list of teams
    */
   public Season(int currentRace, ArrayList<Race> races) {
     this.currentRace = currentRace;
@@ -61,8 +59,12 @@ public class Season {
     return res;
   }
 
+  public Race getCurrentRaceInstance() {
+    return this.getRaces().get(this.currentRace);
+  }
+
   /**
-   * Adds a race to the list of races of the current season
+   * Adds a race to the list of races of the current season.
    *
    * @param race the race that gets added
    */
@@ -105,6 +107,13 @@ public class Season {
     System.out.println("Succesfully wrote to file");
     System.out.println(json);
 
+  }
+
+  /**
+   * Changes the current race to the next in queue
+   */
+  public void nextRace() {
+    this.currentRace++;
   }
 
   public int getCurrentRace() {

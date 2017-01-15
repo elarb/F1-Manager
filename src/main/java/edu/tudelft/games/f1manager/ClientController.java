@@ -1,6 +1,6 @@
 package edu.tudelft.games.f1manager;
 
-import edu.tudelft.games.f1manager.core.Game;
+import edu.tudelft.games.f1manager.game.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
@@ -37,18 +37,18 @@ public class ClientController {
    * calls gotoClientUi and game.newGame()
    * @throws IOException error
    */
-  public void handleButtonClick_newGame() throws IOException {
-    if (!newgameText.getText().equals("")) {
-      game = Game.newgame();
-      saveName = newgameText.getText();
-      Game.savegame(saveName, game.getDriverList(),
-          game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
-
-      if (game != null) {
-        gotoUi("/fxml/Client.fxml");
-      }
-    }
-  }
+//  public void handleButtonClick_newGame() throws IOException {
+//    if (!newgameText.getText().equals("")) {
+//      game = Game.newgame();
+//      saveName = newgameText.getText();
+//      Game.savegame(saveName, game.getDriverList(),
+//          game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+//
+//      if (game != null) {
+//        gotoUi("/fxml/Client.fxml");
+//      }
+//    }
+//  }
 
 
   /**method that is called by the load game button.
@@ -68,11 +68,11 @@ public class ClientController {
   /**saves game and changes ui to main menu.
    * @throws IOException error
    */
-  public void handleButtonClick_MainMenu() throws IOException {
-    Game.savegame(saveName, game.getDriverList(),
-        game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
-    gotoUi("/fxml/main menu.fxml");
-  }
+//  public void handleButtonClick_MainMenu() throws IOException {
+//    Game.savegame(saveName, game.getDriverList(),
+//        game.getAiTeamList(), game.getPlayerTeam(), game.getSeason());
+//    gotoUi("/fxml/main menu.fxml");
+//  }
 
   public void handleButtonClick_ExitGame() {
     System.exit(0);

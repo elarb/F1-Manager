@@ -1,8 +1,7 @@
 package edu.tudelft.games.f1manager.core;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import edu.tudelft.games.f1manager.tools.RandomDouble;
+
 import java.util.List;
 
 /**
@@ -18,9 +17,9 @@ public abstract class Team {
 
 
   /**
-   * List of cars owned by the team.
+   * Car owned by the team.
    */
-  private List<Car> carList;
+  private Car car;
 
 
   /**
@@ -48,22 +47,29 @@ public abstract class Team {
    */
   private int id;
 
+  /**
+   * Name of the team.
+   */
+  private String name;
+
 
   /**
    * Creates an object that represents a F1 Team.
    *
-   * @param driverList     list of drivers in the team
-   * @param carList        list of cars owned by the team
+   * @param name
+   * @param id             the id of the team
    * @param strategist     strategist of the team
    * @param aerodynamicist aerodynamicist of the team
    * @param mechanic       mechanic of the team
+   * @param driverList     list of drivers in the team
+   * @param car            car owned by the team
    * @param points         the amount of points of the team
-   * @param id             the id of the team
    */
-  public Team(List<Driver> driverList, List<Car> carList, Strategist strategist,
-              Aerodynamicist aerodynamicist, Mechanic mechanic, int points, int id) {
+  public Team(String name, int id, Strategist strategist, Aerodynamicist aerodynamicist, Mechanic mechanic, List<Driver> driverList, Car car,
+              int points) {
+    this.name = name;
     this.driverList = driverList;
-    this.carList = carList;
+    this.car = car;
     this.strategist = strategist;
     this.aerodynamicist = aerodynamicist;
     this.mechanic = mechanic;
@@ -83,7 +89,44 @@ public abstract class Team {
     return false;
   }
 
+  public double teamFactorNoDriver() {
 
+    if (this.strategist.hasCrashed()) {
+
+      return 0;
+
+    } else {
+
+      double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
+      double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
+      double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
+      double body = (Constants.BODY_COEF * this.car.getBody());
+      double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+
+      return strategist + grip + aerodynamics + body + engine;
+
+    }
+
+  }
+
+  /**
+   * Adds the driver to the team's list of drivers.
+   *
+   * @param driver the driver that gets added
+   */
+  public void addDriver(Driver driver) {
+    this.driverList.add(driver);
+  }
+
+  public double getResultsDriver1() {
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    return driver + this.teamFactorNoDriver();
+  }
+
+  public double getResultsDriver2() {
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    return driver + this.teamFactorNoDriver();
+  }
 
   public List<Driver> getDriverList() {
     return driverList;
@@ -93,12 +136,12 @@ public abstract class Team {
     this.driverList = driverList;
   }
 
-  public List<Car> getCarList() {
-    return carList;
+  public Car getCar() {
+    return car;
   }
 
-  public void setCarList(List<Car> carList) {
-    this.carList = carList;
+  public void setCar(Car car) {
+    this.car = car;
   }
 
   public Strategist getStrategist() {
@@ -136,4 +179,20 @@ public abstract class Team {
   public int getId() {
     return id;
   }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 }
+
+
+
+
