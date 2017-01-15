@@ -5,8 +5,8 @@ package edu.tudelft.games.f1manager.core;
  */
 public interface Upgradeable<E> {
 
-  E upgrade();
+  E upgrade(int stat);
 
-  void upgradeBy(int num);
+//  void upgradeBy(int num);
 
 }
