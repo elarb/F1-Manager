@@ -1,9 +1,7 @@
 package edu.tudelft.games.f1manager.game;
 
 
-import edu.tudelft.games.f1manager.core.AiTeamList;
-import edu.tudelft.games.f1manager.core.DriverList;
-import edu.tudelft.games.f1manager.core.PlayerTeam;
+import edu.tudelft.games.f1manager.core.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,24 +22,26 @@ public class GameTest {
   @Before
   public void setUp() {
 
-//    Driver driver1 = new Driver("Mighty Join", 1);
-//    Driver driver2 = new Driver("Pieter", 2);
-//    driverList = new DriverList();
-//    driverList.add(driver1);
-//    driverList.add(driver2);
-//
-//    AiTeam aiTeam = new AiTeam("Ai Team", 2, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
-//
-//    AiTeam aiTeam2 = new AiTeam("Ai Team2", 3, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
-//
-//    aiTeamList = new AiTeamList();
-//    aiTeamList.add(aiTeam);
-//    aiTeamList.add(aiTeam2);
-//
-//    playerTeam = new PlayerTeam("PlayerTeam", 1, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100, 300000, true);
+    Engine engine = new Engine("Ferrari", 821, 8.3, 9.8);
+    double body = 6.8;
+    Tyres tyres = new Tyres(9);
+    Car car = new Car(engine, body, tyres);
+
+    Aerodynamicist aerodynamicist = new Aerodynamicist(8);
+    Strategist strategist = new Strategist(Strategist.Risk.MEDIUM, 80);
+    Mechanic mechanic = new Mechanic(4);
+
+    playerTeam = new PlayerTeam("PlayerTeam", 1, strategist,
+      aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
+
+    Driver driver = new Driver("test testson", 1);
+    playerTeam.addDriver(driver);
+    driver.setValue(74450000);
+
+    Driver driver2 = new Driver("test testy", 1);
+    playerTeam.addDriver(driver2);
+    driver.setValue(65450000);
+
 
     season = new Season(0, new ArrayList<Race>());
 
@@ -71,5 +71,6 @@ public class GameTest {
     assertEquals(0, game.getPlayerteam().getStrategist().getRating());
 
   }
+
 
 }
