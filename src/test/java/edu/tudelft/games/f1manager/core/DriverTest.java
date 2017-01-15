@@ -14,9 +14,9 @@ public class DriverTest {
   public void setUp() throws Exception {
 
     driver = new Driver("test testson", 3);
-    driver.setRacecraft(5);
-    driver.setSpeed(5);
-    driver.setStrategyinsight(5);
+    driver.setRacecraft(8);
+    driver.setSpeed(7);
+    driver.setStrategyinsight(8);
     driver.determineValue();
   }
 
@@ -72,5 +72,12 @@ public class DriverTest {
 //    assertEquals(driver, team2.getDriverList().get(0));
 //    assertEquals(new ArrayList<Driver>(), team.getDriverList());
 //  }
+
+  @Test
+  public void valuetest() {
+
+    assertEquals(68544000 ,driver.getValue());
+
+  }
 
 }
