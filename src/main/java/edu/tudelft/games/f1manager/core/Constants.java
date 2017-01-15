@@ -7,10 +7,10 @@ public class Constants {
   public static final double POWER_COEF = 1.8;
   public static final double DRIVABILITY_COEF = 1.4;
   public static final int VALUE_ENGINE = 300;
-  public static final double SPEEDCOEF = 1.7;
-  public static final double RACECRAFTCOEF = 1.5;
-  public static final double STRATEGYINSIGHTCOEF = 1.2;
-  public static final double DRIVERBASEPRICE = 50000;
+  public static final double SPEEDCOEF = 0.5;
+  public static final double RACECRAFTCOEF = 0.3;
+  public static final double STRATEGYINSIGHTCOEF = 0.2;
+  public static final double DRIVERBASEPRICE = 10000000;
   public static final int BASE_PITSTOP_UP_PRICE = 2000000;
   public static final int CRASH_CHANCE = 8;
   public static final double STRATEGIST_COEF = 0.2;

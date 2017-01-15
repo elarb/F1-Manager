@@ -76,7 +76,7 @@ public class DriverTest {
   @Test
   public void valuetest() {
 
-    assertEquals(68544000 ,driver.getValue());
+    assertEquals(75000000 ,driver.getValue());
 
   }
 

@@ -35,17 +35,21 @@ public class GameTest {
       aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
 
     Driver driver = new Driver("test testson", 1);
-    playerTeam.addDriver(driver);
     driver.setValue(74450000);
+    playerTeam.addDriver(driver);
+
 
     Driver driver2 = new Driver("test testy", 1);
+    driver2.setValue(64450000);
     playerTeam.addDriver(driver2);
-    driver.setValue(65450000);
+
 
 
     season = new Season(0, new ArrayList<Race>());
 
+
     game = Game.newGame();
+    game.setPlayerteam(playerTeam);
 
   }
 
@@ -68,7 +72,26 @@ public class GameTest {
   public void loadgametest() {
 
     Game game = Game.loadgame("testsave");
-    assertEquals(0, game.getPlayerteam().getStrategist().getRating());
+
+    assertEquals(2, game.getPlayerteam().getDriverList().size());
+
+  }
+
+  @Test
+  public void addDriverResult1test() {
+
+    Game game = Game.loadgame("testsave2");
+    game.addDriverResults(playerTeam);
+    assertEquals(4154.9 ,game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime(), 0.1);
+
+  }
+
+  @Test
+  public void addDriverResult2test() {
+
+    Game game = Game.loadgame("testsave2");
+    game.addDriverResults(playerTeam);
+    assertEquals(4526.1 ,game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime(), 0.1);
 
   }
 
