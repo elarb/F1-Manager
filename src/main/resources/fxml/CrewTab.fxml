@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="crewTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
+   <children>
+      <ImageView fx:id="carImage" fitHeight="229.0" fitWidth="377.0" layoutX="53.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Ferrari.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="firstDriverImg" fitHeight="150.0" fitWidth="200.0" layoutX="717.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Drivers/max-verstappen.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="secondDriverImg" fitHeight="150.0" fitWidth="200.0" layoutX="932.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Drivers/another-driver.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="948.0" layoutY="241.0" prefHeight="34.0" prefWidth="134.0" textFill="#f2f2f2">
+         <font>
+            <Font name="Futura LT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="725.0" layoutY="241.0" prefHeight="34.0" prefWidth="134.0" textFill="#f2f2f2">
+         <font>
+            <Font name="Futura LT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="valueFirstDriver" layoutX="832.0" layoutY="125.0" textFill="#5fc68c">
+         <font>
+            <Font name="Futura LT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="valueSecondDriver" layoutX="1041.0" layoutY="125.0" textFill="#5fc68c">
+         <font>
+            <Font name="Futura LT Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

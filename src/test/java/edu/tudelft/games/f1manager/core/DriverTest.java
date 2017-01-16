@@ -11,7 +11,7 @@ public class DriverTest {
   @Before
   public void setUp() throws Exception {
 
-    driver = new Driver("test testson", 3);
+    driver = new Driver("Rob Robsson", 3);
     team.getDriverList().add(driver);
   }
 

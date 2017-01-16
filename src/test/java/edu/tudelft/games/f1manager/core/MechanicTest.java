@@ -32,7 +32,6 @@ public class MechanicTest {
 
 //  @Test
 //  public void testImprove() throws Exception {
-//
 //    PlayerTeam playerTeam = new PlayerTeam(new ArrayList<>(), mock(Car.class),
 //      mock(Strategist.class), mock(Aerodynamicist.class), mock(Mechanic.class), 1, 2,
 //      2000000, true);
