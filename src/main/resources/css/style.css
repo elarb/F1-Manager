@@ -7,3 +7,7 @@
     -fx-background-image: url("../img/patterns/micro_carbon.png");
     -fx-background-repeat: repeat;
 }
+
+.progress-bar .bar {
+    -fx-background-color: #00BCD4 ;
+}
