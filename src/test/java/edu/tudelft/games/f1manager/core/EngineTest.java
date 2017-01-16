@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
+
 
 public class EngineTest {
 
@@ -11,7 +13,7 @@ public class EngineTest {
 
   @Before
   public void setUp() throws Exception {
-    
+
     engine = new Engine("Ferrari", 800, 5, 5);
 
   }
@@ -24,7 +26,7 @@ public class EngineTest {
   @Test
   public void test_engine_price() {
 
-    assertEquals(22680000 ,engine.getPrice(), 0);
+    assertEquals(22680000, engine.getPrice(), 0.1);
 
   }
 
