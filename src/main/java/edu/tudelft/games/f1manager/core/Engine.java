@@ -77,6 +77,16 @@ public class Engine {
     this.fuelEfficiency = fuelEfficiency;
   }
 
+  public void determineprice(){
+
+    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
+      * (Constants.DRIVABILITY_COEF * drivability)
+      * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
+
+  }
+
 }
+
+
 
 

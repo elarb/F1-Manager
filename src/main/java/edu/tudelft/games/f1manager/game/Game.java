@@ -111,6 +111,10 @@ public class Game {
   public void addDriverResults(Team team) {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
+    driver1.determineValue();
+    driver2.determineValue();
+    Engine engine = team.getCar().getEngine();
+    engine.determineprice();
     DriverResult result1 = new DriverResult(driver1,
         ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2,
