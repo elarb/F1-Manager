@@ -20,9 +20,9 @@ public class CrewTabController {
   }
 
   public void initData() {
-    firstDriverLabel.setText(clientController.getGame().getPlayerteam().getDriverList().get(0).getName());
-    secondDriverLabel.setText(clientController.getGame().getPlayerteam().getDriverList().get(1).getName());
-    valueFirstDriver.setText(Integer.toString(clientController.getGame().getPlayerteam().getDriverList().get(0).getValue()));
-    valueSecondDriver.setText(Integer.toString(clientController.getGame().getPlayerteam().getDriverList().get(1).getValue()));
+//    firstDriverLabel.setText(clientController.getGame().getPlayerteam().getDriverList().get(0).getName());
+//    secondDriverLabel.setText(clientController.getGame().getPlayerteam().getDriverList().get(1).getName());
+//    valueFirstDriver.setText(Integer.toString(clientController.getGame().getPlayerteam().getDriverList().get(0).getValue()));
+//    valueSecondDriver.setText(Integer.toString(clientController.getGame().getPlayerteam().getDriverList().get(1).getValue()));
   }
 }
