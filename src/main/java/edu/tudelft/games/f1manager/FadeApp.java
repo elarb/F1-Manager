@@ -79,7 +79,6 @@ public class FadeApp extends Application {
             "Dwalin", "Balin", "Bifur", "Bofur",
             "Bombur", "Dori", "Nori", "Ori"
           );
-
         updateMessage("Loading Drivers . . .");
         for (int i = 0; i < availableDrivers.size(); i++) {
           Thread.sleep(400);
