@@ -15,6 +15,7 @@ buildNumber.properties
 .idea/copyright/
 .idea/
 *.iml
+/lib
 
 
 .classpath
