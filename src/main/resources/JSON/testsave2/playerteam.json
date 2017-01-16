@@ -1,22 +1,23 @@
 {
-    "budget": 200000,
+    "budget": 300000,
     "softwareTester": true,
     "driverList": [
         {
-            "name": "Nico Rosberg",
-            "speed": 9.8,
-            "racecraft": 8.1,
-            "strategyinsight": 6.5,
-            "value": 95640746,
-            "teamId": 0
+            "name": "test testson",
+            "speed": 0.0,
+            "racecraft": 0.0,
+            "strategyinsight": 0.0,
+            "value": 65450000,
+            "teamId": 1
         },
         {
-            "name": "Luis Hamilton",
-            "speed": 9.5,
-            "racecraft": 7.6,
-            "strategyinsight": 6.2,
-            "value": 83830438,
-            "teamId": 0 }
+            "name": "test testy",
+            "speed": 0.0,
+            "racecraft": 0.0,
+            "strategyinsight": 0.0,
+            "value": 56450000,
+            "teamId": 1
+        }
     ],
     "car": {
         "engine": {
@@ -24,7 +25,7 @@
             "power": 821.0,
             "drivability": 8.3,
             "fuelEfficiency": 9.8,
-            "price": 63107232.3
+            "price": 7.572867876E7
         },
         "body": 6.8,
         "tyres": {
@@ -43,6 +44,6 @@
         "upgradePrice": 0
     },
     "points": 100,
-    "id": 0,
+    "id": 1,
     "name": "PlayerTeam"
 }

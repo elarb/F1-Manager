@@ -1,9 +1,7 @@
 package edu.tudelft.games.f1manager.game;
 
 
-import edu.tudelft.games.f1manager.core.AiTeamList;
-import edu.tudelft.games.f1manager.core.DriverList;
-import edu.tudelft.games.f1manager.core.PlayerTeam;
+import edu.tudelft.games.f1manager.core.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,28 +22,34 @@ public class GameTest {
   @Before
   public void setUp() {
 
-//    Driver driver1 = new Driver("Mighty Join", 1);
-//    Driver driver2 = new Driver("Pieter", 2);
-//    driverList = new DriverList();
-//    driverList.add(driver1);
-//    driverList.add(driver2);
-//
-//    AiTeam aiTeam = new AiTeam("Ai Team", 2, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
-//
-//    AiTeam aiTeam2 = new AiTeam("Ai Team2", 3, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100);
-//
-//    aiTeamList = new AiTeamList();
-//    aiTeamList.add(aiTeam);
-//    aiTeamList.add(aiTeam2);
-//
-//    playerTeam = new PlayerTeam("PlayerTeam", 1, mock(Strategist.class),
-//      mock(Aerodynamicist.class), mock(Mechanic.class), new ArrayList<>(), mock(Car.class), 100, 300000, true);
+    Engine engine = new Engine("Ferrari", 821, 8.3, 9.8);
+    double body = 6.8;
+    Tyres tyres = new Tyres(9);
+    Car car = new Car(engine, body, tyres);
+
+    Aerodynamicist aerodynamicist = new Aerodynamicist(8);
+    Strategist strategist = new Strategist(Strategist.Risk.MEDIUM, 80);
+    Mechanic mechanic = new Mechanic(4);
+
+    playerTeam = new PlayerTeam("PlayerTeam", 1, strategist,
+      aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
+
+    Driver driver = new Driver("test testson", 1);
+    driver.setValue(74450000);
+    playerTeam.addDriver(driver);
+
+
+    Driver driver2 = new Driver("test testy", 1);
+    driver2.setValue(64450000);
+    playerTeam.addDriver(driver2);
+
+
 
     season = new Season(0, new ArrayList<Race>());
 
+
     game = Game.newGame();
+    game.setPlayerteam(playerTeam);
 
   }
 
@@ -68,7 +72,26 @@ public class GameTest {
   public void loadgametest() {
 
     Game game = Game.loadgame("testsave");
-    assertEquals(0, game.getPlayerteam().getStrategist().getRating());
+
+    assertEquals(2, game.getPlayerteam().getDriverList().size());
+
+  }
+
+  @Test
+  public void addDriverResult1test() {
+
+    Game game = Game.loadgame("testsave2");
+    game.addDriverResults(playerTeam);
+    assertEquals(4154.9 ,game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime(), 0.1);
+
+  }
+
+  @Test
+  public void addDriverResult2test() {
+
+    Game game = Game.loadgame("testsave2");
+    game.addDriverResults(playerTeam);
+    assertEquals(4526.1 ,game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime(), 0.1);
 
   }
 

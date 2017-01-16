@@ -26,7 +26,7 @@ public class AerodynamicistTest {
     for (int i = 70; i < 79; i++) {
       dummyAerodynamicist.setExpertise(i);
       int expertise = dummyAerodynamicist.getExpertise();
-      dummyAerodynamicist.upgrade();
+      dummyAerodynamicist.upgrade(1);
       int newExpertise = dummyAerodynamicist.getExpertise();
       assertTrue(newExpertise > expertise && newExpertise <= (expertise + 5));
     }
@@ -38,7 +38,7 @@ public class AerodynamicistTest {
     for (int i = 80; i < 89; i++) {
       dummyAerodynamicist.setExpertise(i);
       int expertise = dummyAerodynamicist.getExpertise();
-      dummyAerodynamicist.upgrade();
+      dummyAerodynamicist.upgrade(1);
       int newExpertise = dummyAerodynamicist.getExpertise();
       assertTrue(newExpertise > expertise && newExpertise <= (expertise + 4));
     }
@@ -50,7 +50,7 @@ public class AerodynamicistTest {
     for (int i = 90; i < 94; i++) {
       dummyAerodynamicist.setExpertise(i);
       int expertise = dummyAerodynamicist.getExpertise();
-      dummyAerodynamicist.upgrade();
+      dummyAerodynamicist.upgrade(1);
       int newExpertise = dummyAerodynamicist.getExpertise();
       assertTrue(newExpertise > expertise && newExpertise <= (expertise + 3));
     }
@@ -63,7 +63,7 @@ public class AerodynamicistTest {
     for (int i = 96; i < 99; i++) {
       dummyAerodynamicist.setExpertise(i);
       int expertise = dummyAerodynamicist.getExpertise();
-      dummyAerodynamicist.upgrade();
+      dummyAerodynamicist.upgrade(1);
       int newExpertise = dummyAerodynamicist.getExpertise();
       assertTrue(expertise + 1 == newExpertise || newExpertise == 99);
     }

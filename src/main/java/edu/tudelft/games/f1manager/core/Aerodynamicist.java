@@ -30,7 +30,7 @@ public class Aerodynamicist implements Upgradeable {
    * If 80< x <89, then expertise can increase with 2, 3 or 4
    * If 90< x <99, then expertise can increase with 1, 2 or 3
    */
-  public GameEvent upgrade() {
+  public GameEvent upgrade(int stat) {
     if (this.expertise <= 79) {
       upgradeBy(3);
     } else if (this.expertise <= 89) {

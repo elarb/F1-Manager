@@ -5,8 +5,11 @@ package edu.tudelft.games.f1manager.core;
  */
 public interface Upgradeable<E> {
 
-  E upgrade();
+  E upgrade(int stat);
+  // Driver: 0 = speed, 1 = racecraft, 2 = strategyinsight
+  // Mechanic: indifferent
+  // Strategist: indifferent
 
-  void upgradeBy(int num);
+//  void upgradeBy(int num);
 
 }
