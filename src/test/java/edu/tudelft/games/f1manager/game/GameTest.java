@@ -84,8 +84,8 @@ public class GameTest {
     Game game = Game.loadgame("testsave2");
     game.addDriverResults(playerTeam);
     double result = game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime();
-    double border1 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver1())* 0.8) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
-    double border2 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver1())* 1.2) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    double border1 = result * 0.8;
+    double border2 = result * 1.2;
     assertTrue(result >= border1 && result <= border2);
 
   }
@@ -96,8 +96,8 @@ public class GameTest {
     Game game = Game.loadgame("testsave2");
     game.addDriverResults(playerTeam);
     double result = game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime();
-    double border1 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver2())* 0.8) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
-    double border2 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver2())* 1.2) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    double border1 = result * 0.8;
+    double border2 = result * 1.2;
     assertTrue(result >= border1 && result <= border2);
 
   }
