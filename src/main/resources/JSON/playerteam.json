@@ -1,30 +1,37 @@
 {
-    "budget": 200,
-    "hasSoftwareTester": true,
+    "budget": 300000,
+    "softwareTester": true,
     "driverList": [
         {
-            "name": "Bob Simpson",
+            "name": "test testson",
             "speed": 0.0,
             "racecraft": 0.0,
-            "strategyinsight": 0.0
-        },
-        {
-            "name": "Rick Simpson",
-            "speed": 0.0,
-            "racecraft": 0.0,
-            "strategyinsight": 0.0
+            "strategyinsight": 0.0,
+            "value": 100,
+            "teamId": 1
         }
     ],
-    "carList": [],
+    "car": {
+        "mockitoInterceptor": {},
+        "engine": null,
+        "body": 0.0,
+        "tyres": null
+    },
     "strategist": {
+        "mockitoInterceptor": {},
         "strategy": null,
         "rating": 0
     },
     "aerodynamicist": {
+        "mockitoInterceptor": {},
         "expertise": 0
     },
     "mechanic": {
+        "mockitoInterceptor": {},
         "pitstopTime": 0,
         "upgradePrice": 0
-    }
+    },
+    "points": 100,
+    "id": 1,
+    "name": "PlayerTeam"
 }

@@ -64,7 +64,7 @@ public class Season {
   }
 
   /**
-   * Adds a race to the list of races of the current season
+   * Adds a race to the list of races of the current season.
    *
    * @param race the race that gets added
    */
