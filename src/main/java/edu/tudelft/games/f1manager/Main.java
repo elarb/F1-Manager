@@ -17,9 +17,7 @@ public class Main extends Application {
 
     Font.loadFont(getClass().getClassLoader()
       .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
-
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
-
     Parent root = loader.load();
     primaryStage.getIcons().addAll(new Image("img/F1_logo.png"));
     primaryStage.setTitle("F1 Manager");
