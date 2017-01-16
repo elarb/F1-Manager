@@ -139,6 +139,102 @@
             "speed": 5.5,
             "racecraft": 5.9,
             "strategyinsight": 4.5
+        },
+        {
+            "name": "Jeremy Clarkson",
+            "team": "Alfa-Romeo",
+            "speed": 5.9,
+            "racecraft": 4.7,
+            "strategyinsight": 3.2
+        },
+        {
+            "name": "Richard Hammond",
+            "team": "Mustang",
+            "speed": 5.4,
+            "racecraft": 5,
+            "strategyinsight": 4
+        },
+        {
+            "name": "James May aka Captain Slow",
+            "team": "Fiat",
+            "speed": 3.6,
+            "racecraft": 5.1,
+            "strategyinsight": 5.9
+        },
+        {
+            "name": "Erik Carlsson",
+            "team": "Saab",
+            "speed": 3.8,
+            "racecraft": 5.6,
+            "strategyinsight": 5.4
+        },
+        {
+            "name": "Paddy Hopkirk",
+            "team": "BMW",
+            "speed": 3.7,
+            "racecraft": 5.3,
+            "strategyinsight": 5.2
+        },
+        {
+            "name": "Walter Röhrl",
+            "team": "Opel/Vauxhall",
+            "speed": 3.8,
+            "racecraft": 4.9,
+            "strategyinsight": 4.8
+        },
+        {
+            "name": "Timo Salonen",
+            "team": "Peugeot",
+            "speed": 3,
+            "racecraft": 5.2,
+            "strategyinsight": 4.7
+        },
+        {
+            "name": "Juha Kankkunen",
+            "team": "Lancia",
+            "speed": 3.3,
+            "racecraft": 5,
+            "strategyinsight": 4.5
+        },
+        {
+            "name": "Carlos Sainz",
+            "team": "Toyota",
+            "speed": 4.5,
+            "racecraft": 3.7,
+            "strategyinsight": 4
+        },
+        {
+            "name": "Tommi Makinen",
+            "team": "Mitsubishi ",
+            "speed": 4,
+            "racecraft": 3.7,
+            "strategyinsight": 3.8
+        },
+        {
+            "name": "Colin McRae",
+            "team": "Subaru ",
+            "speed": 3.7,
+            "racecraft": 3.5,
+            "strategyinsight": 3.8
+        },
+        {
+            "name": "Sebastien Loeb",
+            "team": "Citroen ",
+            "speed": 4.7,
+            "racecraft": 3.9,
+            "strategyinsight": 4.4
+        },
+        {
+            "name": "The Stig",
+            "team": "Unknown",
+            "speed": 9.9,
+            "racecraft": 9.8,
+            "strategyinsight": 9.7
         }
+
+
+
+
+
     ]
 }
