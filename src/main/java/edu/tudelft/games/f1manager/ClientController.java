@@ -1,43 +1,48 @@
 package edu.tudelft.games.f1manager;
 
+import edu.tudelft.games.f1manager.game.Game;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
 
 public class ClientController {
 
+  private Game game;
+
   @FXML
-  private AnchorPane mainScreen;
+  private ConfigurationTabController configurationTabController;
+  @FXML
+  private CrewTabController crewTabController;
+  @FXML
+  private HomeTabController homeTabController;
+  @FXML
+  private SettingsTabController settingsTabController;
 
-  /**method that is called by the start game button.
-   * changes the content of the screen to the main menu
-   * @throws IOException error
-   */
-  public void handleButtonClick_StartGame() throws IOException {
-    mainScreen.getChildren().clear();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main menu.fxml"));
-    loader.setController(this);
-    mainScreen.getChildren().add(loader.load());
+  @FXML
+  private Label teamNameLabel;
+
+  @FXML
+  NextRaceTabController nextRaceTabController;
+
+  public AnchorPane getHomeContent() {
+    return homeTabController.getHomeContent();
   }
 
-  public void handleButtonClick_newGame() throws IOException {
 
+  @FXML
+  private void initialize() {
+    game = Game.newGame();
+    teamNameLabel.setText(game.getPlayerteam().getName());
+    configurationTabController.injectMainController(this);
+    crewTabController.injectMainController(this);
+    homeTabController.injectMainController(this);
+    settingsTabController.injectMainController(this);
+    nextRaceTabController.injectMainController(this);
+    crewTabController.initData();
   }
 
-  /**method that is called by the load game button.
-   * changes the content of the screen to the main(client.fxml) screen
-   * @throws IOException error
-   */
-  public void handleButtonClick_LoadGame() throws IOException {
-    mainScreen.getChildren().clear();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client.fxml"));
-    loader.setController(this);
-    mainScreen.getChildren().add(loader.load());
-  }
 
-  public void handleButtonClick_ExitGame() throws IOException {
-    System.exit(0);
+  public Game getGame() {
+    return game;
   }
 }

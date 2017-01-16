@@ -72,4 +72,9 @@ public class GameTest {
 
   }
 
+  @Test
+  public void test_race() {
+    game.race();
+  }
+
 }
