@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 
@@ -63,16 +64,18 @@ public class TeamTest {
   @Test
   public void driver1resultstest() {
 
-    assertEquals(7.76, playerTeam.getResultsDriver1(), 0.1);
+    double result = playerTeam.getResultsDriver1();
+    System.out.println(result);
+    assertTrue(result >= 7.76 * 0.8 && result <= 7.76 * 1.2);
 
   }
 
   @Test
   public void driver2resultstest() {
 
-
-    System.out.println(playerTeam.getResultsDriver2());
-    assertEquals(7.56, playerTeam.getResultsDriver2(), 0.1);
+    double result = playerTeam.getResultsDriver2();
+    System.out.println(result);
+    assertTrue(result >= 7.56 * 0.8 && result <= 7.56 * 1.2);
 
   }
 
