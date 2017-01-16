@@ -12,7 +12,7 @@ public class EngineTest {
   @Before
   public void setUp() throws Exception {
     
-    engine = new Engine("Ferrari", 12.1, 12, 12);
+    engine = new Engine("Ferrari", 800, 5, 5);
 
   }
 
@@ -23,7 +23,8 @@ public class EngineTest {
 
   @Test
   public void test_engine_price() {
-    System.out.println(engine.getPrice());
+
+    assertEquals(22680000 ,engine.getPrice(), 0);
 
   }
 

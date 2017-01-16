@@ -34,7 +34,7 @@ public class StrategistTest {
     for (int i = 70; i < 79; i++) {
       dummyStrategist.setRating(i);
       int rating = dummyStrategist.getRating();
-      dummyStrategist.upgrade();
+      dummyStrategist.upgrade(1);
       int newRating = dummyStrategist.getRating();
       assertTrue(newRating > rating && newRating <= (rating + 5));
     }
@@ -47,7 +47,7 @@ public class StrategistTest {
     for (int i = 80; i <= 89; i++) {
       dummyStrategist.setRating(i);
       int rating = dummyStrategist.getRating();
-      dummyStrategist.upgrade();
+      dummyStrategist.upgrade(1);
       int newRating = dummyStrategist.getRating();
       assertTrue(newRating > rating && newRating <= (rating + 4));
     }
@@ -60,7 +60,7 @@ public class StrategistTest {
     for (int i = 90; i < 95; i++) {
       dummyStrategist.setRating(i);
       int rating = dummyStrategist.getRating();
-      dummyStrategist.upgrade();
+      dummyStrategist.upgrade(1);
       int newRating = dummyStrategist.getRating();
       assertTrue(newRating > rating && newRating <= (rating + 3));
     }
@@ -73,7 +73,7 @@ public class StrategistTest {
     for (int i = 96; i < 99; i++) {
       dummyStrategist.setRating(i);
       int rating = dummyStrategist.getRating();
-      dummyStrategist.upgrade();
+      dummyStrategist.upgrade(1);
       int newRating = dummyStrategist.getRating();
       assertTrue(rating + 1 == newRating || newRating == 99);
     }
@@ -84,7 +84,7 @@ public class StrategistTest {
   @Test
   public void test_does_not_upgrade_beyond_99() {
     dummyStrategist.setRating(99);
-    dummyStrategist.upgrade();
+    dummyStrategist.upgrade(1);
     int rating = dummyStrategist.getRating();
     assertTrue(rating <= 99);
   }

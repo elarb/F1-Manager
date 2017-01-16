@@ -32,9 +32,6 @@ public class PlayerTeamTest {
     Driver driver = new Driver("test testson", 1);
     playerTeam.addDriver(driver);
 
-
-
-
     playerTeam.write("TESTS/playerteam.json");
   }
 
@@ -65,7 +62,7 @@ public class PlayerTeamTest {
   public void read_and_write() throws IOException {
 
     PlayerTeam playerTeam = PlayerTeam.read("TESTS/playerteam.json");
-    assertEquals(0, playerTeam.getStrategist().getRating());
+    assertEquals(80, playerTeam.getStrategist().getRating());
   }
 
 }

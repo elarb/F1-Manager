@@ -2,39 +2,39 @@
     "teams": [
         {
             "driverList": [],
-            "carList": [],
+            "car": null,
             "strategist": {
-                "mockitoInterceptor": {},
                 "strategy": null,
                 "rating": 0
             },
             "aerodynamicist": {
-                "mockitoInterceptor": {},
                 "expertise": 0
             },
             "mechanic": {
-                "mockitoInterceptor": {},
                 "pitstopTime": 0,
                 "upgradePrice": 0
-            }
+            },
+            "points": 0,
+            "id": 0,
+            "name": null
         },
         {
             "driverList": [],
-            "carList": [],
+            "car": null,
             "strategist": {
-                "mockitoInterceptor": {},
                 "strategy": null,
                 "rating": 0
             },
             "aerodynamicist": {
-                "mockitoInterceptor": {},
                 "expertise": 0
             },
             "mechanic": {
-                "mockitoInterceptor": {},
                 "pitstopTime": 0,
                 "upgradePrice": 0
-            }
+            },
+            "points": 0,
+            "id": 0,
+            "name": null
         }
     ]
 }
