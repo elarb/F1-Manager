@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class GameTest {
 
@@ -56,7 +57,7 @@ public class GameTest {
   @Test
   public void newgametest() {
 
-    assertEquals(20, game.getDrivers().size());
+    assertEquals(33, game.getDrivers().size());
 
   }
 
@@ -82,7 +83,10 @@ public class GameTest {
 
     Game game = Game.loadgame("testsave2");
     game.addDriverResults(playerTeam);
-    assertEquals(4154.9 ,game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime(), 0.1);
+    double result = game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime();
+    double border1 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver1())* 0.8) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    double border2 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver1())* 1.2) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    assertTrue(result >= border1 && result <= border2);
 
   }
 
@@ -91,7 +95,10 @@ public class GameTest {
 
     Game game = Game.loadgame("testsave2");
     game.addDriverResults(playerTeam);
-    assertEquals(4526.1 ,game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime(), 0.1);
+    double result = game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime();
+    double border1 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver2())* 0.8) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    double border2 = (((game.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase()) * (Constants.VALUE_AVG_RESULT - game.getPlayerteam().getResultsDriver2())* 1.2) / Constants.VALUE_AVG_DIVIDER) + game.getPlayerteam().getMechanic().getPitstopTime();
+    assertTrue(result >= border1 && result <= border2);
 
   }
 

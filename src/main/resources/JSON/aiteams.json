@@ -30,14 +30,16 @@
                     "drivability": "8.7"
                 },
                 "body": 7.5,
-                "tyres": 7.6
+                "tyres":{
+                    "hardness": 8
+                }
             },
             "strategist": {
                 "strategy": null,
                 "rating": 8
             },
             "aerodynamicist": {
-                "expertise": 8.2
+                "expertise": 8
             },
             "mechanic": {
                 "pitstopTime": 3,
@@ -74,17 +76,19 @@
                     "drivability": "8.2"
                 },
                 "body": 7.3,
-                "tyres": 7
+                "tyres": {
+                    "hardness": 7
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 7.5
+                "rating": 8
             },
             "aerodynamicist": {
-                "expertise": 7.9
+                "expertise": 8
             },
             "mechanic": {
-                "pitstopTime": 3.8,
+                "pitstopTime": 4,
                 "upgradePrice": 0
             }
         },
@@ -118,17 +122,19 @@
                     "drivability": "9.8"
                 },
                 "body": 7.1,
-                "tyres": 7
+                "tyres": {
+                    "hardness": 7
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 7.3
+                "rating": 7
             },
             "aerodynamicist": {
-                "expertise": 7.9
+                "expertise": 8
             },
             "mechanic": {
-                "pitstopTime": 3.6,
+                "pitstopTime": 4,
                 "upgradePrice": 0
             }
         },
@@ -162,17 +168,19 @@
                     "drivability": "9.5"
                 },
                 "body": 6.5,
-                "tyres": 6.6
+                "tyres": {
+                    "hardness": 7
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 6.7
+                "rating": 7
             },
             "aerodynamicist": {
-                "expertise": 7.4
+                "expertise": 7
             },
             "mechanic": {
-                "pitstopTime": 4.2,
+                "pitstopTime": 4,
                 "upgradePrice": 0
             }
         },
@@ -206,17 +214,19 @@
                     "drivability": "8.1"
                 },
                 "body": 6.2,
-                "tyres": 6.4
+                "tyres": {
+                    "hardness": 6
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 6.5
+                "rating": 6
             },
             "aerodynamicist": {
-                "expertise": 6.9
+                "expertise": 7
             },
             "mechanic": {
-                "pitstopTime": 4.6,
+                "pitstopTime": 5,
                 "upgradePrice": 0
             }
         },
@@ -250,17 +260,19 @@
                     "drivability": "8.1"
                 },
                 "body": 6,
-                "tyres": 6.4
+                "tyres": {
+                    "hardness": 6
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 6.2
+                "rating": 6
             },
             "aerodynamicist": {
-                "expertise": 6.4
+                "expertise": 6
             },
             "mechanic": {
-                "pitstopTime": 5.4,
+                "pitstopTime": 6,
                 "upgradePrice": 0
             }
         },
@@ -294,17 +306,19 @@
                     "drivability": "5.7"
                 },
                 "body": 5.8,
-                "tyres": 6
+                "tyres": {
+                    "hardness": 6
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 6.1
+                "rating": 6
             },
             "aerodynamicist": {
                 "expertise": 6
             },
             "mechanic": {
-                "pitstopTime": 5.4,
+                "pitstopTime": 5,
                 "upgradePrice": 0
             }
         },
@@ -338,7 +352,9 @@
                     "drivability": "8.2"
                 },
                 "body": 5,
-                "tyres": 5.6
+                "tyres": {
+                    "hardness": 6
+                }
             },
             "strategist": {
                 "strategy": null,
@@ -348,7 +364,7 @@
                 "expertise": 6
             },
             "mechanic": {
-                "pitstopTime": 5.9,
+                "pitstopTime": 6,
                 "upgradePrice": 0
             }
         },
@@ -382,17 +398,19 @@
                     "drivability": "4.7"
                 },
                 "body": 4.8,
-                "tyres": 5.6
+                "tyres": {
+                    "hardness": 5
+                }
             },
             "strategist": {
                 "strategy": null,
-                "rating": 5.1
+                "rating": 5
             },
             "aerodynamicist": {
-                "expertise": 5.9
+                "expertise": 5
             },
             "mechanic": {
-                "pitstopTime": 6.1,
+                "pitstopTime": 6,
                 "upgradePrice": 0
             }
         }
