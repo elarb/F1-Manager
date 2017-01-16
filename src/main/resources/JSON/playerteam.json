@@ -5,21 +5,42 @@
     "budget": 200000000,
     "softwareTester": true,
     "driverList": [
+        {
+            "name": "Colin McRae",
+            "team": "Subaru ",
+            "speed": 3.7,
+            "racecraft": 3.5,
+            "strategyinsight": 3.8
+        },
+        {
+            "name": "Sebastien Loeb",
+            "team": "Citroen ",
+            "speed": 4.7,
+            "racecraft": 3.9,
+            "strategyinsight": 4.4
+        }
     ],
     "car": {
-        "engine": null,
-        "body": 0.0,
-        "tyres": null
+        "engine": {
+            "brand": "Weslake",
+            "power": "714",
+            "fuelefficiency": "4.9",
+            "drivability": "3.9"
+        },
+        "body": 3,
+        "tyres": {
+            "hardness": 3
+        }
     },
     "strategist": {
-        "strategy": null,
-        "rating": 0
+        "strategy": "LOW",
+        "rating": 4
     },
     "aerodynamicist": {
-        "expertise": 0
+        "expertise": 4
     },
     "mechanic": {
-        "pitstopTime": 0,
+        "pitstopTime": 8,
         "upgradePrice": 0
     }
 }

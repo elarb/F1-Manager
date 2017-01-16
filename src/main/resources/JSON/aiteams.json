@@ -26,7 +26,7 @@
                 "engine": {
                     "brand": "Mercedes",
                     "power": "858",
-                    "fuelefficiency": "8.3",
+                    "fuelEfficiency": "8.3",
                     "drivability": "8.7"
                 },
                 "body": 7.5,
@@ -35,7 +35,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "LOW",
                 "rating": 8
             },
             "aerodynamicist": {
@@ -72,7 +72,7 @@
                 "engine": {
                     "brand": "Renault",
                     "power": "797",
-                    "fuelefficiency": "8.3",
+                    "fuelEfficiency": "8.3",
                     "drivability": "8.2"
                 },
                 "body": 7.3,
@@ -81,7 +81,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "LOW",
                 "rating": 8
             },
             "aerodynamicist": {
@@ -118,7 +118,7 @@
                 "engine": {
                     "brand": "Ferrari",
                     "power": "821",
-                    "fuelefficiency": "8.3",
+                    "fuelEfficiency": "8.3",
                     "drivability": "9.8"
                 },
                 "body": 7.1,
@@ -127,7 +127,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "LOW",
                 "rating": 7
             },
             "aerodynamicist": {
@@ -164,7 +164,7 @@
                 "engine": {
                     "brand": "Ford",
                     "power": "871",
-                    "fuelefficiency": "8.5",
+                    "fuelEfficiency": "8.5",
                     "drivability": "9.5"
                 },
                 "body": 6.5,
@@ -173,7 +173,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "LOW",
                 "rating": 7
             },
             "aerodynamicist": {
@@ -210,7 +210,7 @@
                 "engine": {
                     "brand": "Honda",
                     "power": "777",
-                    "fuelefficiency": "7.4",
+                    "fuelEfficiency": "7.4",
                     "drivability": "8.1"
                 },
                 "body": 6.2,
@@ -219,7 +219,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "MEDIUM",
                 "rating": 6
             },
             "aerodynamicist": {
@@ -256,7 +256,7 @@
                 "engine": {
                     "brand": "Honda",
                     "power": "777",
-                    "fuelefficiency": "7.4",
+                    "fuelEfficiency": "7.4",
                     "drivability": "8.1"
                 },
                 "body": 6,
@@ -265,7 +265,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "MEDIUM",
                 "rating": 6
             },
             "aerodynamicist": {
@@ -302,7 +302,7 @@
                 "engine": {
                     "brand": "Maserati",
                     "power": "787",
-                    "fuelefficiency": "6.2",
+                    "fuelEfficiency": "6.2",
                     "drivability": "5.7"
                 },
                 "body": 5.8,
@@ -311,7 +311,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "MEDIUM",
                 "rating": 6
             },
             "aerodynamicist": {
@@ -348,7 +348,7 @@
                 "engine": {
                     "brand": "Renault",
                     "power": "797",
-                    "fuelefficiency": "8.3",
+                    "fuelEfficiency": "8.3",
                     "drivability": "8.2"
                 },
                 "body": 5,
@@ -357,7 +357,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "HIGH",
                 "rating": 5
             },
             "aerodynamicist": {
@@ -394,7 +394,7 @@
                 "engine": {
                     "brand": "Offenhauser",
                     "power": "500",
-                    "fuelefficiency": "7.4",
+                    "fuelEfficiency": "7.4",
                     "drivability": "4.7"
                 },
                 "body": 4.8,
@@ -403,7 +403,7 @@
                 }
             },
             "strategist": {
-                "strategy": null,
+                "strategy": "HIGH",
                 "rating": 5
             },
             "aerodynamicist": {
