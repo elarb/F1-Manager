@@ -88,5 +88,18 @@ public class GameTest {
         assertEquals(0, game.getPlayerteam().getPoints(), 0);
     }
 
+    @Test
+    public void updatestandingstest() {
+
+        game.race();
+        ArrayList<Team> standings = game.getSeason().getStandings();
+        for (int i = 0; i < standings.size(); i++) {
+
+            System.out.println("Team: " + standings.get(i).getName() + " /// Points: " + standings.get(i).getPoints());
+
+        }
+
+    }
+
 
 }

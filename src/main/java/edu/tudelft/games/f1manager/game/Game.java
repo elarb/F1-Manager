@@ -18,6 +18,8 @@ public class Game {
     private PlayerTeam playerteam;
     private Season season;
     private GameEvents events;
+    private Comparator<DriverResult> byTime = Comparator.comparingDouble(DriverResult::getTime);
+    private Comparator<Team> byPoints = (e1, e2) -> Double.compare(e2.getPoints(), e1.getPoints());
 
     /**
      * Method that creates a new instance of a game and reads a json files from a previous save
@@ -101,6 +103,7 @@ public class Game {
         buyRandomDriver();
         sortResults();
         attributepointsandbudget();
+        updateStandings();
         this.getSeason().nextRace();
     }
 
@@ -249,12 +252,14 @@ public class Game {
 
     public void sortResults() {
 
-        Comparator<DriverResult> byTime = (e1, e2) -> Double.compare(e1.getTime(), e2.getTime());
-
         getResults()
                 .stream()
                 .sorted(byTime)
                 .forEach(System.out::println);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
 
 
     }
@@ -262,7 +267,6 @@ public class Game {
 
     public void attributepointsandbudget() {
 
-        Comparator<DriverResult> byTime = (e1, e2) -> Double.compare(e1.getTime(), e2.getTime());
         ArrayList<DriverResult> ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
 
         for (int i = 0; i < 10; i++) {
@@ -360,6 +364,19 @@ public class Game {
 
         }
         return playerteam;
+
+    }
+
+    public void updateStandings() {
+
+        ArrayList<Team> teams = new ArrayList<Team>();
+
+        teams.addAll(this.getAiteams());
+        teams.add(this.getPlayerteam());
+
+        ArrayList<Team> standings = teams.stream().sorted(byPoints).collect(Collectors.toCollection(ArrayList::new));
+
+        this.getSeason().setStandings(standings);
 
     }
 
