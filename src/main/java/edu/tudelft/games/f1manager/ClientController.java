@@ -41,6 +41,10 @@ public class ClientController {
     crewTabController.initData();
   }
 
+  public void updateConfigurationTab(){
+    configurationTabController.populateBuyDriverList();
+  }
+
 
   public Game getGame() {
     return game;
