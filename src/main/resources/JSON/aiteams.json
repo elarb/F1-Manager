@@ -4,7 +4,6 @@
       "name": "Mercedes",
       "id": 2,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -50,7 +49,6 @@
       "name": "Redbull",
       "id": 3,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -96,7 +94,6 @@
       "name": "Ferrari",
       "id": 4,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -142,7 +139,6 @@
       "name": "Force India",
       "id": 5,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -188,7 +184,6 @@
       "name": "Williams",
       "id": 6,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -234,7 +229,6 @@
       "name": "McLaren-Honda",
       "id": 7,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -280,7 +274,6 @@
       "name": "Scuderia Toro Rosso",
       "id": 8,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -326,7 +319,6 @@
       "name": "Renault Sport F1",
       "id": 9,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -372,7 +364,6 @@
       "name": "Sauber",
       "id": 10,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {
@@ -418,7 +409,6 @@
       "name": "Manor Racing MRT",
       "id": 11,
       "points": 0,
-      "budget": 200000000,
       "softwareTester": true,
       "driverList": [
         {

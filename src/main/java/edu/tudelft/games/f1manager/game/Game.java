@@ -101,7 +101,7 @@ public class Game {
         buyRandomDriver();
         sortResults();
         attributepointsandbudget();
-        //    this.getSeason().nextRace();
+        this.getSeason().nextRace();
     }
 
 
