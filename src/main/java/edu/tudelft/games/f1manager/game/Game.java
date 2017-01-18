@@ -134,18 +134,18 @@ public class Game {
     addDriverResults(this.playerteam);
   }
 
-  /**
-   * Returns the calculated factor of the current race.
-   *
-   * @return the calculated factor of the current race
-   */
-  public double getCurrentRaceFactor() {
-    //TODO by Tim: Add and tweak formula
-    double somethingFactor = 10;
-    double elseFactor = 30;
-    double fooFactor = 40;
-    return somethingFactor * elseFactor * fooFactor;
-  }
+//  /**
+//   * Returns the calculated factor of the current race.
+//   *
+//   * @return the calculated factor of the current race
+//   */
+//  public double getCurrentRaceFactor() {
+//    //TODO by Tim: Add and tweak formula
+//    double somethingFactor = 10;
+//    double elseFactor = 30;
+//    double fooFactor = 40;
+//    return somethingFactor * elseFactor * fooFactor;
+//  }
 
   /**
    * A playerteam Driver Buy method.

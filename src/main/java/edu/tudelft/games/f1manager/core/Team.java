@@ -120,7 +120,7 @@ public abstract class Team {
 
   public double getResultsDriver1() {
     double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
-    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.8, 1.2);
+    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.95, 1.05);
   }
 
   public double getResultsDriver2() {

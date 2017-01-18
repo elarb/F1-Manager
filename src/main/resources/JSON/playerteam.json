@@ -6,41 +6,41 @@
     "softwareTester": true,
     "driverList": [
         {
-            "name": "Colin McRae",
-            "team": "Subaru ",
-            "speed": 3.7,
-            "racecraft": 3.5,
+            "name": "Jeremy Clarkson",
+            "team": "Alfa-Romeo",
+            "speed": 6.1,
+            "racecraft": 5,
             "strategyinsight": 3.8
         },
         {
-            "name": "Sebastien Loeb",
-            "team": "Citroen ",
-            "speed": 4.7,
-            "racecraft": 3.9,
-            "strategyinsight": 4.4
+            "name": "Richard Hammond",
+            "team": "Mustang",
+            "speed": 5.6,
+            "racecraft": 5.5,
+            "strategyinsight": 4.5
         }
     ],
     "car": {
         "engine": {
-            "brand": "Weslake",
-            "power": "714",
-            "fuelefficiency": "4.9",
-            "drivability": "3.9"
+            "brand": "BRM",
+            "power": "634",
+            "fuelEfficiency": "8.9",
+            "drivability": "6.3"
         },
-        "body": 3,
+        "body": 5,
         "tyres": {
-            "hardness": 3
+            "hardness": 5
         }
     },
     "strategist": {
         "strategy": "LOW",
-        "rating": 4
+        "rating": 6
     },
     "aerodynamicist": {
-        "expertise": 4
+        "expertise": 6
     },
     "mechanic": {
-        "pitstopTime": 8,
+        "pitstopTime": 6,
         "upgradePrice": 0
     }
 }
