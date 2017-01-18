@@ -2,6 +2,7 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
@@ -23,6 +24,7 @@ public class Season {
    * A list of races.
    */
   private ArrayList<Race> races;
+  private ArrayList<Team> standings;
 
 
   /**
@@ -132,5 +134,11 @@ public class Season {
     this.races = races;
   }
 
+  public void setStandings(ArrayList<Team> standings) {
+    this.standings = standings;
+  }
 
+  public ArrayList<Team> getStandings() {
+    return standings;
+  }
 }
