@@ -96,6 +96,7 @@ public class GameTest {
     Game game = Game.loadgame("testsave2");
     game.addDriverResults(playerTeam);
     double result = game.getSeason().getCurrentRaceInstance().getResults().get(1).getTime();
+    System.out.println(result);
     double border1 = result * 0.95;
     double border2 = result * 1.05;
     assertTrue(result >= border1 && result <= border2);
@@ -106,6 +107,7 @@ public class GameTest {
   public void race() {
 
     game.race();
+
   }
 
 }
