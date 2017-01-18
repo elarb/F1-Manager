@@ -143,16 +143,16 @@
         {
             "name": "Jeremy Clarkson",
             "team": "Alfa-Romeo",
-            "speed": 5.9,
-            "racecraft": 4.7,
-            "strategyinsight": 3.2
+            "speed": 6.1,
+            "racecraft": 5,
+            "strategyinsight": 3.8
         },
         {
             "name": "Richard Hammond",
             "team": "Mustang",
-            "speed": 5.4,
-            "racecraft": 5,
-            "strategyinsight": 4
+            "speed": 5.6,
+            "racecraft": 5.5,
+            "strategyinsight": 4.5
         },
         {
             "name": "James May aka Captain Slow",
