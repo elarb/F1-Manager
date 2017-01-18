@@ -11,17 +11,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-  private ClientController controller = new ClientController();
 
   @Override
   public void start(Stage primaryStage) throws Exception {
 
     Font.loadFont(getClass().getClassLoader()
-        .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
-
-    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/main.fxml"));
-    loader.setController(controller);
-
+      .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
+    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
     Parent root = loader.load();
     primaryStage.getIcons().addAll(new Image("img/F1_logo.png"));
     primaryStage.setTitle("F1 Manager");
