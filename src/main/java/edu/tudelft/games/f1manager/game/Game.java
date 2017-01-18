@@ -100,7 +100,7 @@ public class Game {
         handleResults();
         buyRandomDriver();
         sortResults();
-        attributepoints();
+        attributepointsandbudget();
         //    this.getSeason().nextRace();
     }
 
@@ -257,33 +257,104 @@ public class Game {
                 .forEach(System.out::println);
 
 
-        }
+    }
 
 
-
-    public void attributepoints() {
+    public void attributepointsandbudget() {
 
         Comparator<DriverResult> byTime = (e1, e2) -> Double.compare(e1.getTime(), e2.getTime());
         ArrayList<DriverResult> ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
 
-        getTeamDriver(ordered.get(0).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(0).getDriver().getTeamId()).getPoints() + 25);
-        getTeamDriver(ordered.get(1).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(1).getDriver().getTeamId()).getPoints() + 18);
-        getTeamDriver(ordered.get(2).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(2).getDriver().getTeamId()).getPoints() + 15);
-        getTeamDriver(ordered.get(3).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(3).getDriver().getTeamId()).getPoints() + 12);
-        getTeamDriver(ordered.get(4).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(4).getDriver().getTeamId()).getPoints() + 10);
-        getTeamDriver(ordered.get(5).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(5).getDriver().getTeamId()).getPoints() + 8);
-        getTeamDriver(ordered.get(6).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(6).getDriver().getTeamId()).getPoints() + 6);
-        getTeamDriver(ordered.get(7).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(7).getDriver().getTeamId()).getPoints() + 4);
-        getTeamDriver(ordered.get(8).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(8).getDriver().getTeamId()).getPoints() + 2);
-        getTeamDriver(ordered.get(9).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(9).getDriver().getTeamId()).getPoints() + 1);
+        for (int i = 0; i < 10; i++) {
+
+            if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam) {
+
+                PlayerTeam playerTeam = (PlayerTeam) getTeamDriver(ordered.get(i).getDriver().getTeamId());
+
+                if (i == 0) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 25);
+                    playerTeam.setBudget(playerTeam.getBudget() + 25 * 2000000);
+                }
+                if (i == 1) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 18);
+                    playerTeam.setBudget(playerTeam.getBudget() + 18 * 2000000);
+                }
+                if (i == 2) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 15);
+                    playerTeam.setBudget(playerTeam.getBudget() + 15 * 2000000);
+                }
+                if (i == 3) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 12);
+                    playerTeam.setBudget(playerTeam.getBudget() + 12 * 2000000);
+                }
+                if (i == 4) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 10);
+                    playerTeam.setBudget(playerTeam.getBudget() + 10 * 2000000);
+                }
+                if (i == 5) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 8);
+                    playerTeam.setBudget(playerTeam.getBudget() + 8 * 2000000);
+                }
+                if (i == 6) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 6);
+                    playerTeam.setBudget(playerTeam.getBudget() + 6 * 2000000);
+                }
+                if (i == 7) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 4);
+                    playerTeam.setBudget(playerTeam.getBudget() + 4 * 2000000);
+                }
+                if (i == 8) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 2);
+                    playerTeam.setBudget(playerTeam.getBudget() + 2 * 2000000);
+                }
+                if (i == 9) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 1);
+                    playerTeam.setBudget(playerTeam.getBudget() + 1 * 2000000);
+                }
+
+            } else {
+                if (i == 0) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 25);
+                }
+                if (i == 1) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 18);
+                }
+                if (i == 2) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 15);
+                }
+                if (i == 3) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 12);
+                }
+                if (i == 4) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 10);
+                }
+                if (i == 5) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 8);
+                }
+                if (i == 6) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 6);
+                }
+                if (i == 7) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 4);
+                }
+                if (i == 8) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 2);
+                }
+                if (i == 9) {
+                    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + 1);
+                }
+
+            }
+
+        }
 
     }
 
     public Team getTeamDriver(int id) {
 
-        for (AiTeam team: this.getAiteams()) {
+        for (AiTeam team : this.getAiteams()) {
 
-            if(team.getId() == id) {
+            if (team.getId() == id) {
                 return team;
             }
 
