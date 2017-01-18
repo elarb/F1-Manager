@@ -74,4 +74,13 @@ public class GameTest {
 
   }
 
+  @Test
+  public void attributepointstest() {
+
+    game.race();
+    assertTrue(game.getAiteams().get(0).getPoints() >= 1 && game.getAiteams().get(0).getPoints() <= 43);
+
+  }
+
+
 }
