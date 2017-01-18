@@ -16,13 +16,13 @@ public class ConfigurationTabController {
   @FXML
   private JFXListView buyDriverList;
 
-  public void injectMainController(ClientController clientController) {
+  void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
   /**looks at the selected name and buys the driver that has that name.
    *
-   * @throws IOException
+   * @throws IOException error
    */
   public void handleButtonClick_buyDriver() throws IOException {
     String driverName = (String)buyDriverList.getSelectionModel().getSelectedItem();
@@ -41,7 +41,7 @@ public class ConfigurationTabController {
   /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
    *
    */
-  public void populateBuyDriverList(){
+  void populateBuyDriverList(){
     System.out.println("populating list");
     ArrayList<Driver> drivers = clientController.getGame().getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
