@@ -112,9 +112,9 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2,
-        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
@@ -235,6 +235,14 @@ public class Game {
       .stream()
       .sorted(byTime)
       .forEach(System.out::println);
+  }
+
+  public Driver getFirstDriver() {
+    return this.playerteam.getDriverList().get(0);
+  }
+
+  public Driver getSecondDriver() {
+    return this.playerteam.getDriverList().get(1);
   }
 
 
