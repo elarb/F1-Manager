@@ -106,7 +106,8 @@ public class Game {
     ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
     attributepointsandbudget();
     updateStandings();
-    GameEventPlayerteam();
+    GameEvent_Positions();
+    GameEvent_Crashed();
     championAward();
 
     if (this.getSeason().getCurrentRace() < 20) {
@@ -274,7 +275,7 @@ public class Game {
     driver.setTeamId(team.getId());
 
     GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
-    this.events.addEvent(event);
+    events.addEvent(event);
     //adds this event to the list of events
 
   }
@@ -293,7 +294,7 @@ public class Game {
 
   }
 
-  public GameEvent GameEventPlayerteam() {
+  public GameEvent GameEvent_Positions() {
 
     ArrayList<Integer> positions = new ArrayList<Integer>();
 
@@ -308,6 +309,22 @@ public class Game {
     GameEvent event = new GameEvent("You finished " + positions.get(0) + " and " + positions.get(1) + " in the last race",GameEvent.Type.RACE);
     events.addEvent(event);
     return event;
+
+  }
+
+  public GameEvent GameEvent_Crashed() {
+
+    for (int i = 0; i < ordered.size(); i++) {
+
+      if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam && ordered.get(i).getTime() == 100000000){
+        GameEvent event = new GameEvent("Oh no... your driver " + ordered.get(i).getDriver().getName() + " has crashed!",GameEvent.Type.RACE);
+        events.addEvent(event);
+        return event;
+      }
+
+    }
+
+    return null;
 
   }
 
