@@ -12,51 +12,31 @@
 
 <AnchorPane fx:id="crewTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
    <children>
-      <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="1003.0" layoutY="373.0" prefHeight="24.0" prefWidth="134.0" textFill="#f2f2f2">
-         <font>
-            <Font name="Futura LT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="722.0" layoutY="37.0" prefHeight="24.0" prefWidth="134.0" textFill="#f2f2f2">
-         <font>
-            <Font name="Futura LT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="valueFirstDriver" layoutX="759.0" layoutY="121.0" textFill="#5fc68c">
-         <font>
-            <Font name="Futura LT Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="valueSecondDriver" layoutX="1066.0" layoutY="101.0" prefHeight="20.0" prefWidth="20.0" textFill="#5fc68c">
-         <font>
-            <Font name="Futura LT Bold" size="15.0" />
-         </font>
-      </Label>
-      <Pane layoutX="654.0" layoutY="123.0" prefHeight="230.0" prefWidth="522.0" style="-fx-background-color: #f2f2f2;">
+      <Pane fx:id="driver1Pane" layoutX="654.0" layoutY="123.0" prefHeight="230.0" prefWidth="522.0" style="-fx-background-color: #f2f2f2;">
          <children>
             <ImageView fx:id="firstDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="23.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Drivers/max-verstappen.png" />
                </image>
             </ImageView>
-            <ProgressBar layoutX="244.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
-            <ProgressBar layoutX="244.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
-            <ProgressBar layoutX="244.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.37" />
-            <JFXButton layoutX="409.0" layoutY="138.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <ProgressBar fx:id="strategyinsight1" layoutX="244.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
+            <ProgressBar fx:id="racecraft1" layoutX="244.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
+            <ProgressBar fx:id="speed1" layoutX="244.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.48" />
+            <JFXButton layoutX="409.0" layoutY="138.0" onAction="#upgradeDriver" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <JFXButton layoutX="409.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <JFXButton layoutX="409.0" layoutY="184.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <Label alignment="CENTER" layoutX="195.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Max Verstappen">
+            <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="195.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Max Verstappen">
                <font>
                   <Font name="Trebuchet MS" size="36.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="184.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 99/100">
+            <Label fx:id="driverRating1" alignment="CENTER_RIGHT" layoutX="184.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 99/100">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Line endX="150.0" layoutX="335.0" layoutY="88.0" startX="-150.0" strokeLineJoin="ROUND" strokeWidth="2.0" />
-            <Label layoutX="348.0" layoutY="89.0" prefHeight="31.0" prefWidth="143.0" text="\$20,000,000">
+            <Label fx:id="driverValue1" layoutX="348.0" layoutY="89.0" prefHeight="31.0" prefWidth="143.0" text="\$20,000,000">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -66,24 +46,24 @@
       </Pane>
       <Pane layoutX="654.0" layoutY="385.0" prefHeight="230.0" prefWidth="522.0" style="-fx-background-color: #f2f2f2;">
          <children>
-            <ProgressBar layoutX="30.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
-            <ProgressBar layoutX="30.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
-            <ProgressBar layoutX="30.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.37" />
+            <ProgressBar fx:id="strategyinsight2" layoutX="30.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
+            <ProgressBar fx:id="racecraft2" layoutX="30.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
+            <ProgressBar fx:id="speed2" layoutX="30.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.46" />
             <JFXButton layoutX="195.0" layoutY="138.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <JFXButton layoutX="195.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <JFXButton layoutX="195.0" layoutY="184.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <Label alignment="CENTER" layoutX="32.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Wouter van Lil">
+            <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="32.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Wouter van Lil">
                <font>
                   <Font name="Trebuchet MS" size="36.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="21.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 100/100">
+            <Label fx:id="driverRating2" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 100/100">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Label>
             <Line endX="150.0" layoutX="172.0" layoutY="88.0" startX="-150.0" strokeLineJoin="ROUND" strokeWidth="2.0" />
-            <Label layoutX="185.0" layoutY="89.0" prefHeight="31.0" prefWidth="143.0" text="\$20,000,000">
+            <Label fx:id="driverValue2" layoutX="185.0" layoutY="89.0" prefHeight="31.0" prefWidth="143.0" text="\$20,000,000">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -135,6 +115,11 @@
             </Label>
             <JFXButton layoutX="189.0" layoutY="117.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <ProgressBar layoutX="167.0" layoutY="80.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
+            <ImageView fitHeight="159.0" fitWidth="143.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/strategist.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <Pane layoutX="14.0" layoutY="247.0" prefHeight="178.0" prefWidth="300.0" style="-fx-background-color: #f2f2f2;">
          <children>
@@ -158,8 +143,6 @@
                   <Font name="Trebuchet MS" size="23.0" />
                </font>
             </Label>
-            <JFXButton layoutX="152.0" layoutY="125.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <ProgressBar layoutX="141.0" layoutY="88.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
          </children>
       </Pane>
    </children>

@@ -35,7 +35,7 @@
                                 <Font name="Futura LT Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="winsLabel" contentDisplay="CENTER" layoutX="1104.0" layoutY="27.0" prefHeight="48.0" prefWidth="131.0" text="Race: 12/15" textFill="WHITE" AnchorPane.rightAnchor="45.0">
+                        <Label fx:id="raceLabel" contentDisplay="CENTER" layoutX="1104.0" layoutY="27.0" prefHeight="48.0" prefWidth="131.0" text="Race: 12/15" textFill="WHITE" AnchorPane.rightAnchor="45.0">
                             <font>
                                 <Font name="Futura LT Bold" size="18.0" />
                             </font>
@@ -63,7 +63,7 @@
                                 </Tab>
                         <Tab text="Next Race Info">
                           <content>
-                            <fx:include fx:id="nextRaceTab" source="NextRaceTab.fxml"/>
+                            <fx:include fx:id="nextRaceTab" source="NextRaceTab.fxml" />
                           </content>
                         </Tab>
                                 <Tab text="Crew">
