@@ -1,8 +1,8 @@
 package edu.tudelft.games.f1manager.core;
 
-import java.util.Random;
-
 import edu.tudelft.games.f1manager.game.GameEvent;
+
+import java.util.Random;
 
 public class Driver implements Upgradeable {
 
@@ -31,7 +31,7 @@ public class Driver implements Upgradeable {
     this.value = (int) (((this.speed * Constants.SPEEDCOEF)
       + (this.racecraft * Constants.RACECRAFTCOEF)
       + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    )* Constants.DRIVERBASEPRICE);
+    ) * Constants.DRIVERBASEPRICE);
   }
 
   @Override
@@ -148,7 +148,11 @@ public class Driver implements Upgradeable {
     this.value = (int) (((this.speed * Constants.SPEEDCOEF)
       + (this.racecraft * Constants.RACECRAFTCOEF)
       + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    )* Constants.DRIVERBASEPRICE);
+    ) * Constants.DRIVERBASEPRICE);
+  }
+
+  public int getRating() {
+    return (int) (this.racecraft + this.speed + this.strategyinsight / 3) * 10;
   }
 
 
