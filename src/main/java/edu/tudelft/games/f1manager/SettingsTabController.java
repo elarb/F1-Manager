@@ -16,6 +16,9 @@ public class SettingsTabController {
   private ClientController clientController;
 
   @FXML
+  private JFXListView saveGameList;
+
+  @FXML
   private Pane saveGamePane;
 
   @FXML
@@ -32,18 +35,30 @@ public class SettingsTabController {
   }
 
   public void handleButtonClick_SaveGame(){
+    updateSaveGameList();
     saveGamePane.setVisible(true);
     saveGamePane.setDisable(false);
   }
 
   public void saveGame() throws IOException {
+
     String saveName = saveNameField.getText();
     if(!saveName.equals("")){
       clientController.getGame().savegame(saveName);
       saveGamePane.setDisable(true);
       saveGamePane.setVisible(false);
+      saveNameField.setStyle("-fx-background-color: white");
     }else{
-      saveNameField.setStyle("-fx-background-color: red");
+      saveName = (String) saveGameList.getSelectionModel().getSelectedItem();
+      if(saveName != null){
+        clientController.getGame().savegame(saveName);
+        saveGamePane.setDisable(true);
+        saveGamePane.setVisible(false);
+        saveNameField.setStyle("-fx-background-color: white");
+      }else{
+        saveNameField.setStyle("-fx-background-color: red");
+      }
+
     }
   }
 
@@ -65,7 +80,15 @@ public class SettingsTabController {
 
   }
 
+  private void updateSaveGameList(){
+    saveGameList.setItems(findSaveGames());
+  }
+
   private void updateLoadGameList(){
+    loadGameList.setItems(findSaveGames());
+  }
+
+  private ObservableList<String> findSaveGames(){
     ObservableList<String> savedGames = FXCollections.observableArrayList();
 
     File file = new File("src/main/resources/JSON/");
@@ -74,6 +97,7 @@ public class SettingsTabController {
     for (String name : saves) {
       savedGames.add(name);
     }
-    loadGameList.setItems(savedGames);
+    return savedGames;
   }
 }
+
