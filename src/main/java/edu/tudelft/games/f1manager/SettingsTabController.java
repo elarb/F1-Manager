@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 
 public class SettingsTabController {
 
@@ -30,49 +31,62 @@ public class SettingsTabController {
   @FXML
   private Pane loadGamePane;
 
-  public void injectMainController(ClientController clientController) {
+  void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
-  public void handleButtonClick_SaveGame(){
+  /**opens the saveGame pane.
+   *
+   */
+  public void handleButtonClick_SaveGame() {
     updateSaveGameList();
     saveGamePane.setVisible(true);
     saveGamePane.setDisable(false);
   }
 
+  /**saves the game with the name providen by typing or selecting a existing save.
+   *
+   * @throws IOException error
+   */
   public void saveGame() throws IOException {
 
     String saveName = saveNameField.getText();
-    if(!saveName.equals("")){
+    if (!saveName.equals("")) {
       clientController.getGame().savegame(saveName);
       saveGamePane.setDisable(true);
       saveGamePane.setVisible(false);
       saveNameField.setStyle("-fx-background-color: white");
-    }else{
+    } else {
       saveName = (String) saveGameList.getSelectionModel().getSelectedItem();
-      if(saveName != null){
+      if (saveName != null) {
         clientController.getGame().savegame(saveName);
         saveGamePane.setDisable(true);
         saveGamePane.setVisible(false);
         saveNameField.setStyle("-fx-background-color: white");
-      }else{
+      } else {
         saveNameField.setStyle("-fx-background-color: red");
       }
 
     }
   }
 
-  public void handleButtonClick_LoadGame(){
+  /**opens the loadGame pane.
+   *
+   */
+  public void handleButtonClick_LoadGame() {
     System.out.println("load");
     updateLoadGameList();
     loadGamePane.setVisible(true);
     loadGamePane.setDisable(false);
   }
 
-  public void loadGame(){
+  /**loads the selected game from the list of saves.
+   *
+   */
+  public void loadGame() {
     String saveName = (String) loadGameList.getSelectionModel().getSelectedItem();
 
-    if(saveName != null){
+    if (saveName != null) {
       clientController.setGame(Game.loadgame(saveName));
       loadGamePane.setDisable(true);
       loadGamePane.setVisible(false);
@@ -88,14 +102,14 @@ public class SettingsTabController {
     loadGameList.setItems(findSaveGames());
   }
 
-  private ObservableList<String> findSaveGames(){
+  private ObservableList<String> findSaveGames() {
     ObservableList<String> savedGames = FXCollections.observableArrayList();
 
     File file = new File("src/main/resources/JSON/");
     String[] saves = file.list((dir, name) -> new File(dir, name).isDirectory());
 
-    for (String name : saves) {
-      savedGames.add(name);
+    if (saves != null) {
+      Collections.addAll(savedGames, saves);
     }
     return savedGames;
   }
