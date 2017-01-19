@@ -2,6 +2,7 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.tudelft.games.f1manager.core.Driver;
 import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.*;
@@ -134,11 +135,12 @@ public class Season {
     this.races = races;
   }
 
+  public ArrayList<Team> getStandings() {
+    return standings;
+  }
+
   public void setStandings(ArrayList<Team> standings) {
     this.standings = standings;
   }
 
-  public ArrayList<Team> getStandings() {
-    return standings;
-  }
 }
