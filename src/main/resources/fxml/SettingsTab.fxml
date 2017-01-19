@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,12 +15,18 @@
             <Image url="@../img/Ferrari.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="65.0" layoutY="80.0" prefHeight="72.0" prefWidth="159.0" style="-fx-background-color: darkgrey;" text="load game" />
-      <JFXButton layoutX="65.0" layoutY="186.0" onAction="#handleButtonClick_SaveGame" prefHeight="72.0" prefWidth="159.0" style="-fx-background-color: darkgrey;" text="save game" />
-      <Pane fx:id="saveGamePane" disable="true" layoutX="62.0" layoutY="182.0" prefHeight="80.0" prefWidth="165.0" style="-fx-background-color: darkgrey;" visible="false">
+      <JFXButton layoutX="65.0" layoutY="114.0" onAction="#handleButtonClick_LoadGame" prefHeight="72.0" prefWidth="159.0" style="-fx-background-color: darkgrey;" text="load game" />
+      <JFXButton layoutX="65.0" layoutY="463.0" onAction="#handleButtonClick_SaveGame" prefHeight="72.0" prefWidth="159.0" style="-fx-background-color: darkgrey;" text="save game" />
+      <Pane fx:id="saveGamePane" disable="true" layoutX="62.0" layoutY="459.0" prefHeight="80.0" prefWidth="165.0" style="-fx-background-color: darkgrey;" visible="false">
          <children>
             <JFXTextField fx:id="saveNameField" layoutX="8.0" layoutY="9.0" style="-fx-background-color: white;" />
             <JFXButton layoutX="62.0" layoutY="40.0" onAction="#saveGame" style="-fx-background-color: black;" text="Save" />
+         </children>
+      </Pane>
+      <Pane fx:id="loadGamePane" disable="true" layoutX="61.0" layoutY="63.0" prefHeight="225.0" prefWidth="165.0" visible="false">
+         <children>
+            <JFXButton layoutX="1.0" layoutY="195.0" onAction="#loadGame" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: black;" text="Load" />
+            <JFXListView fx:id="loadGameList" prefHeight="194.0" prefWidth="165.0" />
          </children>
       </Pane>
    </children>
