@@ -1,10 +1,12 @@
 package edu.tudelft.games.f1manager;
 
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSlider;
 import edu.tudelft.games.f1manager.core.Driver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,8 +18,20 @@ public class ConfigurationTabController {
   @FXML
   private JFXListView buyDriverList;
 
+  @FXML
+  private JFXSlider tireSlider;
+
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
+  }
+
+  @FXML
+  private void initialize(){
+    tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      if(oldValue.intValue() != newValue.intValue()){
+        clientController.getGame().getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
+      }
+    });
   }
 
   /**looks at the selected name and buys the driver that has that name.
@@ -59,5 +73,4 @@ public class ConfigurationTabController {
     }
     buyDriverList.setItems(driverNames);
   }
-
 }
