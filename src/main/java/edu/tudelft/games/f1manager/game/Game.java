@@ -1,16 +1,23 @@
 package edu.tudelft.games.f1manager.game;
 
-import edu.tudelft.games.f1manager.core.*;
+import edu.tudelft.games.f1manager.core.AiTeam;
+import edu.tudelft.games.f1manager.core.AiTeamList;
+import edu.tudelft.games.f1manager.core.Constants;
+import edu.tudelft.games.f1manager.core.Driver;
+import edu.tudelft.games.f1manager.core.DriverList;
+import edu.tudelft.games.f1manager.core.Engine;
+import edu.tudelft.games.f1manager.core.PlayerTeam;
+import edu.tudelft.games.f1manager.core.Team;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.sql.Time;
-import java.util.*;
-import java.util.stream.Collector;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Game {
 
@@ -101,14 +108,14 @@ public class Game {
     balanceDrivers();
     setTeamIDs();
     handleResults();
-    buyRandomDriver();
     sortResults();
     ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
     attributepointsandbudget();
     updateStandings();
-    GameEvent_Positions();
-    GameEvent_Crashed();
+    gameEventPositions();
+    gameEventCrashed();
     championAward();
+    buyRandomDriver();
 
     if (this.getSeason().getCurrentRace() < 20) {
       this.getSeason().nextRace();
@@ -130,23 +137,19 @@ public class Game {
     Engine engine = team.getCar().getEngine();
     engine.determineprice();
 
-    DriverResult result1 = new DriverResult(driver1,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
-    DriverResult result2 = new DriverResult(driver2,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+    DriverResult result1 = new DriverResult(driver1, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+    DriverResult result2 = new DriverResult(driver2, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
 
     if (team.getStrategist().hasCrashed()) {
 
-      if(RandomDouble.generate(0,1) > 0.1) {
+      if (RandomDouble.generate(0, 1) > 0.1) {
 
         if (RandomDouble.generate(0, 1) > 0.5) {
           result1 = new DriverResult(driver1, 100000000);
         } else {
           result2 = new DriverResult(driver2, 100000000);
         }
-      }
-
-      else{
+      } else {
         result1 = new DriverResult(driver1, 100000000);
         result2 = new DriverResult(driver2, 100000000);
       }
@@ -163,25 +166,13 @@ public class Game {
    * and adds the results of their drivers to the results of the current race.
    */
   public void handleResults() {
-    for (AiTeam team :
-      this.aiteams.getTeams()) {
-      addDriverResults(team);
-    }
+    this.aiteams.getTeams().forEach(this::addDriverResults);
     addDriverResults(this.playerteam);
   }
 
-//  /**
-//   * Returns the calculated factor of the current race.
-//   *
-//   * @return the calculated factor of the current race
-//   */
-//  public double getCurrentRaceFactor() {
-//    //TODO by Tim: Add and tweak formula
-//    double somethingFactor = 10;
-//    double elseFactor = 30;
-//    double fooFactor = 40;
-//    return somethingFactor * elseFactor * fooFactor;
-//  }
+  /**
+   * Sets TeamID for every driver.
+   */
 
   public void setTeamIDs() {
 
@@ -246,7 +237,7 @@ public class Game {
   }
 
   /**
-   * Random Aiteams buys random driver but only if this driver is better than one if it's own drivers
+   * Random Aiteams buys random driver but only if this driver is better than one if it's own drivers.
    */
   public void buyRandomDriver() {
     Random rand = new Random();
@@ -255,11 +246,11 @@ public class Game {
       AiTeam randomTeam = this.getAiteams().get(new Random().nextInt(this.getAiteams().size()));
       Driver randomDriver = this.getDrivers().get(new Random().nextInt(this.getDrivers().size()));
 
-        for (int j = 0; j < randomTeam.getDriverList().size(); j++) {
-          if(randomTeam.getDriverList().get(j).getValue() < randomDriver.getValue()){
-            aiBuy(randomTeam, randomDriver);
-          }
+      for (int j = 0; j < randomTeam.getDriverList().size(); j++) {
+        if (randomTeam.getDriverList().get(j).getValue() < randomDriver.getValue() * 0.80) {
+          aiBuy(randomTeam, randomDriver);
         }
+      }
     }
   }
 
@@ -285,6 +276,10 @@ public class Game {
 
   }
 
+  /**
+   * Sorts results of the race by time and prints them out (for testing purposes).
+   */
+
   public void sortResults() {
 
     getResults()
@@ -299,30 +294,40 @@ public class Game {
 
   }
 
-  public GameEvent GameEvent_Positions() {
+  /**
+   * Method used to return your position in the race.
+   * @return gameevent with as message the standings
+   */
+
+  public GameEvent gameEventPositions() {
 
     ArrayList<Integer> positions = new ArrayList<Integer>();
 
-    for (int i = 0; i < ordered.size(); i++){
+    for (int i = 0; i < ordered.size(); i++) {
 
-      if(getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam){
+      if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam) {
         positions.add(i + 1);
       }
 
     }
 
-    GameEvent event = new GameEvent("You finished " + positions.get(0) + " and " + positions.get(1) + " in the last race",GameEvent.Type.RACE);
+    GameEvent event = new GameEvent("You finished " + positions.get(0) + " and " + positions.get(1) + " in the last race", GameEvent.Type.RACE);
     events.addEvent(event);
     return event;
 
   }
 
-  public GameEvent GameEvent_Crashed() {
+  /**
+   * Method used to return your position in the race.
+   * @return gameevent with as message the standings
+   */
+
+  public GameEvent gameEventCrashed() {
 
     for (int i = 0; i < ordered.size(); i++) {
 
-      if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam && ordered.get(i).getTime() == 100000000){
-        GameEvent event = new GameEvent("Oh no... your driver " + ordered.get(i).getDriver().getName() + " has crashed!",GameEvent.Type.RACE);
+      if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam && ordered.get(i).getTime() == 100000000) {
+        GameEvent event = new GameEvent("Oh no... your driver " + ordered.get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
         events.addEvent(event);
         return event;
       }
@@ -332,6 +337,10 @@ public class Game {
     return null;
 
   }
+
+  /**
+   * Attributes points according to the race results.
+   */
 
 
   public void attributepointsandbudget() {
@@ -426,11 +435,21 @@ public class Game {
 
   }
 
-  public void setpoints(int i, int p) {
+  /**
+   * Sets points according to the entered number of points.
+   * @param driver The driver you want points added to
+   * @param points Number of points
+   */
 
-    getTeamDriver(ordered.get(i).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(i).getDriver().getTeamId()).getPoints() + p);
+  public void setpoints(int driver, int points) {
+
+    getTeamDriver(ordered.get(driver).getDriver().getTeamId()).setPoints(getTeamDriver(ordered.get(driver).getDriver().getTeamId()).getPoints() + points);
 
   }
+
+  /**
+   * Gives a bonuses whe  you win the season.
+   */
 
   public void championAward() {
 
@@ -462,6 +481,12 @@ public class Game {
 
   }
 
+  /**
+   * returns a team accordin to an id.
+   * @param id id of the team
+   * @return instance of team
+   */
+
   public Team getTeamDriver(int id) {
 
     for (AiTeam team : this.getAiteams()) {
@@ -474,6 +499,11 @@ public class Game {
     return playerteam;
 
   }
+
+  /**
+   * Adds latest standings to Season class.
+   * @return arraylist of teams
+   */
 
   public GameEvent updateStandings() {
 
