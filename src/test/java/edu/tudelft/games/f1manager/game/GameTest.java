@@ -91,27 +91,13 @@ public class GameTest {
   @Test
   public void updatestandingstest() {
 
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
+    for (int i = 0; i < 21; i++) {
+
+      game.race();
+
+    }
+
+
 
 
     ArrayList<Team> standings = game.getSeason().getStandings();
@@ -127,11 +113,11 @@ public class GameTest {
   @Test
   public void Gameevent(){
 
-    game.race();
-    game.race();
-    game.race();
-    game.race();
-    game.race();
+    for (int i = 0; i < 21; i++) {
+
+      game.race();
+
+    }
 
     for (int i = 0; i < game.getEvents().getEvents().size(); i++) {
 
