@@ -91,23 +91,17 @@ public abstract class Team {
 
   public double teamFactorNoDriver() {
 
-    if (this.strategist.hasCrashed()) {
 
-      return 0;
+    double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
+    double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
+    double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
+    double body = (Constants.BODY_COEF * this.car.getBody());
+    double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
 
-    } else {
-
-      double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
-      double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
-      double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
-      double body = (Constants.BODY_COEF * this.car.getBody());
-      double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
-
-      return strategist + grip + aerodynamics + body + engine;
-
-    }
+    return strategist + grip + aerodynamics + body + engine;
 
   }
+
 
   /**
    * Adds the driver to the team's list of drivers.
@@ -119,13 +113,15 @@ public abstract class Team {
   }
 
   public double getResultsDriver1() {
+
     double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
-    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.8, 1.2);
+    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.95, 1.05);
   }
 
   public double getResultsDriver2() {
+
     double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
-    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.8, 1.2);
+    return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.95, 1.05);
   }
 
   public List<Driver> getDriverList() {
