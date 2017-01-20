@@ -246,7 +246,7 @@ public class Game {
   }
 
   /**
-   * Random Aiteams buy random drivers.
+   * Random Aiteams buys random driver but only if this driver is better than one if it's own drivers
    */
   public void buyRandomDriver() {
     Random rand = new Random();
@@ -254,7 +254,12 @@ public class Game {
     for (int i = 0; i < random; i++) {
       AiTeam randomTeam = this.getAiteams().get(new Random().nextInt(this.getAiteams().size()));
       Driver randomDriver = this.getDrivers().get(new Random().nextInt(this.getDrivers().size()));
-      aiBuy(randomTeam, randomDriver);
+
+        for (int j = 0; j < randomTeam.getDriverList().size(); j++) {
+          if(randomTeam.getDriverList().get(j).getValue() < randomDriver.getValue()){
+            aiBuy(randomTeam, randomDriver);
+          }
+        }
     }
   }
 
@@ -483,7 +488,7 @@ public class Game {
 
     if (standings.get(0) instanceof PlayerTeam) {
 
-      GameEvent event = new GameEvent("Congratulations! You won the " + this.getSeason().getCurrentRaceInstance().getName(), GameEvent.Type.RACE);
+      GameEvent event = new GameEvent("Congratulations! You are first in the  overall standings!", GameEvent.Type.RACE);
       events.addEvent(event);
       return event;
 
