@@ -42,7 +42,7 @@ public class ConfigurationTabController {
     String driverName = (String)buyDriverList.getSelectionModel().getSelectedItem();
 
     for ( Driver driver : clientController.getGame().getDrivers()) {
-      if (driver.getName().equals(driverName)){
+      if (driver.getName().equals(driverName)) {
         if(clientController.getGame().driverBuy(driver)){
           System.out.println("driver bought");
           populateBuyDriverList();
@@ -55,7 +55,7 @@ public class ConfigurationTabController {
   /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
    *
    */
-  void populateBuyDriverList(){
+  void populateBuyDriverList() {
     System.out.println("populating list");
     ArrayList<Driver> drivers = clientController.getGame().getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();

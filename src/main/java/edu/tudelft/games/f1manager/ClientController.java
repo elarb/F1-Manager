@@ -41,10 +41,19 @@ public class ClientController {
     crewTabController.initData();
   }
 
-  public void updateConfigurationTab(){
+  public void updateConfigurationTab() {
     configurationTabController.populateBuyDriverList();
   }
 
+  private void updateHomeTab() {
+    homeTabController.populateRaceResultList();
+  }
+
+  @FXML
+  private void handleButtonClick_Race() {
+    game.race();
+    updateHomeTab();
+  }
 
   public Game getGame() {
     return game;
