@@ -20,11 +20,23 @@ Steps :
 
 ## Usage
 
-The game is self explanatory... (For the moment)
+Configure your team at the configurations tab, 
+buy drivers and engines at the marketplace tab, 
+upgrade your crew at the crew tab and save / load 
+your game at the settings tab
 
-## History
+Libraries
+-----------------
 
-Started as a Project for a Bachelor course, now one of the most well known f1 simulators around
+| Name                               | Description                                      |
+| ---------------------------------- | -------------------------------------------------|
+| Google Gson                        | A Java serialization/deserialization library     |
+|                                    | that can convert Java Objects into JSON and back.|
+| Google Guava                       | Google Core Libraries for Java.                  |
+| Mockito                            | Mocking framework for unit tests in Java         |
+| JFoeniX                            | JavaFX Material Design Library                   |
+| JUnit                              | A simple framework to write repeatable tests     |
+
 
 ## Team
 
