@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="configurationTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ConfigurationTabController">
+<AnchorPane fx:id="configurationTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ConfigurationTabController">
    <children>
-      <JFXSlider layoutX="970.0" layoutY="571.0" max="5.0" min="1.0" value="1.0" />
+      <JFXSlider fx:id="tireSlider" blockIncrement="1.0" layoutX="970.0" layoutY="571.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <ImageView fitHeight="144.0" fitWidth="174.0" layoutX="953.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXListView fx:id="buyDriverList" layoutX="26.0" layoutY="25.0" prefHeight="549.0" prefWidth="248.0" />
+      <JFXButton layoutX="26.0" layoutY="580.0" onAction="#handleButtonClick_buyDriver" prefHeight="31.0" prefWidth="248.0" text="Buy selected driver" />
+      <Label alignment="CENTER" layoutX="1017.0" layoutY="544.0" prefHeight="17.0" prefWidth="46.0" text="Tires" />
    </children>
 </AnchorPane>

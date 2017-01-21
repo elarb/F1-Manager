@@ -23,7 +23,7 @@ public class Constants {
   public static final double NORMALIZEVALUE_DRIVER_ENGINE = 10000000;
   public static final double NORMALIZEVALUE_STRATEGIST = 10;
   public static final double VALUE_AVG_RESULT = 10;
-  public static final double VALUE_AVG_DIVIDER = 3.5;
+  public static final double VALUE_AVG_DIVIDER = 5;
   public static final double DRIVERUPGRADE = 1;
 
 }
