@@ -43,13 +43,14 @@ public class ConfigurationTabController {
 
     for ( Driver driver : clientController.getGame().getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        if(clientController.getGame().driverBuy(driver)){
+        if (clientController.getGame().driverBuy(driver)) {
           System.out.println("driver bought");
           populateBuyDriverList();
         }
         break;
       }
     }
+    clientController.updateHomeTab();
   }
 
   /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
