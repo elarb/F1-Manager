@@ -25,7 +25,7 @@ Steps :
 Configure your team at the configurations tab, 
 buy drivers and engines at the marketplace tab, 
 upgrade your crew at the crew tab and save / load 
-your game at the settings tab
+your game at the settings tab.
 
 Libraries
 -----------------
