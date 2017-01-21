@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.com/elarb/F1-Manager.svg?token=T3DvYLyn6TfxmknUsrTx&branch=foundation)](https://travis-ci.com/elarb/F1-Manager)
-# F1 Manager
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/F1_logo.svg/1280px-F1_logo.svg.png"  width="400"/>
 </p>
+
+[![Build Status](https://travis-ci.com/elarb/F1-Manager.svg?token=T3DvYLyn6TfxmknUsrTx&branch=foundation)](https://travis-ci.com/elarb/F1-Manager)
+# F1 Manager
+
 In this game, the player is the manager of a F1 team. 
 The player starts with a budget and has the ability to compose a team and pick a strategy to win as many races as possibly and become the best!
 
@@ -10,7 +12,7 @@ The player starts with a budget and has the ability to compose a team and pick a
 
 Prerequisites:
 
-- Java v8 or above installed (We recommend to always have the latest version)
+- [Java 8+](https://www.java.com/nl/download/)
 
 Steps :
 
@@ -20,11 +22,22 @@ Steps :
 
 ## Usage
 
-The game is self explanatory... (For the moment)
+Configure your team at the configurations tab, 
+buy drivers and engines at the marketplace tab, 
+upgrade your crew at the crew tab and save / load 
+your game at the settings tab.
 
-## History
+Libraries
+-----------------
 
-Started as a Project for a Bachelor course, now one of the most well known f1 simulators around
+| Name                               | Description                                                                                     |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Google Gson                        | A Java serialization/deserialization library that can convert Java Objects into JSON and back.  |
+| Google Guava                       | Google Core Libraries for Java.                                                                 |
+| Mockito                            | Mocking framework for unit tests in Java                                                        |
+| JFoeniX                            | JavaFX Material Design Library                                                                  |
+| JUnit                              | A simple framework to write repeatable tests                                                    |
+
 
 ## Team
 
