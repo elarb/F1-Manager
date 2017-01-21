@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.com/elarb/F1-Manager.svg?token=T3DvYLyn6TfxmknUsrTx&branch=foundation)](https://travis-ci.com/elarb/F1-Manager)
-# F1 Manager
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/F1_logo.svg/1280px-F1_logo.svg.png"  width="400"/>
 </p>
+
+[![Build Status](https://travis-ci.com/elarb/F1-Manager.svg?token=T3DvYLyn6TfxmknUsrTx&branch=foundation)](https://travis-ci.com/elarb/F1-Manager)
+# F1 Manager
+
 In this game, the player is the manager of a F1 team. 
 The player starts with a budget and has the ability to compose a team and pick a strategy to win as many races as possibly and become the best!
 
