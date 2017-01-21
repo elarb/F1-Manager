@@ -45,13 +45,14 @@ public class ClientController {
     configurationTabController.populateBuyDriverList();
   }
 
-  private void updateHomeTab() {
-    homeTabController.populateRaceResultList();
+  void updateHomeTab() {
+    homeTabController.populateGameEventList();
   }
 
   @FXML
   private void handleButtonClick_Race() {
     game.race();
+    homeTabController.populateRaceResultList();
     updateHomeTab();
   }
 

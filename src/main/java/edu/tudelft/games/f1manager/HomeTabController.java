@@ -5,12 +5,15 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.tudelft.games.f1manager.core.Team;
 import edu.tudelft.games.f1manager.game.DriverResult;
+import edu.tudelft.games.f1manager.game.GameEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 
 public class HomeTabController {
@@ -19,6 +22,9 @@ public class HomeTabController {
 
   @FXML
   private JFXTreeTableView<TableDriver> raceResultList;
+
+  @FXML
+  private JFXTreeTableView<TableGameEvent> gameEventList;
 
   private ClientController clientController;
 
@@ -66,8 +72,6 @@ public class HomeTabController {
 
       tableDrivers.add(new TableDriver(result.getDriver().getName(), result.getTime(), teamName));
     }
-
-
     TreeItem<TableDriver> root =
         new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
 
@@ -75,8 +79,35 @@ public class HomeTabController {
     raceResultList.setShowRoot(false);
     raceResultList.getColumns().setAll(driverColumn, timeColumn, teamColumn);
 
+  }
 
+  void populateGameEventList() {
+    TreeTableColumn<TableGameEvent, String> typeColumn = new TreeTableColumn<>("Type");
+    typeColumn.setCellValueFactory(param -> param.getValue().getValue().type);
 
+    TreeTableColumn<TableGameEvent, String> messageColumn = new TreeTableColumn<>("Message");
+    messageColumn.setCellValueFactory(param -> param.getValue().getValue().message);
+
+    TreeTableColumn<TableGameEvent, String> timeColumn = new TreeTableColumn<>("Time");
+    timeColumn.setCellValueFactory(param -> param.getValue().getValue().time);
+
+    ObservableList<TableGameEvent> tableGameEvents = FXCollections.observableArrayList();
+
+    ArrayList<GameEvent> events = clientController.getGame().getEvents().getEvents();
+    for (int i = events.size() - 1; i >= 0; i--) {
+      if(i < events.size() - 100) {
+        break;
+      }
+      GameEvent event = events.get(i);
+      tableGameEvents.add(new TableGameEvent(event.getType(), event.getMessage(), event.getCurrentDateTime()));
+
+    }
+
+    TreeItem<TableGameEvent> root = new RecursiveTreeItem<>(tableGameEvents, RecursiveTreeObject::getChildren);
+
+    gameEventList.setRoot(root);
+    gameEventList.setShowRoot(false);
+    gameEventList.getColumns().setAll(typeColumn, messageColumn, timeColumn);
   }
 
   AnchorPane getHomeContent() {
