@@ -22,17 +22,22 @@ public class HomeTabController {
 
   private ClientController clientController;
 
-  public void injectMainController(ClientController clientController) {
+  void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
   public void initialize() {
   }
 
-  public void populateRaceResultList() {
 
-//    TreeTableColumn<String, String> raceColumn = new TreeTableColumn<>("Race");
-//    raceColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getValue()));
+  /**fills the resultList with columns and data from the last race.
+   *
+   */
+  void populateRaceResultList() {
+
+    //    TreeTableColumn<String, String> raceColumn = new TreeTableColumn<>("Race");
+    //    raceColumn.setCellValueFactory(param ->
+    // new ReadOnlyStringWrapper(param.getValue().getValue()));
 
     TreeTableColumn<TableDriver, String> driverColumn = new TreeTableColumn<>("Driver");
     driverColumn.setCellValueFactory(param -> param.getValue().getValue().name);
@@ -45,7 +50,8 @@ public class HomeTabController {
 
     ObservableList<TableDriver> tableDrivers = FXCollections.observableArrayList();
 
-    for (DriverResult result : clientController.getGame().getSeason().getPastRaceInstance().getResults()) {
+    for (DriverResult result
+        : clientController.getGame().getSeason().getPastRaceInstance().getResults()) {
       String teamName = "";
       if (result.getDriver().getTeamId() == 1) {
         teamName = clientController.getGame().getPlayerteam().getName();
@@ -63,7 +69,7 @@ public class HomeTabController {
 
 
     TreeItem<TableDriver> root =
-      new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
+        new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
 
     raceResultList.setRoot(root);
     raceResultList.setShowRoot(false);
