@@ -5,9 +5,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.tudelft.games.f1manager.core.Team;
 import edu.tudelft.games.f1manager.game.DriverResult;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -81,18 +78,7 @@ public class HomeTabController {
   }
 }
 
-class TableDriver extends RecursiveTreeObject<TableDriver> {
 
-  StringProperty name;
-  StringProperty time;
-  StringProperty team;
-
-  public TableDriver (String name, double time, String team) {
-    this.name = new SimpleStringProperty(name);
-    this.time = new SimpleStringProperty(Double.toString(time));
-    this.team = new SimpleStringProperty(team);
-  }
-}
 
 //class TableRace extends RecursiveTreeObject<TableDriver> {
 //
