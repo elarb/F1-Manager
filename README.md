@@ -28,14 +28,13 @@ your game at the settings tab
 Libraries
 -----------------
 
-| Name                               | Description                                      |
-| ---------------------------------- | -------------------------------------------------|
-| Google Gson                        | A Java serialization/deserialization library     |
-|                                    | that can convert Java Objects into JSON and back.|
-| Google Guava                       | Google Core Libraries for Java.                  |
-| Mockito                            | Mocking framework for unit tests in Java         |
-| JFoeniX                            | JavaFX Material Design Library                   |
-| JUnit                              | A simple framework to write repeatable tests     |
+| Name                               | Description                                                                                     |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Google Gson                        | A Java serialization/deserialization library that can convert Java Objects into JSON and back.  |
+| Google Guava                       | Google Core Libraries for Java.                                                                 |
+| Mockito                            | Mocking framework for unit tests in Java                                                        |
+| JFoeniX                            | JavaFX Material Design Library                                                                  |
+| JUnit                              | A simple framework to write repeatable tests                                                    |
 
 
 ## Team
