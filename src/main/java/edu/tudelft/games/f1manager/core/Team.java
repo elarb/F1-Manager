@@ -83,8 +83,9 @@ public abstract class Team {
    */
   public boolean equals(Object other) {
     if (other instanceof Team) {
-      Team that = (Team) other;
-      return this.id == that.id;
+      if(((Team) other).getId() == this.id){
+        return ((Team) other).getName() == this.name;
+      }
     }
     return false;
   }
