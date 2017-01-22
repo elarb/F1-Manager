@@ -7,12 +7,24 @@ import javafx.beans.property.StringProperty;
 class TableDriver extends RecursiveTreeObject<TableDriver> {
 
   StringProperty name;
-  StringProperty time;
-  StringProperty team;
+  StringProperty value;
 
-  TableDriver(String name, double time, String team) {
+  TableDriver(String name, int value) {
     this.name = new SimpleStringProperty(name);
-    this.time = new SimpleStringProperty(Double.toString(time));
-    this.team = new SimpleStringProperty(team);
+    String tempValue = "";
+    int amount = 0;
+    for (char ch: Integer.toString(value).toCharArray()) {
+
+      if (amount == 2) {
+        tempValue = tempValue + ".";
+      } else if (amount > 5) {
+        break;
+      }
+      tempValue = tempValue + ch;
+      amount++;
+
+    }
+    tempValue = tempValue + " M";
+    this.value = new SimpleStringProperty(tempValue);
   }
 }
