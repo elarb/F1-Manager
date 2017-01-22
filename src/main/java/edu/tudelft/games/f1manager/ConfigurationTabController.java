@@ -26,25 +26,24 @@ public class ConfigurationTabController {
   }
 
   @FXML
-  private void initialize() {
+  private void initialize(){
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-      if (oldValue.intValue() != newValue.intValue()) {
+      if(oldValue.intValue() != newValue.intValue()){
         clientController.getGame().getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
       }
     });
   }
 
-  /**
-   * looks at the selected name and buys the driver that has that name.
+  /**looks at the selected name and buys the driver that has that name.
    *
    * @throws IOException error
    */
   public void handleButtonClick_buyDriver() throws IOException {
-    String driverName = (String) buyDriverList.getSelectionModel().getSelectedItem();
+    String driverName = (String)buyDriverList.getSelectionModel().getSelectedItem();
 
-    for (Driver driver : clientController.getGame().getDrivers()) {
-      if (driver.getName().equals(driverName)) {
-        if (clientController.getGame().driverBuy(driver)) {
+    for ( Driver driver : clientController.getGame().getDrivers()) {
+      if (driver.getName().equals(driverName)){
+        if(clientController.getGame().driverBuy(driver)){
           System.out.println("driver bought");
           populateBuyDriverList();
         }
@@ -53,23 +52,22 @@ public class ConfigurationTabController {
     }
   }
 
-  /**
-   * goes through the list of all the drivers, when a
-   * driver is not already in your team it gets added to the list.
+  /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
+   *
    */
-  void populateBuyDriverList() {
+  void populateBuyDriverList(){
     System.out.println("populating list");
     ArrayList<Driver> drivers = clientController.getGame().getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
 
-    for (Driver driver : drivers) {
+    for (Driver driver : drivers){
       boolean inList = true;
-      for (Driver owned : clientController.getGame().getPlayerteam().getDriverList()) {
-        if (owned.equals(driver)) {
+      for (Driver owned : clientController.getGame().getPlayerteam().getDriverList()){
+        if(owned.equals(driver)){
           inList = false;
         }
       }
-      if (inList) {
+      if(inList){
         driverNames.add(driver.getName());
       }
     }
