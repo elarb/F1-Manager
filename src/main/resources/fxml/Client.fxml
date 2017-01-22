@@ -71,7 +71,7 @@
                                         <fx:include fx:id="crewTab" source="CrewTab.fxml" />
                                     </content>
                                 </Tab>
-                                <Tab onSelectionChanged="#updateConfigurationTab" text="Configuration">
+                                <Tab onSelectionChanged="#updateConfigurationTab" text="Market">
                                     <content>
                                         <fx:include fx:id="configurationTab" source="ConfigurationTab.fxml" />
                                     </content>

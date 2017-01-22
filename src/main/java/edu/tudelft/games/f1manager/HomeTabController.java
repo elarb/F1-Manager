@@ -7,7 +7,6 @@ import edu.tudelft.games.f1manager.core.AiTeam;
 import edu.tudelft.games.f1manager.core.Team;
 import edu.tudelft.games.f1manager.game.DriverResult;
 import edu.tudelft.games.f1manager.game.GameEvent;
-import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class HomeTabController {
@@ -24,7 +22,7 @@ public class HomeTabController {
   private AnchorPane homeContent;
 
   @FXML
-  private JFXTreeTableView<TableDriver> raceResultList;
+  private JFXTreeTableView<TableDriverResult> raceResultList;
 
   @FXML
   private JFXTreeTableView<TableGameEvent> gameEventList;
@@ -46,21 +44,22 @@ public class HomeTabController {
    *
    */
   void populateRaceResultList() {
+    raceResultList.setRoot(null);
 
     //    TreeTableColumn<String, String> raceColumn = new TreeTableColumn<>("Race");
     //    raceColumn.setCellValueFactory(param ->
     // new ReadOnlyStringWrapper(param.getValue().getValue()));
 
-    TreeTableColumn<TableDriver, String> driverColumn = new TreeTableColumn<>("Driver");
+    TreeTableColumn<TableDriverResult, String> driverColumn = new TreeTableColumn<>("Driver");
     driverColumn.setCellValueFactory(param -> param.getValue().getValue().name);
 
-    TreeTableColumn<TableDriver, String> timeColumn = new TreeTableColumn<>("Time");
+    TreeTableColumn<TableDriverResult, String> timeColumn = new TreeTableColumn<>("Time");
     timeColumn.setCellValueFactory(param -> param.getValue().getValue().time);
 
-    TreeTableColumn<TableDriver, String> teamColumn = new TreeTableColumn<>("Team");
+    TreeTableColumn<TableDriverResult, String> teamColumn = new TreeTableColumn<>("Team");
     teamColumn.setCellValueFactory(param -> param.getValue().getValue().team);
 
-    ObservableList<TableDriver> tableDrivers = FXCollections.observableArrayList();
+    ObservableList<TableDriverResult> tableDriverResults = FXCollections.observableArrayList();
 
     for (DriverResult result
         : clientController.getGame().getSeason().getPastRaceInstance().getResults()) {
@@ -75,11 +74,11 @@ public class HomeTabController {
           }
         }
       }
-
-      tableDrivers.add(new TableDriver(result.getDriver().getName(), result.getTime(), teamName));
+      tableDriverResults.add(new TableDriverResult(result.getDriver().getName(),
+          result.getTime(), teamName));
     }
-    TreeItem<TableDriver> root =
-        new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
+    TreeItem<TableDriverResult> root =
+        new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
 
     raceResultList.setRoot(root);
     raceResultList.setShowRoot(false);
@@ -87,7 +86,11 @@ public class HomeTabController {
 
   }
 
+  /**populates the gameEventList.
+   */
   void populateGameEventList() {
+    gameEventList.setRoot(null);
+
     TreeTableColumn<TableGameEvent, String> typeColumn = new TreeTableColumn<>("Type");
     typeColumn.setCellValueFactory(param -> param.getValue().getValue().type);
 
@@ -101,22 +104,28 @@ public class HomeTabController {
 
     ArrayList<GameEvent> events = clientController.getGame().getEvents().getEvents();
     for (int i = events.size() - 1; i >= 0; i--) {
-      if(i < events.size() - 100) {
+      if (i < events.size() - 100) {
         break;
       }
       GameEvent event = events.get(i);
-      tableGameEvents.add(new TableGameEvent(event.getType(), event.getMessage(), event.getCurrentDateTime()));
+      tableGameEvents.add(new TableGameEvent(event.getType(), event.getMessage(),
+          event.getCurrentDateTime()));
 
     }
 
-    TreeItem<TableGameEvent> root = new RecursiveTreeItem<>(tableGameEvents, RecursiveTreeObject::getChildren);
+    TreeItem<TableGameEvent> root = new RecursiveTreeItem<>(tableGameEvents,
+        RecursiveTreeObject::getChildren);
 
     gameEventList.setRoot(root);
     gameEventList.setShowRoot(false);
     gameEventList.getColumns().setAll(typeColumn, messageColumn, timeColumn);
   }
 
+  /**populates the Pointslist.
+   *
+   */
   void populatePointsList() {
+    pointList.setRoot(null);
     TreeTableColumn<TableTeam, String> nameColumn = new TreeTableColumn<>("Type");
     nameColumn.setCellValueFactory(param -> param.getValue().getValue().name);
 
@@ -128,11 +137,13 @@ public class HomeTabController {
     for (AiTeam team: clientController.getGame().getAiteams()) {
       tableTeams.add(new TableTeam(team.getName(), team.getPoints()));
     }
-    tableTeams.add(new TableTeam(clientController.getGame().getPlayerteam().getName(), clientController.getGame().getPlayerteam().getPoints()));
+    tableTeams.add(new TableTeam(clientController.getGame().getPlayerteam().getName(),
+        clientController.getGame().getPlayerteam().getPoints()));
 
     //Collections.sort(tableTeams);
 
-    TreeItem<TableTeam> root = new RecursiveTreeItem<>(tableTeams, RecursiveTreeObject::getChildren);
+    TreeItem<TableTeam> root = new RecursiveTreeItem<>(tableTeams,
+        RecursiveTreeObject::getChildren);
     pointList.setRoot(root);
     pointList.setShowRoot(false);
     pointList.getColumns().setAll(nameColumn, pointsColumn);
@@ -148,7 +159,7 @@ public class HomeTabController {
 
 
 
-//class TableRace extends RecursiveTreeObject<TableDriver> {
+//class TableRace extends RecursiveTreeObject<TableDriverResult> {
 //
 //  StringProperty name;
 //
