@@ -30,19 +30,16 @@ public class Mechanic implements Upgradeable {
   /**
    * Improves the pit-stop time of the mechanic.
    *
-   * @param team team the mechanic is in,
-   *             the budget is getting checked to make sure there is enough
    */
-  
   public GameEvent upgrade(int stat) {
-	  if (this.pitstopTime > 2) {
-		    this.pitstopTime -= 1;
-		    updateUpgradePrice();
-		    String msg = "Your Mechanic has been upgraded! New pitstoptime: " + this.pitstopTime;
-		    return new GameEvent(msg, GameEvent.Type.UPGRADE);
-	    }
-	  String msg = "Your pitstoptime is already at its lowest";
-	  return new GameEvent(msg, GameEvent.Type.UPGRADE);
+    if (this.pitstopTime > 2) {
+      this.pitstopTime -= 1;
+      updateUpgradePrice();
+      String msg = "Your Mechanic has been upgraded! New pitstoptime: " + this.pitstopTime;
+      return new GameEvent(msg, GameEvent.Type.UPGRADE);
+    }
+    String msg = "Your pitstoptime is already at its lowest";
+    return new GameEvent(msg, GameEvent.Type.UPGRADE);
   }
 
   public void updateUpgradePrice() {
