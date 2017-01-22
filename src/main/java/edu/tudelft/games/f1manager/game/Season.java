@@ -2,13 +2,9 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.tudelft.games.f1manager.core.Team;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-
+import java.io.*;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
@@ -30,8 +26,13 @@ public class Season {
    * A list of races.
    */
   private ArrayList<Race> races;
+  private ArrayList<Team> standings;
 
 
+  /**
+   * List of teams sorted by points.
+   */
+//  private AbstractMap.SimpleEntry<Integer, Integer> constructorStandings;
 
   /**
    * Creates an object that represents a F1 season.
@@ -117,6 +118,18 @@ public class Season {
 
   public ArrayList<Race> getRaces() {
     return races;
+  }
+
+  public void setRaces(ArrayList<Race> races) {
+    this.races = races;
+  }
+
+  public ArrayList<Team> getStandings() {
+    return standings;
+  }
+
+  public void setStandings(ArrayList<Team> standings) {
+    this.standings = standings;
   }
 
 }
