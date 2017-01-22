@@ -14,20 +14,14 @@
    <children>
       <Pane fx:id="driver1Pane" layoutX="654.0" layoutY="123.0" prefHeight="230.0" prefWidth="522.0" style="-fx-background-color: #f2f2f2;">
          <children>
-            <ImageView fx:id="firstDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="23.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Drivers/max-verstappen.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="firstDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="23.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
             <ProgressBar fx:id="strategyinsight1" layoutX="244.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
             <ProgressBar fx:id="racecraft1" layoutX="244.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
             <ProgressBar fx:id="speed1" layoutX="244.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.48" />
-            <JFXButton layoutX="409.0" layoutY="138.0" onAction="#upgradeDriver" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
             <JFXButton layoutX="409.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <JFXButton layoutX="409.0" layoutY="184.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="195.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Max Verstappen">
+            <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="195.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Driver 1">
                <font>
-                  <Font name="Trebuchet MS" size="36.0" />
+                  <Font name="Trebuchet MS" size="34.0" />
                </font>
             </Label>
             <Label fx:id="driverRating1" alignment="CENTER_RIGHT" layoutX="184.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 99/100">
@@ -49,12 +43,10 @@
             <ProgressBar fx:id="strategyinsight2" layoutX="30.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
             <ProgressBar fx:id="racecraft2" layoutX="30.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
             <ProgressBar fx:id="speed2" layoutX="30.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.46" />
-            <JFXButton layoutX="195.0" layoutY="138.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <JFXButton layoutX="195.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <JFXButton layoutX="195.0" layoutY="184.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
-            <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="32.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Wouter van Lil">
+            <JFXButton fx:id="upgradeDriver2" layoutX="194.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="32.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Driver 2">
                <font>
-                  <Font name="Trebuchet MS" size="36.0" />
+                  <Font name="Trebuchet MS" size="34.0" />
                </font>
             </Label>
             <Label fx:id="driverRating2" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="89.0" prefHeight="31.0" prefWidth="150.0" text="Rating: 100/100">
@@ -69,11 +61,7 @@
                </font>
             </Label>
             <Line endY="15.0" layoutX="179.0" layoutY="103.0" startY="-15.0" />
-            <ImageView fx:id="secondDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="311.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Drivers/another-driver.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="secondDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="311.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Label alignment="CENTER" layoutX="654.0" layoutY="34.0" prefHeight="63.0" prefWidth="522.0" style="-fx-background-color: #424242;" text="Drivers" textFill="WHITE">
