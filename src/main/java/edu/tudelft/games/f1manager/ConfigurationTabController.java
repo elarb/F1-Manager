@@ -26,9 +26,9 @@ public class ConfigurationTabController {
   }
 
   @FXML
-  private void initialize(){
+  private void initialize() {
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-      if(oldValue.intValue() != newValue.intValue()){
+      if(oldValue.intValue() != newValue.intValue()) {
         clientController.getGame().getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
       }
     });
