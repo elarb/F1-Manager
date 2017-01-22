@@ -108,8 +108,8 @@ public class Game {
     balanceDrivers();
     setTeamIDs();
     handleResults();
-    printresults();
     ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
+    printresults();
     attributepointsandbudget();
     updateStandings();
     gameEventPositions();
