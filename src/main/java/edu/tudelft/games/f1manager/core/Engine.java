@@ -21,6 +21,7 @@ public class Engine {
    * The fuel-efficiency of the engine represented as a double.
    */
   private double fuelEfficiency;
+
   private double price;
 
   /**
@@ -36,7 +37,10 @@ public class Engine {
     this.power = power;
     this.drivability = drivability;
     this.fuelEfficiency = fuelEfficiency;
-    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
+  }
+
+  public double getPrice() {
+    return Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
       * (Constants.DRIVABILITY_COEF * drivability)
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
@@ -47,10 +51,6 @@ public class Engine {
 
   public void setBrand(String newbrand) {
     brand = newbrand;
-  }
-
-  public double getPrice() {
-    return price;
   }
 
   public double getPower() {

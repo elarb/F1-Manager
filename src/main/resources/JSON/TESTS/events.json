@@ -1,1 +1,1 @@
-{"events":[{"currentDateTime":"16-01-2017 15:54","message":"Driver has been transfered!","type":"TRANSFER","success":false},{"currentDateTime":"16-01-2017 15:54","message":"Mechanic has been upgraded to 95!","type":"UPGRADE","success":false}]}
+{"events":[{"currentDateTime":"22-01-2017 16:36","message":"Driver has been transfered!","type":"1","success":false},{"currentDateTime":"22-01-2017 16:36","message":"Mechanic has been upgraded to 95!","type":"0","success":false}]}

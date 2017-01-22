@@ -7,13 +7,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConfigurationTabController {
 
   private ClientController clientController;
+
+  public ClientController getClientController() {
+    return clientController;
+  }
 
   @FXML
   private JFXListView buyDriverList;
@@ -41,22 +44,22 @@ public class ConfigurationTabController {
   public void handleButtonClick_buyDriver() throws IOException {
     String driverName = (String)buyDriverList.getSelectionModel().getSelectedItem();
 
-    for ( Driver driver : clientController.getGame().getDrivers()) {
+    for (Driver driver : clientController.getGame().getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        if (clientController.getGame().driverBuy(driver)) {
-          System.out.println("driver bought");
-          populateBuyDriverList();
-        }
+        clientController.getGame().driverBuy(driver);
+        System.out.println("driver bought");
+        System.out.println(clientController.getGame().getPlayerteam().getDriverList());
+        populateBuyDriverList();
+        clientController.loadData();
         break;
       }
     }
-    clientController.updateHomeTab();
   }
 
   /**goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
    *
    */
-  void populateBuyDriverList() {
+  void populateBuyDriverList(){
     System.out.println("populating list");
     ArrayList<Driver> drivers = clientController.getGame().getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
