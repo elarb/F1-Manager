@@ -43,7 +43,6 @@ public class Game {
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
-
     Game game = new Game();
 
     game.setDrivers(driverList);
@@ -136,7 +135,7 @@ public class Game {
     driver1.determineValue();
     driver2.determineValue();
     Engine engine = team.getCar().getEngine();
-    engine.getPrice();
+    engine.determineprice();
 
     DriverResult result1 = new DriverResult(driver1, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
@@ -156,6 +155,7 @@ public class Game {
       }
 
     }
+
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
@@ -171,6 +171,7 @@ public class Game {
   /**
    * Sets TeamID for every driver.
    */
+
   public void setTeamIDs() {
 
     for (AiTeam team : this.aiteams.getTeams()) {
@@ -268,7 +269,7 @@ public class Game {
     driver.setTeamId(team.getId());
 
     GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
-    events.addEvent(event);
+    this.events.addEvent(event);
     //adds this event to the list of events
 
   }
@@ -279,17 +280,20 @@ public class Game {
 
   public void sortResults() {
 
-    Comparator<DriverResult> byTime = Comparator.comparingDouble(DriverResult::getTime);
-
     getResults()
       .stream()
       .sorted(byTime)
       .forEach(System.out::println);
+
+    System.out.println();
+    System.out.println();
+    System.out.println();
+
+
   }
 
   /**
    * Method used to return your position in the race.
-   *
    * @return gameevent with as message the standings
    */
 
@@ -313,7 +317,6 @@ public class Game {
 
   /**
    * Method used to return your position in the race.
-   *
    * @return gameevent with as message the standings
    */
 
@@ -432,7 +435,6 @@ public class Game {
 
   /**
    * Sets points according to the entered number of points.
-   *
    * @param driver The driver you want points added to
    * @param points Number of points
    */
@@ -479,7 +481,6 @@ public class Game {
 
   /**
    * returns a team accordin to an id.
-   *
    * @param id id of the team
    * @return instance of team
    */
@@ -499,7 +500,6 @@ public class Game {
 
   /**
    * Adds latest standings to Season class.
-   *
    * @return arraylist of teams
    */
 
@@ -525,6 +525,7 @@ public class Game {
     return null;
 
   }
+
 
 
   public ArrayList<Driver> getDrivers() {

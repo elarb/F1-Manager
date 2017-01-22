@@ -50,8 +50,16 @@ public class ClientController {
     raceLabel.setText("Race: " + game.getCurrentRace() + "/20");
   }
 
+  public void updateConfigurationTab(){
+    configurationTabController.populateBuyDriverList();
+  }
+
 
   public Game getGame() {
     return game;
+  }
+
+  public void setGame(Game game) {
+    this.game = game;
   }
 }

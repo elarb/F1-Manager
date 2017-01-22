@@ -65,8 +65,7 @@ public class TeamTest {
   public void driver1resultstest() {
 
     double result = playerTeam.getResultsDriver1();
-    System.out.println(result);
-    assertTrue(result >= 7.76 * 0.8 && result <= 7.76 * 1.2);
+    assertEquals(7.76, result, 7.76*1.06);
 
   }
 
@@ -74,8 +73,7 @@ public class TeamTest {
   public void driver2resultstest() {
 
     double result = playerTeam.getResultsDriver2();
-    System.out.println(result);
-    assertTrue(result >= 7.56 * 0.8 && result <= 7.56 * 1.2);
+    assertEquals(7.56, result, 7.56*1.06);
 
   }
 
