@@ -4,7 +4,6 @@
       "name": "Mercedes",
       "id": 2,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Nico Rosberg",
@@ -34,7 +33,7 @@
         }
       },
       "strategist": {
-        "strategy": "LOW",
+        "strategy": "0",
         "rating": 8
       },
       "aerodynamicist": {
@@ -49,7 +48,6 @@
       "name": "Redbull",
       "id": 3,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Daniel Ricciardo",
@@ -79,7 +77,7 @@
         }
       },
       "strategist": {
-        "strategy": "LOW",
+        "strategy": "0",
         "rating": 8
       },
       "aerodynamicist": {
@@ -94,7 +92,6 @@
       "name": "Ferrari",
       "id": 4,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Sebastian Vettel",
@@ -124,7 +121,7 @@
         }
       },
       "strategist": {
-        "strategy": "LOW",
+        "strategy": "0",
         "rating": 7
       },
       "aerodynamicist": {
@@ -139,7 +136,6 @@
       "name": "Force India",
       "id": 5,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Sergio Perez",
@@ -169,7 +165,7 @@
         }
       },
       "strategist": {
-        "strategy": "LOW",
+        "strategy": "0",
         "rating": 7
       },
       "aerodynamicist": {
@@ -184,7 +180,6 @@
       "name": "Williams",
       "id": 6,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Valtteri Bottas",
@@ -214,7 +209,7 @@
         }
       },
       "strategist": {
-        "strategy": "MEDIUM",
+        "strategy": "1",
         "rating": 6
       },
       "aerodynamicist": {
@@ -229,7 +224,6 @@
       "name": "McLaren-Honda",
       "id": 7,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Fernando Alonso",
@@ -259,7 +253,7 @@
         }
       },
       "strategist": {
-        "strategy": "MEDIUM",
+        "strategy": "1",
         "rating": 6
       },
       "aerodynamicist": {
@@ -274,7 +268,6 @@
       "name": "Scuderia Toro Rosso",
       "id": 8,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Carlos Sainz",
@@ -304,7 +297,7 @@
         }
       },
       "strategist": {
-        "strategy": "MEDIUM",
+        "strategy": "1",
         "rating": 6
       },
       "aerodynamicist": {
@@ -319,7 +312,6 @@
       "name": "Renault Sport F1",
       "id": 9,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Kevin Magnussen",
@@ -349,7 +341,7 @@
         }
       },
       "strategist": {
-        "strategy": "HIGH",
+        "strategy": "2",
         "rating": 5
       },
       "aerodynamicist": {
@@ -364,7 +356,6 @@
       "name": "Sauber",
       "id": 10,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Felipe Nasr",
@@ -394,7 +385,7 @@
         }
       },
       "strategist": {
-        "strategy": "HIGH",
+        "strategy": "2",
         "rating": 5
       },
       "aerodynamicist": {
@@ -409,7 +400,6 @@
       "name": "Manor Racing MRT",
       "id": 11,
       "points": 0,
-      "softwareTester": true,
       "driverList": [
         {
           "name": "Walter Röhrl",
@@ -439,7 +429,7 @@
         }
       },
       "strategist": {
-        "strategy": "HIGH",
+        "strategy": "2",
         "rating": 4
       },
       "aerodynamicist": {

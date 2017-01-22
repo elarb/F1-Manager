@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.game;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +13,7 @@ public class GameEvent {
   private String currentDateTime;
 
   /**
-   * Message associated to the game-event
+   * Message associated to the game-event.
    */
   private String message;
 
@@ -25,6 +27,12 @@ public class GameEvent {
    */
   private boolean success;
 
+  /**
+   * Constructor for a game-event.
+   *
+   * @param message the message of the game-event
+   * @param type    the type of the game-event
+   */
   public GameEvent(String message, Type type) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
     LocalDateTime dateTime = LocalDateTime.now();
@@ -38,9 +46,6 @@ public class GameEvent {
     this.success = success;
   }
 
-  public enum Type {
-    UPGRADE, TRANSFER, RACE
-  }
 
   public String getCurrentDateTime() {
     return currentDateTime;
@@ -64,5 +69,27 @@ public class GameEvent {
 
   public void setType(Type type) {
     this.type = type;
+  }
+
+  public enum Type {
+    @SerializedName("0")
+    UPGRADE(0),
+
+    @SerializedName("1")
+    TRANSFER(1),
+
+    @SerializedName("2")
+    RACE(2);
+
+    private final int value;
+
+    private Type(int value) {
+      this.value = value;
+    }
+
+    public int getValue() {
+      return value;
+    }
+
   }
 }

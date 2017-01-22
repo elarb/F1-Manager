@@ -1,8 +1,8 @@
 package edu.tudelft.games.f1manager.core;
 
-import java.util.Random;
-
 import edu.tudelft.games.f1manager.game.GameEvent;
+
+import java.util.Random;
 
 public class Driver implements Upgradeable {
 
@@ -28,10 +28,6 @@ public class Driver implements Upgradeable {
   public Driver(String name, int teamId) {
     this.name = name;
     this.teamId = teamId;
-    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
-      + (this.racecraft * Constants.RACECRAFTCOEF)
-      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    )* Constants.DRIVERBASEPRICE);
   }
 
   @Override
@@ -46,25 +42,29 @@ public class Driver implements Upgradeable {
       '}';
   }
 
+  /**
+   * Upgrades the driver.
+   *
+   * @param stat indicates which property gets upgraded
+   * @return a GameEvent
+   */
   public GameEvent upgrade(int stat) {
     Random rand = new Random();
     if (stat == 0) {
       if (this.speed != 10) {
-        this.speed += (rand.nextDouble() * Constants.DRIVERUPGRADE);
+        this.speed += rand.nextDouble() * Constants.DRIVERUPGRADE;
         if (this.speed > 10) {
           this.speed = 10;
         }
-        this.determineValue();
         String msg = "Your Driver's speed is now: " + this.speed;
         return new GameEvent(msg, GameEvent.Type.UPGRADE);
       }
-      this.determineValue();
       String msg = "Your driver's speed is already at max";
       return new GameEvent(msg, GameEvent.Type.UPGRADE);
 
     } else if (stat == 1) {
       if (this.racecraft != 10) {
-        this.racecraft += (rand.nextDouble() * Constants.DRIVERUPGRADE);
+        this.racecraft += rand.nextDouble() * Constants.DRIVERUPGRADE;
         if (this.racecraft > 10) {
           this.racecraft = 10;
         }
@@ -78,7 +78,7 @@ public class Driver implements Upgradeable {
 
     } else if (stat == 2) {
       if (this.strategyinsight != 10) {
-        this.strategyinsight += (rand.nextDouble() * Constants.DRIVERUPGRADE);
+        this.strategyinsight += rand.nextDouble() * Constants.DRIVERUPGRADE;
         if (this.strategyinsight > 10) {
           this.strategyinsight = 10;
         }
@@ -94,6 +94,20 @@ public class Driver implements Upgradeable {
       String msg = "The stat you tried to update was invalid";
       return new GameEvent(msg, GameEvent.Type.UPGRADE);
     }
+  }
+
+  /**
+   * Determines the value of the driver.
+   */
+  public void determineValue() {
+    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
+      + (this.racecraft * Constants.RACECRAFTCOEF)
+      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+    ) * Constants.DRIVERBASEPRICE);
+  }
+
+  public int getRating() {
+    return (int) (this.racecraft + this.speed + this.strategyinsight / 3) * 10;
   }
 
   public String getName() {
@@ -137,20 +151,14 @@ public class Driver implements Upgradeable {
   }
 
   public int getValue() {
-    return value;
+    return (int) (((this.speed * Constants.SPEEDCOEF)
+      + (this.racecraft * Constants.RACECRAFTCOEF)
+      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+    ) * Constants.DRIVERBASEPRICE);
   }
 
   public void setValue(int value) {
     this.value = value;
   }
-
-  public void determineValue() {
-    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
-      + (this.racecraft * Constants.RACECRAFTCOEF)
-      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    )* Constants.DRIVERBASEPRICE);
-  }
-
-
 
 }
