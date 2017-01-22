@@ -33,7 +33,7 @@
         }
     },
     "strategist": {
-        "strategy": "LOW",
+        "strategy": "0",
         "rating": 6
     },
     "aerodynamicist": {
