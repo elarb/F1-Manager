@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
@@ -14,6 +15,9 @@ import static org.mockito.Mockito.mock;
 public class TeamTest {
 
   private Team playerTeam;
+  private Team team1;
+  private Team team2;
+  private Team team3;
 
   @Before
   //TODO: mock doesn't work for equals
@@ -39,6 +43,16 @@ public class TeamTest {
     Driver driver2 = new Driver("test testy", 1);
     driver2.setValue(64450000);
     playerTeam.addDriver(driver2);
+
+    team1 = new PlayerTeam("Team1", 2, strategist,
+      aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
+
+    team2 = new PlayerTeam("Team2", 3, strategist,
+      aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
+
+    team3 = new PlayerTeam("Team1", 2, strategist,
+      aerodynamicist, mechanic, new ArrayList<>(), car, 100, 300000, true);
+
   }
 
 
@@ -74,6 +88,27 @@ public class TeamTest {
 
     double result = playerTeam.getResultsDriver2();
     assertEquals(7.56, result, 7.56*1.06);
+
+  }
+
+  @Test
+  public void teamequalstest_notequals(){
+
+    assertFalse(team1.equals(team2));
+
+  }
+
+  @Test
+  public void teamequalstest_equals(){
+
+    assertTrue(team1.equals(team1));
+
+  }
+
+  @Test
+  public void teamequalstest_equals2(){
+
+    assertTrue(team1.equals(team3));
 
   }
 
