@@ -98,7 +98,7 @@ public class Game {
     handleResults();
     buyRandomDriver();
     sortResults();
-    //    this.getSeason().nextRace();
+    season.nextRace();
   }
 
 
@@ -112,9 +112,9 @@ public class Game {
     Driver driver1 = team.getDriverList().get(0);
     Driver driver2 = team.getDriverList().get(1);
     DriverResult result1 = new DriverResult(driver1,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2,
-      ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+        ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
     this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
   }
 
@@ -229,7 +229,7 @@ public class Game {
 
   public void sortResults() {
 
-    Comparator<DriverResult> byTime = (e1, e2) -> Double.compare(e1.getTime(), e2.getTime());
+    Comparator<DriverResult> byTime = Comparator.comparingDouble(DriverResult::getTime);
 
     getResults()
       .stream()
