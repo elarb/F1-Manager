@@ -3,21 +3,26 @@ package edu.tudelft.games.f1manager.game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 public class GameEvents {
 
+  private static Gson gson = new GsonBuilder()
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
+
   /**
-   * List of game-events
+   * List of game-events.
    */
   private ArrayList<GameEvent> events;
-
-  private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
 
   public GameEvents() {
     this.events = new ArrayList<>();
@@ -34,32 +39,23 @@ public class GameEvents {
    * @return a game-events-list
    */
   public static GameEvents read(String filename) {
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, GameEvents.class);
-
   }
 
 
   /**
-   * Write the events to events.json.
+   * Write the events to events.json .
    *
    * @throws IOException when the file doesn't exist
    */
   public void write(String filename) throws IOException {
-
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
-
-    System.out.println("Succesfully wrote to file");
-    System.out.println(json);
-
   }
 
   public ArrayList<GameEvent> getEvents() {
