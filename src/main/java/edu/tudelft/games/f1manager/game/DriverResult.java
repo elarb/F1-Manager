@@ -51,5 +51,20 @@ public class DriverResult {
     this.time = time;
   }
 
+  public String GetTimeString(){
+
+
+
+    double totalseconds = this.getTime();
+    int hours = (int) Math.round(totalseconds / 3600);
+    int minutes = (int) Math.round(totalseconds % 3600) / 60;
+    int seconds = (int) Math.round(totalseconds % 60);
+
+    return hours + " hours " + minutes + " minutes " + seconds + " seconds";
+
+
+
+  }
+
 }
 
