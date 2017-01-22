@@ -194,6 +194,8 @@ public class Game {
     if (budget > driver.getValue()) {
       this.playerteam.addDriver(driver);
       this.playerteam.setBudget(budget - driver.getValue());
+      System.out.println(driver.getValue());
+      System.out.println("Budget now: " + budget);
       driver.setTeamId(1);
       getDrivers().remove(driver);
 

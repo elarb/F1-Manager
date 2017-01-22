@@ -30,6 +30,18 @@ public class Driver implements Upgradeable {
     this.teamId = teamId;
   }
 
+  @Override
+  public String toString() {
+    return "Driver{" +
+      "name='" + name + '\'' +
+      ", speed=" + speed +
+      ", racecraft=" + racecraft +
+      ", strategyinsight=" + strategyinsight +
+      ", value=" + value +
+      ", teamId=" + teamId +
+      '}';
+  }
+
   /**
    * Upgrades the driver.
    *
@@ -44,11 +56,9 @@ public class Driver implements Upgradeable {
         if (this.speed > 10) {
           this.speed = 10;
         }
-        this.determineValue();
         String msg = "Your Driver's speed is now: " + this.speed;
         return new GameEvent(msg, GameEvent.Type.UPGRADE);
       }
-      this.determineValue();
       String msg = "Your driver's speed is already at max";
       return new GameEvent(msg, GameEvent.Type.UPGRADE);
 
@@ -93,7 +103,7 @@ public class Driver implements Upgradeable {
     this.value = (int) (((this.speed * Constants.SPEEDCOEF)
       + (this.racecraft * Constants.RACECRAFTCOEF)
       + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-      ) * Constants.DRIVERBASEPRICE);
+    ) * Constants.DRIVERBASEPRICE);
   }
 
   public int getRating() {
@@ -141,7 +151,10 @@ public class Driver implements Upgradeable {
   }
 
   public int getValue() {
-    return value;
+    return (int) (((this.speed * Constants.SPEEDCOEF)
+      + (this.racecraft * Constants.RACECRAFTCOEF)
+      + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
+    ) * Constants.DRIVERBASEPRICE);
   }
 
   public void setValue(int value) {
