@@ -1,1 +1,41 @@
-{"budget":300000,"softwareTester":true,"driverList":[{"name":"test testson","speed":0.0,"racecraft":0.0,"strategyinsight":0.0,"value":0,"teamId":1}],"car":{"engine":{"brand":"Ferrari","power":821.0,"drivability":8.3,"fuelEfficiency":9.8,"price":0.0},"body":6.8,"tyres":{"hardness":9}},"strategist":{"strategy":"1","rating":80},"aerodynamicist":{"expertise":8},"mechanic":{"pitstopTime":4,"upgradePrice":0},"points":100,"id":1,"name":"PlayerTeam"}
+{
+    "budget": 300000,
+    "softwareTester": true,
+    "driverList": [
+        {
+            "name": "test testson",
+            "speed": 0.0,
+            "racecraft": 0.0,
+            "strategyinsight": 0.0,
+            "value": 0,
+            "teamId": 1
+        }
+    ],
+    "car": {
+        "engine": {
+            "brand": "Ferrari",
+            "power": 821.0,
+            "drivability": 8.3,
+            "fuelEfficiency": 9.8,
+            "price": 0.0
+        },
+        "body": 6.8,
+        "tyres": {
+            "hardness": 9
+        }
+    },
+    "strategist": {
+        "strategy": "1",
+        "rating": 80
+    },
+    "aerodynamicist": {
+        "expertise": 8
+    },
+    "mechanic": {
+        "pitstopTime": 4,
+        "upgradePrice": 0
+    },
+    "points": 100,
+    "id": 1,
+    "name": "PlayerTeam"
+}
