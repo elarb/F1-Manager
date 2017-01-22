@@ -22,6 +22,8 @@ public class Engine {
    */
   private double fuelEfficiency;
 
+  private double price;
+
   /**
    * Creates an object that represents an Engine for a F1 Car.
    *
