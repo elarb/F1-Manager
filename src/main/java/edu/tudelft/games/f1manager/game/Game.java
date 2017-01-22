@@ -108,7 +108,7 @@ public class Game {
     balanceDrivers();
     setTeamIDs();
     handleResults();
-    sortResults();
+    printresults();
     ordered = getResults().stream().sorted(byTime).collect(Collectors.toCollection(ArrayList::new));
     attributepointsandbudget();
     updateStandings();
@@ -280,12 +280,10 @@ public class Game {
    * Sorts results of the race by time and prints them out (for testing purposes).
    */
 
-  public void sortResults() {
+  public void printresults() {
 
-    getResults()
-      .stream()
-      .sorted(byTime)
-      .forEach(System.out::println);
+
+    ordered.forEach(System.out::println);
 
     System.out.println();
     System.out.println();
@@ -324,10 +322,10 @@ public class Game {
 
   public GameEvent gameEventCrashed() {
 
-    for (int i = 0; i < ordered.size(); i++) {
+    for (DriverResult anOrdered : ordered) {
 
-      if (getTeamDriver(ordered.get(i).getDriver().getTeamId()) instanceof PlayerTeam && ordered.get(i).getTime() == 100000000) {
-        GameEvent event = new GameEvent("Oh no... your driver " + ordered.get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
+      if (getTeamDriver(anOrdered.getDriver().getTeamId()) instanceof PlayerTeam && anOrdered.getTime() == 100000000) {
+        GameEvent event = new GameEvent("Oh no... your driver " + anOrdered.getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
         events.addEvent(event);
         return event;
       }
