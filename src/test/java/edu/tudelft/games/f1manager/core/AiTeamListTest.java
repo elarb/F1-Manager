@@ -27,6 +27,7 @@ public class AiTeamListTest {
 
     aiTeamList.add(aiTeam);
     aiTeamList.add(aiTeam2);
+    aiTeam.getStrategist().setRating(0);
 
     aiTeamList.write("TESTS/aiteams.json");
   }
