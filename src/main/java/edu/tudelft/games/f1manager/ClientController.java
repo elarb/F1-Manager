@@ -53,6 +53,7 @@ public class ClientController {
   private void handleButtonClick_Race() {
     game.race();
     homeTabController.populateRaceResultList();
+    homeTabController.populatePointsList();
     updateHomeTab();
   }
 

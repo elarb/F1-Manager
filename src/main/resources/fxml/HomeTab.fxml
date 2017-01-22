@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="homeTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.HomeTabController">
    <children>
-      <JFXTreeTableView layoutX="797.0" layoutY="43.0" prefHeight="579.0" prefWidth="377.0" />
+      <JFXTreeTableView fx:id="pointList" layoutX="797.0" layoutY="43.0" prefHeight="579.0" prefWidth="377.0" />
       <JFXTreeTableView fx:id="raceResultList" layoutX="21.0" layoutY="43.0" prefHeight="267.0" prefWidth="722.0" tableMenuButtonVisible="true" />
       <JFXTreeTableView fx:id="gameEventList" layoutX="21.0" layoutY="355.0" prefHeight="267.0" prefWidth="722.0" />
    </children>
