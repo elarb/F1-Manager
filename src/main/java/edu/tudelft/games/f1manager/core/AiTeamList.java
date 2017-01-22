@@ -3,7 +3,12 @@ package edu.tudelft.games.f1manager.core;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
@@ -13,8 +18,8 @@ import java.util.ArrayList;
 public class AiTeamList {
 
   private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls().create();
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls().create();
 
   /**
    * A list of Computer Teams.
@@ -46,13 +51,11 @@ public class AiTeamList {
    * @return a aiteamlist
    */
   public static AiTeamList read(String filename) {
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, AiTeamList.class);
-
   }
 
 
@@ -62,15 +65,9 @@ public class AiTeamList {
    * @throws IOException when the file doesn't exist
    */
   public void write(String filename) throws IOException {
-
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
-
-    System.out.println("Succesfully wrote to file");
-    System.out.println(json);
   }
 
   /**
