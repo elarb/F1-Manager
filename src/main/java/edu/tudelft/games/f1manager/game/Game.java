@@ -528,7 +528,6 @@ public class Game {
 
   }
 
-
   public ArrayList<Driver> getDrivers() {
     return drivers.getDrivers();
   }

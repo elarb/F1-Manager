@@ -31,7 +31,7 @@ public class Season {
   /**
    * List of teams sorted by points.
    */
-//  private AbstractMap.SimpleEntry<Integer, Integer> constructorStandings;
+
 
   /**
    * Creates an object that represents a F1 season.
