@@ -12,6 +12,8 @@ public class AiTeam extends Team {
 
 
   /**
+   * Constructor for AI Team.
+   *
    * @param name           name of the team
    * @param id             id of the team (not 0 or 1)
    * @param strategist     strategist of the team
@@ -26,20 +28,4 @@ public class AiTeam extends Team {
     super(name, id, strategist, aerodynamicist, mechanic, driverList, car, points);
     Preconditions.checkArgument(id > 1, "ID not valid for an aitaem, id: %s", id);
   }
-
-
-//  /**
-//   * @param driver
-//   */
-//  public void buyDriver(Driver driver) {
-//    Team team = Game.getTeamById(driver.getTeamId());
-//
-//    if ( team instanceof AiTeam) {
-//      driver.transfer(this);
-//    } else {
-//      PlayerTeam oldTeam = (PlayerTeam) driver.getTeam();
-//      oldTeam.setBudget(oldTeam.getBudget() + driver.getValue());
-//      driver.transfer(this);
-//    }
-//  }
 }
