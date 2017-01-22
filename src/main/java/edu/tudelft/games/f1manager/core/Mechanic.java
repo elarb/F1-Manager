@@ -24,12 +24,9 @@ public class Mechanic implements Upgradeable {
     this.pitstopTime = pitstoptime;
   }
 
-  //TODO: there should be a better way to check if the team has enough budget,
-  // this method could be in the playerteam Class for example.
 
   /**
    * Improves the pit-stop time of the mechanic.
-   *
    */
   public GameEvent upgrade(int stat) {
     if (this.pitstopTime > 2) {

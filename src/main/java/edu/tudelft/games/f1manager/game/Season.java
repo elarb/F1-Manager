@@ -2,24 +2,29 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.tudelft.games.f1manager.core.Team;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 
 public class Season {
 
+  private static Gson gson = new GsonBuilder()
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
+
   /**
    * The current race in the season.
    */
   private int currentRace;
 
-  private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
 
   /**
    * A list of races.
@@ -27,10 +32,6 @@ public class Season {
   private ArrayList<Race> races;
 
 
-  /**
-   * List of teams sorted by points.
-   */
-  private ArrayList<Team> teamStandings;
 
   /**
    * Creates an object that represents a F1 season.
@@ -38,10 +39,9 @@ public class Season {
    * @param currentRace current race in the season
    * @param races       the races in a season
    */
-  public Season(int currentRace, ArrayList<Race> races, ArrayList<Team> teams) {
+  public Season(int currentRace, ArrayList<Race> races) {
     this.currentRace = currentRace;
     this.races = races;
-    this.teamStandings = teams;
   }
 
   /**
@@ -81,13 +81,11 @@ public class Season {
    * @return a season
    */
   public static Season read(String filename) {
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, Season.class);
-
   }
 
 
@@ -97,15 +95,9 @@ public class Season {
    * @throws IOException throws an IO Exception
    */
   public void write(String filename) throws IOException {
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
-
-    System.out.println("Succesfully wrote to file");
-    System.out.println(json);
-
   }
 
   /**
@@ -113,14 +105,6 @@ public class Season {
    */
   public void nextRace() {
     this.currentRace++;
-  }
-
-  public ArrayList<Team> getTeamStandings() {
-    return teamStandings;
-  }
-
-  public void setTeamStandings(ArrayList<Team> teamStandings) {
-    this.teamStandings = teamStandings;
   }
 
   public int getCurrentRace() {
@@ -134,10 +118,5 @@ public class Season {
   public ArrayList<Race> getRaces() {
     return races;
   }
-
-  public void setRaces(ArrayList<Race> races) {
-    this.races = races;
-  }
-
 
 }

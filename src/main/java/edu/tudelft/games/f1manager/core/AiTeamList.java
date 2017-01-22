@@ -51,7 +51,6 @@ public class AiTeamList {
    * @return a aiteamlist
    */
   public static AiTeamList read(String filename) {
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getSystemClassLoader().getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
@@ -66,11 +65,8 @@ public class AiTeamList {
    * @throws IOException when the file doesn't exist
    */
   public void write(String filename) throws IOException {
-
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
   }
 
