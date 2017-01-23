@@ -47,6 +47,8 @@ public class App extends Application {
 
   @Override
   public void init() {
+    Font.loadFont(getClass().getClassLoader()
+      .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
     ImageView splash = new ImageView(new Image("img/splash.jpg"));
     splash.setFitHeight(750);
     splash.setFitWidth(1280);
@@ -77,13 +79,13 @@ public class App extends Application {
           );
         updateMessage("Loading Drivers . . .");
         for (int i = 0; i < availableDrivers.size(); i++) {
-          Thread.sleep(300);
+          Thread.sleep(0);
           updateProgress(i + 1, availableDrivers.size());
           String nextFriend = availableDrivers.get(i);
           foundDrivers.add(nextFriend);
           updateMessage("Finding drivers . . . found " + nextFriend);
         }
-        Thread.sleep(300);
+        Thread.sleep(0);
         updateMessage("All drivers found.");
 
         return foundDrivers;
@@ -101,8 +103,6 @@ public class App extends Application {
   }
 
   private void showMainStage() throws IOException {
-    Font.loadFont(getClass().getClassLoader()
-      .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
     Parent root = loader.load();
 
