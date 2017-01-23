@@ -104,7 +104,7 @@
             <Font name="Trebuchet MS" size="36.0" />
          </font>
       </Label>
-      <JFXListView fx:id="selectDriverList" fixedCellSize="40.0" layoutX="931.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="240.0" />
+      <JFXListView fx:id="selectDriverList" fixedCellSize="40.0" layoutX="939.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="240.0" />
       <Pane fx:id="driver1Pane" layoutX="657.0" layoutY="137.0" prefHeight="230.0" prefWidth="522.0" style="-fx-background-color: #f2f2f2;">
          <children>
             <ImageView fx:id="firstDriverImg" fitHeight="200.0" fitWidth="200.0" layoutX="23.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
