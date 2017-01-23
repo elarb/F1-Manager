@@ -197,7 +197,7 @@ public class Game {
       System.out.println(driver.getValue());
       System.out.println("Budget now: " + budget);
       driver.setTeamId(1);
-      getDrivers().remove(driver);
+      //getDrivers().remove(driver);
 
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
