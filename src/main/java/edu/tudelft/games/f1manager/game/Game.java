@@ -110,6 +110,7 @@ public class Game {
     sortResults();
     addRaceWinnings();
     updateStandings();
+    championAward();
     buyRandomDriver();
 
     gameEventPositions();
@@ -330,42 +331,52 @@ public class Game {
           case 0:
             setpoints(i, 25);
             playerTeam.setBudget(playerTeam.getBudget() + 25 * 2000000);
+
             break;
           case 1:
             setpoints(i, 18);
             playerTeam.setBudget(playerTeam.getBudget() + 18 * 2000000);
+
             break;
           case 2:
             setpoints(i, 15);
             playerTeam.setBudget(playerTeam.getBudget() + 15 * 2000000);
+
             break;
           case 3:
             setpoints(i, 12);
             playerTeam.setBudget(playerTeam.getBudget() + 12 * 2000000);
+
             break;
           case 4:
             setpoints(i, 10);
             playerTeam.setBudget(playerTeam.getBudget() + 10 * 2000000);
+
             break;
           case 5:
             setpoints(i, 8);
             playerTeam.setBudget(playerTeam.getBudget() + 8 * 2000000);
+
             break;
           case 6:
             setpoints(i, 6);
             playerTeam.setBudget(playerTeam.getBudget() + 6 * 2000000);
+
             break;
           case 7:
             setpoints(i, 4);
             playerTeam.setBudget(playerTeam.getBudget() + 4 * 2000000);
+
             break;
           case 8:
             setpoints(i, 2);
             playerTeam.setBudget(playerTeam.getBudget() + 2 * 2000000);
+
             break;
           case 9:
             setpoints(i, 1);
             playerTeam.setBudget(playerTeam.getBudget() + 1 * 2000000);
+
             break;
         }
       } else {
