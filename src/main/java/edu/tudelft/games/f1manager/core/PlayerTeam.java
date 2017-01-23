@@ -3,7 +3,14 @@ package edu.tudelft.games.f1manager.core;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.*;
+import javafx.scene.image.Image;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 import java.lang.reflect.Modifier;
 import java.util.List;
 
@@ -55,14 +62,11 @@ public class PlayerTeam extends Team {
    * @return a playerteam
    */
   public static PlayerTeam read(String filename) {
-
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, PlayerTeam.class);
-
   }
 
   /**
@@ -71,22 +75,23 @@ public class PlayerTeam extends Team {
    * @throws IOException when the file doesn't exist
    */
   public void write(String filename) throws IOException {
-
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
-
-    System.out.println("Succesfully wrote to file");
-    System.out.println(json);
-
   }
 
   public void addBudget(int budget) {
-	    this.budget += budget;
-	  }
-  
+    this.budget += budget;
+  }
+
+  public Image getFirstDriverImg() {
+    return new Image("/img/Drivers/" + super.getDriverList().get(0).getName() + ".png");
+  }
+
+  public Image getSecondDriverImg() {
+    return new Image("/img/Drivers/" + super.getDriverList().get(1).getName() + ".png");
+  }
+
   public int getBudget() {
     return budget;
   }

@@ -11,10 +11,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+  public static Stage primaryStage;
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-
+    this.primaryStage = primaryStage;
     Font.loadFont(getClass().getClassLoader()
       .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));

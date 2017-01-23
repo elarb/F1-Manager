@@ -2,7 +2,6 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.tudelft.games.f1manager.core.Driver;
 import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.*;
@@ -12,14 +11,16 @@ import java.util.ArrayList;
 
 public class Season {
 
+  private static Gson gson = new GsonBuilder()
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
+
   /**
    * The current race in the season.
    */
   private int currentRace;
-  private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
+
 
   /**
    * A list of races.
@@ -42,7 +43,6 @@ public class Season {
   public Season(int currentRace, ArrayList<Race> races) {
     this.currentRace = currentRace;
     this.races = races;
-//    this.constructorStandings = teams;
   }
 
   /**
@@ -82,13 +82,11 @@ public class Season {
    * @return a season
    */
   public static Season read(String filename) {
-
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
     InputStream is = classloader.getResourceAsStream("JSON/" + filename);
     Reader reader = new InputStreamReader(is);
 
     return gson.fromJson(reader, Season.class);
-
   }
 
 
@@ -98,22 +96,13 @@ public class Season {
    * @throws IOException throws an IO Exception
    */
   public void write(String filename) throws IOException {
-
-//    Season season = new Season(this.getCurrentRace(), this.getConstructorStandings());
-
-    String json = gson.toJson(this);
-
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
-    outputStream.write(json.getBytes());
+    outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
-
-    System.out.println("Succesfully wrote to file");
-    System.out.println(json);
-
   }
 
   /**
-   * Changes the current race to the next in queue
+   * Changes the current race to the next in queue.
    */
   public void nextRace() {
     this.currentRace++;
