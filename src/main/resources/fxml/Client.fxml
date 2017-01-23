@@ -17,32 +17,32 @@
                     <children>
                         <Label text="Formula 1 Manager Beta 0.1" textFill="WHITE">
                             <font>
-                                <Font name="Futura LT Bold" size="12.0" />
+                                <Font size="12.0" />
                             </font>
                         </Label>
                         <Label fx:id="teamNameLabel" contentDisplay="CENTER" layoutX="275.0" layoutY="37.0" text="Quicksilver Racing" textAlignment="CENTER" textFill="WHITE">
                             <font>
-                                <Font name="Futura LT Bold" size="20.0" />
+                                <Font size="20.0" />
                             </font>
                         </Label>
                         <Label fx:id="cashLabel" layoutX="38.0" layoutY="26.0" prefHeight="50.0" prefWidth="200.0" text="Cash: $200,000,000" textFill="WHITE" AnchorPane.rightAnchor="1042.0" AnchorPane.topAnchor="26.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
                         <Label fx:id="pointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="893.0" layoutY="25.0" prefHeight="50.0" prefWidth="108.0" text="Points: 24" textFill="WHITE" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="25.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
                         <Label fx:id="raceLabel" contentDisplay="CENTER" layoutX="1104.0" layoutY="27.0" prefHeight="48.0" prefWidth="131.0" text="Race: 12/15" textFill="WHITE" AnchorPane.rightAnchor="45.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
                         <JFXButton fx:id="raceButton" buttonType="RAISED" layoutX="565.0" layoutY="26.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#race" style="-fx-background-color: rgb(0, 188, 212);" text="RACE!" textFill="#dddada">
                             <font>
-                                <Font name="Futura LT Bold" size="21.0" />
+                                <Font name="Montserrat-Bold" size="21.0" />
                             </font>
                             <tooltip>
                                 <Tooltip text="Click to start the next race." />
@@ -54,7 +54,7 @@
             <center>
                 <AnchorPane fx:id="midAnchorPane" BorderPane.alignment="CENTER">
                     <children>
-                        <JFXTabPane prefHeight="800.0" prefWidth="1280.0" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <JFXTabPane fx:id="tabPane" prefHeight="800.0" prefWidth="1280.0" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
                                 <Tab text="Home">
                                     <content>
