@@ -107,36 +107,36 @@ public class CrewTabController {
   @FXML
   public void loadDriverData() {
 
-    firstDriverLabel.setText(Main.game.getFirstDriver().getName());
-    secondDriverLabel.setText(Main.game.getSecondDriver().getName());
+    firstDriverLabel.setText(App.game.getFirstDriver().getName());
+    secondDriverLabel.setText(App.game.getSecondDriver().getName());
 
-    String rating1 = "Rating: " + Main.game.getFirstDriver().getRating() + "/100";
-    String rating2 = "Rating: " + Main.game.getSecondDriver().getRating() + "/100";
+    String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
+    String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
     driverRating1.setText(rating1);
     driverRating2.setText(rating2);
 
     DecimalFormat formatter = new DecimalFormat("#,###");
-    String value1 = "$" + formatter.format(Main.game.getFirstDriver().getValue());
-    String value2 = "$" + formatter.format(Main.game.getSecondDriver().getValue());
+    String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
+    String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
     driverValue1.setText(value1);
     driverValue2.setText(value2);
 
-    strategyinsight1.setProgress(Main.game.getFirstDriver().getStrategyinsight() / 10);
-    strategyinsight2.setProgress(Main.game.getSecondDriver().getStrategyinsight() / 10);
+    strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
+    strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
 
-    racecraft1.setProgress(Main.game.getFirstDriver().getRacecraft() / 10);
-    racecraft2.setProgress(Main.game.getSecondDriver().getRacecraft() / 10);
+    racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
+    racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
 
-    speed1.setProgress(Main.game.getFirstDriver().getSpeed() / 10);
-    speed2.setProgress(Main.game.getSecondDriver().getSpeed() / 10);
+    speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
+    speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
 
-    firstDriverImg.setImage(Main.game.getPlayerteam().getFirstDriverImg());
-    secondDriverImg.setImage(Main.game.getPlayerteam().getSecondDriverImg());
+    firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
+    secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
   }
 
   public void swapWithDriver(int num) {
     String driverName = (String) selectDriverList.getSelectionModel().getSelectedItem();
-    List<Driver> list = Main.game.getPlayerteam().getDriverList();
+    List<Driver> list = App.game.getPlayerteam().getDriverList();
 
     if (num == 1) {
       for (int i = 0; i < list.size(); i++) {
@@ -157,7 +157,7 @@ public class CrewTabController {
   }
 
   public void populateSelectDriverList() {
-    List<Driver> drivers = Main.game.getPlayerteam().getDriverList();
+    List<Driver> drivers = App.game.getPlayerteam().getDriverList();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
     for (Driver driver : drivers) {
       driverNames.add(driver.getName());
@@ -201,7 +201,7 @@ public class CrewTabController {
     driverUpgradeStage.setScene(new Scene(pane));
     driverUpgradeStage.setResizable(false);
     driverUpgradeStage.initStyle(StageStyle.UNDECORATED);
-    driverUpgradeStage.initOwner(FadeApp.mainStage);
+    driverUpgradeStage.initOwner(App.mainStage);
     driverUpgradeStage.initModality(Modality.APPLICATION_MODAL);
 
     pane.setOnKeyPressed((KeyEvent event) -> {
@@ -236,11 +236,11 @@ public class CrewTabController {
   }
 
   public void upgradeDriver(int num) {
-    List<Driver> drivers = Main.game.getPlayerteam().getDriverList();
+    List<Driver> drivers = App.game.getPlayerteam().getDriverList();
     if (selectedDriver == 1) {
-      Main.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+      App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
     } else if (selectedDriver == 2) {
-      Main.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+      App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
     }
     Stage stage = (Stage) upgradeSpeedButton.getScene().getWindow();
     stage.close();
@@ -248,11 +248,11 @@ public class CrewTabController {
 
   @FXML
   public void upgradeAerodynamicist() {
-    System.out.println(Main.game.getPlayerteam().getAerodynamicist().getExpertise());
-    boolean success = Main.game.upgradeAeorodynamicist();
-    System.out.println(Main.game.getPlayerteam().getAerodynamicist().getExpertise());
+    System.out.println(App.game.getPlayerteam().getAerodynamicist().getExpertise());
+    boolean success = App.game.upgradeAeorodynamicist();
+    System.out.println(App.game.getPlayerteam().getAerodynamicist().getExpertise());
     if (success) {
-      Main.playSound("UpgradeMech");
+      App.playSound("UpgradeMech");
     } else {
       //TODO: show has failed Popup
     }
@@ -261,9 +261,9 @@ public class CrewTabController {
 
   @FXML
   public void upgradeMechanic() {
-    boolean success = Main.game.upgradeMechanic();
+    boolean success = App.game.upgradeMechanic();
     if (success) {
-      Main.playSound("UpgradeMech");
+      App.playSound("UpgradeMech");
     } else {
       //TODO: show has failed Popup
     }
@@ -271,9 +271,9 @@ public class CrewTabController {
 
   @FXML
   public void upgradeStrategist() {
-    boolean success = Main.game.upgradeStrategist();
+    boolean success = App.game.upgradeStrategist();
     if (success) {
-      Main.playSound("UpgradeMech");
+      App.playSound("UpgradeMech");
     } else {
       //TODO: show has failed Popup
     }
@@ -292,13 +292,13 @@ public class CrewTabController {
         lowRiskRadio = (JFXRadioButton) t1.getToggleGroup().getSelectedToggle();
         switch (lowRiskRadio.getText()) {
           case "Low Risk":
-            Main.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.LOW);
+            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.LOW);
             break;
           case "Medium Risk":
-            Main.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.MEDIUM);
+            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.MEDIUM);
             break;
           case "High Risk":
-            Main.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.HIGH);
+            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.HIGH);
             break;
         }
       }
@@ -308,9 +308,9 @@ public class CrewTabController {
   public void handleSoftwareToggle() {
     softwareTesterToggle.setOnAction(event -> {
       if (softwareTesterToggle.isSelected()) {
-        Main.game.getPlayerteam().setSoftwareTester(true);
+        App.game.getPlayerteam().setSoftwareTester(true);
       } else {
-        Main.game.getPlayerteam().setSoftwareTester(false);
+        App.game.getPlayerteam().setSoftwareTester(false);
       }
     });
   }

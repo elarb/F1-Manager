@@ -29,7 +29,7 @@ public class ConfigurationTabController {
   public void init() {
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       if (oldValue.intValue() != newValue.intValue()) {
-        Main.game.getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
+        App.game.getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
       }
     });
     update();
@@ -47,11 +47,11 @@ public class ConfigurationTabController {
   public void handleButtonClick_buyDriver() throws IOException {
     String driverName = (String) buyDriverList.getSelectionModel().getSelectedItem();
 
-    for (Driver driver : Main.game.getDrivers()) {
+    for (Driver driver : App.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        Main.game.driverBuy(driver);
+        App.game.driverBuy(driver);
         System.out.println("driver bought");
-        System.out.println(Main.game.getPlayerteam().getDriverList());
+        System.out.println(App.game.getPlayerteam().getDriverList());
         populateBuyDriverList();
         clientController.loadMenuData();
         break;
@@ -64,12 +64,12 @@ public class ConfigurationTabController {
    */
   public void populateBuyDriverList() {
     System.out.println("populating list");
-    ArrayList<Driver> drivers = Main.game.getDrivers();
+    ArrayList<Driver> drivers = App.game.getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
 
     for (Driver driver : drivers) {
       boolean inList = true;
-      for (Driver owned : Main.game.getPlayerteam().getDriverList()) {
+      for (Driver owned : App.game.getPlayerteam().getDriverList()) {
         if (owned.equals(driver)) {
           inList = false;
         }
