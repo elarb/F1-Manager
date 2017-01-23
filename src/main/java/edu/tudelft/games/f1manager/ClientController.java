@@ -50,10 +50,21 @@ public class ClientController {
     raceLabel.setText("Race: " + game.getCurrentRace() + "/20");
   }
 
-  public void updateConfigurationTab(){
+  public void updateConfigurationTab() {
     configurationTabController.populateBuyDriverList();
   }
 
+  void updateHomeTab() {
+    homeTabController.populateGameEventList();
+  }
+
+  @FXML
+  private void handleButtonClick_Race() {
+    game.race();
+    homeTabController.populateRaceResultList();
+    homeTabController.populatePointsList();
+    updateHomeTab();
+  }
 
   public Game getGame() {
     return game;
