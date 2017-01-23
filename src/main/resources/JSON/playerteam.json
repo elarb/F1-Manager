@@ -34,10 +34,10 @@
     },
     "strategist": {
         "strategy": "0",
-        "rating": 6
+        "rating": 90
     },
     "aerodynamicist": {
-        "expertise": 6
+        "expertise": 70
     },
     "mechanic": {
         "pitstopTime": 6,

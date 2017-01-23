@@ -13,7 +13,7 @@ import java.util.TimerTask;
 public class ClientController {
 
   @FXML
-  private ConfigurationTabController configurationTabController;
+  private MarketPlaceTabController marketPlaceTabController;
   @FXML
   private CrewTabController crewTabController;
   @FXML
@@ -48,12 +48,13 @@ public class ClientController {
         });
       }
     }, 0, 2000);
-    configurationTabController.injectMainController(this);
+
+    marketPlaceTabController.injectMainController(this);
     crewTabController.injectMainController(this);
     homeTabController.injectMainController(this);
     settingsTabController.injectMainController(this);
     nextRaceTabController.injectMainController(this);
-    configurationTabController.init();
+    marketPlaceTabController.init();
     crewTabController.init();
   }
 
@@ -90,29 +91,16 @@ public class ClientController {
         });
       }
     }.start();
-  }
-
-  public void updateConfigurationTab() {
-    configurationTabController.update();
-  }
-
-  void updateHomeTab() {
+    homeTabController.populateRaceResultList();
+    homeTabController.populatePointsList();
     homeTabController.populateGameEventList();
   }
 
-  @FXML
-  private void handleButtonClick_Race() {
-    game.race();
-    homeTabController.populateRaceResultList();
-    homeTabController.populatePointsList();
-    updateHomeTab();
+  public void updateConfigurationTab() {
+    marketPlaceTabController.populateBuyDriverList();
   }
 
-  public Game getGame() {
-    return game;
-  }
-
-  public void setGame(Game game) {
-    this.game = game;
+  public HomeTabController getHomeTabController() {
+    return homeTabController;
   }
 }
