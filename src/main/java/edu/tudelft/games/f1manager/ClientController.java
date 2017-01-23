@@ -1,15 +1,16 @@
 package edu.tudelft.games.f1manager;
 
-import edu.tudelft.games.f1manager.game.Game;
+import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClientController {
-
-  private Game game;
 
   @FXML
   private ConfigurationTabController configurationTabController;
@@ -20,7 +21,10 @@ public class ClientController {
   @FXML
   private SettingsTabController settingsTabController;
   @FXML
+  private JFXButton raceButton;
+  @FXML
   NextRaceTabController nextRaceTabController;
+
 
   @FXML
   private Label teamNameLabel, cashLabel, raceLabel, pointsLabel;
@@ -32,34 +36,83 @@ public class ClientController {
 
   @FXML
   private void initialize() {
-    game = Game.newGame();
-    loadData();
+    Timer timer = new Timer();
+    timer.scheduleAtFixedRate(new TimerTask() {
+      @Override
+      public void run() {
+        Platform.runLater(new Runnable() {
+          @Override
+          public void run() {
+            loadMenuData();
+          }
+        });
+      }
+    }, 0, 2000);
     configurationTabController.injectMainController(this);
     crewTabController.injectMainController(this);
     homeTabController.injectMainController(this);
     settingsTabController.injectMainController(this);
     nextRaceTabController.injectMainController(this);
-    crewTabController.loadData();
+    configurationTabController.init();
+    crewTabController.init();
   }
 
-  public void loadData() {
-    teamNameLabel.setText(game.getPlayerteam().getName());
-    DecimalFormat formatter = new DecimalFormat("#,###.00");
-    cashLabel.setText("$" + formatter.format(game.getPlayerteam().getBudget()));
-    pointsLabel.setText("Points: " + game.getPlayerteam().getPoints());
-    raceLabel.setText("Race: " + game.getCurrentRace() + "/20");
+  public void loadMenuData() {
+    teamNameLabel.setText(App.game.getPlayerteam().getName());
+    DecimalFormat formatter = new DecimalFormat("#,###");
+    cashLabel.setText("$" + formatter.format(App.game.getPlayerteam().getBudget()));
+    pointsLabel.setText("Points: " + App.game.getPlayerteam().getPoints());
+    raceLabel.setText("Race: " + App.game.getCurrentRace() + "/20");
   }
 
-  public void updateConfigurationTab(){
-    configurationTabController.populateBuyDriverList();
+  @FXML
+  /**
+   * Run race, play sound and temporary disable race button.
+   */
+  public void race() {
+    App.game.race();
+    App.playSound("Race");
+    new Thread() {
+      public void run() {
+        Platform.runLater(new Runnable() {
+          public void run() {
+            raceButton.setDisable(true);
+          }
+        });
+        try {
+          Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+        }
+        Platform.runLater(new Runnable() {
+          public void run() {
+            raceButton.setDisable(false);
+          }
+        });
+      }
+    }.start();
   }
 
-
-  public Game getGame() {
-    return game;
+  public void updateConfigurationTab() {
+    configurationTabController.update();
   }
 
-  public void setGame(Game game) {
-    this.game = game;
+  public ConfigurationTabController getConfigurationTabController() {
+    return configurationTabController;
+  }
+
+  public CrewTabController getCrewTabController() {
+    return crewTabController;
+  }
+
+  public HomeTabController getHomeTabController() {
+    return homeTabController;
+  }
+
+  public SettingsTabController getSettingsTabController() {
+    return settingsTabController;
+  }
+
+  public NextRaceTabController getNextRaceTabController() {
+    return nextRaceTabController;
   }
 }
