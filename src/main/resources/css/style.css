@@ -1,24 +1,23 @@
+
+* {
+    -fx-font-family: "Montserrat-Bold";
+}
+
 #main-stage {
     -fx-background-image: url("../img/patterns/footer_lodyas.png");
     -fx-background-repeat: repeat;
 }
 
-#midAnchorPane {
-    -fx-background-image: url("../img/patterns/micro_carbon.png");
-    -fx-background-repeat: repeat;
-}
-
 .progress-bar .bar {
-    -fx-background-color: #00BCD4;
+    -fx-background-color: rgb(30, 214, 96);
 }
 
 .jfx-popup-container {
     -fx-background-color: WHITE;
 }
 
-.button-raised{
+.button-raised {
     -fx-padding: 0.7em 0.57em;
-    -fx-font-family: "Trebuchet MS";
     -fx-font-weight: bold;
     -fx-font-size: 16px;
     -fx-button-type: RAISED;
@@ -28,9 +27,8 @@
     -fx-text-fill: WHITE;
 }
 
-.button-raised-large{
+.button-raised-large {
     -fx-padding: 0.7em 0.57em;
-    -fx-font-family: "Trebuchet MS";
     -fx-font-weight: bold;
     -fx-font-size: 16px;
     -fx-button-type: RAISED;
@@ -38,6 +36,26 @@
     -fx-pref-width: 150;
     -fx-pref-height: 30;
     -fx-text-fill: WHITE;
+}
+
+/*
+    The tab bar
+*/
+.jfx-tab-pane .headers-region {
+    -fx-background-color: rgb(24, 24, 24);
+}
+
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: rgb(24, 24, 24);
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: rgb(30, 214, 96);
+    -fx-stroke-width: 3pt;
+}
+
+.pane {
+    -fx-border-radius: 10;
 }
 
 
