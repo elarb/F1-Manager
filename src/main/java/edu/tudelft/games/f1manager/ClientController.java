@@ -64,6 +64,9 @@ public class ClientController {
     nextRaceTabController.init();
   }
 
+  /**
+   * Loads the data that gets shown on the menu.
+   */
   public void loadMenuData() {
     teamNameLabel.setText(App.game.getPlayerteam().getName());
     DecimalFormat formatter = new DecimalFormat("#,###");
@@ -72,17 +75,17 @@ public class ClientController {
     raceLabel.setText("Race: " + App.game.getCurrentRace() + "/20");
   }
 
-  @FXML
   /**
    * Run race, play sound and temporary disable race button.
    */
+  @FXML
   public void race() {
     App.game.race();
     App.playSound("Race");
     new Thread(() -> {
       Platform.runLater(() -> raceButton.setDisable(true));
       try {
-        Thread.sleep(400);
+        Thread.sleep(4000);
       } catch (InterruptedException ex) {
       }
       Platform.runLater(() -> raceButton.setDisable(false));
