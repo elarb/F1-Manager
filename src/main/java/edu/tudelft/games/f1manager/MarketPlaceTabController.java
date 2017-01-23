@@ -14,7 +14,7 @@ import javafx.scene.control.TreeTableColumn;
 import java.io.IOException;
 
 
-public class ConfigurationTabController {
+public class MarketPlaceTabController {
   @FXML
   private JFXTreeTableView buyDriverList;
 
@@ -57,12 +57,11 @@ public class ConfigurationTabController {
         App.game.driverBuy(driver);
         System.out.println("driver bought");
         System.out.println(App.game.getPlayerteam().getDriverList());
-        populateBuyDriverList();
         clientController.loadMenuData();
         break;
       }
     }
-    clientController.updateHomeTab();
+    clientController.getHomeTabController().populateGameEventList();
     populateBuyDriverList();
   }
 
@@ -82,11 +81,9 @@ public class ConfigurationTabController {
     ObservableList<TableDriver> tableDrivers = FXCollections.observableArrayList();
 
     for (Driver driver : App.game.getDrivers()) {
-      System.out.println("looking at: " + driver.getName());
       boolean inList = true;
       for (Driver owned : App.game.getPlayerteam().getDriverList()) {
         if (owned.getName().equals(driver.getName())) {
-          System.out.println("not adding: " + driver.getName());
           inList = false;
           break;
         }

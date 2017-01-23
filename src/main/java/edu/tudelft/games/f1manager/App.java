@@ -77,7 +77,7 @@ public class App extends Application {
           );
         updateMessage("Loading Drivers . . .");
         for (int i = 0; i < availableDrivers.size(); i++) {
-          Thread.sleep(200);
+          Thread.sleep(300);
           updateProgress(i + 1, availableDrivers.size());
           String nextFriend = availableDrivers.get(i);
           foundDrivers.add(nextFriend);
