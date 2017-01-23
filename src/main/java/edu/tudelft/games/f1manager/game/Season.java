@@ -66,6 +66,10 @@ public class Season {
     return this.getRaces().get(this.currentRace);
   }
 
+  public Race getPastRaceInstance() {
+    return this.getRaces().get(this.currentRace - 1);
+  }
+
   /**
    * Adds a race to the list of races of the current season.
    *
