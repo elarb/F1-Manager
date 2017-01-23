@@ -33,11 +33,11 @@
                 }
             },
             "strategist": {
-                "strategy": "LOW",
-                "rating": 8
+                "strategy": "0",
+                "rating": 80
             },
             "aerodynamicist": {
-                "expertise": 8
+                "expertise": 80
             },
             "mechanic": {
                 "pitstopTime": 3,
@@ -77,11 +77,11 @@
                 }
             },
             "strategist": {
-                "strategy": "LOW",
-                "rating": 8
+                "strategy": "0",
+                "rating": 80
             },
             "aerodynamicist": {
-                "expertise": 8
+                "expertise": 80
             },
             "mechanic": {
                 "pitstopTime": 4,
@@ -121,11 +121,11 @@
                 }
             },
             "strategist": {
-                "strategy": "LOW",
-                "rating": 7
+                "strategy": "0",
+                "rating": 70
             },
             "aerodynamicist": {
-                "expertise": 8
+                "expertise": 80
             },
             "mechanic": {
                 "pitstopTime": 4,
@@ -165,11 +165,11 @@
                 }
             },
             "strategist": {
-                "strategy": "LOW",
-                "rating": 7
+                "strategy": "0",
+                "rating": 70
             },
             "aerodynamicist": {
-                "expertise": 7
+                "expertise": 70
             },
             "mechanic": {
                 "pitstopTime": 4,
@@ -209,11 +209,11 @@
                 }
             },
             "strategist": {
-                "strategy": "MEDIUM",
-                "rating": 6
+                "strategy": "1",
+                "rating": 60
             },
             "aerodynamicist": {
-                "expertise": 7
+                "expertise": 70
             },
             "mechanic": {
                 "pitstopTime": 5,
@@ -253,11 +253,11 @@
                 }
             },
             "strategist": {
-                "strategy": "MEDIUM",
-                "rating": 6
+                "strategy": "1",
+                "rating": 60
             },
             "aerodynamicist": {
-                "expertise": 6
+                "expertise": 60
             },
             "mechanic": {
                 "pitstopTime": 6,
@@ -297,11 +297,11 @@
                 }
             },
             "strategist": {
-                "strategy": "MEDIUM",
-                "rating": 6
+                "strategy": "1",
+                "rating": 60
             },
             "aerodynamicist": {
-                "expertise": 6
+                "expertise": 60
             },
             "mechanic": {
                 "pitstopTime": 5,
@@ -341,11 +341,11 @@
                 }
             },
             "strategist": {
-                "strategy": "HIGH",
-                "rating": 5
+                "strategy": "2",
+                "rating": 50
             },
             "aerodynamicist": {
-                "expertise": 6
+                "expertise": 60
             },
             "mechanic": {
                 "pitstopTime": 6,
@@ -367,7 +367,7 @@
                 {
                     "name": "Pascal Wehrlein",
                     "team": "Manor",
-                    "speed": 6.3,
+                    "speed": 6.0,
                     "racecraft": 5.7,
                     "strategyinsight": 4.4
                 }
@@ -385,11 +385,11 @@
                 }
             },
             "strategist": {
-                "strategy": "HIGH",
-                "rating": 5
+                "strategy": "2",
+                "rating": 50
             },
             "aerodynamicist": {
-                "expertise": 5
+                "expertise": 50
             },
             "mechanic": {
                 "pitstopTime": 6,
@@ -429,11 +429,11 @@
                 }
             },
             "strategist": {
-                "strategy": "HIGH",
-                "rating": 4
+                "strategy": "2",
+                "rating": 40
             },
             "aerodynamicist": {
-                "expertise": 5
+                "expertise": 50
             },
             "mechanic": {
                 "pitstopTime": 6,

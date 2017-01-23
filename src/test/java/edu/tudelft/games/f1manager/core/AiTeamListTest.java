@@ -37,6 +37,7 @@ public class AiTeamListTest {
 
     AiTeamList aiTeamList = AiTeamList.read("TESTS/aiteams.json");
     assertEquals(0, aiTeamList.getTeams().get(0).getStrategist().getRating());
+    System.out.println(aiTeamList.getTeams().get(0).getStrategist().getStrategy());
 
 
   }

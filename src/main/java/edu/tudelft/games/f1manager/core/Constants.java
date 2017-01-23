@@ -29,7 +29,8 @@ public class Constants {
   public static final int MAX_BUYS = 4;
 
   public static final double NORMALIZEVALUE_DRIVER_ENGINE = 10000000;
-  public static final double NORMALIZEVALUE_STRATEGIST = 10;
+  public static final double NORMALIZEVALUE_STRATEGIST = 100;
+  public static final double NORMALIZEVALUE_AERO = 10;
 
   public static final double VALUE_AVG_RESULT = 10;
   public static final double VALUE_AVG_DIVIDER = 5;

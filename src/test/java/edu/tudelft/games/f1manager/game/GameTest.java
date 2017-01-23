@@ -26,7 +26,7 @@ public class GameTest {
   @Test
   public void newgametest() {
 
-    assertEquals(33, game.getDrivers().size());
+   assertEquals(33, game.getDrivers().size());
 
   }
 
@@ -71,6 +71,7 @@ public class GameTest {
   public void race() {
 
     game.race();
+
 
   }
 
@@ -124,6 +125,14 @@ public class GameTest {
       System.out.println(game.getEvents().getEvents().get(i).getMessage());
 
     }
+
+  }
+
+  @Test
+  public void addDriversID() throws IOException {
+
+    game.race();
+    game.savegame("drivers");
 
   }
 }
