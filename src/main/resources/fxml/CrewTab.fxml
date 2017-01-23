@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="crewTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
+<AnchorPane fx:id="crewTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
    <children>
       <Pane layoutX="14.0" layoutY="445.0" prefHeight="170.0" prefWidth="620.0" style="-fx-background-color: #f2f2f2;">
          <children>
@@ -28,7 +28,7 @@
                   <Font name="Trebuchet MS" size="23.0" />
                </font>
             </Label>
-            <JFXButton layoutX="180.0" layoutY="118.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <JFXButton buttonType="RAISED" layoutX="180.0" layoutY="106.0" onMouseClicked="#upgradeMechanic" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <ProgressBar layoutX="169.0" layoutY="64.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <Label layoutX="180.0" layoutY="66.0" prefHeight="19.0" prefWidth="79.0" text="Dexterity">
                <font>
@@ -44,7 +44,7 @@
                   <Font name="Trebuchet MS" size="23.0" />
                </font>
             </Label>
-            <JFXButton layoutX="189.0" layoutY="117.0" onMouseClicked="#showDialog" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <JFXButton layoutX="178.0" layoutY="117.0" onMouseClicked="#upgradeStrategist" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <ProgressBar layoutX="167.0" layoutY="78.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <ImageView fitHeight="159.0" fitWidth="143.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -71,7 +71,7 @@
                   <Font name="Trebuchet MS" size="23.0" />
                </font>
             </Label>
-            <JFXButton layoutX="196.0" layoutY="126.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <JFXButton layoutX="178.0" layoutY="131.0" onMouseClicked="#upgradeAerodynamicist" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <ProgressBar layoutX="167.0" layoutY="89.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <ImageView fitHeight="160.0" fitWidth="150.0" layoutX="8.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -111,7 +111,7 @@
             <ProgressBar fx:id="strategyinsight1" layoutX="244.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
             <ProgressBar fx:id="racecraft1" layoutX="244.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
             <ProgressBar fx:id="speed1" layoutX="244.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.48" />
-            <JFXButton fx:id="upgradeDriver1" layoutX="409.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <JFXButton fx:id="upgradeDriver1" layoutX="409.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <Label fx:id="firstDriverLabel" alignment="CENTER" layoutX="195.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Driver 1">
                <font>
                   <Font name="Trebuchet MS" size="34.0" />
@@ -151,7 +151,7 @@
             <ProgressBar fx:id="strategyinsight2" layoutX="30.0" layoutY="188.0" prefHeight="23.0" prefWidth="150.0" progress="0.62" />
             <ProgressBar fx:id="racecraft2" layoutX="30.0" layoutY="165.0" prefHeight="23.0" prefWidth="150.0" progress="0.83" />
             <ProgressBar fx:id="speed2" layoutX="30.0" layoutY="142.0" prefHeight="23.0" prefWidth="150.0" progress="0.46" />
-            <JFXButton fx:id="upgradeDriver2" layoutX="194.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" text="Upgrade" />
+            <JFXButton fx:id="upgradeDriver2" layoutX="194.0" layoutY="161.0" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <Label fx:id="secondDriverLabel" alignment="CENTER" layoutX="32.0" layoutY="36.0" minHeight="50.0" prefHeight="50.0" prefWidth="279.0" text="Driver 2">
                <font>
                   <Font name="Trebuchet MS" size="34.0" />
