@@ -14,7 +14,7 @@ import javafx.scene.control.TreeTableColumn;
 import java.io.IOException;
 
 
-public class ConfigurationTabController {
+public class MarketPlaceTabController {
   @FXML
   private JFXTreeTableView buyDriverList;
 
@@ -28,45 +28,45 @@ public class ConfigurationTabController {
   }
 
 
-
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
   @FXML
-  private void initialize() {
+  public void init() {
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       if (oldValue.intValue() != newValue.intValue()) {
-        clientController.getGame().getPlayerteam().getCar().getTyres()
+        App.game.getPlayerteam().getCar().getTyres()
           .setHardness(newValue.intValue());
       }
     });
   }
 
-  /**looks at the selected name and buys the driver that has that name.
+  /**
+   * looks at the selected name and buys the driver that has that name.
    *
    * @throws IOException error
    */
   public void handleButtonClick_buyDriver() throws IOException {
     RecursiveTreeItem<TableDriver> driverItem =
-        (RecursiveTreeItem<TableDriver>) buyDriverList.getSelectionModel().getSelectedItem();
+      (RecursiveTreeItem<TableDriver>) buyDriverList.getSelectionModel().getSelectedItem();
     String driverName = driverItem.getValue().name.getValue();
 
-    for (Driver driver : clientController.getGame().getDrivers()) {
+    for (Driver driver : App.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        clientController.getGame().driverBuy(driver);
+        App.game.driverBuy(driver);
         System.out.println("driver bought");
-        System.out.println(clientController.getGame().getPlayerteam().getDriverList());
-        populateBuyDriverList();
-        clientController.loadData();
+        System.out.println(App.game.getPlayerteam().getDriverList());
+        clientController.loadMenuData();
         break;
       }
     }
-    clientController.updateHomeTab();
+    clientController.getHomeTabController().populateGameEventList();
     populateBuyDriverList();
   }
 
-  /**goes through the list of all the drivers, when a driver is not
+  /**
+   * goes through the list of all the drivers, when a driver is not
    * already in your team it gets added to the list.
    */
   void populateBuyDriverList() {
@@ -80,12 +80,10 @@ public class ConfigurationTabController {
 
     ObservableList<TableDriver> tableDrivers = FXCollections.observableArrayList();
 
-    for (Driver driver: clientController.getGame().getDrivers()) {
-      System.out.println("looking at: " + driver.getName());
+    for (Driver driver : App.game.getDrivers()) {
       boolean inList = true;
-      for (Driver owned : clientController.getGame().getPlayerteam().getDriverList()) {
+      for (Driver owned : App.game.getPlayerteam().getDriverList()) {
         if (owned.getName().equals(driver.getName())) {
-          System.out.println("not adding: " + driver.getName());
           inList = false;
           break;
         }
@@ -97,7 +95,7 @@ public class ConfigurationTabController {
     }
 
     TreeItem<TableDriver> root =
-        new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
+      new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
 
     buyDriverList.setRoot(root);
     buyDriverList.setShowRoot(false);

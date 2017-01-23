@@ -107,7 +107,7 @@ public class Driver implements Upgradeable {
   }
 
   public int getRating() {
-    return (int) (this.racecraft + this.speed + this.strategyinsight / 3) * 10;
+    return (int) ((this.racecraft + this.speed + this.strategyinsight) / 3) * 10;
   }
 
   public String getName() {

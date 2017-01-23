@@ -500,6 +500,39 @@ public class Game {
 
   }
 
+  public boolean upgradeAeorodynamicist() {
+    int budget = playerteam.getBudget();
+    if (Constants.AERODYNAMICIST_UPGRADE_PRICE < budget) {
+      playerteam.lowerBudget(Constants.AERODYNAMICIST_UPGRADE_PRICE);
+      GameEvent event = playerteam.getAerodynamicist().upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean upgradeStrategist() {
+    int budget = playerteam.getBudget();
+    if (Constants.STRATEGIST_UPGRADE_PRICE < budget) {
+      playerteam.lowerBudget(Constants.STRATEGIST_UPGRADE_PRICE);
+      GameEvent event = playerteam.getStrategist().upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean upgradeMechanic() {
+    int budget = playerteam.getBudget();
+    if (playerteam.getMechanic().getUpgradePrice() < budget) {
+      playerteam.lowerBudget(playerteam.getMechanic().getUpgradePrice());
+      GameEvent event = playerteam.getStrategist().upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
 
   public ArrayList<Driver> getDrivers() {
     return drivers.getDrivers();
