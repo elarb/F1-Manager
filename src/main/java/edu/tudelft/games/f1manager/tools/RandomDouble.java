@@ -5,8 +5,8 @@ import java.util.Random;
 public class RandomDouble {
 
   public static double generate(double minvalue, double maxvalue) {
-    Random r = new Random();
-    return minvalue + (maxvalue - minvalue) * r.nextDouble();
+    Random random = new Random();
+    return minvalue + (maxvalue - minvalue) * random.nextDouble();
   }
 
   public static double generatePercentage() {

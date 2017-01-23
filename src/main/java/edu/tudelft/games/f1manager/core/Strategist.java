@@ -1,7 +1,10 @@
 package edu.tudelft.games.f1manager.core;
 
 import com.google.common.base.Preconditions;
+import com.google.gson.annotations.SerializedName;
+
 import edu.tudelft.games.f1manager.game.GameEvent;
+
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 public class Strategist implements Upgradeable {
@@ -113,9 +116,8 @@ public class Strategist implements Upgradeable {
       + (2.069456242 * this.rating) - 14.14001765;
   }
 
-
   /**
-   * Returns the crash chance of a car
+   * Returns the crash chance of a car.
    *
    * @return crash chance
    */
@@ -168,6 +170,23 @@ public class Strategist implements Upgradeable {
   }
 
   public enum Risk {
-    LOW, MEDIUM, HIGH
+    @SerializedName("0")
+    LOW(0),
+
+    @SerializedName("1")
+    MEDIUM(1),
+
+    @SerializedName("2")
+    HIGH(2);
+
+    private final int value;
+
+    private Risk(int value) {
+      this.value = value;
+    }
+
+    public int getValue() {
+      return value;
+    }
   }
 }
