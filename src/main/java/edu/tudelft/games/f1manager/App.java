@@ -1,6 +1,7 @@
 package edu.tudelft.games.f1manager;
 
 import com.jfoenix.controls.JFXProgressBar;
+import edu.tudelft.games.f1manager.game.Game;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -17,6 +18,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -25,16 +28,20 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class FadeApp extends Application {
+
+public class App extends Application {
+
 
   private static final int SPLASH_WIDTH = 1280;
   private static final int SPLASH_HEIGHT = 750;
   private Pane splashLayout;
   private JFXProgressBar loadProgress;
   private Label progressText;
-  private Stage mainStage;
+  public static Stage mainStage;
+  public static Game game;
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
+    game = Game.newGame();
     launch(args);
   }
 
@@ -44,7 +51,7 @@ public class FadeApp extends Application {
     splash.setFitHeight(750);
     splash.setFitWidth(1280);
     loadProgress = new JFXProgressBar();
-    loadProgress.setPrefWidth(SPLASH_WIDTH );
+    loadProgress.setPrefWidth(SPLASH_WIDTH);
     loadProgress.setMinHeight(20);
     progressText = new Label("Loading the game . . .");
     splashLayout = new VBox();
@@ -55,14 +62,14 @@ public class FadeApp extends Application {
   }
 
   @Override
-  public void start(final Stage initStage) throws Exception {
+  public void start(Stage initStage) throws Exception {
     final Task<ObservableList<String>> driverTask = new Task<ObservableList<String>>() {
       @Override
       protected ObservableList<String> call() throws InterruptedException {
         ObservableList<String> foundDrivers =
-            FXCollections.<String>observableArrayList();
+          FXCollections.<String>observableArrayList();
         ObservableList<String> availableDrivers =
-            FXCollections.observableArrayList(
+          FXCollections.observableArrayList(
             "Daniel Ricciardo", "Daniil Kvyat", "Felipe Massa", "Felipe Nasr", "Fernando Alonso",
             "Jenson Button", "Jolyon Palmer", "Kevin Magnussen", "Kimi Räikkönen",
             "Lewis Hamilton", "Max Verstappen", "Nico Hulkenberg", "Nico Rosberg",
@@ -70,7 +77,7 @@ public class FadeApp extends Application {
           );
         updateMessage("Loading Drivers . . .");
         for (int i = 0; i < availableDrivers.size(); i++) {
-          Thread.sleep(200);
+          Thread.sleep(300);
           updateProgress(i + 1, availableDrivers.size());
           String nextFriend = availableDrivers.get(i);
           foundDrivers.add(nextFriend);
@@ -95,22 +102,24 @@ public class FadeApp extends Application {
 
   private void showMainStage() throws IOException {
     Font.loadFont(getClass().getClassLoader()
-        .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
-
+      .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
-
-    final Parent root = loader.load();
+    Parent root = loader.load();
 
     mainStage = new Stage();
     mainStage.getIcons().addAll(new Image("img/F1_logo.png"));
     mainStage.setTitle("F1 Manager");
     mainStage.setScene(new Scene(root, 1280, 800));
     mainStage.setResizable(false);
+    mainStage.setOnCloseRequest(event -> {
+      //TODO: save stuff
+      System.exit(1);
+    });
     mainStage.show();
   }
 
   private void showSplash(final Stage initStage, Task<?> task,
-                          InitCompletionHandler initCompletionHandler) {
+                          App.InitCompletionHandler initCompletionHandler) {
     progressText.textProperty().bind(task.messageProperty());
     loadProgress.progressProperty().bind(task.progressProperty());
     task.stateProperty().addListener((observableValue, oldState, newState) -> {
@@ -135,7 +144,14 @@ public class FadeApp extends Application {
     initStage.show();
   }
 
+  public static void playSound(String filename) {
+    Media media = new Media(App.class.getClassLoader().getResource("Sounds/" + filename + ".mp3").toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
+    mediaPlayer.play();
+  }
+
   public interface InitCompletionHandler {
     void complete();
   }
+
 }

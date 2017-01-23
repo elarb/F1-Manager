@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
+<AnchorPane id="main-stage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -40,21 +40,21 @@
                                 <Font name="Futura LT Bold" size="18.0" />
                             </font>
                         </Label>
-                        <JFXButton buttonType="RAISED" layoutX="565.0" layoutY="26.0" minHeight="50.0" minWidth="150.0" onAction="#handleButtonClick_Race" style="-fx-background-color: rgb(0, 188, 212);" text="RACE!" textFill="#dddada">
+                        <JFXButton fx:id="raceButton" buttonType="RAISED" layoutX="565.0" layoutY="26.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#race" style="-fx-background-color: rgb(0, 188, 212);" text="RACE!" textFill="#dddada">
                             <font>
                                 <Font name="Futura LT Bold" size="21.0" />
                             </font>
                             <tooltip>
-                                <Tooltip text="Click to return to home" />
+                                <Tooltip text="Click to start the next race." />
                             </tooltip>
                         </JFXButton>
                     </children>
                 </AnchorPane>
             </top>
             <center>
-                <AnchorPane fx:id="midAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <AnchorPane fx:id="midAnchorPane" BorderPane.alignment="CENTER">
                     <children>
-                        <JFXTabPane prefHeight="700.0" prefWidth="1280.0" tabMinHeight="60.0" tabMinWidth="320.0">
+                        <JFXTabPane prefHeight="800.0" prefWidth="1280.0" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
                                 <Tab text="Home">
                                     <content>
@@ -71,9 +71,9 @@
                                         <fx:include fx:id="crewTab" source="CrewTab.fxml" />
                                     </content>
                                 </Tab>
-                                <Tab onSelectionChanged="#updateConfigurationTab" text="Market">
+                                <Tab onSelectionChanged="#updateConfigurationTab" text="Marketplace">
                                     <content>
-                                        <fx:include fx:id="configurationTab" source="ConfigurationTab.fxml" />
+                                        <fx:include fx:id="marketPlaceTab" source="MarketPlaceTab.fxml" />
                                     </content>
                                 </Tab>
                                 <Tab text="Settings">
