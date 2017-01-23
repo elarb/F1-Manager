@@ -247,6 +247,39 @@ public class CrewTabController {
   }
 
   @FXML
+  public void upgradeAerodynamicist() {
+    System.out.println(Main.game.getPlayerteam().getAerodynamicist().getExpertise());
+    boolean success = Main.game.upgradeAeorodynamicist();
+    System.out.println(Main.game.getPlayerteam().getAerodynamicist().getExpertise());
+    if (success) {
+      Main.playSound("UpgradeMech");
+    } else {
+      //TODO: show has failed Popup
+    }
+  }
+
+
+  @FXML
+  public void upgradeMechanic() {
+    boolean success = Main.game.upgradeMechanic();
+    if (success) {
+      Main.playSound("UpgradeMech");
+    } else {
+      //TODO: show has failed Popup
+    }
+  }
+
+  @FXML
+  public void upgradeStrategist() {
+    boolean success = Main.game.upgradeStrategist();
+    if (success) {
+      Main.playSound("UpgradeMech");
+    } else {
+      //TODO: show has failed Popup
+    }
+  }
+
+  @FXML
   public void handleRisk() {
     ToggleGroup risk = new ToggleGroup();
     lowRiskRadio.setToggleGroup(risk);
@@ -282,10 +315,5 @@ public class CrewTabController {
     });
   }
 
-  @FXML
-  public void showDialog() {
-    System.out.println("CLICKED");
-
-  }
 
 }
