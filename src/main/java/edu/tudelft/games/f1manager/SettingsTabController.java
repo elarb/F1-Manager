@@ -52,14 +52,14 @@ public class SettingsTabController {
 
     String saveName = saveNameField.getText();
     if (!saveName.equals("")) {
-      clientController.getGame().savegame(saveName);
+      Main.game.savegame(saveName);
       saveGamePane.setDisable(true);
       saveGamePane.setVisible(false);
       saveNameField.setStyle("-fx-background-color: white");
     } else {
       saveName = (String) saveGameList.getSelectionModel().getSelectedItem();
       if (saveName != null) {
-        clientController.getGame().savegame(saveName);
+        Main.game.savegame(saveName);
         saveGamePane.setDisable(true);
         saveGamePane.setVisible(false);
         saveNameField.setStyle("-fx-background-color: white");
@@ -87,7 +87,7 @@ public class SettingsTabController {
     String saveName = (String) loadGameList.getSelectionModel().getSelectedItem();
 
     if (saveName != null) {
-      clientController.setGame(Game.loadgame(saveName));
+      Main.game = Game.loadgame(saveName);
       loadGamePane.setDisable(true);
       loadGamePane.setVisible(false);
     }
