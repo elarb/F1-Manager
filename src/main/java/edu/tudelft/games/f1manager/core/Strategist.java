@@ -92,6 +92,8 @@ public class Strategist implements Upgradeable {
    * @return increased crash chance
    */
   public double getIncreasedCrashChance() {
+
+
     switch (this.strategy) {
       case LOW:
         return calculateIncreasedChanceLowRisk();

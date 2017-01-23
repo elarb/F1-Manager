@@ -51,7 +51,7 @@ public abstract class Team {
    * Name of the team.
    */
   private String name;
-
+  
 
   /**
    * Creates an object that represents a F1 Team.
@@ -75,6 +75,7 @@ public abstract class Team {
     this.mechanic = mechanic;
     this.points = points;
     this.id = id;
+
   }
 
 
@@ -83,8 +84,9 @@ public abstract class Team {
    */
   public boolean equals(Object other) {
     if (other instanceof Team) {
-      Team that = (Team) other;
-      return this.id == that.id;
+      if(((Team) other).getId() == this.id){
+        return ((Team) other).getName() == this.name;
+      }
     }
     return false;
   }
@@ -94,7 +96,7 @@ public abstract class Team {
 
     double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
     double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
-    double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise());
+    double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise()/ (Constants.NORMALIZEVALUE_AERO));
     double body = (Constants.BODY_COEF * this.car.getBody());
     double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
 
@@ -187,6 +189,8 @@ public abstract class Team {
   public void setName(String name) {
     this.name = name;
   }
+
+
 }
 
 

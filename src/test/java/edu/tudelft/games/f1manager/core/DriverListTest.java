@@ -1,5 +1,6 @@
 package edu.tudelft.games.f1manager.core;
 
+import edu.tudelft.games.f1manager.game.DriverResult;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 
 public class DriverListTest {
+
+  public DriverResult result;
 
 
   @Before
@@ -21,6 +24,8 @@ public class DriverListTest {
     driverList.add(driver1);
     driverList.add(driver2);
 
+     result = new DriverResult(driver1, 6000);
+
     driverList.write("TESTS/drivers.json");
   }
 
@@ -28,6 +33,13 @@ public class DriverListTest {
   public void read_and_write() throws IOException, InterruptedException {
     DriverList driverList = DriverList.read("TESTS/drivers.json");
     assertEquals("Mighty John", driverList.getDrivers().get(0).getName());
+
+  }
+
+  @Test
+  public void gettimestringtest(){
+
+    assertEquals("2 hours 40 minutes 0 seconds", result.GetTimeString());
 
   }
 
