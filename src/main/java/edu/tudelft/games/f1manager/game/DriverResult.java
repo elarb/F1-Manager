@@ -51,5 +51,29 @@ public class DriverResult {
     this.time = time;
   }
 
+  public String GetTimeString(){
+
+
+
+
+
+    double totalseconds = this.getTime();
+
+    if(totalseconds == 100000000){
+
+      return "CRASHED";
+
+    }
+
+    int hours = (int) Math.round(totalseconds / 3600);
+    int minutes = (int) Math.round(totalseconds % 3600) / 60;
+    int seconds = (int) Math.round(totalseconds % 60);
+
+    return hours + " hours " + minutes + " minutes " + seconds + " seconds";
+
+  }
+
+
+
 }
 
