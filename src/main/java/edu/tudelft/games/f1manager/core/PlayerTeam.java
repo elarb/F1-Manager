@@ -100,6 +100,14 @@ public class PlayerTeam extends Team {
     this.budget = budget;
   }
 
+  public boolean hasSoftwareTester() {
+    return softwareTester;
+  }
+
+  public void setSoftwareTester(boolean softwareTester) {
+    this.softwareTester = softwareTester;
+  }
+
   public static Gson getGson() {
     return gson;
   }
