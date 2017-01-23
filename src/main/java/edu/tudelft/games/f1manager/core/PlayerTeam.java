@@ -17,9 +17,9 @@ import java.util.List;
 public class PlayerTeam extends Team {
 
   private static Gson gson = new GsonBuilder()
-      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-      .serializeNulls()
-      .create();
+    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+    .serializeNulls()
+    .create();
 
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
@@ -80,8 +80,12 @@ public class PlayerTeam extends Team {
     outputStream.close();
   }
 
-  public void addBudget(int budget) {
-    this.budget += budget;
+  public void addBudget(int num) {
+    this.budget += num;
+  }
+
+  public void lowerBudget(int num) {
+    this.budget -= num;
   }
 
   public Image getFirstDriverImg() {
