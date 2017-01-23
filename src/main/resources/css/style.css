@@ -1,4 +1,4 @@
-.root {
+#main-stage {
     -fx-background-image: url("../img/patterns/footer_lodyas.png");
     -fx-background-repeat: repeat;
 }
@@ -18,10 +18,26 @@
 
 .button-raised{
     -fx-padding: 0.7em 0.57em;
-    -fx-font-size: 14px;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
     -fx-button-type: RAISED;
-    -fx-background-color: rgb(77,102,204);
-    -fx-pref-width: 200;
+    -fx-background-color: rgb(0, 188, 212);
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
     -fx-text-fill: WHITE;
 }
+
+.button-raised-large{
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-button-type: RAISED;
+    -fx-background-color: rgb(0, 188, 212);
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-text-fill: WHITE;
+}
+
 

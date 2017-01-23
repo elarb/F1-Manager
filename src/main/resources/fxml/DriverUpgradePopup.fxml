@@ -6,22 +6,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.CrewTabController">
    <children>
-      <JFXButton fx:id="upgradeSpeedButton" layoutX="100.0" layoutY="387.0" onMouseClicked="#upgradeSpeed" prefHeight="50.0" prefWidth="150.0" text="SPEED" />
+      <JFXButton fx:id="upgradeSpeedButton" layoutX="100.0" layoutY="417.0" onMouseClicked="#upgradeSpeed" prefHeight="50.0" prefWidth="150.0" styleClass="button-raised-large" text="SPEED" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/CrewTab/Speed.png" />
          </image>
       </ImageView>
-      <JFXTextArea editable="false" layoutX="357.0" layoutY="81.0" maxWidth="286.0" minWidth="229.0" prefHeight="108.0" prefWidth="286.0" text="Pick an upgrade for the selected driver.&#10;You can choose from Speed, Race Craft&#10;and Strategy Insight.&#10;" />
-      <JFXButton fx:id="upgradeInsightButton" layoutX="425.0" layoutY="387.0" onMouseClicked="#upgradeInsight" prefHeight="50.0" prefWidth="150.0" text="INSIGHT" />
+      <JFXTextArea editable="false" layoutX="357.0" layoutY="81.0" maxWidth="286.0" minWidth="229.0" prefHeight="108.0" prefWidth="286.0" text="Pick an upgrade for the selected driver.&#10;You can choose from Speed, Race Craft&#10;and Strategy Insight.&#10;(Press ESC to close)" />
+      <JFXButton fx:id="upgradeInsightButton" layoutX="425.0" layoutY="417.0" onMouseClicked="#upgradeInsight" prefHeight="50.0" prefWidth="150.0" styleClass="button-raised-large" text="INSIGHT" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/CrewTab/Insight.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="upgradeRaceCraftButton" layoutX="729.0" layoutY="387.0" onMouseClicked="#upgradeRaceCraft" prefHeight="50.0" prefWidth="150.0" text="RACE CRAFT" />
+      <JFXButton fx:id="upgradeRaceCraftButton" layoutX="729.0" layoutY="417.0" onMouseClicked="#upgradeRaceCraft" prefHeight="50.0" prefWidth="150.0" styleClass="button-raised-large" text="RACE CRAFT" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="729.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/CrewTab/Racecraft.png" />
