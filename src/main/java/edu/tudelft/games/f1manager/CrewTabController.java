@@ -53,8 +53,8 @@ public class CrewTabController {
     speed1.setProgress(game.getFirstDriver().getSpeed() / 10);
     speed2.setProgress(game.getSecondDriver().getSpeed() / 10);
 
-    firstDriverImg.setImage(game.getPlayerteam().getFirstDriverImg());
-    secondDriverImg.setImage(game.getPlayerteam().getSecondDriverImg());
+    //firstDriverImg.setImage(game.getPlayerteam().getFirstDriverImg());
+    //secondDriverImg.setImage(game.getPlayerteam().getSecondDriverImg());
 
 //    Image image1 = new Image(String.valueOf(this.getClass().getResource("/img/Drivers/" + clientController.getGame().getFirstDriver().getName())));
 //    firstDriverImg.setImage(image1);
