@@ -31,7 +31,6 @@ import java.io.IOException;
 
 public class App extends Application {
 
-
   private static final int SPLASH_WIDTH = 1280;
   private static final int SPLASH_HEIGHT = 750;
   private Pane splashLayout;
@@ -79,13 +78,13 @@ public class App extends Application {
           );
         updateMessage("Loading Drivers . . .");
         for (int i = 0; i < availableDrivers.size(); i++) {
-          Thread.sleep(0);
+          Thread.sleep(300);
           updateProgress(i + 1, availableDrivers.size());
           String nextFriend = availableDrivers.get(i);
           foundDrivers.add(nextFriend);
           updateMessage("Finding drivers . . . found " + nextFriend);
         }
-        Thread.sleep(0);
+        Thread.sleep(300);
         updateMessage("All drivers found.");
 
         return foundDrivers;
