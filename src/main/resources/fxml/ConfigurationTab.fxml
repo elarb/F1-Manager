@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="configurationTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ConfigurationTabController">
+<AnchorPane fx:id="configurationTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ConfigurationTabController">
    <children>
       <JFXSlider fx:id="tireSlider" blockIncrement="1.0" layoutX="970.0" layoutY="571.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <ImageView fitHeight="144.0" fitWidth="174.0" layoutX="953.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true" />
