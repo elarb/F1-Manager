@@ -14,27 +14,29 @@ public class ConfigurationTabController {
 
   private ClientController clientController;
 
-  public ClientController getClientController() {
-    return clientController;
-  }
-
   @FXML
   private JFXListView buyDriverList;
 
+
   @FXML
   private JFXSlider tireSlider;
+
 
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
-  @FXML
-  private void initialize() {
+  public void init() {
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       if (oldValue.intValue() != newValue.intValue()) {
-        clientController.getGame().getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
+        Main.game.getPlayerteam().getCar().getTyres().setHardness(newValue.intValue());
       }
     });
+    update();
+  }
+
+  public void update() {
+    populateBuyDriverList();
   }
 
   /**
@@ -45,13 +47,13 @@ public class ConfigurationTabController {
   public void handleButtonClick_buyDriver() throws IOException {
     String driverName = (String) buyDriverList.getSelectionModel().getSelectedItem();
 
-    for (Driver driver : clientController.getGame().getDrivers()) {
+    for (Driver driver : Main.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        clientController.getGame().driverBuy(driver);
+        Main.game.driverBuy(driver);
         System.out.println("driver bought");
-        System.out.println(clientController.getGame().getPlayerteam().getDriverList());
+        System.out.println(Main.game.getPlayerteam().getDriverList());
         populateBuyDriverList();
-        clientController.loadData();
+        clientController.loadMenuData();
         break;
       }
     }
@@ -60,14 +62,14 @@ public class ConfigurationTabController {
   /**
    * goes through the list of all the drivers, when a driver is not already in your team it gets added to the list.
    */
-  void populateBuyDriverList() {
+  public void populateBuyDriverList() {
     System.out.println("populating list");
-    ArrayList<Driver> drivers = clientController.getGame().getDrivers();
+    ArrayList<Driver> drivers = Main.game.getDrivers();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
 
     for (Driver driver : drivers) {
       boolean inList = true;
-      for (Driver owned : clientController.getGame().getPlayerteam().getDriverList()) {
+      for (Driver owned : Main.game.getPlayerteam().getDriverList()) {
         if (owned.equals(driver)) {
           inList = false;
         }
@@ -77,5 +79,11 @@ public class ConfigurationTabController {
       }
     }
     buyDriverList.setItems(driverNames);
+    clientController.getCrewTabController().update();
   }
+
+  public ClientController getClientController() {
+    return clientController;
+  }
+
 }
