@@ -45,7 +45,7 @@
                                 <Font name="Futura LT Bold" size="21.0" />
                             </font>
                             <tooltip>
-                                <Tooltip text="Click to return to home" />
+                                <Tooltip text="Click to start the next race." />
                             </tooltip>
                         </JFXButton>
                     </children>
