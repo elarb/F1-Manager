@@ -96,23 +96,23 @@ public class ClientController {
     configurationTabController.update();
   }
 
-  public ConfigurationTabController getConfigurationTabController() {
-    return configurationTabController;
+  void updateHomeTab() {
+    homeTabController.populateGameEventList();
   }
 
-  public CrewTabController getCrewTabController() {
-    return crewTabController;
+  @FXML
+  private void handleButtonClick_Race() {
+    game.race();
+    homeTabController.populateRaceResultList();
+    homeTabController.populatePointsList();
+    updateHomeTab();
   }
 
-  public HomeTabController getHomeTabController() {
-    return homeTabController;
+  public Game getGame() {
+    return game;
   }
 
-  public SettingsTabController getSettingsTabController() {
-    return settingsTabController;
-  }
-
-  public NextRaceTabController getNextRaceTabController() {
-    return nextRaceTabController;
+  public void setGame(Game game) {
+    this.game = game;
   }
 }
