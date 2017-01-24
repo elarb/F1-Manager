@@ -31,13 +31,14 @@ import java.io.IOException;
 
 public class App extends Application {
 
+  static Stage mainStage;
+  static Game game;
   private static final int SPLASH_WIDTH = 1280;
   private static final int SPLASH_HEIGHT = 750;
   private Pane splashLayout;
   private JFXProgressBar loadProgress;
   private Label progressText;
-  public static Stage mainStage;
-  public static Game game;
+
 
   public static void main(String[] args) {
     game = Game.newGame();
@@ -49,14 +50,14 @@ public class App extends Application {
     Font.loadFont(getClass().getClassLoader()
       .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
     ImageView splash = new ImageView(new Image("img/splash.jpg"));
-    splash.setFitHeight(750);
-    splash.setFitWidth(1280);
+    splash.setFitHeight(SPLASH_HEIGHT);
+    splash.setFitWidth(SPLASH_WIDTH);
     loadProgress = new JFXProgressBar();
     loadProgress.setPrefWidth(SPLASH_WIDTH);
     loadProgress.setMinHeight(20);
     progressText = new Label("Loading the game . . .");
     splashLayout = new VBox();
-    splashLayout.setPrefSize(1280, 750);
+    splashLayout.setPrefSize(SPLASH_WIDTH, SPLASH_HEIGHT);
     splashLayout.getChildren().addAll(splash, loadProgress, progressText);
     progressText.setAlignment(Pos.BOTTOM_CENTER);
     splashLayout.setEffect(new DropShadow());
