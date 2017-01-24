@@ -6,13 +6,15 @@ import javafx.beans.property.StringProperty;
 
 class TableDriverResult extends RecursiveTreeObject<TableDriverResult> {
 
+  StringProperty position;
   StringProperty name;
   StringProperty time;
   StringProperty team;
 
-  TableDriverResult(String name, double time, String team) {
+  TableDriverResult(String position, String name, String time, String team) {
+    this.position = new SimpleStringProperty(position);
     this.name = new SimpleStringProperty(name);
-    this.time = new SimpleStringProperty(Double.toString(time));
+    this.time = new SimpleStringProperty(time);
     this.team = new SimpleStringProperty(team);
   }
 }
