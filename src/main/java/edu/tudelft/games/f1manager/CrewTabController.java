@@ -50,6 +50,9 @@ public class CrewTabController {
   private ProgressBar strategyinsight1, strategyinsight2, racecraft1, racecraft2, speed1, speed2;
 
   @FXML
+  private ProgressBar aeroProgress, strategistProgress, mechanicProgress;
+
+  @FXML
   private JFXListView selectDriverList;
 
   @FXML
@@ -69,6 +72,9 @@ public class CrewTabController {
 
   @FXML
   private AnchorPane crewTab;
+
+  @FXML
+  private JFXSlider tireSlider;
 
 
   public void injectMainController(ClientController clientController) {
@@ -90,6 +96,8 @@ public class CrewTabController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    initTiresSlider();
+    initCrewData();
     handleRisk();
     handleSoftwareToggle();
   }
@@ -97,6 +105,13 @@ public class CrewTabController {
   public void update() {
     loadDriverData();
     populateSelectDriverList();
+  }
+
+  public void initCrewData() {
+    aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
+    //TODO Temporary dirty way to get mechanic rating
+    mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
+    strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
   }
 
   @FXML
@@ -137,14 +152,12 @@ public class CrewTabController {
       for (int i = 0; i < list.size(); i++) {
         if (list.get(i).getName().equals(driverName)) {
           Collections.swap(list, 0, i);
-          System.out.println(list.get(i) + " moved to place 1 from " + (i + 1));
         }
       }
     } else if (num == 2) {
       for (int i = 0; i < list.size(); i++) {
         if (list.get(i).getName().equals(driverName)) {
           Collections.swap(list, 1, i);
-          System.out.println(list.get(i) + " moved to place 2 from " + (i + 1));
         }
       }
     }
@@ -167,7 +180,6 @@ public class CrewTabController {
     switchTo1.setText("Swap with first driver");
     switchTo1.setMinSize(100, 30);
     switchTo1.setOnMouseClicked(event -> {
-      System.out.println("RUNNING EVENT 1");
       swapWithDriver(1);
       selectedDriversPopup.close();
     });
@@ -243,11 +255,10 @@ public class CrewTabController {
 
   @FXML
   public void upgradeAerodynamicist() {
-    System.out.println(App.game.getPlayerteam().getAerodynamicist().getExpertise());
     boolean success = App.game.upgradeAeorodynamicist();
-    System.out.println(App.game.getPlayerteam().getAerodynamicist().getExpertise());
     if (success) {
-      App.playSound("UpgradeMech");
+      App.playSound("UpgradeAero");
+      aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
     } else {
       //TODO: show has failed Popup
     }
@@ -259,6 +270,7 @@ public class CrewTabController {
     boolean success = App.game.upgradeMechanic();
     if (success) {
       App.playSound("UpgradeMech");
+      mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
     } else {
       //TODO: show has failed Popup
     }
@@ -269,6 +281,7 @@ public class CrewTabController {
     boolean success = App.game.upgradeStrategist();
     if (success) {
       App.playSound("UpgradeMech");
+      strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
     } else {
       //TODO: show has failed Popup
     }
@@ -306,6 +319,15 @@ public class CrewTabController {
         App.game.getPlayerteam().setSoftwareTester(true);
       } else {
         App.game.getPlayerteam().setSoftwareTester(false);
+      }
+    });
+  }
+
+  public void initTiresSlider() {
+    tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      if (oldValue.intValue() != newValue.intValue()) {
+        App.game.getPlayerteam().getCar().getTyres()
+          .setHardness(newValue.intValue());
       }
     });
   }

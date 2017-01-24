@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager;
 
-import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -18,9 +17,6 @@ public class MarketPlaceTabController {
   @FXML
   private JFXTreeTableView buyDriverList;
 
-  @FXML
-  private JFXSlider tireSlider;
-
   private ClientController clientController;
 
   public ClientController getClientController() {
@@ -34,12 +30,7 @@ public class MarketPlaceTabController {
 
   @FXML
   public void init() {
-    tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-      if (oldValue.intValue() != newValue.intValue()) {
-        App.game.getPlayerteam().getCar().getTyres()
-          .setHardness(newValue.intValue());
-      }
-    });
+
   }
 
   /**
@@ -55,8 +46,6 @@ public class MarketPlaceTabController {
     for (Driver driver : App.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
         App.game.driverBuy(driver);
-        System.out.println("driver bought");
-        System.out.println(App.game.getPlayerteam().getDriverList());
         clientController.loadMenuData();
         break;
       }
