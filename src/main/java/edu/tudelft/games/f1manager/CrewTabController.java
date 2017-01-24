@@ -80,12 +80,7 @@ public class CrewTabController {
     timer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Platform.runLater(new Runnable() {
-          @Override
-          public void run() {
-            update();
-          }
-        });
+        Platform.runLater(() -> update());
       }
     }, 0, 2000);
 
