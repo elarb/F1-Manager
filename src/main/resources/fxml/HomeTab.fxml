@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.HomeTabController">
+<AnchorPane fx:id="homeTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.HomeTabController">
    <children>
-      <JFXTreeTableView fx:id="pointList" layoutX="797.0" layoutY="43.0" prefHeight="579.0" prefWidth="377.0" />
-      <JFXTreeTableView fx:id="raceResultList" layoutX="21.0" layoutY="43.0" prefHeight="267.0" prefWidth="722.0" tableMenuButtonVisible="true" />
-      <JFXTreeTableView fx:id="gameEventList" layoutX="21.0" layoutY="355.0" prefHeight="267.0" prefWidth="722.0" />
+      <JFXTreeTableView fx:id="pointList" layoutX="562.0" layoutY="67.0" minHeight="-Infinity" minWidth="-Infinity" opacity="0.7" prefHeight="340.0" prefWidth="240.0">
+         <columnResizePolicy>
+            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy></JFXTreeTableView>
+      <JFXTreeTableView fx:id="raceResultList" layoutX="21.0" layoutY="67.0" opacity="0.7" prefHeight="340.0" prefWidth="510.0">
+         <columnResizePolicy>
+            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy></JFXTreeTableView>
+      <JFXTreeTableView fx:id="gameEventList" layoutX="21.0" layoutY="457.0" opacity="0.7" prefHeight="165.0" prefWidth="781.0" AnchorPane.rightAnchor="398.0">
+         <columnResizePolicy>
+            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy></JFXTreeTableView>
+      <Label layoutX="21.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" text="Results Last Race" textFill="#f2f2f2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="562.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" text="Standings" textFill="#f2f2f2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="407.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" text="Game Events" textFill="#f2f2f2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
