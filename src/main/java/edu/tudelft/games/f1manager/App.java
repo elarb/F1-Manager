@@ -110,6 +110,7 @@ public class App extends Application {
     mainStage.setTitle("F1 Manager");
     mainStage.setScene(new Scene(root, 1280, 800));
     mainStage.setResizable(false);
+    mainStage.initStyle(StageStyle.UNDECORATED);
     mainStage.setOnCloseRequest(event -> {
       //TODO: save stuff
       System.exit(1);

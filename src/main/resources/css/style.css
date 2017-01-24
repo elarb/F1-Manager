@@ -38,6 +38,15 @@
     -fx-text-fill: WHITE;
 }
 
+#buy-driver-button {
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-button-type: RAISED;
+    -fx-background-color: rgb(0, 188, 212);
+    -fx-text-fill: WHITE;
+}
+
 /*
     The tab bar
 */
@@ -56,6 +65,17 @@
 
 .pane {
     -fx-border-radius: 10;
+}
+
+/*
+Menu Buttons
+ */
+#close-button:hover {
+    -fx-background-color: #c61717;
+}
+
+#minimize-button:hover {
+    -fx-background-color: #A0A0A0;
 }
 
 
