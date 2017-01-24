@@ -36,7 +36,8 @@ public class HomeTabController {
     this.clientController = clientController;
   }
 
-  public void initialize() {
+  public void init() {
+
   }
 
 
@@ -50,55 +51,68 @@ public class HomeTabController {
     //    raceColumn.setCellValueFactory(param ->
     // new ReadOnlyStringWrapper(param.getValue().getValue()));
 
+    TreeTableColumn<TableDriverResult, String> positionCol = new TreeTableColumn<>("#");
+    positionCol.setMinWidth(20);
+    positionCol.setCellValueFactory(param -> param.getValue().getValue().position);
+
     TreeTableColumn<TableDriverResult, String> driverColumn = new TreeTableColumn<>("Driver");
+    driverColumn.setMinWidth(160);
     driverColumn.setCellValueFactory(param -> param.getValue().getValue().name);
 
     TreeTableColumn<TableDriverResult, String> timeColumn = new TreeTableColumn<>("Time");
+    timeColumn.setMinWidth(100);
     timeColumn.setCellValueFactory(param -> param.getValue().getValue().time);
 
     TreeTableColumn<TableDriverResult, String> teamColumn = new TreeTableColumn<>("Team");
+    teamColumn.setMinWidth(160);
     teamColumn.setCellValueFactory(param -> param.getValue().getValue().team);
 
     ObservableList<TableDriverResult> tableDriverResults = FXCollections.observableArrayList();
+    ArrayList<DriverResult> results = App.game.getSeason().getPastRaceInstance().getResults();
 
-    for (DriverResult result
-      : App.game.getSeason().getPastRaceInstance().getResults()) {
+    for (int i = 0; i < results.size(); i++) {
       String teamName = "";
-      if (result.getDriver().getTeamId() == 1) {
+      if (results.get(i).getDriver().getTeamId() == 1) {
         teamName = App.game.getPlayerteam().getName();
       } else {
         for (Team team : App.game.getAiteams()) {
-          if (result.getDriver().getTeamId() == team.getId()) {
+          if (results.get(i).getDriver().getTeamId() == team.getId()) {
             teamName = team.getName();
             break;
           }
         }
       }
-      tableDriverResults.add(new TableDriverResult(result.getDriver().getName(),
-        result.getTime(), teamName));
+      tableDriverResults.add(new TableDriverResult(Integer.toString(i + 1), results.get(i).getDriver().getName(),
+        results.get(i).getTimeString(), teamName));
     }
+
+
     TreeItem<TableDriverResult> root =
       new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
 
     raceResultList.setRoot(root);
     raceResultList.setShowRoot(false);
-    raceResultList.getColumns().setAll(driverColumn, timeColumn, teamColumn);
+    raceResultList.getColumns().setAll(positionCol, driverColumn, timeColumn, teamColumn);
 
   }
 
   /**
    * populates the gameEventList.
    */
+
   void populateGameEventList() {
     gameEventList.setRoot(null);
 
     TreeTableColumn<TableGameEvent, String> typeColumn = new TreeTableColumn<>("Type");
+    typeColumn.setMinWidth(90);
     typeColumn.setCellValueFactory(param -> param.getValue().getValue().type);
 
     TreeTableColumn<TableGameEvent, String> messageColumn = new TreeTableColumn<>("Message");
+    messageColumn.setMinWidth(520);
     messageColumn.setCellValueFactory(param -> param.getValue().getValue().message);
 
     TreeTableColumn<TableGameEvent, String> timeColumn = new TreeTableColumn<>("Time");
+    timeColumn.setMinWidth(150);
     timeColumn.setCellValueFactory(param -> param.getValue().getValue().time);
 
     ObservableList<TableGameEvent> tableGameEvents = FXCollections.observableArrayList();
@@ -127,8 +141,9 @@ public class HomeTabController {
    */
   void populatePointsList() {
     pointList.setRoot(null);
-    TreeTableColumn<TableTeam, String> nameColumn = new TreeTableColumn<>("Type");
-    nameColumn.setCellValueFactory(param -> param.getValue().getValue().name);
+    TreeTableColumn<TableTeam, String> teamColumn = new TreeTableColumn<>("Team");
+    teamColumn.setMinWidth(120);
+    teamColumn.setCellValueFactory(param -> param.getValue().getValue().name);
 
     TreeTableColumn<TableTeam, Number> pointsColumn = new TreeTableColumn<>("Points");
     pointsColumn.setCellValueFactory(param -> param.getValue().getValue().points);
@@ -147,7 +162,7 @@ public class HomeTabController {
       RecursiveTreeObject::getChildren);
     pointList.setRoot(root);
     pointList.setShowRoot(false);
-    pointList.getColumns().setAll(nameColumn, pointsColumn);
+    pointList.getColumns().setAll(teamColumn, pointsColumn);
   }
 
 
