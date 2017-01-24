@@ -31,7 +31,6 @@ import java.io.IOException;
 
 public class App extends Application {
 
-
   private static final int SPLASH_WIDTH = 1280;
   private static final int SPLASH_HEIGHT = 750;
   private Pane splashLayout;
@@ -47,6 +46,8 @@ public class App extends Application {
 
   @Override
   public void init() {
+    Font.loadFont(getClass().getClassLoader()
+      .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
     ImageView splash = new ImageView(new Image("img/splash.jpg"));
     splash.setFitHeight(750);
     splash.setFitWidth(1280);
@@ -101,8 +102,6 @@ public class App extends Application {
   }
 
   private void showMainStage() throws IOException {
-    Font.loadFont(getClass().getClassLoader()
-      .getResource("fonts/FuturaLT-Bold.ttf").toExternalForm(), 10);
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
     Parent root = loader.load();
 

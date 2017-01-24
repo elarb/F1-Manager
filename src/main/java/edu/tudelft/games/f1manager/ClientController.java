@@ -1,9 +1,12 @@
 package edu.tudelft.games.f1manager;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 
 import java.text.DecimalFormat;
@@ -25,9 +28,11 @@ public class ClientController {
   @FXML
   NextRaceTabController nextRaceTabController;
 
-
   @FXML
   private Label teamNameLabel, cashLabel, raceLabel, pointsLabel;
+
+  @FXML
+  private JFXTabPane tabPane;
 
   public AnchorPane getHomeContent() {
     return homeTabController.getHomeContent();
@@ -56,8 +61,12 @@ public class ClientController {
     nextRaceTabController.injectMainController(this);
     marketPlaceTabController.init();
     crewTabController.init();
+    nextRaceTabController.init();
   }
 
+  /**
+   * Loads the data that gets shown on the menu.
+   */
   public void loadMenuData() {
     teamNameLabel.setText(App.game.getPlayerteam().getName());
     DecimalFormat formatter = new DecimalFormat("#,###");
@@ -66,34 +75,28 @@ public class ClientController {
     raceLabel.setText("Race: " + App.game.getCurrentRace() + "/20");
   }
 
-  @FXML
   /**
    * Run race, play sound and temporary disable race button.
    */
+  @FXML
   public void race() {
     App.game.race();
     App.playSound("Race");
-    new Thread() {
-      public void run() {
-        Platform.runLater(new Runnable() {
-          public void run() {
-            raceButton.setDisable(true);
-          }
-        });
-        try {
-          Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-        }
-        Platform.runLater(new Runnable() {
-          public void run() {
-            raceButton.setDisable(false);
-          }
-        });
+    new Thread(() -> {
+      Platform.runLater(() -> raceButton.setDisable(true));
+      try {
+        Thread.sleep(4000);
+      } catch (InterruptedException ex) {
       }
-    }.start();
+      Platform.runLater(() -> raceButton.setDisable(false));
+    }).start();
+
+    SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+    selectionModel.select(0);
     homeTabController.populateRaceResultList();
     homeTabController.populatePointsList();
     homeTabController.populateGameEventList();
+    nextRaceTabController.update();
   }
 
   public void updateConfigurationTab() {
