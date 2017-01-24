@@ -197,6 +197,7 @@ public class CrewTabController {
     selectedDriversPopup.setContent(vbox);
     selectedDriversPopup.setMinSize(100, 120);
     selectedDriversPopup.setSource(selectDriverList);
+    selectedDriversPopup.setPopupContainer(crewTab);
     selectDriverList.setOnMouseClicked((event) -> selectedDriversPopup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT, event.getX(), event.getY()));
   }
 
