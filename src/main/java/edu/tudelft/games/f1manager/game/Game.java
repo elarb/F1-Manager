@@ -498,7 +498,6 @@ public class Game {
    * Returns the costs of the next race.
    * @return double with costs
    */
-
   public double getRaceCost(){
 
     double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
@@ -519,10 +518,9 @@ public class Game {
   /**
    * Removes the cost of the race from the players budget.
    */
-
   public void payRace(){
 
-    this.playerteam.setBudget(this.playerteam.getBudget() - (int) getRaceCost());
+    this.playerteam.lowerBudget((int) getRaceCost());
     events.addEvent(new GameEvent("You paid " + (int) getRaceCost() + " dollars for this race", GameEvent.Type.RACE));
 
   }
