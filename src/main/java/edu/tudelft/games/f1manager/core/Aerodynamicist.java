@@ -25,8 +25,7 @@ public class Aerodynamicist implements Upgradeable {
   /**
    * Returns this event.
    * Suppose x = expertise.
-   * If 60< x <69, then expertise can increase with 4, 5 or 6.
-   * If 70< x <79, then expertise can increase with 3, 4 or 5
+   * If <79, then expertise can increase with 3, 4 or 5
    * If 80< x <89, then expertise can increase with 2, 3 or 4
    * If 90< x <99, then expertise can increase with 1, 2 or 3
    */
