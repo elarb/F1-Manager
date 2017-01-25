@@ -44,6 +44,11 @@ public class Engine {
       * (Constants.DRIVABILITY_COEF * drivability)
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
+  
+  public int sellPrice() {
+	  determineprice();
+	  return ((int)this.price/5);
+  }
 
   public int sellPrice() {
     determineprice();
