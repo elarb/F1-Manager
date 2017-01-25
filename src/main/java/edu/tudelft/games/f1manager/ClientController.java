@@ -157,6 +157,7 @@ public class ClientController {
 
   public void updateConfigurationTab() {
     marketPlaceTabController.populateBuyDriverList();
+    marketPlaceTabController.polulateBuyEngineList();
   }
 
   public HomeTabController getHomeTabController() {

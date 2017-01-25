@@ -6,14 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
+<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
    <children>
-      <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="571.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="250.0" text="Buy selected driver" />
-      <JFXTreeTableView fx:id="buyDriverList" layoutX="26.0" layoutY="100.0" prefHeight="450.0" prefWidth="300.0" />
-      <Label layoutX="26.0" layoutY="36.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Driver List" textFill="#f2f2f2">
+      <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="573.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: black;" text="Buy selected driver" />
+      <JFXTreeTableView fx:id="buyDriverList" layoutX="51.0" layoutY="106.0" prefHeight="467.0" prefWidth="300.0" />
+      <Label alignment="CENTER" layoutX="51.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Driver List" textFill="#f2f2f2">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
+      <JFXTreeTableView fx:id="buyEngineList" layoutX="814.0" layoutY="106.0" prefHeight="467.0" prefWidth="300.0" />
+      <Label alignment="CENTER" layoutX="814.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Engine List" textFill="#f2f2f2">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXButton id="buy-driver-button" layoutX="814.0" layoutY="573.0" onAction="#handleButtonClick_buyEngine" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: black;" text="Buy selected engine" />
    </children>
 </AnchorPane>
