@@ -29,7 +29,7 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="180.0" layoutY="106.0" onMouseClicked="#upgradeMechanic" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
+            <JFXButton fx:id="mechanicButton" buttonType="RAISED" layoutX="180.0" layoutY="106.0" onMouseClicked="#upgradeMechanic" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <ProgressBar fx:id="mechanicProgress" layoutX="169.0" layoutY="64.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <Label layoutX="180.0" layoutY="65.0" prefHeight="21.0" prefWidth="90.0" text="Dexterity" textFill="#616161">
                <font>
@@ -47,7 +47,7 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <JFXButton layoutX="178.0" layoutY="117.0" onMouseClicked="#upgradeStrategist" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
+            <JFXButton fx:id="upgradeStrategistButton" layoutX="178.0" layoutY="117.0" onMouseClicked="#upgradeStrategist" prefHeight="30.0" prefWidth="90.0" styleClass="button-raised" text="Upgrade" />
             <ProgressBar fx:id="strategistProgress" layoutX="167.0" layoutY="78.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <ImageView fitHeight="159.0" fitWidth="143.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -78,7 +78,7 @@
             <ProgressBar fx:id="aeroProgress" layoutX="167.0" layoutY="89.0" prefHeight="23.0" prefWidth="112.0" progress="0.62" />
             <ImageView fitHeight="160.0" fitWidth="150.0" layoutX="22.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/CrewTab/Aerodynamicist.jpeg" />
+                  <Image url="@../img/CrewTab/Aerodynamicist.png" />
                </image>
             </ImageView>
             <Label layoutX="178.0" layoutY="92.0" prefHeight="6.0" prefWidth="103.0" text="Skill" textFill="#616161">
