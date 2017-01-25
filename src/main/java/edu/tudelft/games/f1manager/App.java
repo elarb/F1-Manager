@@ -69,7 +69,7 @@ public class App extends Application {
       @Override
       protected ObservableList<String> call() throws InterruptedException {
         ObservableList<String> foundDrivers =
-          FXCollections.<String>observableArrayList();
+          FXCollections.observableArrayList();
         ObservableList<String> availableDrivers =
           FXCollections.observableArrayList(
             "Daniel Ricciardo", "Daniil Kvyat", "Felipe Massa", "Felipe Nasr", "Fernando Alonso",
