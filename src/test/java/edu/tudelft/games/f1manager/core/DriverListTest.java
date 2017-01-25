@@ -25,7 +25,7 @@ public class DriverListTest {
     driverList.add(driver2);
 
     result = new DriverResult(driver1, 6000);
-    
+
     driverList.write("TESTS/drivers.json");
   }
 
@@ -48,7 +48,7 @@ public class DriverListTest {
   @Test
   public void gettimestringtest(){
 
-    assertEquals("2 hours 40 minutes 0 seconds", result.GetTimeString());
+    assertEquals("02:40:00", result.getTimeString());
 
   }
 

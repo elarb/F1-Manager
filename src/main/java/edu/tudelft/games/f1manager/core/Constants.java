@@ -36,4 +36,7 @@ public class Constants {
   public static final double VALUE_AVG_DIVIDER = 5;
   public static final double DRIVERUPGRADE = 1;
 
+  public static final int AERODYNAMICIST_UPGRADE_PRICE = 1000000;
+  public static final int STRATEGIST_UPGRADE_PRICE = 1000000;
+
 }

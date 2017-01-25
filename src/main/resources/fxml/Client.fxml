@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
+<AnchorPane id="main-stage" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -17,63 +17,65 @@
                     <children>
                         <Label text="Formula 1 Manager Beta 0.1" textFill="WHITE">
                             <font>
-                                <Font name="Futura LT Bold" size="12.0" />
+                                <Font size="12.0" />
                             </font>
                         </Label>
                         <Label fx:id="teamNameLabel" contentDisplay="CENTER" layoutX="275.0" layoutY="37.0" text="Quicksilver Racing" textAlignment="CENTER" textFill="WHITE">
                             <font>
-                                <Font name="Futura LT Bold" size="20.0" />
+                                <Font size="20.0" />
                             </font>
                         </Label>
                         <Label fx:id="cashLabel" layoutX="38.0" layoutY="26.0" prefHeight="50.0" prefWidth="200.0" text="Cash: $200,000,000" textFill="WHITE" AnchorPane.rightAnchor="1042.0" AnchorPane.topAnchor="26.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="pointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="893.0" layoutY="25.0" prefHeight="50.0" prefWidth="108.0" text="Points: 24" textFill="WHITE" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="25.0">
+                        <Label fx:id="pointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="819.0" layoutY="27.0" prefHeight="50.0" prefWidth="108.0" text="Points: 24" textFill="WHITE" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="27.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="raceLabel" contentDisplay="CENTER" layoutX="1104.0" layoutY="27.0" prefHeight="48.0" prefWidth="131.0" text="Race: 12/15" textFill="WHITE" AnchorPane.rightAnchor="45.0">
+                        <Label fx:id="raceLabel" contentDisplay="CENTER" layoutX="1002.0" layoutY="26.0" prefHeight="48.0" prefWidth="131.0" text="Race: 12/15" textFill="WHITE" AnchorPane.rightAnchor="147.0">
                             <font>
-                                <Font name="Futura LT Bold" size="18.0" />
+                                <Font size="18.0" />
                             </font>
                         </Label>
-                        <JFXButton buttonType="RAISED" layoutX="565.0" layoutY="26.0" minHeight="50.0" minWidth="150.0" onAction="#handleButtonClick_Race" style="-fx-background-color: rgb(0, 188, 212);" text="RACE!" textFill="#dddada">
+                        <JFXButton fx:id="raceButton" layoutX="565.0" layoutY="26.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#race" styleClass="button-raised-large" text="RACE!" textFill="#dddada">
                             <font>
-                                <Font name="Futura LT Bold" size="21.0" />
+                                <Font size="21.0" />
                             </font>
                             <tooltip>
-                                <Tooltip text="Click to return to home" />
+                                <Tooltip text="Click to start the next race." />
                             </tooltip>
                         </JFXButton>
+                        <JFXButton id="close-button" fx:id="closeButton" buttonType="RAISED" cancelButton="true" layoutX="1216.0" layoutY="11.0" opacity="0.5" prefHeight="30.0" prefWidth="50.0" ripplerFill="#c61717" />
+                  <JFXButton id="minimize-button" fx:id="minimizeButton" buttonType="RAISED" cancelButton="true" layoutX="1166.0" layoutY="11.0" opacity="0.5" prefHeight="30.0" prefWidth="50.0" ripplerFill="#a0a0a0" />
                     </children>
                 </AnchorPane>
             </top>
             <center>
-                <AnchorPane fx:id="midAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <AnchorPane fx:id="midAnchorPane" BorderPane.alignment="CENTER">
                     <children>
-                        <JFXTabPane prefHeight="700.0" prefWidth="1280.0" tabMinHeight="60.0" tabMinWidth="320.0">
+                        <JFXTabPane fx:id="tabPane" prefHeight="800.0" prefWidth="1280.0" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
                                 <Tab text="Home">
                                     <content>
                                         <fx:include fx:id="homeTab" source="HomeTab.fxml" />
                                     </content>
                                 </Tab>
-                        <Tab text="Next Race Info">
-                          <content>
-                            <fx:include fx:id="nextRaceTab" source="NextRaceTab.fxml" />
-                          </content>
-                        </Tab>
+                                <Tab text="Next Race Info">
+                                    <content>
+                                        <fx:include fx:id="nextRaceTab" source="NextRaceTab.fxml" />
+                                    </content>
+                                </Tab>
                                 <Tab text="Crew">
                                     <content>
                                         <fx:include fx:id="crewTab" source="CrewTab.fxml" />
                                     </content>
                                 </Tab>
-                                <Tab onSelectionChanged="#updateConfigurationTab" text="Market">
+                                <Tab onSelectionChanged="#updateConfigurationTab" text="Marketplace">
                                     <content>
-                                        <fx:include fx:id="configurationTab" source="ConfigurationTab.fxml" />
+                                        <fx:include fx:id="marketPlaceTab" source="MarketPlaceTab.fxml" />
                                     </content>
                                 </Tab>
                                 <Tab text="Settings">

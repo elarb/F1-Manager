@@ -43,12 +43,13 @@ public class Mechanic implements Upgradeable {
     this.upgradePrice = (this.pitstopTime * -1 + 9) * Constants.BASE_PITSTOP_UP_PRICE;
   }
 
+  public int getUpgradePrice() {
+    return (this.pitstopTime * -1 + 9) * Constants.BASE_PITSTOP_UP_PRICE;
+  }
+
   public int getPitstopTime() {
     return pitstopTime;
   }
 
-  public int getUpgradePrice() {
-    return upgradePrice;
-  }
 
 }
