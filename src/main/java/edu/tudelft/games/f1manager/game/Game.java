@@ -16,6 +16,7 @@ public class Game {
 
   private DriverList drivers;
   private AiTeamList aiteams;
+  private EngineList engines;
   private PlayerTeam playerteam;
   private Season season;
   private GameEvents events;
@@ -32,6 +33,7 @@ public class Game {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
+    EngineList engineList = EngineList.read(savename + "engines.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
@@ -39,6 +41,7 @@ public class Game {
 
     game.setDrivers(driverList);
     game.setAiteams(aiTeamList);
+    game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
     game.setSeason(season);
@@ -55,6 +58,7 @@ public class Game {
   public static Game newGame() {
     DriverList driverList = DriverList.read("drivers.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
+    EngineList engineList = EngineList.read("engines.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
     GameEvents events = GameEvents.read("events.json");
@@ -63,6 +67,7 @@ public class Game {
 
     game.setDrivers(driverList);
     game.setAiteams(aiTeamList);
+    game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
     game.setSeason(season);
@@ -85,6 +90,7 @@ public class Game {
 
     this.drivers.write(savename + "/drivers.json");
     this.aiteams.write(savename + "/aiteams.json");
+    //TODO: ENGINE LIST WRITE
     this.playerteam.write(savename + "/playerteam.json");
     this.season.write(savename + "/season.json");
     this.events.write(savename + "/events.json");
@@ -578,6 +584,14 @@ public class Game {
 
   public void setAiteams(AiTeamList aiteams) {
     this.aiteams = aiteams;
+  }
+
+  public EngineList getEngines() {
+    return engines;
+  }
+
+  public void setEngines(EngineList engines) {
+    this.engines = engines;
   }
 
   public PlayerTeam getPlayerteam() {
