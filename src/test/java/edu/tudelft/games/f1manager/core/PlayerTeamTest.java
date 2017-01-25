@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.core;
 
-import edu.tudelft.games.f1manager.game.Game;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class PlayerTeamTest {
 
@@ -34,29 +32,6 @@ public class PlayerTeamTest {
 
     playerTeam.write("TESTS/playerteam.json");
   }
-
-
-//  @Test
-//  public void testBuyDriver_Works() throws Exception {
-//    playerTeam2.buyDriver(driver);
-//
-//    assertEquals(playerTeam2.getBudget(), 100);
-//  }
-//
-//  @Test
-//  public void testBuyDriver_HasDriver() throws Exception {
-//    playerTeam.buyDriver(driver);
-//
-//    assertEquals(playerTeam.getBudget(), 200);
-//  }
-//
-//  @Test
-//  public void testBuyDriver_NoBudget() throws Exception {
-//    driver.setValue(201);
-//    playerTeam2.buyDriver(driver);
-//
-//    assertEquals(playerTeam2.getBudget(), 200);
-//  }
 
   @Test
   public void read_and_write() throws IOException {
