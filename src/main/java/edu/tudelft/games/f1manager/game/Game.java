@@ -99,6 +99,7 @@ public class Game {
     if (this.getSeason().getCurrentRace() < 20) {
       balanceDrivers();
       setTeamIDs();
+      payRace();
       handleResults();
       sortResults();
       addRaceWinnings();
@@ -293,6 +294,11 @@ public class Game {
     return event;
   }
 
+  /**
+   * Method used to return a message saying your driver crashed.
+   *
+   * @return gameevent
+   */
   public GameEvent gameEventCrashed() {
 
     for (int i = 0; i < getResults().size(); i++) {
@@ -485,6 +491,37 @@ public class Game {
     }
 
     return null;
+
+  }
+
+  /**
+   * Returns the costs of the next race.
+   * @return double with costs
+   */
+  public double getRaceCost(){
+
+    double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
+    double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
+    double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
+    double softwaretester = 0;
+
+    if(this.playerteam.hasSoftwareTester()){
+      softwaretester = 1000;
+    }
+
+
+    return salary1 + salary2 + tires + softwaretester;
+
+
+  }
+
+  /**
+   * Removes the cost of the race from the players budget.
+   */
+  public void payRace(){
+
+    this.playerteam.lowerBudget((int) getRaceCost());
+    events.addEvent(new GameEvent("You paid " + (int) getRaceCost() + " dollars for this race", GameEvent.Type.RACE));
 
   }
 
