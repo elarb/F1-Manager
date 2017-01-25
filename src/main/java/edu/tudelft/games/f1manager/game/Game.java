@@ -273,6 +273,26 @@ public class Game {
   }
 
   /**
+   * Checks whether the player is able to buy then engine, and if so, buys it.
+   *
+   * @param engine Pass the engine that should be bought by the player
+   */
+  public void engineBuy(Engine engine) {
+    int budget = this.getPlayerteam().getBudget();
+    int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
+    int effectiveprice = (int) (engine.getPrice() - sellprice);
+    if (budget >= effectiveprice) {
+
+      this.playerteam.getCar().setEngine(engine);
+      this.playerteam.lowerBudget(effectiveprice);
+
+      String msg = "You have bought a " + engine.getBrand() + " engine!";
+      GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
+      this.events.addEvent(event);
+    }
+  }
+
+  /**
    * Sorts results of the race by time and prints them out (for testing purposes).
    */
   public void sortResults() {
