@@ -33,7 +33,7 @@ public class Game {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
-    EngineList engineList = EngineList.read(savename + "engines.json");
+    EngineList engineList = EngineList.read(savename + "/engines.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
