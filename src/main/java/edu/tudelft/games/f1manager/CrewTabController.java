@@ -4,14 +4,15 @@ import com.jfoenix.controls.*;
 import edu.tudelft.games.f1manager.core.Driver;
 import edu.tudelft.games.f1manager.core.Strategist;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -292,21 +293,18 @@ public class CrewTabController {
     mediumRiskRadio.setToggleGroup(risk);
     highRiskRadio.setToggleGroup(risk);
 
-    risk.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-      @Override
-      public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) {
-        lowRiskRadio = (JFXRadioButton) t1.getToggleGroup().getSelectedToggle();
-        switch (lowRiskRadio.getText()) {
-          case "Low Risk":
-            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.LOW);
-            break;
-          case "Medium Risk":
-            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.MEDIUM);
-            break;
-          case "High Risk":
-            App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.HIGH);
-            break;
-        }
+    risk.selectedToggleProperty().addListener((ov, t, t1) -> {
+      lowRiskRadio = (JFXRadioButton) t1.getToggleGroup().getSelectedToggle();
+      switch (lowRiskRadio.getText()) {
+        case "Low Risk":
+          App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.LOW);
+          break;
+        case "Medium Risk":
+          App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.MEDIUM);
+          break;
+        case "High Risk":
+          App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.HIGH);
+          break;
       }
     });
   }
@@ -329,6 +327,4 @@ public class CrewTabController {
       }
     });
   }
-
-
 }
