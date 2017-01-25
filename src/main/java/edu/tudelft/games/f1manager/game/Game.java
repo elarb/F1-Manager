@@ -35,7 +35,6 @@ public class Game {
     DriverList driverList = DriverList.read(savename + "/drivers.json");
     EngineList engineList = EngineList.read("engines.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
-    EngineList engineList = EngineList.read(savename + "/engines.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
@@ -62,7 +61,6 @@ public class Game {
     DriverList driverList = DriverList.read("drivers.json");
     EngineList engineList = EngineList.read("engines.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
-    EngineList engineList = EngineList.read("engines.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
     GameEvents events = GameEvents.read("events.json");
@@ -591,13 +589,6 @@ public class Game {
     this.aiteams = aiteams;
   }
 
-  public EngineList getEngines() {
-    return engines;
-  }
-
-  public void setEngines(EngineList engines) {
-    this.engines = engines;
-  }
 
   public PlayerTeam getPlayerteam() {
     return playerteam;
