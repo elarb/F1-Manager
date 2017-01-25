@@ -16,20 +16,20 @@ public class EngineList {
       .serializeNulls()
       .create();
 
-  private ArrayList<Engine> enginelist;
+  private ArrayList<Engine> engines;
 
   /**
    * Creates an object that represents a list of engines.
    */
   public EngineList() {
-    this.enginelist = new ArrayList<>();
+    this.engines = new ArrayList<>();
   }
 
   /**
    * Reads in engines.json returns a engines
    * object if the file is in the appropriate format.
    *
-   * @return an enginelist
+   * @return an engines
    */
   public static EngineList read(String filename) {
     ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -41,14 +41,14 @@ public class EngineList {
 
 
   public void addEngine(Engine engine) {
-    enginelist.add(engine);
+    engines.add(engine);
   }
 
-  public ArrayList<Engine> getEnginelist() {
-    return enginelist;
+  public ArrayList<Engine> getEngines() {
+    return engines;
   }
 
-  public void setEnginelist(ArrayList<Engine> enginelist) {
-    this.enginelist = enginelist;
+  public void setEngines(ArrayList<Engine> engines) {
+    this.engines = engines;
   }
 }

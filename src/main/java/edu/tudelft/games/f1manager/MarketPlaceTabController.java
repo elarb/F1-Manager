@@ -56,7 +56,17 @@ public class MarketPlaceTabController {
   }
 
   public void handleButtonClick_buyEngine(){
+    RecursiveTreeItem<TableEngine> engineItem =
+      (RecursiveTreeItem<TableEngine>) buyEngineList.getSelectionModel().getSelectedItem();
+    String engineBrand = engineItem.getValue().brand.getValue();
 
+    for (Engine engine : App.game.getEngines()) {
+      if (engine.getBrand().equals(engineBrand)) {
+        App.game.;
+        clientController.loadMenuData();
+        break;
+      }
+    }
   }
 
   /**
@@ -97,14 +107,15 @@ public class MarketPlaceTabController {
 
   }
 
-  void polulateBuyEngineList() {
+  void populateBuyEngineList() {
+    System.out.println("populating buyEngineList");
     buyEngineList.setRoot(null);
 
     TreeTableColumn<TableEngine, String> brandColumn = new TreeTableColumn<>("Brand");
     brandColumn.setCellValueFactory(param -> param.getValue().getValue().brand);
 
     TreeTableColumn<TableEngine, String> valueColumn = new TreeTableColumn<>("Value");
-    brandColumn.setCellValueFactory(param -> param.getValue().getValue().value);
+    valueColumn.setCellValueFactory(param -> param.getValue().getValue().value);
 
     ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
 
