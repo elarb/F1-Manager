@@ -6,14 +6,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -23,9 +21,10 @@ import java.util.TimerTask;
 
 public class ClientController {
 
+  @FXML
+  NextRaceTabController nextRaceTabController;
   private double xOffset = 0;
   private double yOffset = 0;
-
   @FXML
   private MarketPlaceTabController marketPlaceTabController;
   @FXML
@@ -36,9 +35,6 @@ public class ClientController {
   private SettingsTabController settingsTabController;
   @FXML
   private JFXButton raceButton;
-  @FXML
-  NextRaceTabController nextRaceTabController;
-
   @FXML
   private Label teamNameLabel, cashLabel, raceLabel, pointsLabel;
 
@@ -62,30 +58,19 @@ public class ClientController {
     timer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Platform.runLater(new Runnable() {
-          @Override
-          public void run() {
-            loadMenuData();
-          }
-        });
+        Platform.runLater(() -> loadMenuData());
       }
     }, 0, 2000);
 
-    mainPane.setOnMousePressed(new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        xOffset = event.getSceneX();
-        yOffset = event.getSceneY();
-      }
+    mainPane.setOnMousePressed(event -> {
+      xOffset = event.getSceneX();
+      yOffset = event.getSceneY();
     });
-    mainPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
-      @Override
-      public void handle(MouseEvent event) {
-        App.mainStage.setX(event.getScreenX() - xOffset);
-        App.mainStage.setY(event.getScreenY() - yOffset);
-      }
+    mainPane.setOnMouseDragged(event -> {
+      App.mainStage.setX(event.getScreenX() - xOffset);
+      App.mainStage.setY(event.getScreenY() - yOffset);
     });
-
+    initMenuButtons();
     marketPlaceTabController.injectMainController(this);
     crewTabController.injectMainController(this);
     homeTabController.injectMainController(this);
@@ -106,6 +91,9 @@ public class ClientController {
     cashLabel.setText("$" + formatter.format(App.game.getPlayerteam().getBudget()));
     pointsLabel.setText("Points: " + App.game.getPlayerteam().getPoints());
     raceLabel.setText("Raced: " + App.game.getCurrentRace() + "/20");
+  }
+
+  public void initMenuButtons() {
     Image imageDecline = new Image("/img/close.png");
     ImageView imageView = new ImageView(imageDecline);
     imageView.setFitWidth(30);
