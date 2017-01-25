@@ -4,25 +4,26 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.tudelft.games.f1manager.core.Driver;
+import edu.tudelft.games.f1manager.core.Engine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.util.Callback;
 
 import java.io.IOException;
 
 
 public class MarketPlaceTabController {
   @FXML
-  private JFXTreeTableView buyDriverList;
+  private JFXTreeTableView buyDriverList, buyEngineList;
 
   private ClientController clientController;
 
   public ClientController getClientController() {
     return clientController;
   }
-
 
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
@@ -52,6 +53,10 @@ public class MarketPlaceTabController {
     }
     clientController.getHomeTabController().populateGameEventList();
     populateBuyDriverList();
+  }
+
+  public void handleButtonClick_buyEngine(){
+
   }
 
   /**
@@ -91,4 +96,30 @@ public class MarketPlaceTabController {
     buyDriverList.getColumns().setAll(driverColumn, timeColumn);
 
   }
+
+  void polulateBuyEngineList() {
+    buyEngineList.setRoot(null);
+
+    TreeTableColumn<TableEngine, String> brandColumn = new TreeTableColumn<>("Brand");
+    brandColumn.setCellValueFactory(param -> param.getValue().getValue().brand);
+
+    TreeTableColumn<TableEngine, String> valueColumn = new TreeTableColumn<>("Value");
+    brandColumn.setCellValueFactory(param -> param.getValue().getValue().value);
+
+    ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
+
+    for (Engine engine: App.game.getEngines()) {
+      if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
+        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPrice()));
+      }
+    }
+
+    TreeItem<TableEngine> root =
+      new RecursiveTreeItem<>(tableEngines, RecursiveTreeObject::getChildren);
+
+    buyEngineList.setRoot(root);
+    buyEngineList.setShowRoot(false);
+    buyEngineList.getColumns().setAll(brandColumn, valueColumn);
+  }
+
 }

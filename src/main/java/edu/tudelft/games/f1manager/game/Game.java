@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class Game {
 
   private DriverList drivers;
+  private EngineList engines;
   private AiTeamList aiteams;
   private PlayerTeam playerteam;
   private Season season;
@@ -30,6 +31,7 @@ public class Game {
   public static Game loadgame(String savename) {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
+    EngineList engineList = EngineList.read("engines.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
@@ -37,6 +39,7 @@ public class Game {
     Game game = new Game();
 
     game.setDrivers(driverList);
+    game.setEngines(engineList);
     game.setAiteams(aiTeamList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
@@ -53,6 +56,7 @@ public class Game {
    */
   public static Game newGame() {
     DriverList driverList = DriverList.read("drivers.json");
+    EngineList engineList = EngineList.read("engines.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
@@ -61,6 +65,7 @@ public class Game {
     Game game = new Game();
 
     game.setDrivers(driverList);
+    game.setEngines(engineList);
     game.setAiteams(aiTeamList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
@@ -622,4 +627,11 @@ public class Game {
     return playerteam.getDriverList().get(1);
   }
 
+  public ArrayList<Engine> getEngines() {
+    return engines.getEnginelist();
+  }
+
+  public void setEngines(EngineList engines) {
+    this.engines = engines;
+  }
 }

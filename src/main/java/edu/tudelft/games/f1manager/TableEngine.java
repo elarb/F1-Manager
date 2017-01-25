@@ -1,16 +1,17 @@
 package edu.tudelft.games.f1manager;
 
+
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-class TableDriver extends RecursiveTreeObject<TableDriver> {
+class TableEngine extends RecursiveTreeObject<TableEngine> {
 
-  StringProperty name;
+  StringProperty brand;
   StringProperty value;
 
-  TableDriver(String name, int value) {
-    this.name = new SimpleStringProperty(name);
+  TableEngine(String brand, int value) {
+    this.brand = new SimpleStringProperty(brand);
     String tempValue = "";
     int amount = 0;
     for (char ch: Integer.toString(value).toCharArray()) {
@@ -24,6 +25,9 @@ class TableDriver extends RecursiveTreeObject<TableDriver> {
       amount++;
     }
     tempValue = tempValue + " M";
-    this.value = new SimpleStringProperty(tempValue);
+    this.value = new SimpleStringProperty(Integer.toString(value));
   }
+
+
+
 }
