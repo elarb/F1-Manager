@@ -5,6 +5,7 @@ import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -496,16 +497,17 @@ public class Game {
 
   /**
    * Returns the costs of the next race.
+   *
    * @return double with costs
    */
-  public double getRaceCost(){
+  public double getRaceCost() {
 
     double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
     double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
     double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
     double softwaretester = 0;
 
-    if(this.playerteam.hasSoftwareTester()){
+    if (this.playerteam.hasSoftwareTester()) {
       softwaretester = 1000;
     }
 
@@ -518,11 +520,11 @@ public class Game {
   /**
    * Removes the cost of the race from the players budget.
    */
-  public void payRace(){
-
-    this.playerteam.lowerBudget((int) getRaceCost());
-    events.addEvent(new GameEvent("You paid " + (int) getRaceCost() + " dollars for this race", GameEvent.Type.RACE));
-
+  public void payRace() {
+    int costs = (int) getRaceCost();
+    this.playerteam.lowerBudget(costs);
+    DecimalFormat formatter = new DecimalFormat("#,###");
+    events.addEvent(new GameEvent("You paid " + "$" + formatter.format(costs) + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
   }
 
   public boolean upgradeAeorodynamicist() {
