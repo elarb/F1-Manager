@@ -1,133 +1,118 @@
-[{
-
-    "brand": "Ferrari",
-    "power": "821",
-    "fuelEfficiency": "8.3",
-    "drivability": "9.8"
-},
-
 {
-    "brand": "Ford",
-    "power": "871",
-    "fuelEfficiency": "8.5",
-    "drivability": "9.5"
-},
-
-{
-    "brand": "Renault",
-    "power": "797",
-    "fuelEfficiency": "8.3",
-    "drivability": "8.2"
-},
-
-{
-    "brand": "Mercedes",
-    "power": "858",
-    "fuelEfficiency": "8.3",
-    "drivability": "8.7"
-},
-
-{
-    "brand": "Honda",
-    "power": "777",
-    "fuelEfficiency": "7.4",
-    "drivability": "8.1"
-},
-
-{
-    "brand": "Coventry Climax",
-    "power": "670",
-    "fuelEfficiency": "7.9",
-    "drivability": "6.1"
-},
-
-{
-    "brand": "TAG",
-    "power": "762",
-    "fuelEfficiency": "8.9",
-    "drivability": "7.9"
-},
-
-{
-    "brand": "BMW",
-    "power": "732",
-    "fuelEfficiency": "7.5",
-    "drivability": "7.5"
-},
-
-{
-    "brand": "BRM",
-    "power": "634",
-    "fuelEfficiency": "8.9",
-    "drivability": "6.3"
-},
-
-{
-    "brand": "Alfa Romeo",
-    "power": "802",
-    "fuelEfficiency": "6.5",
-    "drivability": "5"
-},
-
-{
-    "brand": "Maserati",
-    "power": "787",
-    "fuelEfficiency": "6.2",
-    "drivability": "5.7"
-},
-
-{
-    "brand": "Offenhauser",
-    "power": "500",
-    "fuelEfficiency": "7.4",
-    "drivability": "4.7"
-},
-
-{
-    "brand": "VanWall",
-    "power": "560",
-    "fuelEfficiency": "5.7",
-    "drivability": "6"
-},
-
-{
-    "brand": "Repco",
-    "power": "627",
-    "fuelEfficiency": "5.4",
-    "drivability": "5.2"
-},
-
-{
-    "brand": "Mugen-Honda",
-    "power": "762",
-    "fuelEfficiency": "7.5",
-    "drivability": "5.9"
-},
-
-{
-    "brand": "Matra",
-    "power": "524",
-    "fuelEfficiency": "6.5",
-    "drivability": "4.5"
-},
-
-{
-    "brand": "TAG Heuer",
-    "power": "726",
-    "fuelEfficiency": "5.1",
-    "drivability": "5.8"
-},
-
-{
-    "brand": "Porsche",
-    "power": "562",
-    "fuelEfficiency": "4.6",
-    "drivability": "6.3"
-},
-
-{
-    "brand": "Weslake",
-    "power": "714",
-    "fuelEfficiency": "4.9",
-    "drivability": "3.9"
-}]
+    "engines": [
+        {
+            "brand": "Ferrari",
+            "power": "821",
+            "fuelEfficiency": "8.3",
+            "drivability": "9.8"
+        },
+        {
+            "brand": "Ford",
+            "power": "871",
+            "fuelEfficiency": "8.5",
+            "drivability": "9.5"
+        },
+        {
+            "brand": "Renault",
+            "power": "797",
+            "fuelEfficiency": "8.3",
+            "drivability": "8.2"
+        },
+        {
+            "brand": "Mercedes",
+            "power": "858",
+            "fuelEfficiency": "8.3",
+            "drivability": "8.7"
+        },
+        {
+            "brand": "Honda",
+            "power": "777",
+            "fuelEfficiency": "7.4",
+            "drivability": "8.1"
+        },
+        {
+            "brand": "Coventry Climax",
+            "power": "670",
+            "fuelEfficiency": "7.9",
+            "drivability": "6.1"
+        },
+        {
+            "brand": "TAG",
+            "power": "762",
+            "fuelEfficiency": "8.9",
+            "drivability": "7.9"
+        },
+        {
+            "brand": "BMW",
+            "power": "732",
+            "fuelEfficiency": "7.5",
+            "drivability": "7.5"
+        },
+        {
+            "brand": "BRM",
+            "power": "634",
+            "fuelEfficiency": "8.9",
+            "drivability": "6.3"
+        },
+        {
+            "brand": "Alfa Romeo",
+            "power": "802",
+            "fuelEfficiency": "6.5",
+            "drivability": "5"
+        },
+        {
+            "brand": "Maserati",
+            "power": "787",
+            "fuelEfficiency": "6.2",
+            "drivability": "5.7"
+        },
+        {
+            "brand": "Offenhauser",
+            "power": "500",
+            "fuelEfficiency": "7.4",
+            "drivability": "4.7"
+        },
+        {
+            "brand": "VanWall",
+            "power": "560",
+            "fuelEfficiency": "5.7",
+            "drivability": "6"
+        },
+        {
+            "brand": "Repco",
+            "power": "627",
+            "fuelEfficiency": "5.4",
+            "drivability": "5.2"
+        },
+        {
+            "brand": "Mugen-Honda",
+            "power": "762",
+            "fuelEfficiency": "7.5",
+            "drivability": "5.9"
+        },
+        {
+            "brand": "Matra",
+            "power": "524",
+            "fuelEfficiency": "6.5",
+            "drivability": "4.5"
+        },
+        {
+            "brand": "TAG Heuer",
+            "power": "726",
+            "fuelEfficiency": "5.1",
+            "drivability": "5.8"
+        },
+        {
+            "brand": "Porsche",
+            "power": "562",
+            "fuelEfficiency": "4.6",
+            "drivability": "6.3"
+        },
+        {
+            "brand": "Weslake",
+            "power": "714",
+            "fuelEfficiency": "4.9",
+            "drivability": "3.9"
+        }
+    ]
+}
