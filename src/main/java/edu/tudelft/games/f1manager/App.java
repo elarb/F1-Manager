@@ -48,7 +48,7 @@ public class App extends Application {
   public void init() {
     Font.loadFont(getClass().getClassLoader()
       .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
-    ImageView splash = new ImageView(new Image("img/splash.jpg"));
+    ImageView splash = new ImageView(new Image("img/splash.png"));
     splash.setFitHeight(750);
     splash.setFitWidth(1280);
     loadProgress = new JFXProgressBar();
