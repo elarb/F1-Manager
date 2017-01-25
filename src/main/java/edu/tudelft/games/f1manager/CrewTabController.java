@@ -11,10 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -53,7 +50,7 @@ public class CrewTabController {
   private ProgressBar aeroProgress, strategistProgress, mechanicProgress;
 
   @FXML
-  private JFXListView selectDriverList;
+  private ListView selectDriverList;
 
   @FXML
   private ImageView firstDriverImg, secondDriverImg;
