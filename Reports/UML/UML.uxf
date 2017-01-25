@@ -103,7 +103,7 @@
 - engine: Engine
 - body: double
 - tyres: Tyres?
-- enginelist: EngineList
+- engines: EngineList
 --
 + buyEngine()</panel_attributes>
     <additional_attributes/>

@@ -16,7 +16,7 @@ class TableEngine extends RecursiveTreeObject<TableEngine> {
     int amount = 0;
     for (char ch: Integer.toString(value).toCharArray()) {
 
-      if (amount == 2) {
+      if (Integer.toString(value).toCharArray().length - amount == 6) {
         tempValue = tempValue + ".";
       } else if (amount > 5) {
         break;
@@ -25,7 +25,7 @@ class TableEngine extends RecursiveTreeObject<TableEngine> {
       amount++;
     }
     tempValue = tempValue + " M";
-    this.value = new SimpleStringProperty(Integer.toString(value));
+    this.value = new SimpleStringProperty(tempValue);
   }
 
 
