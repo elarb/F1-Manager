@@ -1,18 +1,10 @@
 package edu.tudelft.games.f1manager.game;
 
-import edu.tudelft.games.f1manager.core.AiTeam;
-import edu.tudelft.games.f1manager.core.AiTeamList;
-import edu.tudelft.games.f1manager.core.Constants;
-import edu.tudelft.games.f1manager.core.Driver;
-import edu.tudelft.games.f1manager.core.DriverList;
-import edu.tudelft.games.f1manager.core.Engine;
-import edu.tudelft.games.f1manager.core.PlayerTeam;
-import edu.tudelft.games.f1manager.core.Team;
+import edu.tudelft.games.f1manager.core.*;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -104,19 +96,19 @@ public class Game {
    * Methods that gets runned when a race gets started.
    */
   public void race() {
-    balanceDrivers();
-    setTeamIDs();
-    handleResults();
-    sortResults();
-    addRaceWinnings();
-    updateStandings();
-    championAward();
-    buyRandomDriver();
-
-    gameEventPositions();
-    gameEventCrashed();
-
     if (this.getSeason().getCurrentRace() < 20) {
+      balanceDrivers();
+      setTeamIDs();
+      payRace();
+      handleResults();
+      sortResults();
+      addRaceWinnings();
+      updateStandings();
+      championAward();
+      buyRandomDriver();
+
+      gameEventPositions();
+      gameEventCrashed();
       this.getSeason().nextRace();
     } else {
       championAward();
@@ -155,8 +147,7 @@ public class Game {
       }
 
     }
-
-    this.getSeason().getCurrentRaceInstance().getResults().addAll(Arrays.asList(result1, result2));
+    getResults().addAll(Arrays.asList(result1, result2));
   }
 
   /**
@@ -194,12 +185,8 @@ public class Game {
 
     if (budget > driver.getValue()) {
       this.playerteam.addDriver(driver);
-      this.playerteam.setBudget(budget - driver.getValue());
-      System.out.println(driver.getValue());
-      System.out.println("Budget now: " + budget);
+      this.playerteam.lowerBudget(driver.getValue());
       driver.setTeamId(1);
-      //getDrivers().remove(driver);
-
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
@@ -244,10 +231,15 @@ public class Game {
       AiTeam randomTeam = this.getAiteams().get(new Random().nextInt(this.getAiteams().size()));
       Driver randomDriver = this.getDrivers().get(new Random().nextInt(this.getDrivers().size()));
 
-      for (int j = 0; j < randomTeam.getDriverList().size(); j++) {
-        if (randomTeam.getDriverList().get(j).getValue() < randomDriver.getValue() * 0.80) {
-          aiBuy(randomTeam, randomDriver);
+      boolean bool = false;
+      for (Driver driver :
+        randomTeam.getDriverList()) {
+        if (driver.getValue() < randomDriver.getValue() * 0.80) {
+          bool = true;
         }
+      }
+      if (bool) {
+        aiBuy(randomTeam, randomDriver);
       }
     }
   }
@@ -277,10 +269,8 @@ public class Game {
    * Sorts results of the race by time and prints them out (for testing purposes).
    */
   public void sortResults() {
-    getResults()
-      .stream()
-      .sorted(byTime)
-      .forEach(System.out::println);
+    getResults().sort(byTime);
+    getResults().forEach(System.out::println);
   }
 
   /**
@@ -299,15 +289,19 @@ public class Game {
       }
 
     }
-    GameEvent event = new GameEvent("You finished " + positions.get(0) + " and " + positions.get(1) + " in the last race", GameEvent.Type.RACE);
+    GameEvent event = new GameEvent(String.format("You finished %d and %d in the %s (Race #%d)", positions.get(0), positions.get(1), getSeason().getCurrentRaceInstance().getName(), getCurrentRace() + 1), GameEvent.Type.RACE);
     events.addEvent(event);
     return event;
   }
 
+  /**
+   * Method used to return a message saying your driver crashed.
+   *
+   * @return gameevent
+   */
   public GameEvent gameEventCrashed() {
 
     for (int i = 0; i < getResults().size(); i++) {
-
       if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam && getResults().get(i).getTime() == 100000000) {
         GameEvent event = new GameEvent("Oh no... your driver " + getResults().get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
         events.addEvent(event);
@@ -498,6 +492,73 @@ public class Game {
 
     return null;
 
+  }
+
+  /**
+   * Returns the costs of the next race.
+   * @return double with costs
+   */
+  public double getRaceCost(){
+
+    double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
+    double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
+    double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
+    double softwaretester = 0;
+
+    if(this.playerteam.hasSoftwareTester()){
+      softwaretester = 1000;
+    }
+
+
+    return salary1 + salary2 + tires + softwaretester;
+
+
+  }
+
+  /**
+   * Removes the cost of the race from the players budget.
+   */
+  public void payRace(){
+
+    this.playerteam.lowerBudget((int) getRaceCost());
+    events.addEvent(new GameEvent("You paid " + (int) getRaceCost() + " dollars for this race", GameEvent.Type.RACE));
+
+  }
+
+  public boolean upgradeAeorodynamicist() {
+    Aerodynamicist aero = playerteam.getAerodynamicist();
+    int budget = playerteam.getBudget();
+    if (Constants.AERODYNAMICIST_UPGRADE_PRICE < budget && aero.getExpertise() < 99) {
+      playerteam.lowerBudget(Constants.AERODYNAMICIST_UPGRADE_PRICE);
+      GameEvent event = playerteam.getAerodynamicist().upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean upgradeStrategist() {
+    Strategist strategist = playerteam.getStrategist();
+    int budget = playerteam.getBudget();
+    if (Constants.STRATEGIST_UPGRADE_PRICE < budget && strategist.getRating() < 99) {
+      playerteam.lowerBudget(Constants.STRATEGIST_UPGRADE_PRICE);
+      GameEvent event = strategist.upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean upgradeMechanic() {
+    Mechanic mech = playerteam.getMechanic();
+    int budget = playerteam.getBudget();
+    if (playerteam.getMechanic().getUpgradePrice() < budget && mech.getPitstopTime() > 2) {
+      playerteam.lowerBudget(playerteam.getMechanic().getUpgradePrice());
+      GameEvent event = mech.upgrade(0);
+      events.addEvent(event);
+      return true;
+    }
+    return false;
   }
 
 
