@@ -64,5 +64,19 @@ public class PlayerTeamTest {
     PlayerTeam playerTeam = PlayerTeam.read("TESTS/playerteam.json");
     assertEquals(80, playerTeam.getStrategist().getRating());
   }
+  
+  @Test
+  public void testAddBudget() {
+	  int money = playerTeam.getBudget();
+	  playerTeam.addBudget(200);
+	  assertEquals(money + 200, playerTeam.getBudget());
+  }
+  
+  @Test
+  public void testLowerBudget() {
+	  int money = playerTeam.getBudget();
+	  playerTeam.addBudget(-200);
+	  assertEquals(money - 200, playerTeam.getBudget());
+  }
 
 }
