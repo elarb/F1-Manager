@@ -1,9 +1,9 @@
 {
-    "name": "PlayerTeam",
+    "name": "Team TUD",
     "id": 1,
     "points": 0,
     "budget": 200000000,
-    "softwareTester": true,
+    "softwareTester": false,
     "driverList": [
         {
             "name": "Jeremy Clarkson",
@@ -11,13 +11,12 @@
             "speed": 6.1,
             "racecraft": 5,
             "strategyinsight": 3.8
-        },
-        {
-            "name": "Richard Hammond",
-            "team": "Mustang",
-            "speed": 5.6,
-            "racecraft": 5.5,
-            "strategyinsight": 4.5
+        },{
+            "name": "Romain Grosjean",
+            "speed": 7.6,
+            "racecraft": 7.1,
+            "strategyinsight": 5.2,
+            "teamId": 1
         }
     ],
     "car": {
@@ -29,18 +28,18 @@
         },
         "body": 5,
         "tyres": {
-            "hardness": 5
+            "hardness": 0
         }
     },
     "strategist": {
         "strategy": "0",
-        "rating": 90
+        "rating": 60
     },
     "aerodynamicist": {
-        "expertise": 70
+        "expertise": 60
     },
     "mechanic": {
-        "pitstopTime": 6,
+        "pitstopTime": 7,
         "upgradePrice": 0
     }
 }
