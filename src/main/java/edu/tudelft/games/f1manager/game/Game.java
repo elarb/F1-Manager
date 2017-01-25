@@ -184,9 +184,11 @@ public class Game {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
+      this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
-      driver.setTeamId(1);
+      
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
@@ -251,15 +253,22 @@ public class Game {
    * @param driver the driver that gets bought
    */
   public void aiBuy(AiTeam team, Driver driver) {
-    String msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
+    String msg;
 
     if (driver.getTeamId() == 1) {
-      playerteam.addBudget(driver.getValue());
+      this.playerteam.getDriverList().remove(driver);
+      this.playerteam.addBudget(driver.getValue());
+      
       msg = String.format("%s has been purchased by %s, your balance has increased by $ %s", driver.getName(), team.getName(), driver.getValue());
+    } else {
+      this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      driver.setTeamId(team.getId());
+      team.addDriver(driver);
+      
+      msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
     }
-    team.getDriverList().add(driver);
     driver.setTeamId(team.getId());
-    getDrivers().remove(driver);
+    team.addDriver(driver);
 
     GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
     this.events.addEvent(event);
