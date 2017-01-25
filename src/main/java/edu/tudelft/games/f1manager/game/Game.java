@@ -5,6 +5,7 @@ import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -15,6 +16,7 @@ public class Game {
 
   private DriverList drivers;
   private AiTeamList aiteams;
+  private EngineList engines;
   private PlayerTeam playerteam;
   private Season season;
   private GameEvents events;
@@ -31,6 +33,7 @@ public class Game {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
+    EngineList engineList = EngineList.read(savename + "/engines.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
@@ -38,6 +41,7 @@ public class Game {
 
     game.setDrivers(driverList);
     game.setAiteams(aiTeamList);
+    game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
     game.setSeason(season);
@@ -54,6 +58,7 @@ public class Game {
   public static Game newGame() {
     DriverList driverList = DriverList.read("drivers.json");
     AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
+    EngineList engineList = EngineList.read("engines.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
     GameEvents events = GameEvents.read("events.json");
@@ -62,6 +67,7 @@ public class Game {
 
     game.setDrivers(driverList);
     game.setAiteams(aiTeamList);
+    game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
     game.setSeason(season);
@@ -84,6 +90,7 @@ public class Game {
 
     this.drivers.write(savename + "/drivers.json");
     this.aiteams.write(savename + "/aiteams.json");
+    //TODO: ENGINE LIST WRITE
     this.playerteam.write(savename + "/playerteam.json");
     this.season.write(savename + "/season.json");
     this.events.write(savename + "/events.json");
@@ -505,16 +512,17 @@ public class Game {
 
   /**
    * Returns the costs of the next race.
+   *
    * @return double with costs
    */
-  public double getRaceCost(){
+  public double getRaceCost() {
 
     double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
     double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
     double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
     double softwaretester = 0;
 
-    if(this.playerteam.hasSoftwareTester()){
+    if (this.playerteam.hasSoftwareTester()) {
       softwaretester = 1000;
     }
 
@@ -527,11 +535,11 @@ public class Game {
   /**
    * Removes the cost of the race from the players budget.
    */
-  public void payRace(){
-
-    this.playerteam.lowerBudget((int) getRaceCost());
-    events.addEvent(new GameEvent("You paid " + (int) getRaceCost() + " dollars for this race", GameEvent.Type.RACE));
-
+  public void payRace() {
+    int costs = (int) getRaceCost();
+    this.playerteam.lowerBudget(costs);
+    DecimalFormat formatter = new DecimalFormat("#,###");
+    events.addEvent(new GameEvent("You paid " + "$" + formatter.format(costs) + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
   }
 
   public boolean upgradeAeorodynamicist() {
@@ -585,6 +593,14 @@ public class Game {
 
   public void setAiteams(AiTeamList aiteams) {
     this.aiteams = aiteams;
+  }
+
+  public EngineList getEngines() {
+    return engines;
+  }
+
+  public void setEngines(EngineList engines) {
+    this.engines = engines;
   }
 
   public PlayerTeam getPlayerteam() {
