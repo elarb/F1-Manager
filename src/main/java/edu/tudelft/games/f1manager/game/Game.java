@@ -191,7 +191,9 @@ public class Game {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
-      this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      if (driver.getTeamId() == 0) {
+    	  this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      }
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
@@ -268,7 +270,9 @@ public class Game {
       
       msg = String.format("%s has been purchased by %s, your balance has increased by $ %s", driver.getName(), team.getName(), driver.getValue());
     } else {
-      this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+    	if (driver.getTeamId() != 0) {
+    		this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+    	}
       driver.setTeamId(team.getId());
       team.addDriver(driver);
       
