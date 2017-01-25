@@ -1,8 +1,9 @@
 package edu.tudelft.games.f1manager.core;
 
-import edu.tudelft.games.f1manager.game.DriverResult;
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.tudelft.games.f1manager.game.DriverResult;
 
 import java.io.IOException;
 
@@ -11,8 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DriverListTest {
 
-  public DriverResult result;
-
+	public DriverResult result;
 
   @Before
   public void setUp() throws Exception {
@@ -37,11 +37,19 @@ public class DriverListTest {
   }
 
   @Test
-  public void gettimestringtest() {
+  public void testAddDriver() {
+	  DriverList driverList = DriverList.read("TESTS/drivers.json");
+	  int count = driverList.getDrivers().size();
+	  Driver newdriver = new Driver("Pieter", 5);
+	  driverList.add(newdriver);
+	  assertEquals(count + 1, driverList.getDrivers().size());
+  }
+  
+  @Test
+  public void gettimestringtest(){
 
     assertEquals("02:40:00", result.getTimeString());
 
   }
-
 
 }
