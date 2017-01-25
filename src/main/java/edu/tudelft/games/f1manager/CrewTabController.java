@@ -69,6 +69,9 @@ public class CrewTabController {
   private JFXButton upgradeSpeedButton, upgradeRaceCraftButton, upgradeInsightButton;
 
   @FXML
+  private JFXButton upgradeStrategistButton, mechanicButton;
+
+  @FXML
   private AnchorPane crewTab;
 
   @FXML
@@ -244,10 +247,19 @@ public class CrewTabController {
   public void upgradeDriver(int num) {
     List<Driver> drivers = App.game.getPlayerteam().getDriverList();
     if (selectedDriver == 1) {
-      App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+      int costs = App.game.getFirstDriver().getValue() / 10;
+      if (App.game.getPlayerteam().getBudget() > costs) {
+        App.game.getPlayerteam().lowerBudget(costs);
+        App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+      }
     } else if (selectedDriver == 2) {
-      App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+      int costs = App.game.getFirstDriver().getValue() / 10;
+      if (App.game.getPlayerteam().getBudget() > costs) {
+        App.game.getPlayerteam().lowerBudget(costs);
+        App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+      }
     }
+    App.playSound("Wroom");
     Stage stage = (Stage) upgradeSpeedButton.getScene().getWindow();
     stage.close();
   }
@@ -256,7 +268,7 @@ public class CrewTabController {
   public void upgradeAerodynamicist() {
     boolean success = App.game.upgradeAeorodynamicist();
     if (success) {
-      App.playSound("UpgradeAero");
+      App.playSound("Wroom");
       aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
     } else {
       //TODO: show has failed Popup
@@ -273,16 +285,22 @@ public class CrewTabController {
     } else {
       //TODO: show has failed Popup
     }
+    if (App.game.getPlayerteam().getMechanic().getPitstopTime() == 2) {
+      mechanicButton.setDisable(true);
+    }
   }
 
   @FXML
   public void upgradeStrategist() {
     boolean success = App.game.upgradeStrategist();
     if (success) {
-      App.playSound("UpgradeMech");
+      App.playSound("Wroom");
       strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
     } else {
       //TODO: show has failed Popup
+    }
+    if (App.game.getPlayerteam().getStrategist().isMaxRated()) {
+      upgradeStrategistButton.setDisable(true);
     }
   }
 
