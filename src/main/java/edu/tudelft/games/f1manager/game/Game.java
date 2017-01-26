@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class Game {
 
   private DriverList drivers;
-  private AiTeamList aiteams;
   private EngineList engines;
+  private AiTeamList aiteams;
   private PlayerTeam playerteam;
   private Season season;
   private GameEvents events;
@@ -32,14 +32,15 @@ public class Game {
   public static Game loadgame(String savename) {
 
     DriverList driverList = DriverList.read(savename + "/drivers.json");
+    EngineList engineList = EngineList.read("engines.json");
     AiTeamList aiTeamList = AiTeamList.read(savename + "/aiteams.json");
-    EngineList engineList = EngineList.read(savename + "/engines.json");
     PlayerTeam playerTeam = PlayerTeam.read(savename + "/playerteam.json");
     GameEvents events = GameEvents.read(savename + "/events.json");
     Season season = Season.read(savename + "/season.json");
     Game game = new Game();
 
     game.setDrivers(driverList);
+    game.setEngines(engineList);
     game.setAiteams(aiTeamList);
     game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
@@ -57,8 +58,8 @@ public class Game {
    */
   public static Game newGame() {
     DriverList driverList = DriverList.read("drivers.json");
-    AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
     EngineList engineList = EngineList.read("engines.json");
+    AiTeamList aiTeamList = AiTeamList.read("aiteams.json");
     PlayerTeam playerTeam = PlayerTeam.read("playerteam.json");
     Season season = Season.read("season.json");
     GameEvents events = GameEvents.read("events.json");
@@ -66,6 +67,7 @@ public class Game {
     Game game = new Game();
 
     game.setDrivers(driverList);
+    game.setEngines(engineList);
     game.setAiteams(aiTeamList);
     game.setEngines(engineList);
     game.setPlayerteam(playerTeam);
@@ -619,13 +621,6 @@ public void engineBuy(Engine engine) {
     this.aiteams = aiteams;
   }
 
-  public EngineList getEngines() {
-    return engines;
-  }
-
-  public void setEngines(EngineList engines) {
-    this.engines = engines;
-  }
 
   public PlayerTeam getPlayerteam() {
     return playerteam;
@@ -671,4 +666,11 @@ public void engineBuy(Engine engine) {
     return playerteam.getDriverList().get(1);
   }
 
+  public ArrayList<Engine> getEngines() {
+    return engines.getEngines();
+  }
+
+  public void setEngines(EngineList engines) {
+    this.engines = engines;
+  }
 }
