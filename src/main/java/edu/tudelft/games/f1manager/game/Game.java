@@ -12,6 +12,7 @@ import edu.tudelft.games.f1manager.core.Mechanic;
 import edu.tudelft.games.f1manager.core.PlayerTeam;
 import edu.tudelft.games.f1manager.core.Strategist;
 import edu.tudelft.games.f1manager.core.Team;
+
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
@@ -114,9 +115,14 @@ public class Game {
 
   /**
    * Methods that gets runned when a race gets started.
+   * Returns true if there is a next race and if the playerteam
+   * has enough drivers.
+   *
+   * @return true if there is a next race and if the playerteam
+   * has enough drivers
    */
-  public void race() {
-    if (this.getSeason().getCurrentRace() < 20) {
+  public boolean race() {
+    if (this.getSeason().getCurrentRace() < 20 && playerteam.enoughDrivers()) {
       balanceDrivers();
       setTeamIDs();
       payRace();
@@ -126,13 +132,15 @@ public class Game {
       updateStandings();
       championAward();
       buyRandomDriver();
-
       gameEventPositions();
       gameEventCrashed();
       this.getSeason().nextRace();
-    } else {
+      return true;
+    } else if (getSeason().getCurrentRace() == 20) {
       championAward();
+      return false;
     }
+    return false;
   }
 
   /**
@@ -205,8 +213,9 @@ public class Game {
    * A playerteam Driver Buy method.
    *
    * @param driver the driver the playerteam buys
+   * @return true if the buy was successful
    */
-  public void driverBuy(Driver driver) {
+  public boolean driverBuy(Driver driver) {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
@@ -216,11 +225,13 @@ public class Game {
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
-      
+
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
+      return true;
     }
+    return false;
   }
 
   /**
@@ -287,16 +298,14 @@ public class Game {
     if (driver.getTeamId() == 1) {
       this.playerteam.getDriverList().remove(driver);
       this.playerteam.addBudget(driver.getValue());
-      
+
+
       msg = String.format("%s has been purchased by %s, your balance has increased by $ %s",
         driver.getName(), team.getName(), driver.getValue());
     } else {
       if (driver.getTeamId() != 0) {
         this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
       }
-      driver.setTeamId(team.getId());
-      team.addDriver(driver);
-      
       msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
     }
     driver.setTeamId(team.getId());
@@ -308,22 +317,25 @@ public class Game {
 
   /**
    * Checks whether the player is able to buy then engine, and if so, buys it.
+   * Returns true if successfull, else false.
    *
    * @param engine Pass the engine that should be bought by the player
    */
-  public void engineBuy(Engine engine) {
+  public boolean engineBuy(Engine engine) {
     int budget = this.getPlayerteam().getBudget();
     int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
-    int effectiveprice = (int)(engine.getPrice() - sellprice);
-    if (budget >= effectiveprice) {
+    int effectiveprice = (int) (engine.getPrice() - sellprice);
 
+    if (budget >= effectiveprice) {
       this.playerteam.getCar().setEngine(engine);
       this.playerteam.lowerBudget(effectiveprice);
 
       String msg = "You have bought a " + engine.getBrand() + " engine!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
+      return true;
     }
+    return false;
   }
 
   /**
@@ -576,8 +588,8 @@ public class Game {
    */
   public double getRaceCost() {
 
-    double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
-    double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
+    double salary1 = getFirstDriver().getValue() / 100;
+    double salary2 = getSecondDriver().getValue() / 100;
     double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
     double softwaretester = 0;
 
