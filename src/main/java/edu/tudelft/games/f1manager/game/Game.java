@@ -121,7 +121,6 @@ public class Game {
       updateStandings();
       championAward();
       buyRandomDriver();
-      App.playSound("Race");
       gameEventPositions();
       gameEventCrashed();
       this.getSeason().nextRace();
