@@ -91,6 +91,11 @@ public class ClientController {
     cashLabel.setText("$" + formatter.format(App.game.getPlayerteam().getBudget()));
     pointsLabel.setText("Points: " + App.game.getPlayerteam().getPoints());
     raceLabel.setText("Raced: " + App.game.getCurrentRace() + "/20");
+    if (App.game.getPlayerteam().enoughDrivers()) {
+      raceButton.setDisable(false);
+    } else {
+      raceButton.setDisable(true);
+    }
   }
 
   public void initMenuButtons() {
@@ -124,23 +129,26 @@ public class ClientController {
    */
   @FXML
   public void race() {
-    App.game.race();
-    App.playSound("Race");
-    new Thread(() -> {
-      Platform.runLater(() -> raceButton.setDisable(true));
-      try {
-        Thread.sleep(4000);
-      } catch (InterruptedException ex) {
-      }
-      Platform.runLater(() -> raceButton.setDisable(false));
-    }).start();
+    if (App.game.race()) {
+      new Thread(() -> {
+        Platform.runLater(() -> raceButton.setDisable(true));
+        try {
+          Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+        }
+        Platform.runLater(() -> raceButton.setDisable(false));
+      }).start();
 
-    SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-    selectionModel.select(0);
-    homeTabController.populateRaceResultList();
-    homeTabController.populatePointsList();
-    homeTabController.populateGameEventList();
-    nextRaceTabController.update();
+      SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+      selectionModel.select(0);
+      homeTabController.populateRaceResultList();
+      homeTabController.populatePointsList();
+      homeTabController.populateGameEventList();
+      nextRaceTabController.update();
+    } else {
+      raceButton.setDisable(true);
+    }
+
   }
 
   public void updateConfigurationTab() {
@@ -150,5 +158,9 @@ public class ClientController {
 
   public HomeTabController getHomeTabController() {
     return homeTabController;
+  }
+
+  public CrewTabController getCrewTabController() {
+    return crewTabController;
   }
 }

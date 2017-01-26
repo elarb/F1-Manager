@@ -72,7 +72,6 @@ public class GameTest {
 
     game.race();
 
-
   }
 
   @Test
