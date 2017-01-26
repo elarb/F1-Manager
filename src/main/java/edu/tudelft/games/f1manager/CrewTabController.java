@@ -200,7 +200,6 @@ public class CrewTabController {
 
       firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
 
-
     }
     if (App.game.getPlayerteam().getDriverList().size() > 1) {
 
