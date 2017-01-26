@@ -1,5 +1,6 @@
 package edu.tudelft.games.f1manager.game;
 
+import edu.tudelft.games.f1manager.App;
 import edu.tudelft.games.f1manager.core.*;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
@@ -194,15 +195,18 @@ public class Game {
 
     if (budget > driver.getValue()) {
       if (driver.getTeamId() == 0) {
-    	  this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+        this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
       }
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
-      
+
+      App.playSound("Wroom");
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
+    } else {
+      App.playSound("Negative");
     }
   }
 
@@ -269,15 +273,15 @@ public class Game {
     if (driver.getTeamId() == 1) {
       this.playerteam.getDriverList().remove(driver);
       this.playerteam.addBudget(driver.getValue());
-      
+
       msg = String.format("%s has been purchased by %s, your balance has increased by $ %s", driver.getName(), team.getName(), driver.getValue());
     } else {
-    	if (driver.getTeamId() != 0) {
-    		this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
-    	}
+      if (driver.getTeamId() != 0) {
+        this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      }
       driver.setTeamId(team.getId());
       team.addDriver(driver);
-      
+
       msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
     }
     driver.setTeamId(team.getId());
@@ -289,24 +293,26 @@ public class Game {
 
   /**
    * Checks whether the player is able to buy then engine, and if so, buys it.
-   * 
-   * @param engine	Pass the engine that should be bought by the player
+   *
+   * @param engine Pass the engine that should be bought by the player
    */
-public void engineBuy(Engine engine) {
-	    int budget = this.getPlayerteam().getBudget();
-	    int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
-	    int effectiveprice = (int)(engine.getPrice()-sellprice);
-	    if (budget >= effectiveprice) {
-	    
-	      this.playerteam.getCar().setEngine(engine);
-	      this.playerteam.lowerBudget(effectiveprice);
-	    
-	      String msg = "You have bought a " + engine.getBrand() + " engine!";
-	      GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
-	      this.events.addEvent(event);
-	    }
-	  }
-  
+  public void engineBuy(Engine engine) {
+    int budget = this.getPlayerteam().getBudget();
+    int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
+    int effectiveprice = (int) (engine.getPrice() - sellprice);
+    if (budget >= effectiveprice) {
+      App.playSound("Wroom");
+      this.playerteam.getCar().setEngine(engine);
+      this.playerteam.lowerBudget(effectiveprice);
+
+      String msg = "You have bought a " + engine.getBrand() + " engine!";
+      GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
+      this.events.addEvent(event);
+    } else {
+      App.playSound("Negative");
+    }
+  }
+
   /**
    * Sorts results of the race by time and prints them out (for testing purposes).
    */
