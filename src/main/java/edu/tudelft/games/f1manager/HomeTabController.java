@@ -95,7 +95,7 @@ public class HomeTabController {
 
 
     TreeItem<TableDriverResult> root =
-      new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
+        new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
 
     raceResultList.setRoot(root);
     raceResultList.setShowRoot(false);
@@ -131,12 +131,12 @@ public class HomeTabController {
       }
       GameEvent event = events.get(i);
       tableGameEvents.add(new TableGameEvent(event.getType(), event.getMessage(),
-        event.getCurrentDateTime()));
+          event.getCurrentDateTime()));
 
     }
 
     TreeItem<TableGameEvent> root = new RecursiveTreeItem<>(tableGameEvents,
-      RecursiveTreeObject::getChildren);
+        RecursiveTreeObject::getChildren);
 
     gameEventList.setRoot(root);
     gameEventList.setShowRoot(false);
@@ -161,12 +161,12 @@ public class HomeTabController {
       tableTeams.add(new TableTeam(team.getName(), team.getPoints()));
     }
     tableTeams.add(new TableTeam(App.game.getPlayerteam().getName(),
-      App.game.getPlayerteam().getPoints()));
+        App.game.getPlayerteam().getPoints()));
 
     //Collections.sort(tableTeams);
 
     TreeItem<TableTeam> root = new RecursiveTreeItem<>(tableTeams,
-      RecursiveTreeObject::getChildren);
+        RecursiveTreeObject::getChildren);
     pointList.setRoot(root);
     pointList.setShowRoot(false);
     pointList.getColumns().setAll(teamColumn, pointsColumn);
