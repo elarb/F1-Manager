@@ -392,6 +392,7 @@ public class Game {
 
   /**
    * Adds points and money to the teams according to the race results.
+   * 2 million dollars per point
    */
   @SuppressWarnings("CheckStyle")
   public void addRaceWinnings() {
