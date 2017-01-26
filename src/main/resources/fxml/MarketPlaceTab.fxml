@@ -8,19 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
+<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
    <children>
-      <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="571.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="250.0" text="Buy selected driver" />
-      <JFXTreeTableView fx:id="buyDriverList" layoutX="26.0" layoutY="100.0" prefHeight="450.0" prefWidth="300.0" />
-      <Label layoutX="26.0" layoutY="36.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="180.0" text="Driver List" textFill="#f2f2f2">
+      <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="573.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="537.0" style="-fx-background-color: black;" text="Buy selected driver" />
+      <JFXTreeTableView fx:id="buyDriverList" layoutX="51.0" layoutY="106.0" prefHeight="467.0" prefWidth="537.0" />
+      <Label alignment="CENTER" layoutX="170.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Driver List" textFill="#f2f2f2">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="227.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/MarketTab/Driver.png" />
-         </image>
-      </ImageView>
+       <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="-20.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+           <image>
+               <Image url="@../img/MarketTab/Driver.png" />
+           </image>
+       </ImageView>
+       <JFXTreeTableView fx:id="buyEngineList" layoutX="606.0" layoutY="106.0" prefHeight="467.0" prefWidth="537.0" />
+       <Label alignment="CENTER" layoutX="725.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Engine List" textFill="#f2f2f2">
+           <font>
+               <Font size="30.0" />
+           </font>
+       </Label>
+       <JFXButton id="buy-driver-button" layoutX="606.0" layoutY="573.0" onAction="#handleButtonClick_buyEngine" prefHeight="30.0" prefWidth="537.0" style="-fx-background-color: black;" text="Buy selected engine" />
    </children>
 </AnchorPane>
