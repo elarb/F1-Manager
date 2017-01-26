@@ -23,6 +23,7 @@ public class AiTeam extends Team {
    * @param car            car developed by the team
    * @param points         amount of points the team has
    */
+  @SuppressWarnings("CheckStyle")
   public AiTeam(String name, int id, Strategist strategist, Aerodynamicist aerodynamicist,
                 Mechanic mechanic, List<Driver> driverList, Car car, int points) {
     super(name, id, strategist, aerodynamicist, mechanic, driverList, car, points);

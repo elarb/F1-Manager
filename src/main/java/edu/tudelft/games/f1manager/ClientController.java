@@ -23,8 +23,8 @@ public class ClientController {
 
   @FXML
   NextRaceTabController nextRaceTabController;
-  private double xOffset = 0;
-  private double yOffset = 0;
+  private double xoffset = 0;
+  private double yoffset = 0;
   @FXML
   private MarketPlaceTabController marketPlaceTabController;
   @FXML
@@ -36,14 +36,19 @@ public class ClientController {
   @FXML
   private JFXButton raceButton;
   @FXML
-  private Label teamNameLabel, cashLabel, raceLabel, pointsLabel;
-
+  private Label teamNameLabel;
+  @FXML
+  private Label cashLabel;
+  @FXML
+  private Label raceLabel;
+  @FXML
+  private Label pointsLabel;
   @FXML
   private JFXTabPane tabPane;
-
   @FXML
-  private JFXButton closeButton, minimizeButton;
-
+  private JFXButton closeButton;
+  @FXML
+  private JFXButton minimizeButton;
   @FXML
   private AnchorPane mainPane;
 
@@ -63,12 +68,12 @@ public class ClientController {
     }, 0, 2000);
 
     mainPane.setOnMousePressed(event -> {
-      xOffset = event.getSceneX();
-      yOffset = event.getSceneY();
+      xoffset = event.getSceneX();
+      yoffset = event.getSceneY();
     });
     mainPane.setOnMouseDragged(event -> {
-      App.mainStage.setX(event.getScreenX() - xOffset);
-      App.mainStage.setY(event.getScreenY() - yOffset);
+      App.mainStage.setX(event.getScreenX() - xoffset);
+      App.mainStage.setY(event.getScreenY() - yoffset);
     });
     initMenuButtons();
     marketPlaceTabController.injectMainController(this);
@@ -98,6 +103,9 @@ public class ClientController {
     }
   }
 
+  /**creates the buttons on the top right of the screen, used for closing and minimizing the screen.
+   *
+   */
   public void initMenuButtons() {
     Image imageDecline = new Image("/img/close.png");
     ImageView imageView = new ImageView(imageDecline);
@@ -115,7 +123,7 @@ public class ClientController {
     closeButton.setOnMouseClicked(event -> {
       Timeline timeline = new Timeline();
       KeyFrame key = new KeyFrame(Duration.millis(100),
-        new KeyValue(App.mainStage.getScene().getRoot().opacityProperty(), 0.2));
+          new KeyValue(App.mainStage.getScene().getRoot().opacityProperty(), 0.2));
       timeline.getKeyFrames().add(key);
       timeline.setOnFinished((ae) -> System.exit(1));
       timeline.play();
@@ -150,7 +158,6 @@ public class ClientController {
     } else {
       raceButton.setDisable(true);
     }
-
   }
 
   public void updateConfigurationTab() {

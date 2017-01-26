@@ -29,10 +29,8 @@ public class DriverResult {
 
   @Override
   public String toString() {
-    return "DriverResult{" +
-      "driver=" + driver +
-      ", time=" + time +
-      '}';
+    return "DriverResult{" + "driver=" + driver
+      + ", time=" + time + '}';
   }
 
   public Driver getDriver() {
@@ -51,6 +49,9 @@ public class DriverResult {
     this.time = time;
   }
 
+  /**gives the time of the driver represented as a string.
+   * @return a string representing the driver result time.
+   */
   public String getTimeString() {
     double totalseconds = this.getTime();
     if (totalseconds == 100000000) {
@@ -60,7 +61,8 @@ public class DriverResult {
     int minutes = (int) Math.round(totalseconds % 3600) / 60;
     int seconds = (int) Math.round(totalseconds % 60);
 
-    return String.format("%02d", hours) + ":" + String.format("%02d", minutes) + ":" + String.format("%02d", seconds);
+    return String.format("%02d", hours) + ":" + String.format("%02d", minutes)
+      + ":" + String.format("%02d", seconds);
   }
 
 
