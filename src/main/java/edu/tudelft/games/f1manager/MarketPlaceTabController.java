@@ -41,8 +41,11 @@ public class MarketPlaceTabController {
 
     for (Driver driver : App.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        App.game.driverBuy(driver);
-        clientController.loadMenuData();
+        if (App.game.driverBuy(driver)) {
+          App.playSound("Wroom");
+          clientController.loadMenuData();
+        }
+        App.playSound("Negative");
         break;
       }
     }
@@ -58,8 +61,12 @@ public class MarketPlaceTabController {
 
     for (Engine engine : App.game.getEngines()) {
       if (engine.getBrand().equals(engineBrand)) {
-        App.game.engineBuy(engine);
-        clientController.loadMenuData();
+        if (App.game.engineBuy(engine)) {
+          clientController.loadMenuData();
+          App.playSound("Wroom");
+        } else {
+          App.playSound("Negative");
+        }
         break;
       }
     }

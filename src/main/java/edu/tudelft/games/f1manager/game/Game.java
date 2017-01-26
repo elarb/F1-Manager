@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.game;
 
-import edu.tudelft.games.f1manager.App;
 import edu.tudelft.games.f1manager.core.*;
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
@@ -192,12 +191,14 @@ public class Game {
 
   }
 
+
   /**
    * A playerteam Driver Buy method.
    *
    * @param driver the driver the playerteam buys
+   * @return true if the buy was successful
    */
-  public void driverBuy(Driver driver) {
+  public boolean driverBuy(Driver driver) {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
@@ -208,13 +209,12 @@ public class Game {
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
 
-      App.playSound("Wroom");
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
-    } else {
-      App.playSound("Negative");
+      return true;
     }
+    return false;
   }
 
   /**
@@ -298,24 +298,24 @@ public class Game {
 
   /**
    * Checks whether the player is able to buy then engine, and if so, buys it.
+   * Returns true if successfull, else false.
    *
    * @param engine Pass the engine that should be bought by the player
    */
-  public void engineBuy(Engine engine) {
+  public boolean engineBuy(Engine engine) {
     int budget = this.getPlayerteam().getBudget();
     int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
     int effectiveprice = (int) (engine.getPrice() - sellprice);
     if (budget >= effectiveprice) {
-      App.playSound("Wroom");
       this.playerteam.getCar().setEngine(engine);
       this.playerteam.lowerBudget(effectiveprice);
 
       String msg = "You have bought a " + engine.getBrand() + " engine!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
-    } else {
-      App.playSound("Negative");
+      return true;
     }
+    return false;
   }
 
   /**
