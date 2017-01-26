@@ -144,6 +144,7 @@ public class ClientController {
         try {
           Thread.sleep(4000);
         } catch (InterruptedException ex) {
+          System.out.println("Error with temporary button load: " + ex);
         }
         Platform.runLater(() -> raceButton.setDisable(false));
       }).start();
