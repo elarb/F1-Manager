@@ -104,8 +104,13 @@ public class Game {
 
   /**
    * Methods that gets runned when a race gets started.
+   * Returns true if there is a next race and if the playerteam
+   * has enough drivers.
+   *
+   * @return true if there is a next race and if the playerteam
+   * has enough drivers
    */
-  public void race() {
+  public boolean race() {
     if (this.getSeason().getCurrentRace() < 20 && playerteam.enoughDrivers()) {
       balanceDrivers();
       setTeamIDs();
@@ -116,13 +121,16 @@ public class Game {
       updateStandings();
       championAward();
       buyRandomDriver();
-
+      App.playSound("Race");
       gameEventPositions();
       gameEventCrashed();
       this.getSeason().nextRace();
-    } else {
+      return true;
+    } else if (getSeason().getCurrentRace() == 20) {
       championAward();
+      return false;
     }
+    return false;
   }
 
   /**
