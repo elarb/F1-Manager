@@ -81,6 +81,15 @@ public class MarketPlaceTabController {
     TreeTableColumn<TableDriver, String> driverColumn = new TreeTableColumn<>("Driver");
     driverColumn.setCellValueFactory(param -> param.getValue().getValue().name);
 
+    TreeTableColumn<TableDriver, Number> speedColumn = new TreeTableColumn<>("Speed");
+    speedColumn.setCellValueFactory(param -> param.getValue().getValue().speed);
+
+    TreeTableColumn<TableDriver, Number> racecraftColumn = new TreeTableColumn<>("Racecraft");
+    racecraftColumn.setCellValueFactory(param -> param.getValue().getValue().racecraft);
+
+    TreeTableColumn<TableDriver, Number> strategyinsightColumn = new TreeTableColumn<>("Strategy insight");
+    strategyinsightColumn.setCellValueFactory(param -> param.getValue().getValue().strategyinsight);
+
     TreeTableColumn<TableDriver, String> timeColumn = new TreeTableColumn<>("Value");
     timeColumn.setCellValueFactory(param -> param.getValue().getValue().value);
 
@@ -96,7 +105,8 @@ public class MarketPlaceTabController {
 
       }
       if (inList) {
-        tableDrivers.add(new TableDriver(driver.getName(), driver.getValue()));
+        tableDrivers.add(new TableDriver(driver.getName(), driver.getSpeed(), driver.getRacecraft(),
+          driver.getStrategyinsight(), driver.getValue()));
       }
     }
 
@@ -105,7 +115,7 @@ public class MarketPlaceTabController {
 
     buyDriverList.setRoot(root);
     buyDriverList.setShowRoot(false);
-    buyDriverList.getColumns().setAll(driverColumn, timeColumn);
+    buyDriverList.getColumns().setAll(driverColumn, speedColumn, racecraftColumn, strategyinsightColumn, timeColumn);
 
   }
 
