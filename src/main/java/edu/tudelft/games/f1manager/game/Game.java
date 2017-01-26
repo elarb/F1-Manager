@@ -118,8 +118,7 @@ public class Game {
    * Returns true if there is a next race and if the playerteam
    * has enough drivers.
    *
-   * @return true if there is a next race and if the playerteam
-   * has enough drivers
+   * @return true if there is a next race and if the playerteam has enough drivers
    */
   public boolean race() {
     if (this.getSeason().getCurrentRace() < 20 && playerteam.enoughDrivers()) {
