@@ -48,7 +48,7 @@ public class DriverListTest {
   @Test
   public void gettimestringtest(){
 
-    assertEquals("02:40:00", result.getTimeString());
+    assertEquals("01:40:00", result.getTimeString());
 
   }
 
