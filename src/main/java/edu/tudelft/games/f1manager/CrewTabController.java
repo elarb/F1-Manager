@@ -118,6 +118,18 @@ public class CrewTabController {
   @FXML
   private JFXSlider tireSlider;
 
+  @FXML
+  private Label engineBrand;
+
+  @FXML
+  private Label enginePower;
+
+  @FXML
+  private Label engineDrive;
+
+  @FXML
+  private Label engineFuel;
+
 
   public void injectMainController(ClientController clientController) {
     this.clientController = clientController;
@@ -145,6 +157,7 @@ public class CrewTabController {
     initCrewData();
     handleRisk();
     handleSoftwareToggle();
+    loadEngine();
   }
 
   public void update() {
@@ -187,7 +200,8 @@ public class CrewTabController {
 
       firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
 
-    } if (App.game.getPlayerteam().getDriverList().size() > 1) {
+    }
+    if (App.game.getPlayerteam().getDriverList().size() > 1) {
 
       secondDriverLabel.setText(App.game.getSecondDriver().getName());
 
@@ -203,6 +217,19 @@ public class CrewTabController {
 
       secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
     }
+
+  }
+
+  /**
+   * Loads the engine labels with the current engine properties.
+   */
+  public void loadEngine() {
+    engineBrand.setText("Brand: " + App.game.getPlayerteam().getCar().getEngine().getBrand());
+    engineDrive.setText("Driveability: " + App.game.getPlayerteam().getCar().getEngine()
+        .getDrivability());
+    engineFuel.setText("Fuel-Efficiency: " + App.game.getPlayerteam().getCar().getEngine()
+        .getFuelEfficiency());
+    enginePower.setText("Power: " + App.game.getPlayerteam().getCar().getEngine().getPower());
 
   }
 
