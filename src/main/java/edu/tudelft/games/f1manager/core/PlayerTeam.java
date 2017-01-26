@@ -79,6 +79,10 @@ public class PlayerTeam extends Team {
     outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
   }
+  
+  public boolean enoughDrivers() {
+	  return (this.getDriverList().size() <= 2);
+  }
 
   public void addBudget(int num) {
     this.budget += num;
