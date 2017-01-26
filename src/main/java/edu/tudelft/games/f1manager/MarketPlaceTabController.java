@@ -20,10 +20,6 @@ public class MarketPlaceTabController {
 
   private ClientController clientController;
 
-  public ClientController getClientController() {
-    return clientController;
-  }
-
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
@@ -52,6 +48,7 @@ public class MarketPlaceTabController {
     }
     clientController.getHomeTabController().populateGameEventList();
     populateBuyDriverList();
+    clientController.getCrewTabController().loadDriverData();
   }
 
   public void handleButtonClick_buyEngine() {

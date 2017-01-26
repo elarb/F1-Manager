@@ -145,6 +145,7 @@ public class ClientController {
       homeTabController.populatePointsList();
       homeTabController.populateGameEventList();
       nextRaceTabController.update();
+      crewTabController.loadDriverData();
     } else {
       raceButton.setDisable(true);
     }

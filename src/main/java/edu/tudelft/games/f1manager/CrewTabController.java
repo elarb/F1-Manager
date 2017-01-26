@@ -117,32 +117,40 @@ public class CrewTabController {
 
   @FXML
   public void loadDriverData() {
-
-    firstDriverLabel.setText(App.game.getFirstDriver().getName());
-    secondDriverLabel.setText(App.game.getSecondDriver().getName());
-
-    String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
-    String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
-    driverRating1.setText(rating1);
-    driverRating2.setText(rating2);
-
     DecimalFormat formatter = new DecimalFormat("#,###");
-    String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
-    String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
-    driverValue1.setText(value1);
-    driverValue2.setText(value2);
 
-    strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
-    strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+    if (App.game.getPlayerteam().getDriverList().size() == 1) {
+      firstDriverLabel.setText(App.game.getFirstDriver().getName());
 
-    racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
-    racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
+      driverRating1.setText(rating1);
 
-    speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
-    speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+      String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
+      driverValue1.setText(value1);
 
-    firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
-    secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+      strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
+      racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
+      speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
+
+      firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
+
+    } else if (App.game.getPlayerteam().getDriverList().size() > 1) {
+
+      secondDriverLabel.setText(App.game.getSecondDriver().getName());
+
+      String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
+      driverRating2.setText(rating2);
+
+      String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
+      driverValue2.setText(value2);
+
+      strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+      racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+
+      secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+    }
+
   }
 
   public void swapWithDriver(int num) {
