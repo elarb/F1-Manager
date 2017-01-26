@@ -17,7 +17,6 @@ public class Game {
   private DriverList drivers;
   private EngineList engines;
   private AiTeamList aiteams;
-  private EngineList engines;
   private PlayerTeam playerteam;
   private Season season;
   private GameEvents events;
