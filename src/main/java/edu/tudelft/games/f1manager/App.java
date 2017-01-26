@@ -48,7 +48,7 @@ public class App extends Application {
   @Override
   public void init() {
     Font.loadFont(getClass().getClassLoader()
-      .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
+        .getResource("fonts/Montserrat-Bold.ttf").toExternalForm(), 14);
     ImageView splash = new ImageView(new Image("img/splash.png"));
     splash.setFitHeight(SPLASH_HEIGHT);
     splash.setFitWidth(SPLASH_WIDTH);
@@ -69,9 +69,9 @@ public class App extends Application {
       @Override
       protected ObservableList<String> call() throws InterruptedException {
         ObservableList<String> foundDrivers =
-          FXCollections.observableArrayList();
+            FXCollections.observableArrayList();
         ObservableList<String> availableDrivers =
-          FXCollections.observableArrayList(
+            FXCollections.observableArrayList(
             "Daniel Ricciardo", "Daniil Kvyat", "Felipe Massa", "Felipe Nasr", "Fernando Alonso",
             "Jenson Button", "Jolyon Palmer", "Kevin Magnussen", "Kimi Räikkönen",
             "Lewis Hamilton", "Max Verstappen", "Nico Hulkenberg", "Nico Rosberg",
@@ -104,9 +104,9 @@ public class App extends Application {
 
   private void showMainStage() throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/Client.fxml"));
-    Parent root = loader.load();
 
     mainStage = new Stage();
+    Parent root = loader.load();
     mainStage.getIcons().addAll(new Image("img/F1_logo.png"));
     mainStage.setTitle("F1 Manager");
     mainStage.setScene(new Scene(root, 1280, 800));
@@ -145,8 +145,12 @@ public class App extends Application {
     initStage.show();
   }
 
+  /**plays the sound that has the filename that is given.
+   * @param filename the name of the sound file
+   */
   public static void playSound(String filename) {
-    Media media = new Media(App.class.getClassLoader().getResource("Sounds/" + filename + ".mp3").toString());
+    Media media = new Media(App.class.getClassLoader().getResource("Sounds/"
+        + filename + ".mp3").toString());
     MediaPlayer mediaPlayer = new MediaPlayer(media);
     mediaPlayer.play();
   }

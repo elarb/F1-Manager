@@ -39,6 +39,9 @@ public class Engine {
     this.fuelEfficiency = fuelEfficiency;
   }
 
+  /**returns the price of the engine.
+   * @return a double representing the price of the engine.
+   */
   public double getPrice() {
     return Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
       * (Constants.DRIVABILITY_COEF * drivability)
@@ -47,7 +50,7 @@ public class Engine {
 
   public int sellPrice() {
     determineprice();
-    return ((int) this.price / 5);
+    return (int) this.price / 5;
   }
 
   public String getBrand() {
@@ -82,8 +85,10 @@ public class Engine {
     this.fuelEfficiency = fuelEfficiency;
   }
 
+  /**changes the price attribute according to the new calculated value.
+   *
+   */
   public void determineprice() {
-
     this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
       * (Constants.DRIVABILITY_COEF * drivability)
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
