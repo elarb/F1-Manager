@@ -130,6 +130,7 @@ public class ClientController {
   @FXML
   public void race() {
     if (App.game.race()) {
+      App.playSound("Race");
       new Thread(() -> {
         Platform.runLater(() -> raceButton.setDisable(true));
         try {
