@@ -10,22 +10,23 @@ class TableEngine extends RecursiveTreeObject<TableEngine> {
   StringProperty brand;
   StringProperty value;
 
-  TableEngine(String brand, int value) {
+  TableEngine(String brand, int price) {
     this.brand = new SimpleStringProperty(brand);
-    String tempValue = "";
+    String tempPrice = "";
     int amount = 0;
-    for (char ch: Integer.toString(value).toCharArray()) {
+    char[] chars = Integer.toString(price).toCharArray();
+    for (char ch: chars) {
 
-      if (Integer.toString(value).toCharArray().length - amount == 6) {
-        tempValue = tempValue + ".";
+      if (Integer.toString(price).toCharArray().length - amount == 6) {
+        tempPrice = tempPrice + ".";
       } else if (amount > 5) {
         break;
       }
-      tempValue = tempValue + ch;
+      tempPrice = tempPrice + ch;
       amount++;
     }
-    tempValue = tempValue + " M";
-    this.value = new SimpleStringProperty(tempValue);
+    tempPrice = tempPrice + " M";
+    this.value = new SimpleStringProperty(tempPrice);
   }
 
 
