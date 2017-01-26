@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager;
 
+import static javafx.scene.paint.Color.rgb;
+
 import edu.tudelft.games.f1manager.game.Race;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
@@ -13,8 +15,6 @@ import javafx.scene.shape.SVGPath;
 
 import java.time.LocalTime;
 
-import static javafx.scene.paint.Color.rgb;
-
 public class NextRaceTabController {
 
   private ClientController clientController;
@@ -23,7 +23,17 @@ public class NextRaceTabController {
   private AnchorPane nextRacePane;
 
   @FXML
-  private Label raceName, lapsLabel, durationLabel, turnsLabel, countryLabel, distanceLabel;
+  private Label raceName;
+  @FXML
+  private Label lapsLabel;
+  @FXML
+  private Label durationLabel;
+  @FXML
+  private Label turnsLabel;
+  @FXML
+  private Label countryLabel;
+  @FXML
+  private Label distanceLabel;
 
   private SVGPath path;
 
@@ -35,6 +45,9 @@ public class NextRaceTabController {
     update();
   }
 
+  /**updates the nextRace animation.
+   *
+   */
   public void update() {
     String racename = App.game.getSeason().getCurrentRaceInstance().getName();
     raceName.setText(racename);

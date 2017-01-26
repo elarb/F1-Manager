@@ -379,6 +379,7 @@ public class Game {
   /**
    * Adds points and money to the teams according to the race results.
    */
+  @SuppressWarnings("CheckStyle")
   public void addRaceWinnings() {
     for (int i = 0; i < 10; i++) {
 
