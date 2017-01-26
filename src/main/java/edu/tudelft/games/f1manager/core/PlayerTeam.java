@@ -81,6 +81,10 @@ public class PlayerTeam extends Team {
     outputStream.close();
   }
 
+  public boolean enoughDrivers() {
+    return (this.getDriverList().size() >= 2);
+  }
+
   public void addBudget(int num) {
     this.budget += num;
   }

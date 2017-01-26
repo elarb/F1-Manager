@@ -170,32 +170,40 @@ public class CrewTabController {
    */
   @FXML
   public void loadDriverData() {
-
-    firstDriverLabel.setText(App.game.getFirstDriver().getName());
-    secondDriverLabel.setText(App.game.getSecondDriver().getName());
-
-    String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
-    String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
-    driverRating1.setText(rating1);
-    driverRating2.setText(rating2);
-
     DecimalFormat formatter = new DecimalFormat("#,###");
-    String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
-    String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
-    driverValue1.setText(value1);
-    driverValue2.setText(value2);
 
-    strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
-    strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+    if (App.game.getPlayerteam().getDriverList().size() == 1) {
+      firstDriverLabel.setText(App.game.getFirstDriver().getName());
 
-    racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
-    racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
+      driverRating1.setText(rating1);
 
-    speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
-    speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+      String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
+      driverValue1.setText(value1);
 
-    firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
-    secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+      strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
+      racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
+      speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
+
+      firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
+
+    } else if (App.game.getPlayerteam().getDriverList().size() > 1) {
+
+      secondDriverLabel.setText(App.game.getSecondDriver().getName());
+
+      String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
+      driverRating2.setText(rating2);
+
+      String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
+      driverValue2.setText(value2);
+
+      strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+      racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+
+      secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+    }
+
   }
 
   /**swaps a driver with a driver currently selected to drive.
@@ -321,15 +329,20 @@ public class CrewTabController {
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     } else if (selectedDriver == 2) {
       int costs = App.game.getFirstDriver().getValue() / 10;
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     }
-    App.playSound("Wroom");
     Stage stage = (Stage) upgradeSpeedButton.getScene().getWindow();
     stage.close();
   }
@@ -345,7 +358,7 @@ public class CrewTabController {
       aeroProgress.setProgress(
           (double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
   }
 
@@ -361,7 +374,7 @@ public class CrewTabController {
       mechanicProgress.setProgress(
           (8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getMechanic().getPitstopTime() == 2) {
       mechanicButton.setDisable(true);
@@ -380,7 +393,7 @@ public class CrewTabController {
       strategistProgress.setProgress(
           (double) App.game.getPlayerteam().getStrategist().getRating() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getStrategist().isMaxRated()) {
       upgradeStrategistButton.setDisable(true);

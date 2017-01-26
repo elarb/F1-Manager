@@ -7,10 +7,10 @@
     "driverList": [
         {
             "name": "Jeremy Clarkson",
-            "team": "Alfa-Romeo",
             "speed": 6.1,
             "racecraft": 5,
-            "strategyinsight": 3.8
+            "strategyinsight": 3.8,
+            "teamId": 1
         },{
             "name": "Romain Grosjean",
             "speed": 7.6,

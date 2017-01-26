@@ -21,10 +21,6 @@ public class MarketPlaceTabController {
 
   private ClientController clientController;
 
-  public ClientController getClientController() {
-    return clientController;
-  }
-
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
@@ -44,13 +40,17 @@ public class MarketPlaceTabController {
 
     for (Driver driver : App.game.getDrivers()) {
       if (driver.getName().equals(driverName)) {
-        App.game.driverBuy(driver);
-        clientController.loadMenuData();
+        if (App.game.driverBuy(driver)) {
+          App.playSound("Wroom");
+          clientController.loadMenuData();
+        }
+        App.playSound("Negative");
         break;
       }
     }
     clientController.getHomeTabController().populateGameEventList();
     populateBuyDriverList();
+    clientController.getCrewTabController().loadDriverData();
   }
 
   /**
@@ -63,8 +63,12 @@ public class MarketPlaceTabController {
 
     for (Engine engine : App.game.getEngines()) {
       if (engine.getBrand().equals(engineBrand)) {
-        App.game.engineBuy(engine);
-        clientController.loadMenuData();
+        if (App.game.engineBuy(engine)) {
+          clientController.loadMenuData();
+          App.playSound("Wroom");
+        } else {
+          App.playSound("Negative");
+        }
         break;
       }
     }
@@ -145,7 +149,7 @@ public class MarketPlaceTabController {
 
     ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
 
-    for (Engine engine: App.game.getEngines()) {
+    for (Engine engine : App.game.getEngines()) {
       if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
         tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(),
             engine.getDrivability(), engine.getFuelEfficiency(), (int)engine.getPrice()

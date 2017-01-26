@@ -72,7 +72,6 @@ public class GameTest {
 
     game.race();
 
-
   }
 
   @Test
@@ -91,41 +90,15 @@ public class GameTest {
 
   @Test
   public void updatestandingstest() {
-
-    for (int i = 0; i < 21; i++) {
-
-      game.race();
-
-    }
-
-
-
-
+    game.race();
     ArrayList<Team> standings = game.getSeason().getStandings();
-    for  (int i = 0; i < standings.size(); i++) {
-
-      System.out.println("Team: " + standings.get(i).getName() + " /// Points: " + standings.get(i).getPoints());
-
-    }
-
-
+    assertEquals(11, standings.size());
   }
 
   @Test
-  public void Gameevent(){
-
-    for (int i = 0; i < 21; i++) {
-
-      game.race();
-
-    }
-
-    for (int i = 0; i < game.getEvents().getEvents().size(); i++) {
-
-      System.out.println(game.getEvents().getEvents().get(i).getMessage());
-
-    }
-
+  public void gameEvent(){
+    game.race();
+    assertTrue(game.getEvents().getEvents().size() > 0);
   }
 
   @Test
