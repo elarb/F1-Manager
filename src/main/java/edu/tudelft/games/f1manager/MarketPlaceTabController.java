@@ -11,12 +11,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 
-import java.io.IOException;
 
 
 public class MarketPlaceTabController {
   @FXML
-  private JFXTreeTableView buyDriverList, buyEngineList;
+  private JFXTreeTableView buyDriverList;
+  @FXML
+  private JFXTreeTableView buyEngineList;
 
   private ClientController clientController;
 
@@ -31,12 +32,10 @@ public class MarketPlaceTabController {
 
   /**
    * looks at the selected name and buys the driver that has that name.
-   *
-   * @throws IOException error
    */
-  public void handleButtonClick_buyDriver() throws IOException {
+  public void handleButtonClick_buyDriver() {
     RecursiveTreeItem<TableDriver> driverItem =
-      (RecursiveTreeItem<TableDriver>) buyDriverList.getSelectionModel().getSelectedItem();
+        (RecursiveTreeItem<TableDriver>) buyDriverList.getSelectionModel().getSelectedItem();
     String driverName = driverItem.getValue().name.getValue();
 
     for (Driver driver : App.game.getDrivers()) {
@@ -54,9 +53,12 @@ public class MarketPlaceTabController {
     clientController.getCrewTabController().loadDriverData();
   }
 
+  /**
+   * looks at the selected name and buys the driver that has that name.
+   */
   public void handleButtonClick_buyEngine() {
     RecursiveTreeItem<TableEngine> engineItem =
-      (RecursiveTreeItem<TableEngine>) buyEngineList.getSelectionModel().getSelectedItem();
+        (RecursiveTreeItem<TableEngine>) buyEngineList.getSelectionModel().getSelectedItem();
     String engineBrand = engineItem.getValue().brand.getValue();
 
     for (Engine engine : App.game.getEngines()) {
@@ -90,8 +92,10 @@ public class MarketPlaceTabController {
     TreeTableColumn<TableDriver, Number> racecraftColumn = new TreeTableColumn<>("Racecraft");
     racecraftColumn.setCellValueFactory(param -> param.getValue().getValue().racecraft);
 
-    TreeTableColumn<TableDriver, Number> strategyinsightColumn = new TreeTableColumn<>("Strategy insight");
-    strategyinsightColumn.setCellValueFactory(param -> param.getValue().getValue().strategyinsight);
+    TreeTableColumn<TableDriver, Number> strategyinsightColumn = new TreeTableColumn<>(
+        "Strategy insight");
+    strategyinsightColumn.setCellValueFactory(param ->
+        param.getValue().getValue().strategyinsight);
 
     TreeTableColumn<TableDriver, String> timeColumn = new TreeTableColumn<>("Value");
     timeColumn.setCellValueFactory(param -> param.getValue().getValue().value);
@@ -109,16 +113,17 @@ public class MarketPlaceTabController {
       }
       if (inList) {
         tableDrivers.add(new TableDriver(driver.getName(), driver.getSpeed(), driver.getRacecraft(),
-          driver.getStrategyinsight(), driver.getValue()));
+            driver.getStrategyinsight(), driver.getValue()));
       }
     }
 
     TreeItem<TableDriver> root =
-      new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
+        new RecursiveTreeItem<>(tableDrivers, RecursiveTreeObject::getChildren);
 
     buyDriverList.setRoot(root);
     buyDriverList.setShowRoot(false);
-    buyDriverList.getColumns().setAll(driverColumn, speedColumn, racecraftColumn, strategyinsightColumn, timeColumn);
+    buyDriverList.getColumns().setAll(driverColumn, speedColumn, racecraftColumn,
+        strategyinsightColumn, timeColumn);
 
   }
 
@@ -138,23 +143,27 @@ public class MarketPlaceTabController {
     TreeTableColumn<TableEngine, Number> drivabilityColumn = new TreeTableColumn<>("Drivability");
     drivabilityColumn.setCellValueFactory(param -> param.getValue().getValue().drivability);
 
-    TreeTableColumn<TableEngine, Number> fuelEfficiencyColumn = new TreeTableColumn<>("FuelEfficiency");
+    TreeTableColumn<TableEngine, Number> fuelEfficiencyColumn = new TreeTableColumn<>(
+        "FuelEfficiency");
     fuelEfficiencyColumn.setCellValueFactory(param -> param.getValue().getValue().fuelEfficiency);
 
     ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
 
     for (Engine engine : App.game.getEngines()) {
       if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
-        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(), engine.getDrivability(), engine.getFuelEfficiency(), ((int) engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
+        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(),
+            engine.getDrivability(), engine.getFuelEfficiency(), (int)engine.getPrice()
+            - App.game.getPlayerteam().getCar().getEngine().sellPrice()));
       }
     }
 
     TreeItem<TableEngine> root =
-      new RecursiveTreeItem<>(tableEngines, RecursiveTreeObject::getChildren);
+        new RecursiveTreeItem<>(tableEngines, RecursiveTreeObject::getChildren);
 
     buyEngineList.setRoot(root);
     buyEngineList.setShowRoot(false);
-    buyEngineList.getColumns().setAll(brandColumn, powerColumn, drivabilityColumn, fuelEfficiencyColumn, valueColumn);
+    buyEngineList.getColumns().setAll(brandColumn, powerColumn, drivabilityColumn,
+        fuelEfficiencyColumn, valueColumn);
   }
 
 }
