@@ -220,7 +220,10 @@ public class Game {
 
     if (budget > driver.getValue()) {
       if (driver.getTeamId() == 0) {
-        this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+        if(!(driver.getTeamId() == 0)){
+          this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+        }
+
       }
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
