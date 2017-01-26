@@ -172,7 +172,7 @@ public class CrewTabController {
   public void loadDriverData() {
     DecimalFormat formatter = new DecimalFormat("#,###");
 
-    if (App.game.getPlayerteam().getDriverList().size() == 1) {
+    if (App.game.getPlayerteam().getDriverList().size() != 0) {
       firstDriverLabel.setText(App.game.getFirstDriver().getName());
 
       String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
@@ -187,7 +187,7 @@ public class CrewTabController {
 
       firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
 
-    } else if (App.game.getPlayerteam().getDriverList().size() > 1) {
+    } if (App.game.getPlayerteam().getDriverList().size() > 1) {
 
       secondDriverLabel.setText(App.game.getSecondDriver().getName());
 
