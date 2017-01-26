@@ -129,11 +129,20 @@ public class MarketPlaceTabController {
     TreeTableColumn<TableEngine, String> valueColumn = new TreeTableColumn<>("Value");
     valueColumn.setCellValueFactory(param -> param.getValue().getValue().value);
 
+    TreeTableColumn<TableEngine, Number> powerColumn = new TreeTableColumn<>("Power");
+    powerColumn.setCellValueFactory(param -> param.getValue().getValue().power);
+
+    TreeTableColumn<TableEngine, Number> drivabilityColumn = new TreeTableColumn<>("Drivability");
+    drivabilityColumn.setCellValueFactory(param -> param.getValue().getValue().drivability);
+
+    TreeTableColumn<TableEngine, Number> fuelEfficiencyColumn = new TreeTableColumn<>("FuelEfficiency");
+    fuelEfficiencyColumn.setCellValueFactory(param -> param.getValue().getValue().fuelEfficiency);
+
     ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
 
     for (Engine engine: App.game.getEngines()) {
       if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
-        tableEngines.add(new TableEngine(engine.getBrand(), ((int)engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
+        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(), engine.getDrivability(), engine.getFuelEfficiency(), ((int)engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
       }
     }
 
@@ -142,7 +151,7 @@ public class MarketPlaceTabController {
 
     buyEngineList.setRoot(root);
     buyEngineList.setShowRoot(false);
-    buyEngineList.getColumns().setAll(brandColumn, valueColumn);
+    buyEngineList.getColumns().setAll(brandColumn, powerColumn, drivabilityColumn, fuelEfficiencyColumn, valueColumn);
   }
 
 }

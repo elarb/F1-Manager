@@ -12,18 +12,18 @@
    <children>
       <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="573.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="537.0" style="-fx-background-color: black;" text="Buy selected driver" />
       <JFXTreeTableView fx:id="buyDriverList" layoutX="51.0" layoutY="106.0" prefHeight="467.0" prefWidth="537.0" />
-      <Label alignment="CENTER" layoutX="51.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Driver List" textFill="#f2f2f2">
+      <Label alignment="CENTER" layoutX="170.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Driver List" textFill="#f2f2f2">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-       <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="227.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+       <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="-20.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
            <image>
                <Image url="@../img/MarketTab/Driver.png" />
            </image>
        </ImageView>
        <JFXTreeTableView fx:id="buyEngineList" layoutX="606.0" layoutY="106.0" prefHeight="467.0" prefWidth="537.0" />
-       <Label alignment="CENTER" layoutX="814.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Engine List" textFill="#f2f2f2">
+       <Label alignment="CENTER" layoutX="725.0" layoutY="56.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="Engine List" textFill="#f2f2f2">
            <font>
                <Font size="30.0" />
            </font>
