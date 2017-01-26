@@ -82,7 +82,7 @@ public class PlayerTeam extends Team {
   }
 
   public boolean enoughDrivers() {
-    return (this.getDriverList().size() >= 2);
+    return this.getDriverList().size() >= 2;
   }
 
   public void addBudget(int num) {
