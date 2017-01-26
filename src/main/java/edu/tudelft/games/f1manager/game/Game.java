@@ -279,8 +279,6 @@ public class Game {
       if (driver.getTeamId() != 0) {
         this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
       }
-      driver.setTeamId(team.getId());
-      team.addDriver(driver);
 
       msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
     }
