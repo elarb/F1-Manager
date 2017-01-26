@@ -2,9 +2,14 @@ package edu.tudelft.games.f1manager.game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import edu.tudelft.games.f1manager.core.Team;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 

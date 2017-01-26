@@ -1,7 +1,10 @@
 package edu.tudelft.games.f1manager;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 class TableDriver extends RecursiveTreeObject<TableDriver> {
 
