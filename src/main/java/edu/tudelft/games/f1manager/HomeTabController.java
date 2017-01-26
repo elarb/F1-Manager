@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,9 @@ import java.util.ArrayList;
 public class HomeTabController {
   @FXML
   private AnchorPane homeContent;
+
+  @FXML
+  private WebView webView;
 
   @FXML
   private JFXTreeTableView<TableDriverResult> raceResultList;
@@ -37,7 +42,8 @@ public class HomeTabController {
   }
 
   public void init() {
-
+    WebEngine webEngine = webView.getEngine();
+    webEngine.load("https://www.formula1.com/");
   }
 
 

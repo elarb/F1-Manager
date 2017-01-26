@@ -22,7 +22,7 @@ public class Engine {
    */
   private double fuelEfficiency;
 
-  private int price;
+  private double price;
 
   /**
    * Creates an object that represents an Engine for a F1 Car.
@@ -39,12 +39,10 @@ public class Engine {
     this.fuelEfficiency = fuelEfficiency;
   }
 
-  public int getPrice() {
-    double tempPrice = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
+  public double getPrice() {
+    return Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
       * (Constants.DRIVABILITY_COEF * drivability)
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
-
-    return (int)tempPrice;
   }
 
   public String getBrand() {
@@ -80,11 +78,10 @@ public class Engine {
   }
 
   public void determineprice() {
-    double tempPrice = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
+
+    this.price = Constants.VALUE_ENGINE * ((Constants.POWER_COEF * power)
       * (Constants.DRIVABILITY_COEF * drivability)
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
-
-    this.price = (int)tempPrice;
 
   }
 
