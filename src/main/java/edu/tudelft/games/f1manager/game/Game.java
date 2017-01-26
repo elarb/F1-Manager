@@ -450,7 +450,7 @@ public class Game {
             break;
           case 9:
             setpoints(i, 1);
-            playerTeam.setBudget(playerTeam.getBudget() + 1 * 2000000);
+            playerTeam.setBudget(playerTeam.getBudget() + 2000000);
 
             break;
           default:
