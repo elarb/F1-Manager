@@ -73,6 +73,7 @@ public class MarketPlaceTabController {
       }
     }
     clientController.getHomeTabController().populateGameEventList();
+    clientController.getCrewTabController().loadEngine();
     populateBuyEngineList();
   }
 
