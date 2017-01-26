@@ -106,7 +106,7 @@ public class Game {
    * Methods that gets runned when a race gets started.
    */
   public void race() {
-    if (this.getSeason().getCurrentRace() < 20) {
+    if (this.getSeason().getCurrentRace() < 20 && playerteam.enoughDrivers()) {
       balanceDrivers();
       setTeamIDs();
       payRace();
@@ -547,8 +547,8 @@ public class Game {
    */
   public double getRaceCost() {
 
-    double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
-    double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
+    double salary1 = getFirstDriver().getValue() / 100;
+    double salary2 = getSecondDriver().getValue() / 100;
     double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
     double softwaretester = 0;
 
