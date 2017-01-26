@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -140,9 +139,9 @@ public class MarketPlaceTabController {
 
     ObservableList<TableEngine> tableEngines = FXCollections.observableArrayList();
 
-    for (Engine engine: App.game.getEngines()) {
+    for (Engine engine : App.game.getEngines()) {
       if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
-        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(), engine.getDrivability(), engine.getFuelEfficiency(), ((int)engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
+        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPower(), engine.getDrivability(), engine.getFuelEfficiency(), ((int) engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
       }
     }
 

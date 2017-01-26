@@ -96,6 +96,15 @@ public class Driver implements Upgradeable {
     }
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (other instanceof Driver) {
+      Driver oth = (Driver) other;
+      return name.equals(oth.getName());
+    }
+    return false;
+  }
+
   /**
    * Determines the value of the driver.
    */

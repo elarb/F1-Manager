@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
+<AnchorPane fx:id="marketPlaceTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.MarketPlaceTabController">
    <children>
       <JFXButton id="buy-driver-button" layoutX="51.0" layoutY="573.0" onAction="#handleButtonClick_buyDriver" prefHeight="30.0" prefWidth="537.0" style="-fx-background-color: black;" text="Buy selected driver" />
       <JFXTreeTableView fx:id="buyDriverList" layoutX="51.0" layoutY="106.0" prefHeight="467.0" prefWidth="537.0" />
@@ -17,7 +17,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-       <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="-20.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+       <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="431.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
            <image>
                <Image url="@../img/MarketTab/Driver.png" />
            </image>
@@ -29,5 +29,10 @@
            </font>
        </Label>
        <JFXButton id="buy-driver-button" layoutX="606.0" layoutY="573.0" onAction="#handleButtonClick_buyEngine" prefHeight="30.0" prefWidth="537.0" style="-fx-background-color: black;" text="Buy selected engine" />
+      <ImageView fitHeight="88.0" fitWidth="115.0" layoutX="1014.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/MarketTab/Engine.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

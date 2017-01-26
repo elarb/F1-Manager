@@ -251,15 +251,20 @@ public class CrewTabController {
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     } else if (selectedDriver == 2) {
       int costs = App.game.getFirstDriver().getValue() / 10;
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     }
-    App.playSound("Wroom");
     Stage stage = (Stage) upgradeSpeedButton.getScene().getWindow();
     stage.close();
   }
@@ -271,7 +276,7 @@ public class CrewTabController {
       App.playSound("Wroom");
       aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
   }
 
@@ -283,7 +288,7 @@ public class CrewTabController {
       App.playSound("UpgradeMech");
       mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getMechanic().getPitstopTime() == 2) {
       mechanicButton.setDisable(true);
@@ -297,7 +302,7 @@ public class CrewTabController {
       App.playSound("Wroom");
       strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getStrategist().isMaxRated()) {
       upgradeStrategistButton.setDisable(true);
