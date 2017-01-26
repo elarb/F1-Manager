@@ -45,6 +45,11 @@ public class Engine {
       * (Constants.FUEL_EFFICIENCYCOEF * fuelEfficiency));
   }
 
+  public int sellPrice() {
+    determineprice();
+    return ((int) this.price / 5);
+  }
+
   public String getBrand() {
     return brand;
   }

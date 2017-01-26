@@ -55,18 +55,20 @@ public class MarketPlaceTabController {
     populateBuyDriverList();
   }
 
-  public void handleButtonClick_buyEngine(){
+  public void handleButtonClick_buyEngine() {
     RecursiveTreeItem<TableEngine> engineItem =
       (RecursiveTreeItem<TableEngine>) buyEngineList.getSelectionModel().getSelectedItem();
     String engineBrand = engineItem.getValue().brand.getValue();
 
     for (Engine engine : App.game.getEngines()) {
       if (engine.getBrand().equals(engineBrand)) {
-        App.game.;
+        App.game.engineBuy(engine);
         clientController.loadMenuData();
         break;
       }
     }
+    clientController.getHomeTabController().populateGameEventList();
+    populateBuyEngineList();
   }
 
   /**
@@ -121,7 +123,7 @@ public class MarketPlaceTabController {
 
     for (Engine engine: App.game.getEngines()) {
       if (!App.game.getPlayerteam().getCar().getEngine().getBrand().equals(engine.getBrand())) {
-        tableEngines.add(new TableEngine(engine.getBrand(), engine.getPrice()));
+        tableEngines.add(new TableEngine(engine.getBrand(), ((int)engine.getPrice() - App.game.getPlayerteam().getCar().getEngine().sellPrice())));
       }
     }
 
