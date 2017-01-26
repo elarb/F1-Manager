@@ -88,8 +88,9 @@ public class HomeTabController {
           }
         }
       }
-      tableDriverResults.add(new TableDriverResult(Integer.toString(i + 1), results.get(i).getDriver().getName(),
-        results.get(i).getTimeString(), teamName));
+      tableDriverResults.add(new TableDriverResult(Integer.toString(i + 1),
+          results.get(i).getDriver().getName(),
+          results.get(i).getTimeString(), teamName));
     }
 
 
