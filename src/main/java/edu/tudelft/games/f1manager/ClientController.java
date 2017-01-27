@@ -95,7 +95,7 @@ public class ClientController {
     cashLabel.setText("$" + formatter.format(App.game.getPlayerteam().getBudget()));
     pointsLabel.setText("Points: " + App.game.getPlayerteam().getPoints());
     raceLabel.setText("Raced: " + App.game.getCurrentRace() + "/20");
-    if (App.game.getPlayerteam().enoughDrivers()) {
+    if (App.game.getPlayerteam().enoughDrivers() && App.game.getCurrentRace() < 20) {
       raceButton.setDisable(false);
     } else {
       raceButton.setDisable(true);
