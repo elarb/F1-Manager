@@ -32,14 +32,11 @@ public class Driver implements Upgradeable {
 
   @Override
   public String toString() {
-    return "Driver{" +
-      "name='" + name + '\'' +
-      ", speed=" + speed +
-      ", racecraft=" + racecraft +
-      ", strategyinsight=" + strategyinsight +
-      ", value=" + value +
-      ", teamId=" + teamId +
-      '}';
+    return "Driver{"
+      + "name='" + name + '\''
+      + ", speed=" + speed + ", racecraft=" + racecraft
+      + ", strategyinsight=" + strategyinsight
+      + ", value=" + value + ", teamId=" + teamId + '}';
   }
 
   /**
@@ -96,14 +93,24 @@ public class Driver implements Upgradeable {
     }
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (other instanceof Driver) {
+      Driver oth = (Driver) other;
+      return name.equals(oth.getName());
+    }
+    return false;
+  }
+
   /**
    * Determines the value of the driver.
    */
   public void determineValue() {
-    this.value = (int) (((this.speed * Constants.SPEEDCOEF)
+    this.value = (int) (
+      ((this.speed * Constants.SPEEDCOEF)
       + (this.racecraft * Constants.RACECRAFTCOEF)
       + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    ) * Constants.DRIVERBASEPRICE);
+      ) * Constants.DRIVERBASEPRICE);
   }
 
   public int getRating() {
@@ -151,11 +158,14 @@ public class Driver implements Upgradeable {
     this.strategyinsight = strategyinsight;
   }
 
+  /**returns the value af the driver.
+   * @return an int representing the value of the driver.
+   */
   public int getValue() {
     return (int) (((this.speed * Constants.SPEEDCOEF)
       + (this.racecraft * Constants.RACECRAFTCOEF)
       + (this.strategyinsight * Constants.STRATEGYINSIGHTCOEF)
-    ) * Constants.DRIVERBASEPRICE);
+      ) * Constants.DRIVERBASEPRICE);
   }
 
   public void setValue(int value) {

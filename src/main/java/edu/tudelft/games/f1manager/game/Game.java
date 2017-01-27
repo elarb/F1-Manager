@@ -1,6 +1,18 @@
 package edu.tudelft.games.f1manager.game;
 
-import edu.tudelft.games.f1manager.core.*;
+import edu.tudelft.games.f1manager.core.Aerodynamicist;
+import edu.tudelft.games.f1manager.core.AiTeam;
+import edu.tudelft.games.f1manager.core.AiTeamList;
+import edu.tudelft.games.f1manager.core.Constants;
+import edu.tudelft.games.f1manager.core.Driver;
+import edu.tudelft.games.f1manager.core.DriverList;
+import edu.tudelft.games.f1manager.core.Engine;
+import edu.tudelft.games.f1manager.core.EngineList;
+import edu.tudelft.games.f1manager.core.Mechanic;
+import edu.tudelft.games.f1manager.core.PlayerTeam;
+import edu.tudelft.games.f1manager.core.Strategist;
+import edu.tudelft.games.f1manager.core.Team;
+
 import edu.tudelft.games.f1manager.tools.RandomDouble;
 
 import java.io.File;
@@ -103,9 +115,13 @@ public class Game {
 
   /**
    * Methods that gets runned when a race gets started.
+   * Returns true if there is a next race and if the playerteam
+   * has enough drivers.
+   *
+   * @return true if there is a next race and if the playerteam has enough drivers
    */
-  public void race() {
-    if (this.getSeason().getCurrentRace() < 20) {
+  public boolean race() {
+    if (this.getSeason().getCurrentRace() < 20 && playerteam.enoughDrivers()) {
       balanceDrivers();
       setTeamIDs();
       payRace();
@@ -115,13 +131,15 @@ public class Game {
       updateStandings();
       championAward();
       buyRandomDriver();
-
       gameEventPositions();
       gameEventCrashed();
       this.getSeason().nextRace();
-    } else {
+      return true;
+    } else if (getSeason().getCurrentRace() == 20) {
       championAward();
+      return false;
     }
+    return false;
   }
 
   /**
@@ -138,8 +156,14 @@ public class Game {
     Engine engine = team.getCar().getEngine();
     engine.determineprice();
 
-    DriverResult result1 = new DriverResult(driver1, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
-    DriverResult result2 = new DriverResult(driver2, ((this.getSeason().getCurrentRaceInstance().getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER) + team.getMechanic().getPitstopTime());
+    DriverResult result1 = new DriverResult(driver1, ((this.getSeason()
+        .getCurrentRaceInstance().getCircuit().getRaceTimeBase()
+        * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER)
+        + team.getMechanic().getPitstopTime());
+    DriverResult result2 = new DriverResult(driver2, ((this.getSeason().getCurrentRaceInstance()
+        .getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT
+        - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER)
+        + team.getMechanic().getPitstopTime());
 
     if (team.getStrategist().hasCrashed()) {
 
@@ -188,22 +212,28 @@ public class Game {
    * A playerteam Driver Buy method.
    *
    * @param driver the driver the playerteam buys
+   * @return true if the buy was successful
    */
-  public void driverBuy(Driver driver) {
+  public boolean driverBuy(Driver driver) {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
       if (driver.getTeamId() == 0) {
-    	  this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+        if (!(driver.getTeamId() == 0)) {
+          this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+        }
+
       }
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
-      
+
       String msg = driver.getName() + " has been purchased by you!";
       GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
       this.events.addEvent(event);
+      return true;
     }
+    return false;
   }
 
   /**
@@ -235,7 +265,8 @@ public class Game {
   }
 
   /**
-   * Random Aiteams buys random driver but only if this driver is better than one if it's own drivers.
+   * Random Aiteams buys random driver but only if this driver is better than
+   * one if it's own drivers.
    */
   public void buyRandomDriver() {
     Random rand = new Random();
@@ -246,7 +277,7 @@ public class Game {
 
       boolean bool = false;
       for (Driver driver :
-        randomTeam.getDriverList()) {
+          randomTeam.getDriverList()) {
         if (driver.getValue() < randomDriver.getValue() * 0.80) {
           bool = true;
         }
@@ -269,15 +300,14 @@ public class Game {
     if (driver.getTeamId() == 1) {
       this.playerteam.getDriverList().remove(driver);
       this.playerteam.addBudget(driver.getValue());
-      
-      msg = String.format("%s has been purchased by %s, your balance has increased by $ %s", driver.getName(), team.getName(), driver.getValue());
+
+
+      msg = String.format("%s has been purchased by %s, your balance has increased by $ %s",
+        driver.getName(), team.getName(), driver.getValue());
     } else {
-    	if (driver.getTeamId() != 0) {
-    		this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
-    	}
-      driver.setTeamId(team.getId());
-      team.addDriver(driver);
-      
+      if (driver.getTeamId() != 0) {
+        this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      }
       msg = String.format("%s has been purchased by %s", driver.getName(), team.getName());
     }
     driver.setTeamId(team.getId());
@@ -289,24 +319,27 @@ public class Game {
 
   /**
    * Checks whether the player is able to buy then engine, and if so, buys it.
-   * 
-   * @param engine	Pass the engine that should be bought by the player
+   * Returns true if successfull, else false.
+   *
+   * @param engine Pass the engine that should be bought by the player
    */
-public void engineBuy(Engine engine) {
-	    int budget = this.getPlayerteam().getBudget();
-	    int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
-	    int effectiveprice = (int)(engine.getPrice()-sellprice);
-	    if (budget >= effectiveprice) {
-	    
-	      this.playerteam.getCar().setEngine(engine);
-	      this.playerteam.lowerBudget(effectiveprice);
-	    
-	      String msg = "You have bought a " + engine.getBrand() + " engine!";
-	      GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
-	      this.events.addEvent(event);
-	    }
-	  }
-  
+  public boolean engineBuy(Engine engine) {
+    int budget = this.getPlayerteam().getBudget();
+    int sellprice = this.getPlayerteam().getCar().getEngine().sellPrice();
+    int effectiveprice = (int) (engine.getPrice() - sellprice);
+
+    if (budget >= effectiveprice) {
+      this.playerteam.getCar().setEngine(engine);
+      this.playerteam.lowerBudget(effectiveprice);
+
+      String msg = "You have bought a " + engine.getBrand() + " engine!";
+      GameEvent event = new GameEvent(msg, GameEvent.Type.TRANSFER);
+      this.events.addEvent(event);
+      return true;
+    }
+    return false;
+  }
+
   /**
    * Sorts results of the race by time and prints them out (for testing purposes).
    */
@@ -331,7 +364,9 @@ public void engineBuy(Engine engine) {
       }
 
     }
-    GameEvent event = new GameEvent(String.format("You finished %d and %d in the %s (Race #%d)", positions.get(0), positions.get(1), getSeason().getCurrentRaceInstance().getName(), getCurrentRace() + 1), GameEvent.Type.RACE);
+    GameEvent event = new GameEvent(String.format("You finished %d and %d in the %s (Race #%d)",
+        positions.get(0), positions.get(1), getSeason().getCurrentRaceInstance().getName(),
+        getCurrentRace() + 1), GameEvent.Type.RACE);
     events.addEvent(event);
     return event;
   }
@@ -344,8 +379,10 @@ public void engineBuy(Engine engine) {
   public GameEvent gameEventCrashed() {
 
     for (int i = 0; i < getResults().size(); i++) {
-      if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam && getResults().get(i).getTime() == 100000000) {
-        GameEvent event = new GameEvent("Oh no... your driver " + getResults().get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
+      if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam
+          && getResults().get(i).getTime() == 100000000) {
+        GameEvent event = new GameEvent("Oh no... your driver "
+            + getResults().get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
         events.addEvent(event);
         return event;
       }
@@ -355,13 +392,16 @@ public void engineBuy(Engine engine) {
 
   /**
    * Adds points and money to the teams according to the race results.
+   * 2 million dollars per point
    */
+  @SuppressWarnings("CheckStyle")
   public void addRaceWinnings() {
     for (int i = 0; i < 10; i++) {
 
       if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam) {
 
-        PlayerTeam playerTeam = (PlayerTeam) getTeamDriver(getResults().get(i).getDriver().getTeamId());
+        PlayerTeam playerTeam = (PlayerTeam) getTeamDriver(getResults().get(i)
+            .getDriver().getTeamId());
 
         switch (i) {
           case 0:
@@ -411,8 +451,10 @@ public void engineBuy(Engine engine) {
             break;
           case 9:
             setpoints(i, 1);
-            playerTeam.setBudget(playerTeam.getBudget() + 1 * 2000000);
+            playerTeam.setBudget(playerTeam.getBudget() + 2000000);
 
+            break;
+          default:
             break;
         }
       } else {
@@ -447,6 +489,8 @@ public void engineBuy(Engine engine) {
           case 9:
             setpoints(i, 1);
             break;
+          default:
+            break;
         }
       }
     }
@@ -461,7 +505,9 @@ public void engineBuy(Engine engine) {
 
   public void setpoints(int driver, int points) {
 
-    getTeamDriver(getResults().get(driver).getDriver().getTeamId()).setPoints(getTeamDriver(getResults().get(driver).getDriver().getTeamId()).getPoints() + points);
+    getTeamDriver(getResults().get(driver).getDriver().getTeamId())
+        .setPoints(getTeamDriver(getResults().get(driver).getDriver().getTeamId()).getPoints()
+        + points);
 
   }
 
@@ -520,13 +566,15 @@ public void engineBuy(Engine engine) {
     teams.addAll(this.getAiteams());
     teams.add(this.getPlayerteam());
 
-    ArrayList<Team> standings = teams.stream().sorted(byPoints).collect(Collectors.toCollection(ArrayList::new));
+    ArrayList<Team> standings = teams.stream().sorted(byPoints)
+        .collect(Collectors.toCollection(ArrayList::new));
 
     this.getSeason().setStandings(standings);
 
     if (standings.get(0) instanceof PlayerTeam) {
 
-      GameEvent event = new GameEvent("Congratulations! You are first in the overall standings!", GameEvent.Type.RACE);
+      GameEvent event = new GameEvent("Congratulations! You are first in the overall standings!",
+          GameEvent.Type.RACE);
       events.addEvent(event);
       return event;
 
@@ -543,8 +591,8 @@ public void engineBuy(Engine engine) {
    */
   public double getRaceCost() {
 
-    double salary1 = this.getPlayerteam().getDriverList().get(0).getValue() / 100;
-    double salary2 = this.getPlayerteam().getDriverList().get(1).getValue() / 100;
+    double salary1 = getFirstDriver().getValue() / 100;
+    double salary2 = getSecondDriver().getValue() / 100;
     double tires = this.getPlayerteam().getCar().getTyres().getHardness() * 250000;
     double softwaretester = 0;
 
@@ -565,9 +613,14 @@ public void engineBuy(Engine engine) {
     int costs = (int) getRaceCost();
     this.playerteam.lowerBudget(costs);
     DecimalFormat formatter = new DecimalFormat("#,###");
-    events.addEvent(new GameEvent("You paid " + "$" + formatter.format(costs) + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
+    events.addEvent(new GameEvent("You paid " + "$" + formatter.format(costs)
+        + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
   }
 
+  /**upgrades the Aerodynamisicst.
+   *
+   * @return a bolean representing wether it was succesfull.
+   */
   public boolean upgradeAeorodynamicist() {
     Aerodynamicist aero = playerteam.getAerodynamicist();
     int budget = playerteam.getBudget();
@@ -580,6 +633,10 @@ public void engineBuy(Engine engine) {
     return false;
   }
 
+  /**upgrades the Strategist.
+   *
+   * @return a bolean representing wether it was succesfull.
+   */
   public boolean upgradeStrategist() {
     Strategist strategist = playerteam.getStrategist();
     int budget = playerteam.getBudget();
@@ -592,6 +649,10 @@ public void engineBuy(Engine engine) {
     return false;
   }
 
+  /**upgrades the Mechanic.
+   *
+   * @return a bolean representing wether it was succesfull.
+   */
   public boolean upgradeMechanic() {
     Mechanic mech = playerteam.getMechanic();
     int budget = playerteam.getBudget();

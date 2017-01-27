@@ -1,6 +1,10 @@
 package edu.tudelft.games.f1manager;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.controls.JFXToggleButton;
 import edu.tudelft.games.f1manager.core.Driver;
 import edu.tudelft.games.f1manager.core.Strategist;
 import javafx.application.Platform;
@@ -41,35 +45,72 @@ public class CrewTabController {
 
 
   @FXML
-  private Label firstDriverLabel, secondDriverLabel, driverRating1,
-    driverRating2, driverValue1, driverValue2;
+  private Label firstDriverLabel;
+  @FXML
+  private Label secondDriverLabel;
+  @FXML
+  private Label driverRating1;
+  @FXML
+  private Label driverRating2;
+  @FXML
+  private Label driverValue1;
+  @FXML
+  private Label driverValue2;
 
   @FXML
-  private ProgressBar strategyinsight1, strategyinsight2, racecraft1, racecraft2, speed1, speed2;
+  private ProgressBar strategyinsight1;
+  @FXML
+  private ProgressBar strategyinsight2;
+  @FXML
+  private ProgressBar racecraft1;
+  @FXML
+  private ProgressBar racecraft2;
+  @FXML
+  private ProgressBar speed1;
+  @FXML
+  private ProgressBar speed2;
 
   @FXML
-  private ProgressBar aeroProgress, strategistProgress, mechanicProgress;
+  private ProgressBar aeroProgress;
+  @FXML
+  private ProgressBar strategistProgress;
+  @FXML
+  private ProgressBar mechanicProgress;
 
   @FXML
   private ListView selectDriverList;
 
   @FXML
-  private ImageView firstDriverImg, secondDriverImg;
+  private ImageView firstDriverImg;
+  @FXML
+  private ImageView secondDriverImg;
 
   @FXML
-  private JFXRadioButton lowRiskRadio, mediumRiskRadio, highRiskRadio;
+  private JFXRadioButton lowRiskRadio;
+  @FXML
+  private JFXRadioButton mediumRiskRadio;
+  @FXML
+  private JFXRadioButton highRiskRadio;
 
   @FXML
   private JFXToggleButton softwareTesterToggle;
 
   @FXML
-  private JFXButton upgradeDriver1, upgradeDriver2;
+  private JFXButton upgradeDriver1;
+  @FXML
+  private JFXButton upgradeDriver2;
 
   @FXML
-  private JFXButton upgradeSpeedButton, upgradeRaceCraftButton, upgradeInsightButton;
+  private JFXButton upgradeSpeedButton;
+  @FXML
+  private JFXButton upgradeRaceCraftButton;
+  @FXML
+  private JFXButton upgradeInsightButton;
 
   @FXML
-  private JFXButton upgradeStrategistButton, mechanicButton;
+  private JFXButton upgradeStrategistButton;
+  @FXML
+  private JFXButton mechanicButton;
 
   @FXML
   private AnchorPane crewTab;
@@ -77,11 +118,26 @@ public class CrewTabController {
   @FXML
   private JFXSlider tireSlider;
 
+  @FXML
+  private Label engineBrand;
+
+  @FXML
+  private Label enginePower;
+
+  @FXML
+  private Label engineDrive;
+
+  @FXML
+  private Label engineFuel;
+
 
   public void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
 
+  /**initialises crewTabController.
+   * creates timer to update label values.
+   */
   public void init() {
     Timer timer = new Timer();
     timer.scheduleAtFixedRate(new TimerTask() {
@@ -101,6 +157,7 @@ public class CrewTabController {
     initCrewData();
     handleRisk();
     handleSoftwareToggle();
+    loadEngine();
   }
 
   public void update() {
@@ -108,43 +165,77 @@ public class CrewTabController {
     populateSelectDriverList();
   }
 
+  /**sets the label values for the rating of the crew.
+   *
+   */
   public void initCrewData() {
-    aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
+    aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise()
+        / 100);
     //TODO Temporary dirty way to get mechanic rating
-    mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
-    strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
+    mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime())
+        / 6);
+    strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating()
+        / 100);
   }
 
+  /**loads the labels for the drivers currently selected.
+   *
+   */
   @FXML
   public void loadDriverData() {
-
-    firstDriverLabel.setText(App.game.getFirstDriver().getName());
-    secondDriverLabel.setText(App.game.getSecondDriver().getName());
-
-    String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
-    String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
-    driverRating1.setText(rating1);
-    driverRating2.setText(rating2);
-
     DecimalFormat formatter = new DecimalFormat("#,###");
-    String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
-    String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
-    driverValue1.setText(value1);
-    driverValue2.setText(value2);
 
-    strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
-    strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+    if (App.game.getPlayerteam().getDriverList().size() != 0) {
+      firstDriverLabel.setText(App.game.getFirstDriver().getName());
 
-    racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
-    racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
+      driverRating1.setText(rating1);
 
-    speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
-    speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+      String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
+      driverValue1.setText(value1);
 
-    firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
-    secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+      strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
+      racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
+      speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
+
+      firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
+
+    }
+    if (App.game.getPlayerteam().getDriverList().size() > 1) {
+
+      secondDriverLabel.setText(App.game.getSecondDriver().getName());
+
+      String rating2 = "Rating: " + App.game.getSecondDriver().getRating() + "/100";
+      driverRating2.setText(rating2);
+
+      String value2 = "$" + formatter.format(App.game.getSecondDriver().getValue());
+      driverValue2.setText(value2);
+
+      strategyinsight2.setProgress(App.game.getSecondDriver().getStrategyinsight() / 10);
+      racecraft2.setProgress(App.game.getSecondDriver().getRacecraft() / 10);
+      speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
+
+      secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+    }
+
   }
 
+  /**
+   * Loads the engine labels with the current engine properties.
+   */
+  public void loadEngine() {
+    engineBrand.setText("Brand: " + App.game.getPlayerteam().getCar().getEngine().getBrand());
+    engineDrive.setText("Driveability: " + App.game.getPlayerteam().getCar().getEngine()
+        .getDrivability());
+    engineFuel.setText("Fuel-Efficiency: " + App.game.getPlayerteam().getCar().getEngine()
+        .getFuelEfficiency());
+    enginePower.setText("Power: " + App.game.getPlayerteam().getCar().getEngine().getPower());
+
+  }
+
+  /**swaps a driver with a driver currently selected to drive.
+   * @param num the driver (1 or 2) to switch place with.
+   */
   public void swapWithDriver(int num) {
     String driverName = (String) selectDriverList.getSelectionModel().getSelectedItem();
     List<Driver> list = App.game.getPlayerteam().getDriverList();
@@ -165,6 +256,9 @@ public class CrewTabController {
     update();
   }
 
+  /**populates the list with all drivers you currently own.
+   *
+   */
   public void populateSelectDriverList() {
     List<Driver> drivers = App.game.getPlayerteam().getDriverList();
     ObservableList<String> driverNames = FXCollections.observableArrayList();
@@ -174,6 +268,9 @@ public class CrewTabController {
     selectDriverList.setItems(driverNames);
   }
 
+  /**initialises the popup in witch you can choose with which driver to swap the selected driver.
+   *
+   */
   @FXML
   public void initDriversPopup() {
     selectedDriversPopup = new JFXPopup();
@@ -199,13 +296,18 @@ public class CrewTabController {
     selectedDriversPopup.setMinSize(100, 120);
     selectedDriversPopup.setSource(selectDriverList);
     selectedDriversPopup.setPopupContainer(crewTab);
-    selectDriverList.setOnMouseClicked((event) -> selectedDriversPopup.show(JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT, event.getX(), event.getY()));
+    selectDriverList.setOnMouseClicked((event) -> selectedDriversPopup.show(
+        JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT, event.getX(), event.getY()));
   }
 
+  /**initialises and shows the sceen to upgrade your drivers.
+   * @throws IOException error
+   */
   public void initUpgradeStage() throws IOException {
     driverUpgradeStage = new Stage();
 
-    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/DriverUpgradePopup.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
+        "fxml/DriverUpgradePopup.fxml"));
     AnchorPane pane = loader.load();
     driverUpgradeStage.setScene(new Scene(pane));
     driverUpgradeStage.setResizable(false);
@@ -244,6 +346,9 @@ public class CrewTabController {
     upgradeDriver(2);
   }
 
+  /**upgrades the driver at place num.
+   * @param num (1 or 2) selects witch driver to upgrade
+   */
   public void upgradeDriver(int num) {
     List<Driver> drivers = App.game.getPlayerteam().getDriverList();
     if (selectedDriver == 1) {
@@ -251,59 +356,80 @@ public class CrewTabController {
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(0).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     } else if (selectedDriver == 2) {
       int costs = App.game.getFirstDriver().getValue() / 10;
       if (App.game.getPlayerteam().getBudget() > costs) {
         App.game.getPlayerteam().lowerBudget(costs);
         App.game.getEvents().addEvent(drivers.get(1).upgrade(num));
+        App.playSound("Wroom");
+      } else {
+        App.playSound("Negative");
       }
     }
-    App.playSound("Wroom");
     Stage stage = (Stage) upgradeSpeedButton.getScene().getWindow();
     stage.close();
   }
 
+  /**upgrades the Aereodynamicist.
+   *
+   */
   @FXML
   public void upgradeAerodynamicist() {
     boolean success = App.game.upgradeAeorodynamicist();
     if (success) {
       App.playSound("Wroom");
-      aeroProgress.setProgress((double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
+      aeroProgress.setProgress(
+          (double) App.game.getPlayerteam().getAerodynamicist().getExpertise() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
   }
 
 
+  /**upgrades the mechanic.
+   *
+   */
   @FXML
   public void upgradeMechanic() {
     boolean success = App.game.upgradeMechanic();
     if (success) {
       App.playSound("UpgradeMech");
-      mechanicProgress.setProgress((8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
+      mechanicProgress.setProgress(
+          (8.5 - App.game.getPlayerteam().getMechanic().getPitstopTime()) / 6);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getMechanic().getPitstopTime() == 2) {
       mechanicButton.setDisable(true);
     }
   }
 
+
+  /**upgrades the strategist.
+   *
+   */
   @FXML
   public void upgradeStrategist() {
     boolean success = App.game.upgradeStrategist();
     if (success) {
       App.playSound("Wroom");
-      strategistProgress.setProgress((double) App.game.getPlayerteam().getStrategist().getRating() / 100);
+      strategistProgress.setProgress(
+          (double) App.game.getPlayerteam().getStrategist().getRating() / 100);
     } else {
-      //TODO: show has failed Popup
+      App.playSound("Negative");
     }
     if (App.game.getPlayerteam().getStrategist().isMaxRated()) {
       upgradeStrategistButton.setDisable(true);
     }
   }
 
+  /**initialises a listener that changes the risk when its changed in the ui.
+   *
+   */
   @FXML
   public void handleRisk() {
     ToggleGroup risk = new ToggleGroup();
@@ -311,7 +437,7 @@ public class CrewTabController {
     mediumRiskRadio.setToggleGroup(risk);
     highRiskRadio.setToggleGroup(risk);
 
-    risk.selectedToggleProperty().addListener((ov, t, t1) -> {
+    risk.selectedToggleProperty().addListener((ov, changeListener, t1) -> {
       lowRiskRadio = (JFXRadioButton) t1.getToggleGroup().getSelectedToggle();
       switch (lowRiskRadio.getText()) {
         case "Low Risk":
@@ -323,10 +449,16 @@ public class CrewTabController {
         case "High Risk":
           App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.HIGH);
           break;
+        default:
+          App.game.getPlayerteam().getStrategist().setStrategy(Strategist.Risk.MEDIUM);
+          break;
       }
     });
   }
 
+  /**changes the hasSoftwareTester value when it is changed in the ui.
+   *
+   */
   public void handleSoftwareToggle() {
     softwareTesterToggle.setOnAction(event -> {
       if (softwareTesterToggle.isSelected()) {
@@ -337,6 +469,9 @@ public class CrewTabController {
     });
   }
 
+  /**changes the tires hardness value when it is changed in the ui.
+   *
+   */
   public void initTiresSlider() {
     tireSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       if (oldValue.intValue() != newValue.intValue()) {

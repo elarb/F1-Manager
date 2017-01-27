@@ -36,8 +36,33 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <JFXSlider fx:id="tireSlider" blockIncrement="1.0" layoutX="345.0" layoutY="99.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-            <Label alignment="CENTER" layoutX="355.0" layoutY="18.0" prefHeight="20.0" prefWidth="120.0" text="Hardness Tires" textFill="#f2f2f2" />
+            <JFXSlider fx:id="tireSlider" blockIncrement="1.0" layoutX="571.0" layoutY="20.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+            <Label alignment="CENTER" layoutX="451.0" layoutY="24.0" prefHeight="20.0" prefWidth="120.0" text="Hardness Tires" textFill="#f2f2f2" />
+            <Label fx:id="enginePower" layoutX="293.0" layoutY="77.0" minHeight="30.0" prefHeight="30.0" prefWidth="150.0" text="Engine" textFill="#f2f2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="293.0" layoutY="18.0" minHeight="30.0" prefHeight="30.0" prefWidth="80.0" text="Engine" textFill="#f2f2f2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="engineFuel" layoutX="293.0" layoutY="107.0" minHeight="30.0" prefHeight="30.0" prefWidth="150.0" text="Engine" textFill="#f2f2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="engineDrive" layoutX="293.0" layoutY="137.0" minHeight="30.0" prefHeight="30.0" prefWidth="150.0" text="Engine" textFill="#f2f2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="engineBrand" layoutX="293.0" layoutY="49.0" minHeight="30.0" prefHeight="30.0" prefWidth="150.0" text="Engine" textFill="#f2f2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="14.0" layoutY="236.0" prefHeight="178.0" prefWidth="620.0">

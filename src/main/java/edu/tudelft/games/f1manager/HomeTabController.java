@@ -13,8 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 
 import java.util.ArrayList;
 
@@ -22,9 +20,6 @@ import java.util.ArrayList;
 public class HomeTabController {
   @FXML
   private AnchorPane homeContent;
-
-  @FXML
-  private WebView webView;
 
   @FXML
   private JFXTreeTableView<TableDriverResult> raceResultList;
@@ -40,12 +35,6 @@ public class HomeTabController {
   void injectMainController(ClientController clientController) {
     this.clientController = clientController;
   }
-
-  public void init() {
-    WebEngine webEngine = webView.getEngine();
-    webEngine.load("https://www.formula1.com/");
-  }
-
 
   /**
    * fills the resultList with columns and data from the last race.
@@ -88,13 +77,14 @@ public class HomeTabController {
           }
         }
       }
-      tableDriverResults.add(new TableDriverResult(Integer.toString(i + 1), results.get(i).getDriver().getName(),
-        results.get(i).getTimeString(), teamName));
+      tableDriverResults.add(new TableDriverResult(Integer.toString(i + 1),
+          results.get(i).getDriver().getName(),
+          results.get(i).getTimeString(), teamName));
     }
 
 
     TreeItem<TableDriverResult> root =
-      new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
+        new RecursiveTreeItem<>(tableDriverResults, RecursiveTreeObject::getChildren);
 
     raceResultList.setRoot(root);
     raceResultList.setShowRoot(false);
@@ -130,12 +120,12 @@ public class HomeTabController {
       }
       GameEvent event = events.get(i);
       tableGameEvents.add(new TableGameEvent(event.getType(), event.getMessage(),
-        event.getCurrentDateTime()));
+          event.getCurrentDateTime()));
 
     }
 
     TreeItem<TableGameEvent> root = new RecursiveTreeItem<>(tableGameEvents,
-      RecursiveTreeObject::getChildren);
+        RecursiveTreeObject::getChildren);
 
     gameEventList.setRoot(root);
     gameEventList.setShowRoot(false);
@@ -160,12 +150,12 @@ public class HomeTabController {
       tableTeams.add(new TableTeam(team.getName(), team.getPoints()));
     }
     tableTeams.add(new TableTeam(App.game.getPlayerteam().getName(),
-      App.game.getPlayerteam().getPoints()));
+        App.game.getPlayerteam().getPoints()));
 
     //Collections.sort(tableTeams);
 
     TreeItem<TableTeam> root = new RecursiveTreeItem<>(tableTeams,
-      RecursiveTreeObject::getChildren);
+        RecursiveTreeObject::getChildren);
     pointList.setRoot(root);
     pointList.setShowRoot(false);
     pointList.getColumns().setAll(teamColumn, pointsColumn);
