@@ -43,7 +43,6 @@ public class CrewTabController {
 
   private Stage driverUpgradeStage;
 
-
   @FXML
   private Label firstDriverLabel;
   @FXML
@@ -120,13 +119,10 @@ public class CrewTabController {
 
   @FXML
   private Label engineBrand;
-
   @FXML
   private Label enginePower;
-
   @FXML
   private Label engineDrive;
-
   @FXML
   private Label engineFuel;
 
@@ -185,21 +181,27 @@ public class CrewTabController {
   public void loadDriverData() {
     DecimalFormat formatter = new DecimalFormat("#,###");
 
-    if (App.game.getPlayerteam().getDriverList().size() != 0) {
+    if (App.game.getPlayerteam().getDriverList().size() != 0 ) {
       firstDriverLabel.setText(App.game.getFirstDriver().getName());
-
+      secondDriverLabel.setText("No second driver");
       String rating1 = "Rating: " + App.game.getFirstDriver().getRating() + "/100";
       driverRating1.setText(rating1);
+      driverRating2.setText("Rating: 0/100" );
 
       String value1 = "$" + formatter.format(App.game.getFirstDriver().getValue());
       driverValue1.setText(value1);
+      driverValue2.setText("-");
 
       strategyinsight1.setProgress(App.game.getFirstDriver().getStrategyinsight() / 10);
+      strategyinsight2.setProgress(0);
       racecraft1.setProgress(App.game.getFirstDriver().getRacecraft() / 10);
+      racecraft2.setProgress(0);
       speed1.setProgress(App.game.getFirstDriver().getSpeed() / 10);
+      speed2.setProgress(0);
 
       firstDriverImg.setImage(App.game.getPlayerteam().getFirstDriverImg());
-
+      secondDriverImg.setImage(null);
+      upgradeDriver2.setDisable(true);
     }
     if (App.game.getPlayerteam().getDriverList().size() > 1) {
 
@@ -216,6 +218,7 @@ public class CrewTabController {
       speed2.setProgress(App.game.getSecondDriver().getSpeed() / 10);
 
       secondDriverImg.setImage(App.game.getPlayerteam().getSecondDriverImg());
+      upgradeDriver2.setDisable(false);
     }
 
   }
