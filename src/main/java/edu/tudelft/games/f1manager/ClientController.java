@@ -81,7 +81,6 @@ public class ClientController {
     homeTabController.injectMainController(this);
     settingsTabController.injectMainController(this);
     nextRaceTabController.injectMainController(this);
-    homeTabController.init();
     marketPlaceTabController.init();
     crewTabController.init();
     nextRaceTabController.init();
