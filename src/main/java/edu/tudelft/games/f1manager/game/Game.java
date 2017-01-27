@@ -135,13 +135,14 @@ public class Game {
       this.getSeason().nextRace();
       return true;
     } else if (getSeason().getCurrentRace() == 20) {
-      championAward();
+
       balanceDrivers();
       setTeamIDs();
       payRace();
       handleResults();
       sortResults();
       addRaceWinnings();
+      championAward();
       updateStandings();
       buyRandomDriver();
       gameEventPositions();
