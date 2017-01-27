@@ -135,7 +135,6 @@ public class Game {
       this.getSeason().nextRace();
       return true;
     } else if (getSeason().getCurrentRace() == 20) {
-
       balanceDrivers();
       setTeamIDs();
       payRace();
