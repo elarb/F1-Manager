@@ -54,9 +54,17 @@ public class SeasonTest {
   }
   
   @Test
-  public void testNextRae(){
+  public void testNextRace(){
 	  season.nextRace();
 	  assertEquals(1, season.getCurrentRace());
+  }
+  
+  @Test(expected=NullPointerException.class)
+  public void testNoPath(){
+	  Race race = Mockito.mock(Race.class);
+	  race.setName("Test");
+	  season.addRace(race);
+	  assertEquals(null, season.getPathByRaceName("Fail"));
   }
 
 
