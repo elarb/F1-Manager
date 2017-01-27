@@ -166,15 +166,22 @@ public class Game {
     engine.determineprice();
 
     DriverResult result1 = new DriverResult(driver1, ((this.getSeason()
-        .getCurrentRaceInstance().getCircuit().getRaceTimeBase()
-        * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER)
-        + team.getMechanic().getPitstopTime());
+      .getCurrentRaceInstance().getCircuit().getRaceTimeBase()
+      * (Constants.VALUE_AVG_RESULT - team.getResultsDriver1())) / Constants.VALUE_AVG_DIVIDER)
+      + team.getMechanic().getPitstopTime());
     DriverResult result2 = new DriverResult(driver2, ((this.getSeason().getCurrentRaceInstance()
-        .getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT
-        - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER)
-        + team.getMechanic().getPitstopTime());
+      .getCircuit().getRaceTimeBase() * (Constants.VALUE_AVG_RESULT
+      - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER)
+      + team.getMechanic().getPitstopTime());
 
-    if (team.getStrategist().hasCrashed()) {
+    if (team instanceof PlayerTeam) {
+      if (!(((PlayerTeam) team).hasSoftwareTester())) {
+
+        result1 = new DriverResult(driver1, 100000000);
+        result2 = new DriverResult(driver2, 100000000);
+
+      }
+    } else if (team.getStrategist().hasCrashed()) {
 
       if (RandomDouble.generate(0, 1) > 0.1) {
 
@@ -227,9 +234,9 @@ public class Game {
     int budget = this.getPlayerteam().getBudget();
 
     if (budget > driver.getValue()) {
-        if (!(driver.getTeamId() == 0)) {
-          this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
-        }
+      if (!(driver.getTeamId() == 0)) {
+        this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
+      }
       driver.setTeamId(1);
       this.playerteam.addDriver(driver);
       this.playerteam.lowerBudget(driver.getValue());
@@ -283,7 +290,7 @@ public class Game {
 
       boolean bool = false;
       for (Driver driver :
-          randomTeam.getDriverList()) {
+        randomTeam.getDriverList()) {
         if (driver.getValue() < randomDriver.getValue() * 0.80) {
           bool = true;
         }
@@ -371,8 +378,8 @@ public class Game {
 
     }
     GameEvent event = new GameEvent(String.format("You finished %d and %d in the %s (Race #%d)",
-        positions.get(0), positions.get(1), getSeason().getCurrentRaceInstance().getName(),
-        getCurrentRace() + 1), GameEvent.Type.RACE);
+      positions.get(0), positions.get(1), getSeason().getCurrentRaceInstance().getName(),
+      getCurrentRace() + 1), GameEvent.Type.RACE);
     events.addEvent(event);
     return event;
   }
@@ -386,11 +393,10 @@ public class Game {
 
     for (int i = 0; i < getResults().size(); i++) {
       if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam
-          && getResults().get(i).getTime() == 100000000) {
+        && getResults().get(i).getTime() == 100000000) {
         GameEvent event = new GameEvent("Oh no... your driver "
-            + getResults().get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
+          + getResults().get(i).getDriver().getName() + " has crashed!", GameEvent.Type.RACE);
         events.addEvent(event);
-        return event;
       }
     }
     return null;
@@ -407,7 +413,7 @@ public class Game {
       if (getTeamDriver(getResults().get(i).getDriver().getTeamId()) instanceof PlayerTeam) {
 
         PlayerTeam playerTeam = (PlayerTeam) getTeamDriver(getResults().get(i)
-            .getDriver().getTeamId());
+          .getDriver().getTeamId());
 
         switch (i) {
           case 0:
@@ -512,7 +518,7 @@ public class Game {
   public void setpoints(int driver, int points) {
 
     getTeamDriver(getResults().get(driver).getDriver().getTeamId())
-        .setPoints(getTeamDriver(getResults().get(driver).getDriver().getTeamId()).getPoints()
+      .setPoints(getTeamDriver(getResults().get(driver).getDriver().getTeamId()).getPoints()
         + points);
 
   }
@@ -573,14 +579,14 @@ public class Game {
     teams.add(this.getPlayerteam());
 
     ArrayList<Team> standings = teams.stream().sorted(byPoints)
-        .collect(Collectors.toCollection(ArrayList::new));
+      .collect(Collectors.toCollection(ArrayList::new));
 
     this.getSeason().setStandings(standings);
 
     if (standings.get(0) instanceof PlayerTeam) {
 
       GameEvent event = new GameEvent("Congratulations! You are first in the overall standings!",
-          GameEvent.Type.RACE);
+        GameEvent.Type.RACE);
       events.addEvent(event);
       return event;
 
@@ -620,10 +626,11 @@ public class Game {
     this.playerteam.lowerBudget(costs);
     DecimalFormat formatter = new DecimalFormat("#,###");
     events.addEvent(new GameEvent("You paid " + "$" + formatter.format(costs)
-        + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
+      + " for Race #" + (getCurrentRace() + 1), GameEvent.Type.RACE));
   }
 
-  /**upgrades the Aerodynamisicst.
+  /**
+   * upgrades the Aerodynamisicst.
    *
    * @return a bolean representing wether it was succesfull.
    */
@@ -639,7 +646,8 @@ public class Game {
     return false;
   }
 
-  /**upgrades the Strategist.
+  /**
+   * upgrades the Strategist.
    *
    * @return a bolean representing wether it was succesfull.
    */
@@ -655,7 +663,8 @@ public class Game {
     return false;
   }
 
-  /**upgrades the Mechanic.
+  /**
+   * upgrades the Mechanic.
    *
    * @return a bolean representing wether it was succesfull.
    */
