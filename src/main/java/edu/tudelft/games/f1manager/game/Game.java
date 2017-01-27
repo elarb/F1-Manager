@@ -219,7 +219,7 @@ public class Game {
 
     if (budget > driver.getValue()) {
       if (driver.getTeamId() == 0) {
-        if(!(driver.getTeamId() == 0)){
+        if (!(driver.getTeamId() == 0)) {
           this.aiteams.getAiTeamById(driver.getTeamId()).getDriverList().remove(driver);
         }
 

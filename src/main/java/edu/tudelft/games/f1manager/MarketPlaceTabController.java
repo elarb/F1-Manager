@@ -43,8 +43,9 @@ public class MarketPlaceTabController {
         if (App.game.driverBuy(driver)) {
           App.playSound("Wroom");
           clientController.loadMenuData();
+        } else {
+          App.playSound("Negative");
         }
-        App.playSound("Negative");
         break;
       }
     }
