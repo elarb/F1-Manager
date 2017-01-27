@@ -174,28 +174,23 @@ public class Game {
       - team.getResultsDriver2())) / Constants.VALUE_AVG_DIVIDER)
       + team.getMechanic().getPitstopTime());
 
-    if(team instanceof PlayerTeam){
-      if(!(((PlayerTeam) team).hasSoftwareTester())){
+    if (team instanceof PlayerTeam) {
+      if (!(((PlayerTeam) team).hasSoftwareTester())) {
 
         result1 = new DriverResult(driver1, 100000000);
         result2 = new DriverResult(driver2, 100000000);
 
       }
-    }
-
-    else if (team.getStrategist().hasCrashed()) {
+    } else if (team.getStrategist().hasCrashed()) {
 
       if (RandomDouble.generate(0, 1) > 0.1) {
 
         if (RandomDouble.generate(0, 1) > 0.5) {
           result1 = new DriverResult(driver1, 100000000);
-        }
-        else {
+        } else {
           result2 = new DriverResult(driver2, 100000000);
         }
-      }
-
-      else {
+      } else {
         result1 = new DriverResult(driver1, 100000000);
         result2 = new DriverResult(driver2, 100000000);
       }
