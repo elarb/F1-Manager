@@ -46,11 +46,9 @@ public class Circuit {
   }
 
 
-  /**
-   * Returns the Base Time of the race
-   * @return
+  /**Returns the Base Time of the race.
+   * @return a double
    */
-
   public double getRaceTimeBase() {
     return raceTimeBase;
   }

@@ -94,11 +94,11 @@ public class SettingsTabController {
 
   }
 
-  private void updateSaveGameList(){
+  private void updateSaveGameList() {
     saveGameList.setItems(findSaveGames());
   }
 
-  private void updateLoadGameList(){
+  private void updateLoadGameList() {
     loadGameList.setItems(findSaveGames());
   }
 

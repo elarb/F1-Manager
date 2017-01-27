@@ -56,7 +56,7 @@ public abstract class Team {
   /**
    * Creates an object that represents a F1 Team.
    *
-   * @param name
+   * @param name           the name of the team
    * @param id             the id of the team
    * @param strategist     strategist of the team
    * @param aerodynamicist aerodynamicist of the team
@@ -65,7 +65,9 @@ public abstract class Team {
    * @param car            car owned by the team
    * @param points         the amount of points of the team
    */
-  public Team(String name, int id, Strategist strategist, Aerodynamicist aerodynamicist, Mechanic mechanic, List<Driver> driverList, Car car,
+  @SuppressWarnings("CheckStyle")
+  public Team(String name, int id, Strategist strategist, Aerodynamicist aerodynamicist,
+              Mechanic mechanic, List<Driver> driverList, Car car,
               int points) {
     this.name = name;
     this.driverList = driverList;
@@ -91,14 +93,21 @@ public abstract class Team {
     return false;
   }
 
+  /**returns a calculated team skill(without the driver being calculated in.
+   *
+   * @return double representing the skill of the team
+   */
   public double teamFactorNoDriver() {
 
 
-    double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating()) / (Constants.NORMALIZEVALUE_STRATEGIST);
-    double grip = (Constants.GRIP_COEF * this.car.getTyres().getHardness());
-    double aerodynamics = (Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise() / (Constants.NORMALIZEVALUE_AERO));
-    double body = (Constants.BODY_COEF * this.car.getBody());
-    double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    double strategist = (Constants.STRATEGIST_COEF * this.strategist.getRating())
+        / (Constants.NORMALIZEVALUE_STRATEGIST);
+    double grip = Constants.GRIP_COEF * this.car.getTyres().getHardness();
+    double aerodynamics = Constants.AERODYNAMISIST_COEF * this.getAerodynamicist().getExpertise()
+        / (Constants.NORMALIZEVALUE_AERO);
+    double body = Constants.BODY_COEF * this.car.getBody();
+    double engine = (Constants.ENGINE_COEF * this.car.getEngine().getPrice())
+        / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
 
     return strategist + grip + aerodynamics + body + engine;
 
@@ -114,15 +123,26 @@ public abstract class Team {
     this.driverList.add(driver);
   }
 
+  /**returns the results of the first driver of the team.
+   *
+   * @return double representing the time of the driver
+   */
   public double getResultsDriver1() {
 
-    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(0).getValue())
+        / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
     return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.95, 1.05);
   }
 
+
+  /**returns the results of the second driver of the team.
+   *
+   * @return double representing the time of the driver
+   */
   public double getResultsDriver2() {
 
-    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue()) / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
+    double driver = (Constants.DRIVER_COEF * this.driverList.get(1).getValue())
+        / (Constants.NORMALIZEVALUE_DRIVER_ENGINE);
     return (driver + this.teamFactorNoDriver()) * RandomDouble.generate(0.95, 1.05);
   }
 

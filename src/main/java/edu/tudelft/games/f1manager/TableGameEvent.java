@@ -5,7 +5,7 @@ import edu.tudelft.games.f1manager.game.GameEvent;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class TableGameEvent  extends RecursiveTreeObject<TableGameEvent>{
+public class TableGameEvent  extends RecursiveTreeObject<TableGameEvent> {
 
   StringProperty type;
   StringProperty message;

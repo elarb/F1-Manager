@@ -17,9 +17,9 @@ import java.util.List;
 public class PlayerTeam extends Team {
 
   private static Gson gson = new GsonBuilder()
-    .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
-    .serializeNulls()
-    .create();
+      .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .serializeNulls()
+      .create();
 
   /**
    * The budget a PlayerTeam has in Euro's. Is divisible by 100.   budget + (100 - (x % 100 ?: 100))
@@ -47,6 +47,7 @@ public class PlayerTeam extends Team {
    * @param budget         budget the team has
    * @param softwareTester true if team has a softwaretester
    */
+  @SuppressWarnings("CheckStyle")
   public PlayerTeam(String name, int id, Strategist strategist, Aerodynamicist aerodynamicist,
                     Mechanic mechanic, List<Driver> driverList, Car car,
                     int points, int budget, boolean softwareTester) {
@@ -78,6 +79,10 @@ public class PlayerTeam extends Team {
     FileOutputStream outputStream = new FileOutputStream("src/main/resources/JSON/" + filename);
     outputStream.write(gson.toJson(this).getBytes());
     outputStream.close();
+  }
+
+  public boolean enoughDrivers() {
+    return this.getDriverList().size() >= 2;
   }
 
   public void addBudget(int num) {
