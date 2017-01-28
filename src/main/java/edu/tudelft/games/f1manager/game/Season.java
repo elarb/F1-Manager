@@ -33,12 +33,6 @@ public class Season {
   private ArrayList<Race> races;
   private ArrayList<Team> standings;
 
-
-  /**
-   * List of teams sorted by points.
-   */
-
-
   /**
    * Creates an object that represents a F1 season.
    *
