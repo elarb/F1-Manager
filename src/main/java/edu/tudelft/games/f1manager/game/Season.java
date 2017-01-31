@@ -3,6 +3,8 @@ package edu.tudelft.games.f1manager.game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.google.gson.annotations.Expose;
+
 import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.FileOutputStream;
@@ -18,19 +20,23 @@ public class Season {
 
   private static Gson gson = new GsonBuilder()
       .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
+      .excludeFieldsWithoutExposeAnnotation()
       .serializeNulls()
       .create();
 
   /**
    * The current race in the season.
    */
+  @Expose
   private int currentRace;
 
 
   /**
    * A list of races.
    */
+  @Expose
   private ArrayList<Race> races;
+
   private ArrayList<Team> standings;
 
   /**

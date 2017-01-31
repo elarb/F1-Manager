@@ -1,5 +1,7 @@
 package edu.tudelft.games.f1manager.game;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 
 
@@ -8,26 +10,31 @@ public class Race {
   /**
    * Name of the race.
    */
+  @Expose
   private String name;
 
   /**
    * Circuit where the race takes place.
    */
+  @Expose
   private Circuit circuit;
 
   /**
    * List of results of the race.
    */
+  @Expose
   private ArrayList<DriverResult> results;
 
   /**
    * The distance of the race in km.
    */
+  @Expose
   private double distance;
 
   /**
    * Number of laps of the race.
    */
+  @Expose
   private int laps;
 
   /**
