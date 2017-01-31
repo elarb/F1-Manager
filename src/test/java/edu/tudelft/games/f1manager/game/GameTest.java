@@ -52,7 +52,6 @@ public class GameTest {
 
     game.addDriverResults(game.getPlayerteam());
     double result = game.getSeason().getCurrentRaceInstance().getResults().get(0).getTime();
-    System.out.println(result);
     assertEquals(8117, result, result * 1.06);
 
 

@@ -74,7 +74,6 @@ public class SettingsTabController {
    *
    */
   public void handleButtonClick_LoadGame() {
-    System.out.println("load");
     updateLoadGameList();
     loadGamePane.setVisible(true);
     loadGamePane.setDisable(false);

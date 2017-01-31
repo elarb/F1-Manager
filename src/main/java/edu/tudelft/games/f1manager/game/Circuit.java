@@ -1,31 +1,37 @@
 package edu.tudelft.games.f1manager.game;
 
+import com.google.gson.annotations.Expose;
 
 public class Circuit {
 
   /**
    * Base time of the circuit, based on results of season 2016.
    */
+  @Expose
   private double raceTimeBase;
 
   /**
    * Number of turns in the Circuit.
    */
+  @Expose
   private int turns;
 
   /**
    * The total length of the circuit in km.
    */
+  @Expose
   private double length;
 
   /**
    * Country of the Circuit.
    */
+  @Expose
   private String country;
 
   /**
    * SVG Path of the Circuit.
    */
+  @Expose
   private String path;
 
   /**

@@ -130,7 +130,6 @@ public class MarketPlaceTabController {
   }
 
   void populateBuyEngineList() {
-    System.out.println("populating buyEngineList");
     buyEngineList.setRoot(null);
 
     TreeTableColumn<TableEngine, String> brandColumn = new TreeTableColumn<>("Brand");
