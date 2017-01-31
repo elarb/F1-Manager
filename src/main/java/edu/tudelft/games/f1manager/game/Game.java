@@ -58,7 +58,6 @@ public class Game {
     game.setPlayerteam(playerTeam);
     game.setEvents(events);
     game.setSeason(season);
-    System.out.println("Succesfully loaded your game!");
 
     return game;
   }
@@ -86,7 +85,6 @@ public class Game {
     game.setEvents(events);
     game.setSeason(season);
 
-    System.out.println("Succesfully created a new game!");
 
     return game;
   }
@@ -109,7 +107,6 @@ public class Game {
     this.season.write(savename + "/season.json");
     this.events.write(savename + "/events.json");
 
-    System.out.println("Succesfully saved your game: " + savename);
 
   }
 
@@ -358,7 +355,6 @@ public class Game {
    */
   public void sortResults() {
     getResults().sort(byTime);
-    getResults().forEach(System.out::println);
   }
 
   /**

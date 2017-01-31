@@ -1,6 +1,5 @@
 package edu.tudelft.games.f1manager.game;
 
-
 import com.google.gson.annotations.Expose;
 
 public class Circuit {
