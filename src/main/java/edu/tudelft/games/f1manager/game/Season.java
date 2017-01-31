@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.google.gson.annotations.Expose;
+
 import edu.tudelft.games.f1manager.core.Team;
 
 import java.io.FileOutputStream;
