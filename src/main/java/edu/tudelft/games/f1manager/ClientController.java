@@ -40,6 +40,8 @@ public class ClientController {
   @FXML
   private Label cashLabel;
   @FXML
+  private Label costsLabel;
+  @FXML
   private Label raceLabel;
   @FXML
   private Label pointsLabel;
@@ -93,6 +95,7 @@ public class ClientController {
     teamNameLabel.setText(App.game.getPlayerteam().getName());
     DecimalFormat formatter = new DecimalFormat("#,###");
     cashLabel.setText("$" + formatter.format(App.game.getPlayerteam().getBudget()));
+    costsLabel.setText("-$" + formatter.format(App.game.getRaceCost()));
     pointsLabel.setText("Points: " + App.game.getPlayerteam().getPoints());
     raceLabel.setText("Raced: " + App.game.getCurrentRace() + "/20");
     if (App.game.getPlayerteam().enoughDrivers() && App.game.getCurrentRace() < 20) {

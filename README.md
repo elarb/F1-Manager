@@ -44,36 +44,20 @@ Libraries
 
 
 <table>
+
   <tr>
-    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Elias.jpg" alt="Elias" width="200" height="250"/></th>
-    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Tim.jpg" alt="Tim" width="200" height="250"/></th>
-    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/Wouter.jpg" alt="Wouter" width="200" height="250"/></th>
-    <th><img src="https://github.com/elarb/F1-Manager/blob/master/Pictures/David.jpg" alt="David" width="200" height="250"/></th>
-  </tr>
-  <tr>
-    <td><a href="https://www.github.com/elarb">Ellias Ait Larbi</a></td>
+    <td><a href="https://www.github.com/elarb">Elias Larbi</a></td>
     <td><a href="https://github.com/timpelser">Tim Pelser</a></td>
     <td><a href="https://github.com/WoutervanLil">Wouter van Lil</a></td>
     <td><a href="https://github.com/David-Happel">David Happel</a></td>
   </tr>
-  <tr>
-    <td>eaitlarbi</td>
-    <td>tpelser</td>
-    <td>wvanlil</td>
-    <td>dvhappel</td>
-  </tr>
-  <tr>
-    <td>e.aitlarbi@gmail.com</td>
-    <td>timpelser@hotmail.fr</td>
-    <td>wouter_van_lil@live.nl</td>
-    <td>davidvhappel1@gmail.com</td>
-  </tr>
+
 </table>
 
 ## License
 MIT License
 
-Copyright (c) 2016 Ellias Ait Larbi, David Happel, Wouter van Lil, Tim Pelser
+Copyright (c) 2016 Elias Larbi, David Happel, Wouter van Lil, Tim Pelser
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

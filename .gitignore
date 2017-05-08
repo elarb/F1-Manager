@@ -11,11 +11,16 @@ buildNumber.properties
 # Exclude maven wrapper
 !/.mvn/wrapper/maven-wrapper.jar
 
-.idea/.name
-.idea/copyright/
 .idea/
 *.iml
 /lib
+
+# Exclude some files
+/Pictures
+Reports/Planning
+Reports/Final.docx
+Reports/Final.pdf
+Reports/Report.pdf
 
 
 .classpath

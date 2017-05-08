@@ -126,9 +126,9 @@ public class Game {
       sortResults();
       addRaceWinnings();
       updateStandings();
-      buyRandomDriver();
       gameEventPositions();
       gameEventCrashed();
+      buyRandomDriver();
       this.getSeason().nextRace();
       return true;
     } else if (getSeason().getCurrentRace() == 20) {
@@ -140,9 +140,9 @@ public class Game {
       addRaceWinnings();
       championAward();
       updateStandings();
-      buyRandomDriver();
       gameEventPositions();
       gameEventCrashed();
+      buyRandomDriver();
       return false;
     }
     return false;

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="main-stage" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
+<AnchorPane id="main-stage" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.tudelft.games.f1manager.ClientController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -20,12 +20,12 @@
                                 <Font size="12.0" />
                             </font>
                         </Label>
-                        <Label fx:id="teamNameLabel" contentDisplay="CENTER" layoutX="275.0" layoutY="37.0" text="Quicksilver Racing" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="teamNameLabel" contentDisplay="CENTER" layoutX="298.0" layoutY="37.0" text="Quicksilver Racing" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <Label fx:id="cashLabel" layoutX="38.0" layoutY="26.0" prefHeight="50.0" prefWidth="200.0" text="Cash: $200,000,000" textFill="WHITE" AnchorPane.rightAnchor="1042.0" AnchorPane.topAnchor="26.0">
+                        <Label fx:id="cashLabel" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="16.0" prefHeight="50.0" prefWidth="155.0" text="Cash: $200,000,000" textFill="WHITE" AnchorPane.rightAnchor="1085.0" AnchorPane.topAnchor="16.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -50,6 +50,11 @@
                         </JFXButton>
                         <JFXButton id="close-button" fx:id="closeButton" buttonType="RAISED" cancelButton="true" layoutX="1216.0" layoutY="11.0" opacity="0.5" prefHeight="30.0" prefWidth="50.0" ripplerFill="#c61717" />
                   <JFXButton id="minimize-button" fx:id="minimizeButton" buttonType="RAISED" cancelButton="true" layoutX="1166.0" layoutY="11.0" opacity="0.5" prefHeight="30.0" prefWidth="50.0" ripplerFill="#a0a0a0" />
+                  <Label fx:id="costsLabel" alignment="CENTER_RIGHT" layoutX="79.0" layoutY="52.0" prefHeight="39.0" prefWidth="116.0" text="\$0" textFill="RED">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
             </top>
